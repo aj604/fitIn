@@ -13,6 +13,10 @@
 		0464E1051F885D0000002403 /* fitIn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0464E1031F885D0000002403 /* fitIn.xcdatamodeld */; };
 		0464E1071F885D0000002403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1061F885D0000002403 /* Assets.xcassets */; };
 		0464E10A1F885D0000002403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1081F885D0000002403 /* LaunchScreen.storyboard */; };
+		0499CF391F896F3400ECB59B /* situationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF381F896F3400ECB59B /* situationHandler.swift */; };
+		0499CF3B1F89713900ECB59B /* situation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3A1F89713900ECB59B /* situation.swift */; };
+		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
+		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		0464E1061F885D0000002403 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0464E1091F885D0000002403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0464E10B1F885D0000002403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0499CF381F896F3400ECB59B /* situationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = situationHandler.swift; sourceTree = "<group>"; };
+		0499CF3A1F89713900ECB59B /* situation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = situation.swift; sourceTree = "<group>"; };
+		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
+		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,27 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				0464E0FC1F885D0000002403 /* AppDelegate.swift */,
 				0464E0FE1F885D0000002403 /* ViewController.swift */,
+				0499CF3A1F89713900ECB59B /* situation.swift */,
+				0499CF381F896F3400ECB59B /* situationHandler.swift */,
+				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
+				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
+				0464E1111F885D1B00002403 /* SupplementaryFiles */,
+			);
+			path = fitIn;
+			sourceTree = "<group>";
+		};
+		0464E1111F885D1B00002403 /* SupplementaryFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0464E0FC1F885D0000002403 /* AppDelegate.swift */,
 				0464E1061F885D0000002403 /* Assets.xcassets */,
 				0464E1081F885D0000002403 /* LaunchScreen.storyboard */,
 				0464E10B1F885D0000002403 /* Info.plist */,
 				0464E1031F885D0000002403 /* fitIn.xcdatamodeld */,
 			);
-			path = fitIn;
+			path = SupplementaryFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0464E10A1F885D0000002403 /* LaunchScreen.storyboard in Resources */,
+				0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */,
 				0464E1071F885D0000002403 /* Assets.xcassets in Resources */,
 				0464E1021F885D0000002403 /* Main.storyboard in Resources */,
 			);
@@ -139,9 +160,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0499CF3B1F89713900ECB59B /* situation.swift in Sources */,
 				0464E1051F885D0000002403 /* fitIn.xcdatamodeld in Sources */,
+				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				0464E0FF1F885D0000002403 /* ViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
+				0499CF391F896F3400ECB59B /* situationHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK6DMPMCLY;
-				INFOPLIST_FILE = fitIn/Info.plist;
+				INFOPLIST_FILE = fitIn/SupplementaryFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.sfu.cmpt275.fitIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,7 +319,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK6DMPMCLY;
-				INFOPLIST_FILE = fitIn/Info.plist;
+				INFOPLIST_FILE = fitIn/SupplementaryFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.sfu.cmpt275.fitIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
