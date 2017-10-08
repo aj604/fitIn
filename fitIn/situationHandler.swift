@@ -23,6 +23,8 @@ struct situationHandler {
     //Image Data to use for UIImageView
     private var imageData = Data()
     
+    
+    
     //lodge a vote. May be too deep of proSocial calls
     mutating func voteProSocial() {
         if currentSituation.isProSocial(){
@@ -36,6 +38,8 @@ struct situationHandler {
         }
         user.gotIncorrect()
     }
+    
+    
     
     //Func will iterate situation to next in line
     // handles complete transition to next state
