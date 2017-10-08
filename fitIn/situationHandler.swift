@@ -13,18 +13,19 @@ import Foundation
 //Controls flow of app
 struct situationHandler {
     
-    private var user = userProfile() //User Data, Info stored here
-    
+    private var user = userProfile(userID: "insertUserID") //User Data, Info stored here
+
+    // MARK: VARIABLES
     // instantiation of situation, only one situation is loaded at a time
     //
     // FUTURE: Maybe preload upcoming situation
-    private var currentSituation = situation()
-    
+    private var currentSituation = situation(situationID: "insertSituationID")
+
     //Image Data to use for UIImageView
     private var imageData = Data()
+  
     
-    
-    
+    //MARK: METHODS
     //lodge a vote. May be too deep of proSocial calls
     mutating func voteProSocial() {
         if currentSituation.isProSocial(){
@@ -38,7 +39,6 @@ struct situationHandler {
         }
         user.gotIncorrect()
     }
-    
     
     
     //Func will iterate situation to next in line

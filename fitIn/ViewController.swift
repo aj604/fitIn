@@ -38,14 +38,11 @@ class ViewController: UIViewController {
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
         }
-    
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
