@@ -8,22 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SituationViewController: UIViewController {
     
     
     //Image View, Put Image HERE!
-    @IBOutlet weak var imageView2: UIImageView!
     
+    @IBOutlet weak var imageView: UIImageView!
     //Control Current Situation
     private var situationController = situationHandler()
 
     //User input
     @IBAction func proSocialPic(_ sender: UIButton) {
-        situationController.voteProSocial()
+        situationController.voteChoice = situation.responseType.yesOrNo(true)
         situationController.loadNextSituation()
     }
     @IBAction func antiSocialPic(_ sender: UIButton) {
-        situationController.voteAntiSocial()
+        situationController.voteChoice = situation.responseType.yesOrNo(false)
         situationController.loadNextSituation()
     }
     
@@ -35,17 +35,14 @@ class ViewController: UIViewController {
         
         //Try loading image data from first situation
         if let image = UIImage(data: situationController.loadSituationImageData()){
-            imageView2.contentMode = .scaleAspectFit
-            imageView2.image = image
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = image
         }
-    
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

@@ -9,8 +9,17 @@
 import Foundation
 
 struct userProfile {
-    private var correct : Int = 0
-    private var incorrect : Int = 0
+    //MARK: VARIABLES
+    private var correct : Int
+    private var incorrect : Int
+    
+    
+    //MARK: METHODS
+    init(userID: String){
+        correct = 0
+        incorrect = 0
+    }
+    
     mutating func gotCorrect(){
         correct += 1
     }
