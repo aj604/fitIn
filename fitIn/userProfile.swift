@@ -10,8 +10,16 @@ import Foundation
 
 struct userProfile {
     //MARK: VARIABLES
-    private var correct : Int
-    private var incorrect : Int
+    private var correct : Int {
+        didSet {
+            print("User got an answer correct! \n user now has \(correct) correct answers")
+        }
+    }
+    private var incorrect : Int{
+        didSet {
+            print("User got an answer wrong :( \n user now has \(incorrect) correct answers")
+        }
+    }
     
     
     //MARK: METHODS

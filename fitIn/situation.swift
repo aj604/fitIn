@@ -12,12 +12,13 @@ struct situation {
     
     // Enum for the type of response that the situation requires
     // MAY potentially use associated values for storing of answer type
-    enum responseType{
+    enum responseType {
         case yesOrNo(Bool)
         case slider(Double)
         case multipleChoice(Int)
         
         // Helper func to determine the type of response box our next view will need
+        // Could use something like an int as an identifier
         // Accessed via situation.getResponseType()
         fileprivate func getType() -> String {
             switch self {
@@ -67,7 +68,7 @@ struct situation {
     //MARK: VARIABLES
     var inputAnswer : responseType?
     var situationTags = [String]() // List of metadata / situation Tags
-    // just a random imgur url for initialization, Needs init func
+    // just a random imgur url for initialization, has one more URL it will segue to on vote()
     private var imageLoc : URL
     private var response : responseType // Includes both the type of response and the answer
     private var tipsForNextTime : String
@@ -111,6 +112,12 @@ struct situation {
         }
         print("Code should NEVER get here, This means the response type and answer was not initialized for this situation ")
         return nil
+    }
+    
+    // Helper func to set image URL before database urls can be tested
+    mutating func setSituationURL(url: String) {
+        //really bad practice for force unwrap on a UI Item
+        imageLoc = URL(string: url)!
     }
     
     // Returns a string of the response type expected for the current situation
