@@ -12,12 +12,12 @@ struct userProfile {
     //MARK: VARIABLES
     private var correct : Int {
         didSet {
-            print("User got an answer correct! \n user now has \(correct) correct answers")
+            print("User got an answer correct! \nuser now has \(correct) correct answers\n")
         }
     }
     private var incorrect : Int{
         didSet {
-            print("User got an answer wrong :( \n user now has \(incorrect) correct answers")
+            print("User got an answer wrong :( \nuser now has \(incorrect) incorrect answers\n")
         }
     }
     
