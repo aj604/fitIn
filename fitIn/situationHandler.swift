@@ -12,39 +12,72 @@ import Foundation
 //events
 //Controls flow of app
 struct situationHandler {
+    // MARK: VARIABLES
     
     private var user = userProfile(userID: "insertUserID") //User Data, Info stored here
-
-    // MARK: VARIABLES
     // instantiation of situation, only one situation is loaded at a time
     //
     // FUTURE: Maybe preload upcoming situation
-    private var currentSituation = situation(situationID: "insertSituationID")
+    private var currentSituation = situation(situationID: "insertSituationID", type: situation.responseType.yesOrNo(true)) {
+        // This didSet assumes that we have segued to our next situation and we are initializing our handler
+        willSet{
+            imageData = (nextSituation?.getImageData())!
+        }
+        didSet {
+            // Clear previous input answer and upcoming situation
+            voteChoice = nil
+            nextSituation = nil
+        }
+    }
 
+    // preload next situation
+    private var nextSituation : situation? {
+        didSet {
+            nextSituationType = nextSituation?.getSituationType()
+        }
+    }
+    private var nextSituationType : String?
+    
     //Image Data to use for UIImageView
     private var imageData = Data()
+    
+    // General container for all response types
+    // Handles segue
+    var voteChoice : situation.responseType? {
+        // When the controller sets voteChoice it will automatically call the vote function
+        // Insert transition methods here
+        didSet {
+            if vote() == nil {
+                print("failedVote")
+            }
+        }
+    }
   
     
     //MARK: METHODS
-    //lodge a vote. May be too deep of proSocial calls
-    mutating func voteProSocial() {
-        if currentSituation.isProSocial(){
+    //lodge a vote.
+    // Pre: voteChoice is set to specific case of responseType with its associatedValue
+    // Post: Returns bool? based on right/wrong answer or a nil bug
+    mutating func vote() -> Bool?{
+        if voteChoice == nil {
+            return nil
+        }
+        currentSituation.inputAnswer = voteChoice
+        if currentSituation.isRightAnswer()!{
             user.gotCorrect()
+            return true
         }
         user.gotIncorrect()
+        return true
     }
-    mutating func voteAntiSocial() {
-        if !currentSituation.isProSocial(){
-            user.gotCorrect()
-        }
-        user.gotIncorrect()
-    }
-    
     
     //Func will iterate situation to next in line
-    // handles complete transition to next state
-    func loadNextSituation(){
-        
+    // handles some transition to next state
+    // Other transitions calculated in observing properties
+    mutating func loadNextSituation(){
+        if let upcoming = nextSituation {
+            currentSituation = upcoming
+        }
     }
     
     // Import situation image data

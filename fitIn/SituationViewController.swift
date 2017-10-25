@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SituationViewController: UIViewController {
     
     
     //Image View, Put Image HERE!
@@ -19,11 +19,11 @@ class ViewController: UIViewController {
 
     //User input
     @IBAction func proSocialPic(_ sender: UIButton) {
-        situationController.voteProSocial()
+        situationController.voteChoice = situation.responseType.yesOrNo(true)
         situationController.loadNextSituation()
     }
     @IBAction func antiSocialPic(_ sender: UIButton) {
-        situationController.voteAntiSocial()
+        situationController.voteChoice = situation.responseType.yesOrNo(false)
         situationController.loadNextSituation()
     }
     

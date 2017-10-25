@@ -17,7 +17,21 @@ struct situation {
         case slider(Double)
         case multipleChoice(Int)
         
-        func getBool() -> Bool? {
+        // Helper func to determine the type of response box our next view will need
+        // Accessed via situation.getResponseType()
+        fileprivate func getType() -> String {
+            switch self {
+            case .yesOrNo:
+                return "yesOrNo"
+            case .slider:
+                return "slider"
+            case .multipleChoice:
+                return "multipleChoice"
+            }
+        }
+        
+        // Unwraps associated Value or returns nil
+        fileprivate func getBool() -> Bool? {
             switch self{
             case .yesOrNo(let value):
                 return value
@@ -25,7 +39,9 @@ struct situation {
                 return nil
             }
         }
-        func getSlider() -> Double? {
+        
+        // Unwraps associated Value or returns nil
+        fileprivate func getSlider() -> Double? {
             switch self {
             case .slider(let value):
                 return value
@@ -33,7 +49,9 @@ struct situation {
                 return nil
             }
         }
-        func getMultipleChoice() -> Int? {
+        
+        // Unwraps associated Value or returns nil
+        fileprivate func getMultipleChoice() -> Int? {
             switch self {
             case .multipleChoice(let value):
                 return value
@@ -42,6 +60,9 @@ struct situation {
             }
         }
     }
+    
+    
+    
     
     //MARK: VARIABLES
     var inputAnswer : responseType?
@@ -65,7 +86,7 @@ struct situation {
     // general answer checking method
     // Pre: Situation is loaded and inputAnswer != nil
     // Post: Bool? determining if they got the right answer or if inputAnswer wasnt initialized
-    private func isRightAnswer() -> Bool? {
+    func isRightAnswer() -> Bool? {
         if let answer = inputAnswer {
             switch answer {
             case .yesOrNo(let value):
@@ -92,6 +113,12 @@ struct situation {
         return nil
     }
     
+    // Returns a string of the response type expected for the current situation
+    func getSituationType() -> String {
+        return response.getType()
+    }
+    
+    // Returns image data for the situation, Used in situationHandler
     func getImageData() -> Data { // Get Image Data from URL / Local
         var imageOut = Data()//Data type, to prep image for UIImageView
         do{
