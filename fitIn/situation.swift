@@ -6,6 +6,8 @@
 //  Copyright © 2017 group of 5. All rights reserved.
 //
 
+import AWSDynamoDB
+
 import Foundation
 
 struct situation {
