@@ -17,6 +17,9 @@
 		0499CF3B1F89713900ECB59B /* situation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3A1F89713900ECB59B /* situation.swift */; };
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
+		FBC4D73B1FA1823D00DB002E /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC4D7381FA1823D00DB002E /* AWSDynamoDB.framework */; };
+		FBC4D73C1FA1823D00DB002E /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC4D7391FA1823D00DB002E /* AWSS3.framework */; };
+		FBC4D73D1FA1823D00DB002E /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC4D73A1FA1823D00DB002E /* AWSCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		0499CF3A1F89713900ECB59B /* situation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = situation.swift; sourceTree = "<group>"; };
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
+		FBC4D7381FA1823D00DB002E /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
+		FBC4D7391FA1823D00DB002E /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		FBC4D73A1FA1823D00DB002E /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBC4D73C1FA1823D00DB002E /* AWSS3.framework in Frameworks */,
+				FBC4D73B1FA1823D00DB002E /* AWSDynamoDB.framework in Frameworks */,
+				FBC4D73D1FA1823D00DB002E /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +73,9 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
+				FBC4D73A1FA1823D00DB002E /* AWSCore.framework */,
+				FBC4D7381FA1823D00DB002E /* AWSDynamoDB.framework */,
+				FBC4D7391FA1823D00DB002E /* AWSS3.framework */,
 				0464E0FE1F885D0000002403 /* SituationViewController.swift */,
 				0499CF3A1F89713900ECB59B /* situation.swift */,
 				0499CF381F896F3400ECB59B /* situationHandler.swift */,
@@ -304,6 +316,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK6DMPMCLY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fitIn",
+				);
 				INFOPLIST_FILE = fitIn/SupplementaryFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.sfu.cmpt275.fitIn;
@@ -319,6 +335,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK6DMPMCLY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fitIn",
+				);
 				INFOPLIST_FILE = fitIn/SupplementaryFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.sfu.cmpt275.fitIn;
