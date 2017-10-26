@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ScenarioViewController.swift
 //  fitIn
 //
 //  Created by Avery Jones on 2017-10-06.
@@ -8,31 +8,35 @@
 
 import UIKit
 
-class SituationViewController: UIViewController {
+class ScenarioViewController: UIViewController {
     
     
     //Image View, Put Image HERE!
     @IBOutlet weak var imageView: UIImageView!
     
-    //Control Current Situation
-    private var situationController = situationHandler()
-
+    //Control Current Scenario
+    private var scenarioController = ScenarioHandler()
+    
+    // Eventually this will be access point for subView
+    //fileprivate var responseController : responseViewController
+    
+    
     //User input
     @IBAction func proSocialPic(_ sender: UIButton) {
-        situationController.voteChoice = situation.responseType.yesOrNo(true)
-        situationController.loadNextSituation()
+        scenarioController.voteChoice = Scenario.responseType.yesOrNo(1)
+        scenarioController.loadNextScenario()
         updateUI()
     }
     @IBAction func antiSocialPic(_ sender: UIButton) {
-        situationController.voteChoice = situation.responseType.yesOrNo(false)
-        situationController.loadNextSituation()
+        scenarioController.voteChoice = Scenario.responseType.yesOrNo(0)
+        scenarioController.loadNextScenario()
         updateUI()
     }
     
-    // Update the UI to represent the change in situation
+    // Update the UI to represent the change in Scenario
     // Once different response views are set they can be set here
     func updateUI() {
-        if let image = UIImage(data: situationController.loadSituationImageData()){
+        if let image = UIImage(data: scenarioController.loadScenarioImageData()){
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
         }
@@ -41,9 +45,9 @@ class SituationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    
-        //Try loading image data from first situation
-        if let image = UIImage(data: situationController.loadSituationImageData()){
+        
+        //Try loading image data from first Scenario
+        if let image = UIImage(data: scenarioController.loadScenarioImageData()){
             print("image loaded")
             imageView.contentMode = .scaleAspectFit
             imageView.image = image

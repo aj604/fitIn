@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E0FC1F885D0000002403 /* AppDelegate.swift */; };
-		0464E0FF1F885D0000002403 /* SituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E0FE1F885D0000002403 /* SituationViewController.swift */; };
+		0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E0FE1F885D0000002403 /* ScenarioViewController.swift */; };
 		0464E1021F885D0000002403 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1001F885D0000002403 /* Main.storyboard */; };
 		0464E1051F885D0000002403 /* fitIn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0464E1031F885D0000002403 /* fitIn.xcdatamodeld */; };
 		0464E1071F885D0000002403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1061F885D0000002403 /* Assets.xcassets */; };
 		0464E10A1F885D0000002403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1081F885D0000002403 /* LaunchScreen.storyboard */; };
-		0499CF391F896F3400ECB59B /* situationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF381F896F3400ECB59B /* situationHandler.swift */; };
-		0499CF3B1F89713900ECB59B /* situation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3A1F89713900ECB59B /* situation.swift */; };
+		0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF381F896F3400ECB59B /* ScenarioHandler.swift */; };
+		0499CF3B1F89713900ECB59B /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3A1F89713900ECB59B /* Scenario.swift */; };
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
 		04B13D3D1FA15D2400B30687 /* responseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B13D3C1FA15D2400B30687 /* responseViewController.swift */; };
@@ -23,14 +23,14 @@
 /* Begin PBXFileReference section */
 		0464E0F91F885D0000002403 /* fitIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E0FC1F885D0000002403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0464E0FE1F885D0000002403 /* SituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SituationViewController.swift; sourceTree = "<group>"; };
+		0464E0FE1F885D0000002403 /* ScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
 		0464E1011F885D0000002403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0464E1041F885D0000002403 /* fitIn.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fitIn.xcdatamodel; sourceTree = "<group>"; };
 		0464E1061F885D0000002403 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0464E1091F885D0000002403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0464E10B1F885D0000002403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0499CF381F896F3400ECB59B /* situationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = situationHandler.swift; sourceTree = "<group>"; };
-		0499CF3A1F89713900ECB59B /* situation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = situation.swift; sourceTree = "<group>"; };
+		0499CF381F896F3400ECB59B /* ScenarioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioHandler.swift; sourceTree = "<group>"; };
+		0499CF3A1F89713900ECB59B /* Scenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
 		04B13D3C1FA15D2400B30687 /* responseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = responseViewController.swift; sourceTree = "<group>"; };
@@ -66,9 +66,9 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				0464E0FE1F885D0000002403 /* SituationViewController.swift */,
-				0499CF3A1F89713900ECB59B /* situation.swift */,
-				0499CF381F896F3400ECB59B /* situationHandler.swift */,
+				0464E0FE1F885D0000002403 /* ScenarioViewController.swift */,
+				0499CF3A1F89713900ECB59B /* Scenario.swift */,
+				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
 				04B13D3C1FA15D2400B30687 /* responseViewController.swift */,
@@ -163,13 +163,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0499CF3B1F89713900ECB59B /* situation.swift in Sources */,
+				0499CF3B1F89713900ECB59B /* Scenario.swift in Sources */,
 				0464E1051F885D0000002403 /* fitIn.xcdatamodeld in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				04B13D3D1FA15D2400B30687 /* responseViewController.swift in Sources */,
-				0464E0FF1F885D0000002403 /* SituationViewController.swift in Sources */,
+				0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
-				0499CF391F896F3400ECB59B /* situationHandler.swift in Sources */,
+				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
