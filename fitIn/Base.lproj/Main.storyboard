@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JC3-6Y-NgS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,32 +13,32 @@
         <!--Situation View Controller-->
         <scene sceneID="aWW-ih-8rf">
             <objects>
-                <viewController id="JC3-6Y-NgS" customClass="SituationViewController" sceneMemberID="viewController">
+                <viewController id="JC3-6Y-NgS" customClass="SituationViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fkM-JZ-udd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="l7U-mi-MLd">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AHa-pp-bfS">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personPickingUpPoop.jpg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zIH-zd-kaJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="210.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-mS-LPd">
-                                                <rect key="frame" x="63.5" y="218.5" width="248" height="210"/>
+                                                <rect key="frame" x="63.5" y="153" width="248" height="144.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB8-2H-UpX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="76" height="210"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="76" height="144.5"/>
                                                         <state key="normal" title="Anti-Social"/>
                                                         <connections>
                                                             <action selector="picisAntiSocial:" destination="6Qa-gR-AxO" eventType="touchUpInside" id="OVf-pb-Nk5"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLn-kY-y5i">
-                                                        <rect key="frame" x="176" y="0.0" width="72" height="210"/>
+                                                        <rect key="frame" x="176" y="0.0" width="72" height="144.5"/>
                                                         <state key="normal" title="Pro-Social"/>
                                                         <connections>
                                                             <action selector="picIsProSocial:" destination="6Qa-gR-AxO" eventType="touchUpInside" id="nVb-OF-uFt"/>
@@ -46,8 +46,15 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZ6-1R-90K">
+                                                <rect key="frame" x="158" y="305.5" width="59" height="145"/>
+                                                <state key="normal" title="Profiles?"/>
+                                                <connections>
+                                                    <segue destination="u4m-3r-nrW" kind="show" id="nrn-h1-MKV"/>
+                                                </connections>
+                                            </button>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="LrU-kg-Zx9">
-                                                <rect key="frame" x="168" y="436.5" width="39" height="210.5"/>
+                                                <rect key="frame" x="168" y="458.5" width="39" height="144.5"/>
                                                 <color key="pageIndicatorTintColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </pageControl>
                                         </subviews>
@@ -66,6 +73,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PsI-tO-UFw"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PM8-wC-2oI"/>
                     <connections>
                         <outlet property="imageView" destination="zIH-zd-kaJ" id="biC-y7-gUK"/>
                     </connections>
@@ -73,7 +81,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kA0-Mp-mDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Qa-gR-AxO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="820" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1462" y="132"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dQV-Ck-icL">
+            <objects>
+                <viewController id="u4m-3r-nrW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xe3-YN-8vy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profiles!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-gs-DIh">
+                                <rect key="frame" x="166" y="86" width="63" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="hHl-Qp-0a0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BNR-vh-gfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2185" y="132"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2mi-R1-YTO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VyU-pA-L9t" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rg0-PN-32c">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JC3-6Y-NgS" kind="relationship" relationship="rootViewController" id="dGU-fj-Gib"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzc-fq-Xm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="690" y="132"/>
         </scene>
     </scenes>
     <resources>
