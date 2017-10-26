@@ -14,7 +14,7 @@ import Foundation
 struct situationHandler {
     // MARK: VARIABLES
     
-    private var user = userProfile(userID: "insertUserID") //User Data, Info stored here
+    private var user = userProfile() //User Data, Info stored here
     // instantiation of situation, only one situation is loaded at a time
     //
     // FUTURE: Maybe preload upcoming situation
