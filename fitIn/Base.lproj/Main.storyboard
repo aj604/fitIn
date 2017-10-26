@@ -74,6 +74,132 @@
             </objects>
             <point key="canvasLocation" x="820" y="132.68365817091455"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="FEM-hY-xcE">
+            <objects>
+                <viewController id="TL1-do-mle" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p7f-tx-M2z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e9t-YL-apM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="395.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x8L-4c-5z8">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMP-YR-rS3">
+                                        <rect key="frame" x="166.5" y="375" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="396-Qr-uAc">
+                                <rect key="frame" x="0.0" y="404" width="375" height="263"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="3fr-Ux-eSh" kind="embed" id="mIf-Fd-jNm"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Hu8-G5-01h"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCS-1w-DCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1856.8" y="129.98500749625188"/>
+        </scene>
+        <!--Response View Controller-->
+        <scene sceneID="qnr-Dc-2Kd">
+            <objects>
+                <viewController id="3fr-Ux-eSh" customClass="responseViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h1D-Tx-1lF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XO-0V-el3">
+                                <rect key="frame" x="91" y="116" width="192" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6M-c9-bfc" userLabel="anti-social">
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="30"/>
+                                        <state key="normal" title="anti-social"/>
+                                        <connections>
+                                            <action selector="picIsAntiSocial:" destination="3fr-Ux-eSh" eventType="touchUpInside" id="xKU-nm-4Sx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3k-T2-Ckj">
+                                        <rect key="frame" x="122" y="0.0" width="70" height="30"/>
+                                        <state key="normal" title="pro-social"/>
+                                        <connections>
+                                            <action selector="picIsProSocial:" destination="3fr-Ux-eSh" eventType="touchUpInside" id="Djb-2D-zel"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="u86-Pj-YvP">
+                                <rect key="frame" x="128" y="116" width="108" height="30"/>
+                            </slider>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TT0-fq-Tqv">
+                                <rect key="frame" x="20" y="20" width="335" height="223"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="5sl-xG-a5j">
+                                        <rect key="frame" x="87" y="0.0" width="161" height="111.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwL-MF-oiw">
+                                                <rect key="frame" x="0.0" y="0.0" width="31" height="111.5"/>
+                                                <state key="normal" title="mc0"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="op9-iy-omh">
+                                                <rect key="frame" x="131" y="0.0" width="30" height="111.5"/>
+                                                <state key="normal" title="mc1"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="wJH-Oe-5CM">
+                                        <rect key="frame" x="87" y="111.5" width="161" height="111.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu3-E1-OdE">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="111.5"/>
+                                                <state key="normal" title="mc2"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mr9-SB-TzU">
+                                                <rect key="frame" x="130" y="0.0" width="31" height="111.5"/>
+                                                <state key="normal" title="mc3"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3XO-0V-el3" firstAttribute="leading" secondItem="h1D-Tx-1lF" secondAttribute="leading" constant="91" id="7Vw-6p-ISE"/>
+                            <constraint firstAttribute="trailing" secondItem="TT0-fq-Tqv" secondAttribute="trailing" constant="20" symbolic="YES" id="Bab-6W-5f4"/>
+                            <constraint firstAttribute="bottom" secondItem="u86-Pj-YvP" secondAttribute="bottom" constant="118" id="BqG-9R-jJd"/>
+                            <constraint firstItem="u86-Pj-YvP" firstAttribute="leading" secondItem="h1D-Tx-1lF" secondAttribute="leading" constant="130" id="Egx-rb-sKF"/>
+                            <constraint firstAttribute="bottom" secondItem="3XO-0V-el3" secondAttribute="bottom" constant="117" id="WZ0-Qn-Nqa"/>
+                            <constraint firstAttribute="bottom" secondItem="u86-Pj-YvP" secondAttribute="bottom" constant="118" id="acF-VJ-oOg"/>
+                            <constraint firstAttribute="bottom" secondItem="TT0-fq-Tqv" secondAttribute="bottom" constant="20" symbolic="YES" id="c8h-wk-zbZ"/>
+                            <constraint firstItem="TT0-fq-Tqv" firstAttribute="leading" secondItem="h1D-Tx-1lF" secondAttribute="leading" constant="20" symbolic="YES" id="cf1-rm-iJb"/>
+                            <constraint firstItem="TT0-fq-Tqv" firstAttribute="top" secondItem="h1D-Tx-1lF" secondAttribute="top" constant="20" symbolic="YES" id="i1i-UZ-wUv"/>
+                            <constraint firstItem="3XO-0V-el3" firstAttribute="top" secondItem="h1D-Tx-1lF" secondAttribute="top" constant="116" id="iTQ-EX-wSy"/>
+                            <constraint firstAttribute="trailing" secondItem="3XO-0V-el3" secondAttribute="trailing" constant="92" id="neo-Md-2PD"/>
+                            <constraint firstItem="u86-Pj-YvP" firstAttribute="top" secondItem="h1D-Tx-1lF" secondAttribute="top" constant="116" id="rkt-sq-O2r"/>
+                            <constraint firstAttribute="trailing" secondItem="u86-Pj-YvP" secondAttribute="trailing" constant="141" id="w68-Id-zDO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="picIsProSocial" destination="y3k-T2-Ckj" id="Efw-5B-4Me"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8P-Ze-KA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2652" y="-49.025487256371818"/>
+        </scene>
     </scenes>
     <resources>
         <image name="personPickingUpPoop.jpg" width="1080" height="717"/>
