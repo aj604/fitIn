@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Situation View Controller-->
+        <!--Scenario View Controller-->
         <scene sceneID="aWW-ih-8rf">
             <objects>
-                <viewController id="JC3-6Y-NgS" customClass="SituationViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JC3-6Y-NgS" customClass="ScenarioViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fkM-JZ-udd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,14 +34,14 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="76" height="144.5"/>
                                                         <state key="normal" title="Anti-Social"/>
                                                         <connections>
-                                                            <action selector="picisAntiSocial:" destination="6Qa-gR-AxO" eventType="touchUpInside" id="OVf-pb-Nk5"/>
+                                                            <action selector="antiSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="u9m-5a-lll"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLn-kY-y5i">
                                                         <rect key="frame" x="176" y="0.0" width="72" height="144.5"/>
                                                         <state key="normal" title="Pro-Social"/>
                                                         <connections>
-                                                            <action selector="picIsProSocial:" destination="6Qa-gR-AxO" eventType="touchUpInside" id="nVb-OF-uFt"/>
+                                                            <action selector="proSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="s5T-JO-GTG"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -79,7 +79,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kA0-Mp-mDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="6Qa-gR-AxO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1462" y="132"/>
         </scene>

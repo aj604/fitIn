@@ -1,5 +1,5 @@
 //
-//  situation.swift
+//  Scenario.swift
 //  fitIn
 //
 //  Created by Avery Jones on 2017-10-07.
@@ -8,17 +8,18 @@
 
 import Foundation
 
-struct situation {
+struct Scenario {
     
-    // Enum for the type of response that the situation requires
+    // Enum for the type of response that the Scenario requires
     // MAY potentially use associated values for storing of answer type
-    enum responseType{
-        case yesOrNo(Bool)
-        case slider(Double)
+    enum responseType {
+        case yesOrNo(Int)
+        case slider(Int)
         case multipleChoice(Int)
         
         // Helper func to determine the type of response box our next view will need
-        // Accessed via situation.getResponseType()
+        // Could use something like an int as an identifier
+        // Accessed via Scenario.getResponseType()
         fileprivate func getType() -> String {
             switch self {
             case .yesOrNo:
@@ -29,96 +30,74 @@ struct situation {
                 return "multipleChoice"
             }
         }
-        
         // Unwraps associated Value or returns nil
-        fileprivate func getBool() -> Bool? {
+        fileprivate func getValue() -> Int {
             switch self{
             case .yesOrNo(let value):
                 return value
-            default:
-                return nil
-            }
-        }
-        
-        // Unwraps associated Value or returns nil
-        fileprivate func getSlider() -> Double? {
-            switch self {
-            case .slider(let value):
-                return value
-            default:
-                return nil
-            }
-        }
-        
-        // Unwraps associated Value or returns nil
-        fileprivate func getMultipleChoice() -> Int? {
-            switch self {
             case .multipleChoice(let value):
                 return value
-            default:
-                return nil
+            case .slider(let value):
+                return value
             }
         }
     }
     
     
-    
-    
     //MARK: VARIABLES
     var inputAnswer : responseType?
-    var situationTags = [String]() // List of metadata / situation Tags
-    // just a random imgur url for initialization, Needs init func
+    var scenarioTags = [String]() // List of metadata / Scenario Tags
+    // just a random imgur url for initialization, has one more URL it will segue to on vote()
     private var imageLoc : URL
     private var response : responseType // Includes both the type of response and the answer
     private var tipsForNextTime : String
     
-    
-    //MARK: METHODS
+    /* Future Members
+     let scenarioID: Int
+     let createdBy: String
+     let questionText: String
+     var timeToAnswer = [Int]() //this is in milliseconds
+     var averageAnswer: Double
+     var standardDeviation : Double
+     var averageTimeToAnswer: Double
+     var numberOfAnswers: Int
+*/
+ //MARK: METHODS
 
-    // Need to make this a load function from our DB based upon situation ID
+    // Need to make this a load function from our DB based upon Scenario ID
     // Will init the imageURL either locally or from URL from db
-    init(situationID: String, type : responseType){
+    init(scenarioID: String, type : responseType){
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
         response = type
         tipsForNextTime = "Sucks to suck"
     }
     
     // general answer checking method
-    // Pre: Situation is loaded and inputAnswer != nil
+    // Pre: Scenario is loaded and inputAnswer != nil
     // Post: Bool? determining if they got the right answer or if inputAnswer wasnt initialized
     func isRightAnswer() -> Bool? {
         if let answer = inputAnswer {
-            switch answer {
-            case .yesOrNo(let value):
-                let expectedResponse = response.getBool()
-                if value == expectedResponse {
-                    return true
-                }
-                return false
-            case .multipleChoice(let value):
-                let expectedResponse = response.getMultipleChoice()
-                if value == expectedResponse {
-                    return true
-                }
-                return false
-            case .slider(let value):
-                let expectedResponse = response.getSlider()
-                if value == expectedResponse {
-                    return true
-                }
-                return false
+            if response.getValue() == answer.getValue() {
+                return true
             }
+            return false
         }
-        print("Code should NEVER get here, This means the response type and answer was not initialized for this situation ")
+        print("Code should never get here, This means answer was not set properly")
         return nil
     }
     
-    // Returns a string of the response type expected for the current situation
-    func getSituationType() -> String {
+    // Helper func to set image URL before database urls can be tested
+    mutating func setScenarioURL(url: String) {
+        //really bad practice for force unwrap on a UI Item
+        imageLoc = URL(string: url)!
+    }
+    
+    // Returns a string of the response type expected for the current Scenario
+    func getScenarioType() -> String {
         return response.getType()
     }
     
-    // Returns image data for the situation, Used in situationHandler
+    // Returns image data for the Scenario, Used in situationHandler
     func getImageData() -> Data { // Get Image Data from URL / Local
         var imageOut = Data()//Data type, to prep image for UIImageView
         do{
