@@ -11,6 +11,7 @@ import Foundation
 
 class userProfile {
     //Variables:
+    private static var currentUser: userProfile? = userProfile() //put this right above the variables
     var userName: String
     var emailAddress: String
     var userAge: Int
@@ -81,7 +82,12 @@ class userProfile {
         //but for now it is temporarily doing nothing
         return
     }
+    class func current() -> userProfile? { //put this under the methods
+          return currentUser
+    }
 }
+
+
 
 /*struct userProfile {
     //MARK: VARIABLES

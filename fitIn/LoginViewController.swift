@@ -9,13 +9,30 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //UserLabel.text = String(describing: userProfile.current()?.userAge)
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+          loadUser()
+    }
+    
+    
+    func loadUser() {
+                guard let currentUser = userProfile.current() else { return }
+                currentUser.userName = "test"
+               //UserLabel.text = currentUser.userName
+        
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
