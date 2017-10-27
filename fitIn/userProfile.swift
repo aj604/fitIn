@@ -10,6 +10,9 @@
 import Foundation
 
 class userProfile {
+    
+    private static var currentUser: userProfile? = userProfile()
+    
     //Variables:
     var userName: String
     var emailAddress: String
@@ -80,6 +83,15 @@ class userProfile {
         //this function will update the database with whatever is locally stored
         //but for now it is temporarily doing nothing
         return
+    }
+    
+    class func current() -> userProfile? {
+        return currentUser
+    }
+    
+    class func login() {
+        
+        // set currentUser
     }
 }
 

@@ -17,6 +17,7 @@
 		0499CF3B1F89713900ECB59B /* situation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3A1F89713900ECB59B /* situation.swift */; };
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
+		D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */; };
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		0499CF3A1F89713900ECB59B /* situation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = situation.swift; sourceTree = "<group>"; };
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
+		D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		D39588E21FA18235003A78BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				0499CF381F896F3400ECB59B /* situationHandler.swift */,
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				D39588E21FA18235003A78BD /* ProfileViewController.swift */,
+				D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
@@ -163,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */,
 				0499CF3B1F89713900ECB59B /* situation.swift in Sources */,
 				0464E1051F885D0000002403 /* fitIn.xcdatamodeld in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
