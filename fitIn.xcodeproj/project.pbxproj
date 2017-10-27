@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04592B001FA2DFD6002EDC0E /* responseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04592AFF1FA2DFD6002EDC0E /* responseViewController.swift */; };
 		0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E0FC1F885D0000002403 /* AppDelegate.swift */; };
 		0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E0FE1F885D0000002403 /* ScenarioViewController.swift */; };
 		0464E1021F885D0000002403 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1001F885D0000002403 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04592AFF1FA2DFD6002EDC0E /* responseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = responseViewController.swift; sourceTree = "<group>"; };
 		0464E0F91F885D0000002403 /* fitIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E0FC1F885D0000002403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464E0FE1F885D0000002403 /* ScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +74,7 @@
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				D39588E21FA18235003A78BD /* ProfileViewController.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
-				04B13D3C1FA15D2400B30687 /* responseViewController.swift */,
+				04592AFF1FA2DFD6002EDC0E /* responseViewController.swift */,
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
 			);
@@ -167,8 +169,9 @@
 				0499CF3B1F89713900ECB59B /* Scenario.swift in Sources */,
 				0464E1051F885D0000002403 /* fitIn.xcdatamodeld in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
-				0464E0FF1F885D0000002403 /* SituationViewController.swift in Sources */,
+				0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */,
 				D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */,
+				04592B001FA2DFD6002EDC0E /* responseViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
 			);
