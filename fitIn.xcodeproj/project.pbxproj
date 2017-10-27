@@ -19,11 +19,32 @@
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
 		FB0F0A081FA2C6CC00A9E879 /* AWStesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */; };
 		FB0F0A0A1FA2C75E00A9E879 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */; };
-		FB0F0A0F1FA2C88E00A9E879 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; };
 		FB0F0A101FA2C88E00A9E879 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; };
-		FB0F0A111FA2C88E00A9E879 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */; };
-		FB0F0A121FA2C88E00A9E879 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */; };
+		FB0F0A131FA2CB0E00A9E879 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */; };
+		FB0F0A141FA2CB0E00A9E879 /* AWSCognito.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FB0F0A151FA2CB0E00A9E879 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */; };
+		FB0F0A161FA2CB0E00A9E879 /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FB0F0A171FA2CB0E00A9E879 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; };
+		FB0F0A181FA2CB0E00A9E879 /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FB0F0A1A1FA2CB0E00A9E879 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB0F0A1B1FA2CB0E00A9E879 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FB0F0A1A1FA2CB0E00A9E879 /* AWSS3.framework in Embed Frameworks */,
+				FB0F0A141FA2CB0E00A9E879 /* AWSCognito.framework in Embed Frameworks */,
+				FB0F0A181FA2CB0E00A9E879 /* AWSDynamoDB.framework in Embed Frameworks */,
+				FB0F0A161FA2CB0E00A9E879 /* AWSCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0464E0F91F885D0000002403 /* fitIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,10 +72,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB0F0A111FA2C88E00A9E879 /* AWSCognito.framework in Frameworks */,
-				FB0F0A121FA2C88E00A9E879 /* AWSCore.framework in Frameworks */,
 				FB0F0A101FA2C88E00A9E879 /* AWSS3.framework in Frameworks */,
-				FB0F0A0F1FA2C88E00A9E879 /* AWSDynamoDB.framework in Frameworks */,
+				FB0F0A131FA2CB0E00A9E879 /* AWSCognito.framework in Frameworks */,
+				FB0F0A171FA2CB0E00A9E879 /* AWSDynamoDB.framework in Frameworks */,
+				FB0F0A151FA2CB0E00A9E879 /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +140,7 @@
 				0464E0F51F885D0000002403 /* Sources */,
 				0464E0F61F885D0000002403 /* Frameworks */,
 				0464E0F71F885D0000002403 /* Resources */,
+				FB0F0A1B1FA2CB0E00A9E879 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -327,7 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XK6DMPMCLY;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitIn",
@@ -346,7 +368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XK6DMPMCLY;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fitIn",
