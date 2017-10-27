@@ -1,5 +1,4 @@
-*.xcconfig
-*.plist
+aws-resources.swift
 *.DS_store
 *.DS_Store
 
