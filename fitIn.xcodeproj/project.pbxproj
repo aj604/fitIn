@@ -17,6 +17,12 @@
 		0499CF3B1F89713900ECB59B /* situation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3A1F89713900ECB59B /* situation.swift */; };
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
+		FB63E2E81FA188DD0079191F /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB63E2E41FA188DC0079191F /* AWSDynamoDB.framework */; };
+		FB63E2E91FA188DD0079191F /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB63E2E51FA188DC0079191F /* AWSS3.framework */; };
+		FB63E2EA1FA188DD0079191F /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB63E2E61FA188DD0079191F /* AWSCognito.framework */; };
+		FB63E2EB1FA188DD0079191F /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB63E2E71FA188DD0079191F /* AWSCore.framework */; };
+		FB63E2ED1FA1890B0079191F /* AWStesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB63E2EC1FA1890B0079191F /* AWStesting.swift */; };
+		FB63E2F71FA199520079191F /* aws-resources.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB63E2F61FA199520079191F /* aws-resources.plist */; };
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +39,12 @@
 		0499CF3A1F89713900ECB59B /* situation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = situation.swift; sourceTree = "<group>"; };
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
+		FB63E2E41FA188DC0079191F /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
+		FB63E2E51FA188DC0079191F /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
+		FB63E2E61FA188DD0079191F /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
+		FB63E2E71FA188DD0079191F /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
+		FB63E2EC1FA1890B0079191F /* AWStesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWStesting.swift; sourceTree = "<group>"; };
+		FB63E2F61FA199520079191F /* aws-resources.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "aws-resources.plist"; sourceTree = "<group>"; };
 		D39588E21FA18235003A78BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,6 +53,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB63E2EA1FA188DD0079191F /* AWSCognito.framework in Frameworks */,
+				FB63E2EB1FA188DD0079191F /* AWSCore.framework in Frameworks */,
+				FB63E2E91FA188DD0079191F /* AWSS3.framework in Frameworks */,
+				FB63E2E81FA188DD0079191F /* AWSDynamoDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +82,10 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
+				FB63E2E61FA188DD0079191F /* AWSCognito.framework */,
+				FB63E2E71FA188DD0079191F /* AWSCore.framework */,
+				FB63E2E41FA188DC0079191F /* AWSDynamoDB.framework */,
+				FB63E2E51FA188DC0079191F /* AWSS3.framework */,
 				0464E0FE1F885D0000002403 /* SituationViewController.swift */,
 				0499CF3A1F89713900ECB59B /* situation.swift */,
 				0499CF381F896F3400ECB59B /* situationHandler.swift */,
@@ -74,6 +94,8 @@
 				0464E1001F885D0000002403 /* Main.storyboard */,
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
+				FB63E2EC1FA1890B0079191F /* AWStesting.swift */,
+				FB63E2F61FA199520079191F /* aws-resources.plist */,
 			);
 			path = fitIn;
 			sourceTree = "<group>";
@@ -149,6 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB63E2F71FA199520079191F /* aws-resources.plist in Resources */,
 				0464E10A1F885D0000002403 /* LaunchScreen.storyboard in Resources */,
 				0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */,
 				0464E1071F885D0000002403 /* Assets.xcassets in Resources */,
@@ -165,6 +188,7 @@
 			files = (
 				0499CF3B1F89713900ECB59B /* situation.swift in Sources */,
 				0464E1051F885D0000002403 /* fitIn.xcdatamodeld in Sources */,
+				FB63E2ED1FA1890B0079191F /* AWStesting.swift in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				0464E0FF1F885D0000002403 /* SituationViewController.swift in Sources */,
 				D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */,
@@ -308,6 +332,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK6DMPMCLY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fitIn",
+				);
 				INFOPLIST_FILE = fitIn/SupplementaryFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.sfu.cmpt275.fitIn;
@@ -323,6 +351,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XK6DMPMCLY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fitIn",
+				);
 				INFOPLIST_FILE = fitIn/SupplementaryFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.sfu.cmpt275.fitIn;
