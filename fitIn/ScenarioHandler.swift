@@ -15,7 +15,7 @@ struct ScenarioHandler {
     
     // MARK: VARIABLES
     
-    private var user = userProfile(userID: "insertUserID") //User Data, Info stored here
+    private var user = userProfile() //User Data, Info stored here
     
     // instantiation of Scenario, only one Scenario is loaded at a time
     private var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.responseType.yesOrNo(1)) {

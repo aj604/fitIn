@@ -23,7 +23,7 @@ struct userProfile {
     
     
     //MARK: METHODS
-    init(userID: String){
+    init(){
         correct = 0
         incorrect = 0
     }
