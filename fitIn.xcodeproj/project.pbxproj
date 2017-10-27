@@ -18,6 +18,7 @@
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
 		FB0F0A081FA2C6CC00A9E879 /* AWStesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */; };
+		FB0F0A0A1FA2C75E00A9E879 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
 		D39588E21FA18235003A78BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWStesting.swift; sourceTree = "<group>"; };
+		FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
 				FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */,
+				FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */,
 			);
 			path = fitIn;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0499CF3B1F89713900ECB59B /* situation.swift in Sources */,
+				FB0F0A0A1FA2C75E00A9E879 /* aws-resources.swift in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				0464E0FF1F885D0000002403 /* SituationViewController.swift in Sources */,
 				FB0F0A081FA2C6CC00A9E879 /* AWStesting.swift in Sources */,
