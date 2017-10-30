@@ -7,9 +7,17 @@
 //
 
 import Foundation
+import AWSDynamoDB
 
-struct Scenario {
+class Scenario : AWSDynamoDBObjectModel {
+
+    static func dynamoDBTableName() -> String {
+        return SCENARIO_MASTER_TABLE
+    }
     
+    static func hashKeyAttribute() -> String {
+        return SCENARIO_MASTER_TABLE_PRIMARY_KEY
+    }
     // Enum for the type of response that the Scenario requires
     // MAY potentially use associated values for storing of answer type
     enum responseType {
@@ -66,10 +74,19 @@ struct Scenario {
 
     // Need to make this a load function from our DB based upon Scenario ID
     // Will init the imageURL either locally or from URL from db
-    init(scenarioID: String, type : responseType){
-        imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
-        response = type
-        tipsForNextTime = "Sucks to suck"
+    init(scenarioID: String, type : responseType) {
+        self.imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
+        self.response = type
+        self.tipsForNextTime = "Sucks to suck"
+        super.init();
+
+    }
+    
+    required init!(coder: NSCoder!) {
+        self.imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
+        self.response = Scenario.responseType.yesOrNo(0)
+        self.tipsForNextTime = "Sucks to suck"
+        super.init();
     }
     
     // general answer checking method
@@ -87,7 +104,7 @@ struct Scenario {
     }
     
     // Helper func to set image URL before database urls can be tested
-    mutating func setScenarioURL(url: String) {
+    func setScenarioURL(url: String) {
         //really bad practice for force unwrap on a UI Item
         imageLoc = URL(string: url)!
     }

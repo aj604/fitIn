@@ -75,12 +75,24 @@ struct ScenarioHandler {
             //Failed Vote
         }
         currentScenario.inputAnswer = voteChoice
+        
+        // TESTING ZONE
+        
+        let dynamoHandler = DynamoHandler()
+        dynamoHandler.putItem(scenario: currentScenario);
+        
+        
+        /// TESTING ZONE
+        
+        
+        
         if currentScenario.isRightAnswer()!{
             user.gotCorrect() // Log vote in the user struct
             return true
         }
         user.gotIncorrect() // Log vote in the user struct
         return true // Vote was logged maybe add a return to the user vote
+    
     }
     
     // Func will iterate Scenario to next in line
