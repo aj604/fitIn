@@ -9,6 +9,24 @@
 import Foundation
 import AWSDynamoDB
 
+class Scenario2 : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
+    
+    var scenarioID: Int
+    
+    init() {
+        self.scenarioID = 0;
+    }
+    
+    static func dynamoDBTableName() -> String {
+        return SCENARIO_MASTER_TABLE
+    }
+    
+    static func hashKeyAttribute() -> String {
+        return SCENARIO_MASTER_TABLE_PRIMARY_KEY
+    }
+
+}
+
 class DynamoHandler {
     var paginatedOutput: AWSDynamoDBPaginatedOutput?
     var dynamo: AWSDynamoDBObjectMapper
@@ -22,8 +40,20 @@ class DynamoHandler {
         }
     }
     
-    func putItem(scenario : Scenario)  {
-        dynamo.save(scenario)
+    func putItem(scenario : Scenario2)  {
+        dynamo
+            .save(scenario as AWSDynamoDBObjectModel & AWSDynamoDBModeling)
+            .continueWith(block:
+                { (task:AWSTask<AnyObject>!) -> Any? in
+                                        if let error = task.error {
+                                            print("The request failed. Error: \(error)")
+                                        } else {
+                                            print("success")
+                                            // Do something with task.result or perform other operations.
+                                            
+                                        }
+                                        return task.result
+            })
     }
     
 }

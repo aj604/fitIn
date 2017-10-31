@@ -10,6 +10,11 @@ import Foundation
 
 //This is the ScenarioHandler class, it instantiates the other classes and interprets events
 
+class Scenario : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
+    
+}
+
+
 //Controls flow of app
 struct ScenarioHandler {
     
@@ -77,10 +82,12 @@ struct ScenarioHandler {
         currentScenario.inputAnswer = voteChoice
         
         // TESTING ZONE
-        
+        testing()
+        print("done testing")
         let dynamoHandler = DynamoHandler()
+        print("done init")
         dynamoHandler.putItem(scenario: currentScenario);
-        
+        print("done putitem")
         
         /// TESTING ZONE
         
