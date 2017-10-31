@@ -9,7 +9,7 @@
 import Foundation
 import AWSDynamoDB
 
-class Scenario2 : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
+class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     var scenarioID: Int
     
@@ -46,7 +46,7 @@ class DynamoHandler {
         }
     }
     
-    func putItem(scenario : Scenario2)  {
+    func putItem(scenario : ScenarioA)  {
         dynamo
             .save(scenario as AWSDynamoDBObjectModel & AWSDynamoDBModeling)
             .continueWith(block:

@@ -25,6 +25,7 @@ struct ScenarioHandler {
                 imageData = buffer
             }
         }
+        
         // This didSet assumes that we have segued to our next Scenario and we are initializing our handler
         didSet {
             // Clear previous input answer and upcoming Scenario
@@ -74,6 +75,18 @@ struct ScenarioHandler {
             return false
             //Failed Vote
         }
+        
+                print("hello")
+        testing()
+                print("hello")
+        let sc = ScenarioA.init();
+        print("hello")
+        let dynamo: DynamoHandler = DynamoHandler.init();
+                print("hello")
+        dynamo.putItem(scenario: sc);
+                print("hello")
+        
+        
         currentScenario.inputAnswer = voteChoice
         if currentScenario.isRightAnswer()!{
             user.gotCorrect() // Log vote in the user struct
