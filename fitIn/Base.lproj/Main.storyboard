@@ -323,6 +323,7 @@
                     <connections>
                         <outlet property="userEditAgeField" destination="Gcv-iD-YCN" id="oGB-yb-45l"/>
                         <outlet property="userEditEmailAddressField" destination="Iql-ZU-rj2" id="hCP-Uw-afE"/>
+                        <outlet property="userEditProfileSaveChangesButton" destination="BRp-Qg-2V2" id="lgH-Zp-zmm"/>
                         <outlet property="userEditUsernameField" destination="iGb-Ys-B9K" id="OjP-CC-Fgf"/>
                     </connections>
                 </viewController>
