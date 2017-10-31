@@ -83,13 +83,16 @@ struct ScenarioHandler {
         print("hello3")
         let dynamo: DynamoHandler = DynamoHandler();
         print("hello4")
-        dynamo.putItem(scenario: sc)
+        // dynamo.putItem(scenario: sc)
         
-        dynamo.getItem(scenario: "3")
-        dynamo.getItem(scenario: "12345")
-        dynamo.getItem(scenario: "54321")
+        // dynamo.getItem(scenario: "3")
+        // dynamo.getItem(scenario: "12345")
+        // dynamo.getItem(scenario: "54321")
 
         print("hello5")
+        
+        dynamo.setStuff()
+        dynamo.getStuff()
         
 
         currentScenario.inputAnswer = voteChoice

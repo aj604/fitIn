@@ -134,8 +134,8 @@ class DynamoHandler {
         })
     }
     
-    func stuff() {
-        var dyn = AWSDynamoDB.default();
+    func setStuff() {
+        let dyn = AWSDynamoDB.default();
     
         
         let put = AWSDynamoDBPutItemInput()
@@ -143,16 +143,48 @@ class DynamoHandler {
         let hashKeyValue = AWSDynamoDBAttributeValue()
         hashKeyValue?.s = "12345"
         
-        put?.tableName = SCENARIO_MASTER_TABLE
-        put?.setValue(value: hashKeyValue, forKey: SCENARIO_MASTER_TABLE_PRIMARY_KEY)
+        let attrib = AWSDynamoDBAttributeValue()
+        attrib?.s = "73567367"
         
-        dyn.putItem(put!).continueWith { (task:AWSTask<AWSDynamoDBUpdateItemOutput>) -> Any? in
-            if let error = task.error as? NSError {
+        put?.tableName = SCENARIO_MASTER_TABLE
+        put?.item = [
+            SCENARIO_MASTER_TABLE_PRIMARY_KEY: hashKeyValue!,
+            "Answer": attrib!,
+        ];
+        
+        dyn.putItem(put!).continueWith { (task:AWSTask<AWSDynamoDBPutItemOutput>) -> Any? in
+            if let error = task.error {
                 print("The request failed. Error: \(error)")
                 return nil
             }
-            print("The request success. Error: \(error)")
+            print("The put request successsge5gwe5ge5w5we5h")
             // Do something with task.result
+            
+            return nil
+        }
+    }
+    
+    func getStuff() {
+        let dyn = AWSDynamoDB.default();
+        
+        
+        let key = AWSDynamoDBAttributeValue()
+        key?.s = "12345"
+        
+        let get = AWSDynamoDBGetItemInput()
+        get?.tableName = SCENARIO_MASTER_TABLE
+        get?.key = [
+            SCENARIO_MASTER_TABLE_PRIMARY_KEY: key!
+        ]
+        
+        dyn.getItem(get!).continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> Any? in
+            if let error = task.error {
+                print("The request failed. Error: \(error)")
+                return nil
+            }
+            print("The get request successsge5gwe5ge5w5we5h")
+            // Do something with task.result
+            print(task)
             
             return nil
         }
