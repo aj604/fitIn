@@ -10,23 +10,22 @@ import Foundation
 import AWSCognito
 import AWSS3
 import AWSDynamoDB
-
+import AWSCore
 
 func testing()  {
     print("aergerg4rg")
-    /*let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
-                                                            identityPoolId: AWS_IDENTITY_POOL)*/
+    let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
+                                                            identityPoolId: AWS_IDENTITY_POOL)
+
     
-    let credentialsProvider = AWSStaticCredentialsProvider(accessKey: "AKIAIUZKASX3LCS4ESDA", secretKey: "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")
-    
-    AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
-    
+
+    AWSLogger.default().logLevel = .verbose
     let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
     
     AWSServiceManager.default().defaultServiceConfiguration = configuration
     
     let objectMapperConfiguration = AWSDynamoDBObjectMapperConfiguration()
-    
+    objectMapperConfiguration.saveBehavior = .clobber
     AWSDynamoDBObjectMapper.register(with: configuration!, objectMapperConfiguration: objectMapperConfiguration, forKey: "USWest2DynamoDBObjectMapper")
 
 }

@@ -28,7 +28,7 @@ class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
         self.ScenarioID = (dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY] as? String)!
     }
     
-    // this breaks AWS
+    // this breaks things
     /*override class func jsonKeyPathsByPropertyKey() -> [AnyHashable: Any] {
         return ["ScenarioID" : "hashKey1"];
     }*/
@@ -70,8 +70,8 @@ class DynamoHandler {
     func putItem(scenario : ScenarioA)  {
         print("putting")
         dynamo
-            // .save(scenario as AWSDynamoDBObjectModel & AWSDynamoDBModeling)
-            .save(scenario)
+            .save(scenario as AWSDynamoDBObjectModel & AWSDynamoDBModeling)
+            // .save(scenario)
             .continueWith(block:
                 { (task:AWSTask<AnyObject>!) -> Any? in
                                         if let error = task.error {

@@ -83,9 +83,10 @@ struct ScenarioHandler {
         print("hello3")
         let dynamo: DynamoHandler = DynamoHandler.init();
         print("hello4")
+        sc.ScenarioID = "2452452455"
         dynamo.putItem(scenario: sc)
         
-        dynamo.getItem(scenario: sc);
+        dynamo.getItem(scenario: sc)
 
         print("hello5")
         
