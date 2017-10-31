@@ -13,8 +13,14 @@ class Scenario2 : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     var scenarioID: Int
     
-    init() {
+    override init() {
         self.scenarioID = 0;
+        super.init();
+    }
+    
+    required init(coder: NSCoder) {
+        self.scenarioID = 0;
+        super.init(coder: coder);
     }
     
     static func dynamoDBTableName() -> String {
