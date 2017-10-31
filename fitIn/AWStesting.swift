@@ -12,9 +12,10 @@ import AWSS3
 import AWSDynamoDB
 
 func testing() {
-    let pool = AWS_IDENTITY_POOL
+    let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
+                                                            identityPoolId: AWS_IDENTITY_POOL)
     
-    let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USWest2, identityPoolId: pool)
-    let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
+    let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
+    
     AWSServiceManager.default().defaultServiceConfiguration = configuration
 }
