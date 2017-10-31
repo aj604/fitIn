@@ -12,6 +12,8 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 2/255, green: 157/255, blue: 224/255, alpha: 1.0)
+        userEditProfileButton.setTitleColor(UIColor.white, for: UIControlState.normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +38,7 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet var userEditProfileButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailAddressLabel: UILabel!
     @IBOutlet weak var userAgeLabel: UILabel!

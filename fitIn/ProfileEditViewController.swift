@@ -12,6 +12,11 @@ class ProfileEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(red: 2/255, green: 157/255, blue: 224/255, alpha: 1.0)
+        editYourProfileLabel.textColor = UIColor.white
+        editYourProfileLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
+        
         guard let currentUser = userProfile.current() else { return }
         userEditUsernameField.placeholder = currentUser.userName
         userEditEmailAddressField.placeholder = currentUser.emailAddress
@@ -27,16 +32,26 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet var userEditEmailAddressField: UITextField!
     @IBOutlet var userEditAgeField: UITextField!
     @IBOutlet var userEditProfileSaveChangesButton: UIButton!
+    @IBOutlet var editYourProfileLabel: UILabel!
     
     var inputValidationConditions: [Bool] = [true, true, true, true]
     //this is the array which validates that all inputs across the board have been validated
     //element 0 is for username, element 1 is for email address, element 2 is for age, element 3 will be for password
     
+    func containsSwearWord(text: String, swearWords: [String]) -> Bool {
+        return swearWords
+            .reduce(false) { $0 || text.contains($1.lowercased()) }
+    }
+    //https://stackoverflow.com/questions/38185917/swift-how-to-censor-filter-text-entered-for-swear-words-etc
+    let listOfSwearWords = ["fuck", "shit", "crap", "bitch", "cunt", "slut"]
+    //feel free to add any that I may have missed @ groupmates :)
+    
     @IBAction func userEditProfileSaveChanges(_ sender: Any) {
         if (userEditUsernameField.text!.count > 0) {
-            //userEditUsernameField must be more than 5 characters long
-            //IT MUST NOT CONTAIN PROFANITY, but this will be done later
-            if (userEditUsernameField.text!.count > 5) {
+            //userEditUsernameField must be more than 5 characters long and must not contain profanity, detailed in listofSwearWords array
+            //unfortunately it does not distinguish case insensitive usernames, but I will leave this for now as username format needs to be discussed
+            //https://stackoverflow.com/questions/38185917/swift-how-to-censor-filter-text-entered-for-swear-words-etc
+            if (userEditUsernameField.text!.count > 5 && (containsSwearWord(text: userEditUsernameField.text!, swearWords: listOfSwearWords) == false)) {
                 userProfile.current()?.updateUsername(userEditUsernameField.text!)
                 userEditUsernameField.textColor = UIColor.black
                 inputValidationConditions[0] = true
