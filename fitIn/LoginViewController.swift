@@ -20,13 +20,13 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-          loadUser()
+          //loadUser()
     }
     
     
     func loadUser() {
-                guard let currentUser = userProfile.current() else { return }
-                currentUser.userName = "test"
+                //guard let currentUser = userProfile.current() else { return }
+                //currentUser.userName = "test"
                //UserLabel.text = currentUser.userName
         
     }
