@@ -83,9 +83,9 @@ struct ScenarioHandler {
         print("hello3")
         let dynamo: DynamoHandler = DynamoHandler.init();
         print("hello4")
-        dynamo.putItem(scenario: sc!)
+        dynamo.putItem(scenario: sc)
         
-        dynamo.getItem(scenario: sc!);
+        dynamo.getItem(scenario: sc);
 
         print("hello5")
         

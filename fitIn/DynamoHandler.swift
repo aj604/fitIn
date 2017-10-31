@@ -11,14 +11,31 @@ import AWSDynamoDB
 
 class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
-    var ScenarioID: String = "0";
+    var ScenarioID: String = "12345";
     
-    override init!() {
+    override init() {
         super.init();
     }
     
-    required init!(coder: NSCoder) {
+    required init(coder: NSCoder) {
         super.init(coder: coder);
+    }
+    
+    //required to let DynamoDB Mapper create instances of this class
+    override init(dictionary disctionaryValue: [AnyHashable : Any]!, error: ()) throws {
+        // self.ScenarioID = dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY]
+        super.init()
+        self.ScenarioID = (dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY] as? String)!
+    }
+    
+    // this breaks AWS
+    /*override class func jsonKeyPathsByPropertyKey() -> [AnyHashable: Any] {
+        return ["ScenarioID" : "hashKey1"];
+    }*/
+    
+    init(dictionary: Dictionary<String, Any>, error: NSErrorPointer) {
+        // self.ScenarioID = dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY]
+        super.init()
     }
     
     static func dynamoDBTableName() -> String {
@@ -60,7 +77,7 @@ class DynamoHandler {
                                         if let error = task.error {
                                             print("putting The request failed. Error: \(error)")
                                         } else {
-                                            print("putting success ", task.result)
+                                            print("putting success ", (task.result as! ScenarioA).ScenarioID)
                                             // Do something with task.result or perform other operations.
                                             
                                         }
