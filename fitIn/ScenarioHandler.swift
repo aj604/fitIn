@@ -79,17 +79,19 @@ struct ScenarioHandler {
         print("hello1")
         testing()
         print("hello2")
-        let sc = ScenarioA.init();
+        let sc = ScenarioA();
         print("hello3")
-        let dynamo: DynamoHandler = DynamoHandler.init();
+        let dynamo: DynamoHandler = DynamoHandler();
         print("hello4")
         dynamo.putItem(scenario: sc)
         
         dynamo.getItem(scenario: "3")
+        dynamo.getItem(scenario: "12345")
+        dynamo.getItem(scenario: "54321")
 
         print("hello5")
         
-        
+
         currentScenario.inputAnswer = voteChoice
         if currentScenario.isRightAnswer()!{
             user.gotCorrect() // Log vote in the user struct

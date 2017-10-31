@@ -9,11 +9,10 @@
 import Foundation
 import AWSDynamoDB
 
-@objcMembers
 class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
-    @objc var ScenarioID: NSString?;
-    @objc var Answer: NSNumber?
+    @objc var ScenarioID: String?
+    @objc var Answer: String?
     
     override init() {
         super.init();
@@ -24,7 +23,7 @@ class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     }
     
     //required to let DynamoDB Mapper create instances of this class
-    override init(dictionary disctionaryValue: [AnyHashable : Any]!, error: ()) throws {
+    override init(@objc dictionary disctionaryValue: [AnyHashable : Any]!, error: ()) throws {
         // self.ScenarioID = dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY]
         super.init()
         //self.ScenarioID = (dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY] as? String)!
@@ -74,7 +73,7 @@ class DynamoHandler {
     func putItem(scenario : ScenarioA)  {
         print("putting")
         dynamo
-            .save(scenario as AWSDynamoDBObjectModel & AWSDynamoDBModeling)
+            .save(scenario)
             // .save(scenario)
             .continueWith(block:
                 { (task:AWSTask<AnyObject>!) -> Any? in
@@ -99,8 +98,9 @@ class DynamoHandler {
                     if let error = task.error {
                         print("getting The request failed. Error: \(error)")
                     } else {
-                        print("getting success ", (task.result as! ScenarioA).ScenarioID)
-                        print("getting success ", (task.result as! ScenarioA).Answer)
+                        print("task is ", task)
+                        // print("getting success ", (task.result as! ScenarioA).ScenarioID as Any)
+                        // print("getting success ", (task.result as! ScenarioA).Answer as Any)
                         // Do something with task.result or perform other operations.
                         
                     }
@@ -132,6 +132,30 @@ class DynamoHandler {
             return ()
             
         })
+    }
+    
+    func stuff() {
+        var dyn = AWSDynamoDB.default();
+    
+        
+        let put = AWSDynamoDBPutItemInput()
+        
+        let hashKeyValue = AWSDynamoDBAttributeValue()
+        hashKeyValue?.s = "12345"
+        
+        put?.tableName = SCENARIO_MASTER_TABLE
+        put?.setValue(value: hashKeyValue, forKey: SCENARIO_MASTER_TABLE_PRIMARY_KEY)
+        
+        dyn.putItem(put!).continueWith { (task:AWSTask<AWSDynamoDBUpdateItemOutput>) -> Any? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+                return nil
+            }
+            print("The request success. Error: \(error)")
+            // Do something with task.result
+            
+            return nil
+        }
     }
     
 }
