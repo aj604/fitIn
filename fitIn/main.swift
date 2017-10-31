@@ -1,25 +1,21 @@
 //
-//  File.swift
+//  AppDelegate.swift
 //  fitIn
 //
-//  Created by schecko on 10/25/17.
+//  Created by schecko on 10/30/17.
 //  Copyright © 2017 AJ productions. All rights reserved.
 //
+
 import Foundation
 
 import AWSCognito
 import AWSS3
 import AWSDynamoDB
 
-
-func testing()  {
-    print("aergerg4rg")
-    /*let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
-                                                            identityPoolId: AWS_IDENTITY_POOL)*/
-    
-    let credentialsProvider = AWSStaticCredentialsProvider(accessKey: "AKIAIUZKASX3LCS4ESDA", secretKey: "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")
-    
-    AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool  {
+    print("ergergerge")
+    let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
+                                                            identityPoolId: AWS_IDENTITY_POOL)
     
     let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
     
@@ -28,5 +24,7 @@ func testing()  {
     let objectMapperConfiguration = AWSDynamoDBObjectMapperConfiguration()
     
     AWSDynamoDBObjectMapper.register(with: configuration!, objectMapperConfiguration: objectMapperConfiguration, forKey: "USWest2DynamoDBObjectMapper")
-
+    
+    return true
 }
+

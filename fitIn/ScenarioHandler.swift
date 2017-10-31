@@ -76,15 +76,18 @@ struct ScenarioHandler {
             //Failed Vote
         }
         
-        print("hello")
+        print("hello1")
         testing()
-        print("hello")
+        print("hello2")
         let sc = ScenarioA.init();
-        print("hello")
+        print("hello3")
         let dynamo: DynamoHandler = DynamoHandler.init();
-        print("hello")
-        dynamo.scan(scenario: sc!);
-        print("hello")
+        print("hello4")
+        dynamo.putItem(scenario: sc!)
+        
+        dynamo.getItem(scenario: sc!);
+
+        print("hello5")
         
         
         currentScenario.inputAnswer = voteChoice

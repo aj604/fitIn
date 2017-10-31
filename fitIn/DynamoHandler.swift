@@ -11,7 +11,7 @@ import AWSDynamoDB
 
 class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
-    var scenarioID: Int = 0;
+    var ScenarioID: String = "0";
     
     override init!() {
         super.init();
@@ -21,20 +21,20 @@ class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
         super.init(coder: coder);
     }
     
-    override class func jsonKeyPathsByPropertyKey() -> [AnyHashable: Any] {
-        return ["scenarioID" : "hashKey1"];
-    }
-    
     static func dynamoDBTableName() -> String {
+                print("using1")
         return SCENARIO_MASTER_TABLE
     }
     
     static func hashKeyAttribute() -> String {
+                print("using2")
         return SCENARIO_MASTER_TABLE_PRIMARY_KEY
     }
     
-/*/class func rangeKeyAttribute() -> String {
-        return SCENARIO_MASTER_TABLE_PRIMARY_KEY
+    // DO NOT UNCOMMENT UNLESS WE ADD A RANGE KEY
+    /*static func rangeKeyAttribute() -> String {
+                print("using3")
+         return SCENARIO_MASTER_TABLE_PRIMARY_KEY
     }*/
 
 }
@@ -47,18 +47,20 @@ class DynamoHandler {
     var dynamo: AWSDynamoDBObjectMapper
     
     init() {
-            dynamo = AWSDynamoDBObjectMapper.default();
+        dynamo = AWSDynamoDBObjectMapper(forKey: "USWest2DynamoDBObjectMapper")
     }
     
     func putItem(scenario : ScenarioA)  {
+        print("putting")
         dynamo
-            .save(scenario as AWSDynamoDBObjectModel & AWSDynamoDBModeling)
+            // .save(scenario as AWSDynamoDBObjectModel & AWSDynamoDBModeling)
+            .save(scenario)
             .continueWith(block:
                 { (task:AWSTask<AnyObject>!) -> Any? in
                                         if let error = task.error {
-                                            print("The request failed. Error: \(error)")
+                                            print("putting The request failed. Error: \(error)")
                                         } else {
-                                            print("success")
+                                            print("putting success ", task.result)
                                             // Do something with task.result or perform other operations.
                                             
                                         }
@@ -67,14 +69,16 @@ class DynamoHandler {
     }
     
     func getItem(scenario : ScenarioA)  {
+        print("getting")
         dynamo
-            .load(ScenarioA.self, hashKey: "", rangeKey: nil)
+            .load(ScenarioA.self, hashKey: scenario.ScenarioID, rangeKey: nil)
             .continueWith(block:
                 { (task:AWSTask<AnyObject>!) -> Any? in
+                     print("success111111")
                     if let error = task.error {
-                        print("The request failed. Error: \(error)")
+                        print("getting The request failed. Error: \(error)")
                     } else {
-                        print("success")
+                        print("getting success ", task.result)
                         // Do something with task.result or perform other operations.
                         
                     }
@@ -89,7 +93,7 @@ class DynamoHandler {
         dynamo.scan(ScenarioA.self, expression: scanExpression)
             .continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
                 
-                print("hello")
+                print("hellosrtgrtg")
             if let error = task.error {
                 print("The request failed. Error: \(error)")
             } else if let paginatedOutput = task.result {
