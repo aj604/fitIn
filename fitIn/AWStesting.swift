@@ -17,9 +17,6 @@ func testing()  {
     let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
                                                             identityPoolId: AWS_IDENTITY_POOL)
 
-    
-
-    AWSLogger.default().logLevel = .verbose
     let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
     
     AWSServiceManager.default().defaultServiceConfiguration = configuration

@@ -9,9 +9,11 @@
 import Foundation
 import AWSDynamoDB
 
+@objcMembers
 class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
-    var ScenarioID: String = "12345";
+    @objc var ScenarioID: NSString?;
+    @objc var Answer: NSNumber?
     
     override init() {
         super.init();
@@ -25,7 +27,9 @@ class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     override init(dictionary disctionaryValue: [AnyHashable : Any]!, error: ()) throws {
         // self.ScenarioID = dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY]
         super.init()
-        self.ScenarioID = (dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY] as? String)!
+        //self.ScenarioID = (dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY] as? String)!
+        print("dictionergarg", dictionaryValue)
+        //self.Answer = (dictionaryValue["Answer"] as? Int)!
     }
     
     // this breaks things
@@ -33,10 +37,10 @@ class ScenarioA : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
         return ["ScenarioID" : "hashKey1"];
     }*/
     
-    init(dictionary: Dictionary<String, Any>, error: NSErrorPointer) {
-        // self.ScenarioID = dictionaryValue[SCENARIO_MASTER_TABLE_PRIMARY_KEY]
+    /*init(dictionary: Dictionary<String, Any>, error: NSErrorPointer) {
+        self.ScenarioID = (dictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY] as? String)!
         super.init()
-    }
+    }*/
     
     static func dynamoDBTableName() -> String {
                 print("using1")
@@ -85,17 +89,18 @@ class DynamoHandler {
             })
     }
     
-    func getItem(scenario : ScenarioA)  {
+    func getItem(scenario : String)  {
         print("getting")
         dynamo
-            .load(ScenarioA.self, hashKey: scenario.ScenarioID, rangeKey: nil)
+            .load(ScenarioA.self, hashKey: scenario, rangeKey: nil)
             .continueWith(block:
                 { (task:AWSTask<AnyObject>!) -> Any? in
                      print("success111111")
                     if let error = task.error {
                         print("getting The request failed. Error: \(error)")
                     } else {
-                        print("getting success ", task.result)
+                        print("getting success ", (task.result as! ScenarioA).ScenarioID)
+                        print("getting success ", (task.result as! ScenarioA).Answer)
                         // Do something with task.result or perform other operations.
                         
                     }
