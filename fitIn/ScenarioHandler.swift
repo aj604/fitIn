@@ -79,7 +79,6 @@ struct ScenarioHandler {
         print("hello1")
         testing()
         print("hello2")
-        let sc = ScenarioA();
         print("hello3")
         let dynamo: DynamoHandler = DynamoHandler();
         print("hello4")
@@ -91,7 +90,7 @@ struct ScenarioHandler {
 
         print("hello5")
         
-        dynamo.setStuff()
+        dynamo.setStuff(tableName: SCENARIO_MASTER_TABLE, dict: [SCENARIO_MASTER_TABLE_PRIMARY_KEY: "12345"])
         dynamo.getStuff()
         
 
