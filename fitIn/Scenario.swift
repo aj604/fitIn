@@ -45,6 +45,7 @@ struct Scenario {
     
     
     //MARK: VARIABLES
+    var scenarioID: String = "0"
     var inputAnswer : responseType?
     var scenarioTags = [String]() // List of metadata / Scenario Tags
     // just a random imgur url for initialization, has one more URL it will segue to on vote()
@@ -67,6 +68,7 @@ struct Scenario {
     // Need to make this a load function from our DB based upon Scenario ID
     // Will init the imageURL either locally or from URL from db
     init(scenarioID: String, type : responseType){
+        self.scenarioID = scenarioID
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
         response = type
         tipsForNextTime = "Sucks to suck"

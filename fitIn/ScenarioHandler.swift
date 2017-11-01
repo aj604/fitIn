@@ -89,9 +89,9 @@ struct ScenarioHandler {
         // dynamo.getItem(scenario: "54321")
 
         print("hello5")
-        
-        dynamo.setStuff(tableName: SCENARIO_MASTER_TABLE, dict: [SCENARIO_MASTER_TABLE_PRIMARY_KEY: "12345"])
-        dynamo.getStuff()
+        let sc = Scenario(scenarioID: "12345", type: Scenario.responseType.yesOrNo(1))
+        dynamo.setStuff(tableName: SCENARIO_MASTER_TABLE, obj: sc)
+        //dynamo.getStuff()
         
 
         currentScenario.inputAnswer = voteChoice
