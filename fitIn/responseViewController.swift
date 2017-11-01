@@ -9,7 +9,13 @@
 import UIKit
 
 class responseViewController: UIViewController {
+"""
+responseViewController represents the contained controller view within ScenarioViewController
+Contains 3 distinct type of inputs for questions.
     
+Although it appears that there are a bunch of buttons, only the ones pertaining to the input format of the current
+    scneario will be visible at any one time.
+"""
     //MARK: Button Outlets
     @IBOutlet weak var antiSocialButton: UIButton!
     @IBOutlet weak var proSocialButton: UIButton!
@@ -24,8 +30,7 @@ class responseViewController: UIViewController {
     var situationType : Scenario.responseType?
     var inputAnswer : Scenario.responseType?
     
-    
-    
+    // MARK: Appearence Funcs
     private func enableYesNo() {
         antiSocialButton.isHidden = false
         proSocialButton.isHidden = false
@@ -55,7 +60,7 @@ class responseViewController: UIViewController {
         multipleChoiceD.isHidden = true
     }
     
-    
+    // This function sets the UI for the type of expected input
     private func updateUI() {
         if let unwrap = situationType {
             switch unwrap{
@@ -100,6 +105,7 @@ class responseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
         
         // Do any additional setup after loading the view.
     }

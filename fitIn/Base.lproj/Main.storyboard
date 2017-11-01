@@ -197,15 +197,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LWU-6S-NsE">
                                 <rect key="frame" x="16" y="98" width="343" height="117.5"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qvr-zB-MHD">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qvr-zB-MHD">
                                         <rect key="frame" x="-2" y="0.0" width="347" height="88.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qvr-zB-MHD" secondAttribute="height" multiplier="114:29" id="3pc-e0-xDw"/>
                                         </constraints>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ef1-8O-0KC">
-                                        <rect key="frame" x="148.5" y="87.5" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="147" y="87.5" width="49" height="30"/>
+                                        <state key="normal" title="Submit"/>
                                         <connections>
                                             <action selector="submitSlider:" destination="rOc-KI-FxP" eventType="touchUpInside" id="yrj-zX-MJt"/>
                                         </connections>
@@ -239,14 +239,14 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chQ-sf-OuK">
                                                 <rect key="frame" x="0.0" y="0.0" width="167.5" height="136.5"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="A"/>
                                                 <connections>
                                                     <action selector="multipleChoiceA:" destination="rOc-KI-FxP" eventType="touchUpInside" id="gPx-kW-7Lg"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WpL-Eb-jb4">
                                                 <rect key="frame" x="167.5" y="0.0" width="167.5" height="136.5"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="B"/>
                                                 <connections>
                                                     <action selector="multipleChoiceB:" destination="rOc-KI-FxP" eventType="touchUpInside" id="ds2-Hw-6tp"/>
                                                 </connections>
@@ -258,14 +258,14 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vi-TG-zRA">
                                                 <rect key="frame" x="0.0" y="0.0" width="167.5" height="136.5"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="C"/>
                                                 <connections>
                                                     <action selector="multipleChoiceC:" destination="rOc-KI-FxP" eventType="touchUpInside" id="rOe-FC-Gxe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fs-cm-apz">
                                                 <rect key="frame" x="167.5" y="0.0" width="167.5" height="136.5"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="D"/>
                                                 <connections>
                                                     <action selector="multipleChoiceD:" destination="rOc-KI-FxP" eventType="touchUpInside" id="RTI-ts-v33"/>
                                                 </connections>
