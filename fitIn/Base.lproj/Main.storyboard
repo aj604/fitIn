@@ -143,10 +143,10 @@
             </objects>
             <point key="canvasLocation" x="690" y="132"/>
         </scene>
-        <!--Scenario View Controller-->
+        <!--Test Scenario View Controller-->
         <scene sceneID="Edg-xc-TNc">
             <objects>
-                <viewController id="9cM-uq-3vp" customClass="ScenarioViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9cM-uq-3vp" customClass="testScenarioViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="chs-5r-KQX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,6 +181,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hsk-sj-j0l"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="QoH-DY-dPH" id="5QO-qW-vu8"/>
+                        <outlet property="responseControllerhmm" destination="eVO-tF-EdM" id="GZn-TR-fVy"/>
+                        <outlet property="scenarioName" destination="WMe-7R-9qF" id="uPm-MC-bKq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdq-ou-Q2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -189,7 +194,7 @@
         <!--Response View Controller-->
         <scene sceneID="dUC-UO-IAS">
             <objects>
-                <viewController id="rOc-KI-FxP" customClass="responseViewController" sceneMemberID="viewController">
+                <viewController id="rOc-KI-FxP" customClass="ResponseViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pZM-J4-cES">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="313"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,6 +293,7 @@
                             <constraint firstAttribute="trailing" secondItem="Lrc-om-SjE" secondAttribute="trailing" constant="20" symbolic="YES" id="mjx-5y-H0D"/>
                             <constraint firstItem="A7n-3U-7Va" firstAttribute="top" secondItem="pZM-J4-cES" secondAttribute="top" constant="20" symbolic="YES" id="yhz-H3-mDo"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="RR7-An-GhA"/>
                     </view>
                     <connections>
                         <outlet property="antiSocialButton" destination="IAR-tz-aXo" id="6Vz-NZ-als"/>

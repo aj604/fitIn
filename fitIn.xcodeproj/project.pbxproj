@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043117D41FAA475200D0765D /* ResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043117D31FAA475200D0765D /* ResponseViewController.swift */; };
 		0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E0FC1F885D0000002403 /* AppDelegate.swift */; };
 		0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E0FE1F885D0000002403 /* ScenarioViewController.swift */; };
 		0464E1021F885D0000002403 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1001F885D0000002403 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 		0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF381F896F3400ECB59B /* ScenarioHandler.swift */; };
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
+		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
 		FB0F0A081FA2C6CC00A9E879 /* AWStesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */; };
 		FB0F0A0A1FA2C75E00A9E879 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */; };
@@ -47,7 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04592AFF1FA2DFD6002EDC0E /* responseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = responseViewController.swift; sourceTree = "<group>"; };
+		043117D31FAA475200D0765D /* ResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseViewController.swift; path = "/Users/averyjones/Documents/School Stuff/Comp Sci/cmpt275/fitIn/fitIn/ResponseViewController.swift"; sourceTree = "<absolute>"; };
 		0464E0F91F885D0000002403 /* fitIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E0FC1F885D0000002403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464E0FE1F885D0000002403 /* ScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		0499CF381F896F3400ECB59B /* ScenarioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioHandler.swift; sourceTree = "<group>"; };
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
+		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
 		D39588E21FA18235003A78BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWStesting.swift; sourceTree = "<group>"; };
 		FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
@@ -108,11 +111,12 @@
 				FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */,
 				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
 				0464E0FE1F885D0000002403 /* ScenarioViewController.swift */,
+				043117D31FAA475200D0765D /* ResponseViewController.swift */,
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				D39588E21FA18235003A78BD /* ProfileViewController.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
-				04592AFF1FA2DFD6002EDC0E /* responseViewController.swift */,
+				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
 				FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */,
 				FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */,
@@ -210,10 +214,12 @@
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */,
 				FB0F0A081FA2C6CC00A9E879 /* AWStesting.swift in Sources */,
+				04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */,
 				D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */,
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
+				043117D41FAA475200D0765D /* ResponseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
