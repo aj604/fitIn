@@ -17,20 +17,12 @@ class DynamoHandler {
         dynamo = AWSDynamoDB.default();
     }
     
-    func setStuff<T: Any>(tableName: String, obj: T) {
+    func setObj<T: Any>(tableName: String, obj: T) {
         let put = AWSDynamoDBPutItemInput()
         
         put!.tableName = tableName
         put!.item = [:]
-        /*dict.forEach({(key: String, value: String) in
-            let attrib = AWSDynamoDBAttributeValue()
-            attrib?.s = value
-            put!.item!.merge([key: attrib!], uniquingKeysWith:
-                {
-                    (a: AWSDynamoDBAttributeValue, b: AWSDynamoDBAttributeValue) in
-                    return a;
-                })
-        })*/
+        
         let mirror = Mirror(reflecting: obj)
         print(mirror)
         for case let (label, value) in mirror.children {
@@ -48,6 +40,8 @@ class DynamoHandler {
                     attrib?.n = value as? String
                 
                 // todo more if we need them
+                
+                // todo figure out how we want to deal with optionals :(
                 default:
                     print("unsupported type in object", t)
                     validType = false;
@@ -61,10 +55,7 @@ class DynamoHandler {
                 })
             }
         }
-        
-        print("puttargargreg", put)
-        
-        
+
         dynamo
             .putItem(put!)
             .continueWith {
@@ -80,7 +71,7 @@ class DynamoHandler {
             }
     }
     
-    func getStuff() {
+    func getObj<T: NSObject>(tableName: String, obj: T) -> AWSTask<T> {
         let key = AWSDynamoDBAttributeValue()
         key?.s = "12345"
         
@@ -90,17 +81,41 @@ class DynamoHandler {
             SCENARIO_MASTER_TABLE_PRIMARY_KEY: key!
         ]
         
-        dynamo.getItem(get!).continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> Any? in
+        var result = T();
+        
+        return dynamo.getItem(get!).continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> Any? in
             if let error = task.error {
                 print("The request failed. Error: \(error)")
                 return nil
             }
             print("The get request successsge5gwe5ge5w5we5h")
             // Do something with task.result
-            print(task)
+            print("item ", task.result?.item)
+            print("scenariosrth", obj as! T)
             
-            return nil
-        }
+            // ***************************************************
+            // TODO figure out how to dynamically assign task to a
+            // class
+            // ***************************************************
+            
+            /*let mirror = Mirror(reflecting: obj)
+            print(mirror)
+            for case let (label, value) in mirror.children {
+                print("member ", label!)
+                
+                // let objectType = "\(type(of: value))"
+                // let dataBaseType = "\(type(of: task.item[label]))"
+
+                (obj as! T).setValue(value, forKey: label!)
+            }*/
+            
+            // result = task.result?.item as T
+            
+            print(result)
+            
+            return result
+        } as! AWSTask<T>
     }
+
     
 }

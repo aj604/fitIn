@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Scenario {
+class Scenario : NSObject {
     
     // Enum for the type of response that the Scenario requires
     // MAY potentially use associated values for storing of answer type
@@ -64,14 +64,36 @@ struct Scenario {
      var numberOfAnswers: Int
 */
  //MARK: METHODS
+    
+    override init() {
+        imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
+        response = responseType.yesOrNo(0)
+        tipsForNextTime = "Sucks to suck"
+    }
 
     // Need to make this a load function from our DB based upon Scenario ID
     // Will init the imageURL either locally or from URL from db
-    init(scenarioID: String, type : responseType){
+    init(scenarioID: String, type : responseType) {
         self.scenarioID = scenarioID
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
         response = type
         tipsForNextTime = "Sucks to suck"
+    }
+    
+    func setscenarioID(value: String) {
+        self.scenarioID = value
+    }
+    
+    func setScenarioID(value: String) {
+        self.scenarioID = value
+    }
+    
+    func _setscenarioID(value: String) {
+        self.scenarioID = value
+    }
+    
+    func accessInstanceVariablesDirectly() -> ObjCBool {
+        return true
     }
     
     // general answer checking method
@@ -86,10 +108,11 @@ struct Scenario {
         }
         print("Code should never get here, This means answer was not set properly")
         return nil
+        
     }
     
     // Helper func to set image URL before database urls can be tested
-    mutating func setScenarioURL(url: String) {
+    func setScenarioURL(url: String) {
         //really bad practice for force unwrap on a UI Item
         imageLoc = URL(string: url)!
     }
