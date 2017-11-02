@@ -79,7 +79,7 @@ struct ScenarioHandler {
         let id = String(arc4random())
         
         let exampleScenario = Scenario(scenarioID: id, type: Scenario.responseType.yesOrNo(1))
-        
+
         dynamoHandler.setObj(tableName: SCENARIO_MASTER_TABLE, obj: exampleScenario)
         
         // setObj is async, wait a second before getting

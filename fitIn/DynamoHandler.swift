@@ -80,6 +80,60 @@ class DynamoHandler {
             }
     }
     
+    func setScenario<T: Any>(tableName: String, obj: T) {
+        let put = AWSDynamoDBPutItemInput()
+        
+        put!.tableName = tableName
+        put!.item = [:]
+        
+        let mirror = Mirror(reflecting: obj)
+        print(mirror)
+        for case let (label, value) in mirror.children {
+            print("member ", label!)
+            let attrib = AWSDynamoDBAttributeValue()
+            
+            let t = "\(type(of: value))"
+            
+            // this is kind of evil....
+            var validType = true;
+            switch t {
+            case "String":
+                attrib!.s = value as! String
+                /*case "Int":
+                 attrib!.n = String(value)*/
+                
+                // todo more if we need them
+                
+            // todo figure out how we want to deal with optionals :(
+            default:
+                print("unsupported type in object", t)
+                validType = false;
+            }
+            if(validType) {
+                print("valid")
+                put!.item!.merge([label!: attrib!], uniquingKeysWith:
+                    {
+                        (a: AWSDynamoDBAttributeValue, b: AWSDynamoDBAttributeValue) in
+                        return a;
+                })
+            }
+        }
+        
+        dynamo
+            .putItem(put!)
+            .continueWith {
+                (task:AWSTask<AWSDynamoDBPutItemOutput>) -> Any? in
+                if let error = task.error {
+                    print("The request failed. Error: \(error)")
+                    return nil
+                }
+                print("The put request successsge5gwe5ge5w5we5h")
+                // Do something with task.result
+                
+                return nil
+        }
+    }
+    
     
     // todo use this?
     /*func getObj<T: Databaseable>(tableName: String, obj: T) -> AWSTask<T> {
