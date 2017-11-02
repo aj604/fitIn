@@ -15,7 +15,7 @@ struct ScenarioHandler {
     
     // MARK: VARIABLES
     
-    private var user = userProfile() //User Data, Info stored here
+    private var user = UserProfile() //User Data, Info stored here
     
     // instantiation of Scenario, only one Scenario is loaded at a time
     private var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.responseType.yesOrNo(1)) {
@@ -25,6 +25,7 @@ struct ScenarioHandler {
                 imageData = buffer
             }
         }
+        
         // This didSet assumes that we have segued to our next Scenario and we are initializing our handler
         didSet {
             // Clear previous input answer and upcoming Scenario
@@ -74,6 +75,53 @@ struct ScenarioHandler {
             return false
             //Failed Vote
         }
+
+        initAWS()
+
+        let dynamo: DynamoHandler = DynamoHandler();
+
+        let id = String(arc4random())
+        
+        let exampleScenario = Scenario(scenarioID: id, type: Scenario.responseType.yesOrNo(1))
+        
+        dynamo.setObj(tableName: SCENARIO_MASTER_TABLE, obj: exampleScenario)
+        
+        // setObj is async, wait a second before getting
+        sleep(2)
+        
+        dynamo
+            .getScenario(id: id)
+            .continueWith(block:
+            { (task) -> Void in
+                print("sucessfully finished scenario get with: ", task.result!.scenarioID)
+                if(id == task.result!.scenarioID)
+                {
+                    print("scenario matches")
+                }
+            })
+        
+        /*let randomEmail = String(arc4random())
+        
+        let exampleUser = UserProfile()
+        exampleUser.emailAddress = randomEmail
+        print(exampleUser!)
+        
+        dynamo.setObj(tableName: USER_PROFILES_TABLE_PRIMARY_KEY, obj: exampleUser)
+        
+        // setObj is async, wait a second before getting
+        sleep(2)
+        
+        dynamo
+            .getUser(id: id)
+            .continueWith(block:
+                { (task) -> Void in
+                    print("sucessfully finished user get with: ", task.result!.emailAddress)
+                    if(randomEmail == task.result!.emailAddress)
+                    {
+                        print("user matches")
+                    }
+            })*/
+        
         currentScenario.inputAnswer = voteChoice
         if currentScenario.isRightAnswer()!{
             user.gotCorrect() // Log vote in the user struct
