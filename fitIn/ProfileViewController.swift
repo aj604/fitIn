@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userClass = userProfile()
+        let userClass = UserProfile()
         userNameLabel.text = userClass.userName
         // Do any additional setup after loading the view.
     }

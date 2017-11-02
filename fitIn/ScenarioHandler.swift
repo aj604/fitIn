@@ -15,7 +15,7 @@ struct ScenarioHandler {
     
     // MARK: VARIABLES
     
-    private var user = userProfile() //User Data, Info stored here
+    private var user = UserProfile() //User Data, Info stored here
     
     // instantiation of Scenario, only one Scenario is loaded at a time
     private var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.responseType.yesOrNo(1)) {
@@ -75,25 +75,53 @@ struct ScenarioHandler {
             return false
             //Failed Vote
         }
-        
-        print("hello1")
-        testing()
-        print("hello2")
-        print("hello3")
+
+        initAWS()
+
         let dynamo: DynamoHandler = DynamoHandler();
-        print("hello4")
-        // dynamo.putItem(scenario: sc)
-        
-        // dynamo.getItem(scenario: "3")
-        // dynamo.getItem(scenario: "12345")
-        // dynamo.getItem(scenario: "54321")
 
-        print("hello5")
-        let sc = Scenario(scenarioID: "12345", type: Scenario.responseType.yesOrNo(1))
-        // dynamo.setObj(tableName: SCENARIO_MASTER_TABLE, obj: sc)
-        dynamo.getObj(tableName: SCENARIO_MASTER_TABLE, obj: sc)
+        let id = String(arc4random())
         
-
+        /*let exampleScenario = Scenario(scenarioID: id, type: Scenario.responseType.yesOrNo(1))
+        
+        dynamo.setObj(tableName: SCENARIO_MASTER_TABLE, obj: exampleScenario)
+        
+        // setObj is async, wait a second before getting
+        sleep(2)
+        
+        dynamo
+            .getScenario(id: id)
+            .continueWith(block:
+            { (task) -> Void in
+                print("sucessfully finished scenario get with: ", task.result!.scenarioID)
+                if(id == task.result!.scenarioID)
+                {
+                    print("scenario matches")
+                }
+            })*/
+        
+        let randomEmail = String(arc4random())
+        
+        let exampleUser = UserProfile()
+        exampleUser.emailAddress = randomEmail
+        print(exampleUser!)
+        
+        dynamo.setObj(tableName: USER_PROFILES_TABLE_PRIMARY_KEY, obj: exampleUser)
+        
+        // setObj is async, wait a second before getting
+        sleep(2)
+        
+        dynamo
+            .getUser(id: id)
+            .continueWith(block:
+                { (task) -> Void in
+                    print("sucessfully finished user get with: ", task.result!.emailAddress)
+                    if(randomEmail == task.result!.emailAddress)
+                    {
+                        print("user matches")
+                    }
+            })
+        
         currentScenario.inputAnswer = voteChoice
         if currentScenario.isRightAnswer()!{
             user.gotCorrect() // Log vote in the user struct

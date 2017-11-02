@@ -12,17 +12,11 @@ import AWSS3
 import AWSDynamoDB
 import AWSCore
 
-func testing()  {
-    print("aergerg4rg")
+func initAWS()  {
     let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
                                                             identityPoolId: AWS_IDENTITY_POOL)
 
     let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
     
     AWSServiceManager.default().defaultServiceConfiguration = configuration
-    
-    let objectMapperConfiguration = AWSDynamoDBObjectMapperConfiguration()
-    objectMapperConfiguration.saveBehavior = .clobber
-    AWSDynamoDBObjectMapper.register(with: configuration!, objectMapperConfiguration: objectMapperConfiguration, forKey: "USWest2DynamoDBObjectMapper")
-
 }
