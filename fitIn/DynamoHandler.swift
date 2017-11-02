@@ -9,11 +9,20 @@
 import Foundation
 import AWSDynamoDB
 
+let dynamoHandler = DynamoHandler();
+
 class DynamoHandler {
     var paginatedOutput: AWSDynamoDBPaginatedOutput?
     var dynamo: AWSDynamoDB
     
     init() {
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
+                                                                identityPoolId: AWS_IDENTITY_POOL)
+        
+        let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
         dynamo = AWSDynamoDB.default();
     }
     

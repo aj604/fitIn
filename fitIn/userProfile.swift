@@ -7,6 +7,8 @@
 //  Copyright © 2017 group of 5. All rights reserved.
 //
 
+let dynamo = DynamoHandler();
+
 import Foundation
 
 class UserProfile {

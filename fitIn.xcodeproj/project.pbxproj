@@ -27,7 +27,6 @@
 		FB968F691FA940760058BD0E /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB968F681FA940760058BD0E /* aws-resources.swift */; };
 		FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AE91FA7CC2C00D42695 /* Scenario.swift */; };
 		FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */; };
-		FBC51AF41FA82B4500D42695 /* AWStesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AF31FA82B4500D42695 /* AWStesting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,7 +65,6 @@
 		FB968F681FA940760058BD0E /* aws-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		FBC51AE91FA7CC2C00D42695 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoHandler.swift; sourceTree = "<group>"; };
-		FBC51AF31FA82B4500D42695 /* AWStesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWStesting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +101,6 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				FBC51AF31FA82B4500D42695 /* AWStesting.swift */,
 				FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */,
 				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
 				FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */,
@@ -215,7 +212,6 @@
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
-				FBC51AF41FA82B4500D42695 /* AWStesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

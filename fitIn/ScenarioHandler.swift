@@ -76,20 +76,16 @@ struct ScenarioHandler {
             //Failed Vote
         }
 
-        initAWS()
-
-        let dynamo: DynamoHandler = DynamoHandler();
-
         let id = String(arc4random())
         
         let exampleScenario = Scenario(scenarioID: id, type: Scenario.responseType.yesOrNo(1))
         
-        dynamo.setObj(tableName: SCENARIO_MASTER_TABLE, obj: exampleScenario)
+        dynamoHandler.setObj(tableName: SCENARIO_MASTER_TABLE, obj: exampleScenario)
         
         // setObj is async, wait a second before getting
         sleep(2)
         
-        dynamo
+        dynamoHandler
             .getScenario(id: id)
             .continueWith(block:
             { (task) -> Void in
