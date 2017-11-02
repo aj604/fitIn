@@ -1,53 +1,44 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  fitIn
 //
-//  Created by Aarish Kapila on 2017-10-26.
+//  Created by Aarish Kapila on 2017-10-30.
 //  Copyright © 2017 AJ productions. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
     
-    //Variables
-    var currentuser = userProfile.current()
-    var password: String = ""
-    
-    //Outlets
+    var currentUser = userProfile.current()
+
+    @IBOutlet weak var UserNameTextField: UITextField!
     @IBOutlet weak var EmailTextField: UITextField!
-    @IBOutlet weak var PasswordFromLoginScreen: UITextField!
+    @IBOutlet weak var AgeTextField: UITextField!
+    @IBOutlet weak var PasswordTextField: UITextField!
+    @IBOutlet weak var ConfirmPasswordTextField: UITextField!
     
-    
-    //Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UserLabel.text = String(describing: userProfile.current()?.userAge)
+
         // Do any additional setup after loading the view.
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //Action Outlets
-    
-    @IBAction func Login(_ sender: UIButton) {
+    @IBAction func UpdateInformationOnDatabase(_ sender: Any) {
         
-        currentuser!.emailAddress = EmailTextField.text!
-        password = PasswordFromLoginScreen.text!
-        
-        print(currentuser!.emailAddress, password)
-        
+        currentUser?.emailAddress = EmailTextField.text!
+        currentUser?.userName = UserNameTextField.text!
+        currentUser?.userAge = Int(AgeTextField.text!)!
+        print(currentUser!.emailAddress)
+        print(currentUser!.userAge)
+        print(currentUser!.userName)
     }
     
-    
-
     /*
     // MARK: - Navigation
 
