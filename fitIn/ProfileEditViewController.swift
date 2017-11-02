@@ -16,7 +16,8 @@ class ProfileEditViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 2/255, green: 157/255, blue: 224/255, alpha: 1.0)
         editYourProfileLabel.textColor = UIColor.white
         editYourProfileLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
-        
+        userEditProfileSaveChangesButton.backgroundColor = UIColor.white
+        userEditProfileSaveChangesButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         guard let currentUser = userProfile.current() else { return }
         userEditUsernameField.placeholder = currentUser.userName
         userEditEmailAddressField.placeholder = currentUser.emailAddress
@@ -57,8 +58,10 @@ class ProfileEditViewController: UIViewController {
                 inputValidationConditions[0] = true
             }
             else {
-                userEditProfileSaveChangesButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                //userEditProfileSaveChangesButton.setTitleColor(UIColor.red, for: UIControlState.normal)
                 userEditUsernameField.textColor = UIColor.red
+                userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
+                
                 inputValidationConditions[0] = false
             }
         }
@@ -72,8 +75,9 @@ class ProfileEditViewController: UIViewController {
             }
             else {
                 //input either is not long enough, or does not contain a "@" character
-                userEditProfileSaveChangesButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                //userEditProfileSaveChangesButton.setTitleColor(UIColor.red, for: UIControlState.normal)
                 userEditEmailAddressField.textColor = UIColor.red
+                userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[1] = false
             }
         }
@@ -90,13 +94,15 @@ class ProfileEditViewController: UIViewController {
             }
             else {
                 //input either contains an illegal character or is NOT between 1 and 200, so change colour of butons and fields
-                userEditProfileSaveChangesButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+                //userEditProfileSaveChangesButton.setTitleColor(UIColor.red, for: UIControlState.normal)
                 userEditAgeField.textColor = UIColor.red
+                userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[2] = false
             }
         }
         if (inputValidationConditions[0] == true && inputValidationConditions[1] == true && inputValidationConditions[2] == true) {
-            userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
+            //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
+            userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
         }
     }
     /*
