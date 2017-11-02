@@ -80,7 +80,7 @@ class DynamoHandler {
             }
     }
     
-    func setScenario<T: Any>(tableName: String, obj: T) {
+    func setScenario(obj: T) {
         let put = AWSDynamoDBPutItemInput()
         
         put!.tableName = tableName
