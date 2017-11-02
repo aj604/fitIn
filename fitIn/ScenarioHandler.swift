@@ -82,7 +82,7 @@ struct ScenarioHandler {
 
         let id = String(arc4random())
         
-        /*let exampleScenario = Scenario(scenarioID: id, type: Scenario.responseType.yesOrNo(1))
+        let exampleScenario = Scenario(scenarioID: id, type: Scenario.responseType.yesOrNo(1))
         
         dynamo.setObj(tableName: SCENARIO_MASTER_TABLE, obj: exampleScenario)
         
@@ -98,9 +98,9 @@ struct ScenarioHandler {
                 {
                     print("scenario matches")
                 }
-            })*/
+            })
         
-        let randomEmail = String(arc4random())
+        /*let randomEmail = String(arc4random())
         
         let exampleUser = UserProfile()
         exampleUser.emailAddress = randomEmail
@@ -120,7 +120,7 @@ struct ScenarioHandler {
                     {
                         print("user matches")
                     }
-            })
+            })*/
         
         currentScenario.inputAnswer = voteChoice
         if currentScenario.isRightAnswer()!{
