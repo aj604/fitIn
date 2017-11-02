@@ -9,11 +9,6 @@
 import Foundation
 import AWSDynamoDB
 
-protocol Databaseable {
-    init()
-    subscript(member: String) -> Any? { get set }
-}
-
 class DynamoHandler {
     var paginatedOutput: AWSDynamoDBPaginatedOutput?
     var dynamo: AWSDynamoDB

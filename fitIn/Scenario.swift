@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Scenario : Databaseable {
+class Scenario {
 
     // Enum for the type of response that the Scenario requires
     // MAY potentially use associated values for storing of answer type
@@ -78,26 +78,6 @@ class Scenario : Databaseable {
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
         response = type
         tipsForNextTime = "Sucks to suck"
-    }
-    
-    subscript(member: String) -> Any? {
-        get {
-            switch member {
-            case "\(scenarioID)":
-                return scenarioID
-            default:
-                print("skipping, returning nil")
-                return nil
-            }
-        }
-        set(newValue) {
-            switch member {
-            case "\(scenarioID)":
-                scenarioID = newValue as! String
-            default:
-                print("skipping, not assigning")
-            }
-        }
     }
     
     func setscenarioID(value: String) {
