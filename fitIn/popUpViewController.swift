@@ -10,16 +10,30 @@ import UIKit
 
 class popUpViewController: UIViewController {
 
+   private var scenarioController = ScenarioHandler()
+    
+    //button to close pop up
     @IBAction func closePopUp(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     @IBOutlet weak var closePopUpbutton: UIButton!
     @IBOutlet weak var popUpView: UIView!
+    
+    @IBOutlet weak var answerLabel: UILabel!
+
+    @IBOutlet weak var answerReasoning: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //round corners for labels/pop up
         popUpView.layer.cornerRadius = 10;
         popUpView.layer.masksToBounds = true;
         closePopUpbutton.layer.cornerRadius = 3;
+        answerLabel.layer.cornerRadius = 3;
+        answerLabel.clipsToBounds = true;
+        answerReasoning.layer.cornerRadius = 3;
+        answerReasoning.clipsToBounds = true;
+        answerReasoning.text = scenarioController.returnReasoning()
         // Do any additional setup after loading the view.
     }
 

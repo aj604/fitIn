@@ -38,11 +38,35 @@
                                                 <action selector="closePopUp:" destination="fB4-9g-ERa" eventType="touchUpInside" id="NVh-NE-KPY"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-BG-U92">
+                                            <rect key="frame" x="105.5" y="15" width="65" height="21"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="YLb-rY-YLb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jy-Va-vzE">
+                                            <rect key="frame" x="15" y="273" width="245" height="21"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.28033696590000001" green="0.7096748383" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.8269919577495668" green="0.88373668760024604" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
+                                        <constraint firstItem="3jy-Va-vzE" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="7wh-2x-3Tt"/>
+                                        <constraint firstItem="HhL-BG-U92" firstAttribute="top" secondItem="IjK-Gk-8Pj" secondAttribute="top" constant="15" id="8Kt-fb-pqQ"/>
                                         <constraint firstItem="hQz-e4-X4z" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="8dA-eb-MAD"/>
+                                        <constraint firstItem="HhL-BG-U92" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="IoC-lT-foc"/>
+                                        <constraint firstItem="3jy-Va-vzE" firstAttribute="leading" secondItem="IjK-Gk-8Pj" secondAttribute="leading" constant="15" id="Y6g-KS-dFn"/>
                                         <constraint firstAttribute="bottom" secondItem="hQz-e4-X4z" secondAttribute="bottom" constant="15" id="fUh-J7-Mfa"/>
+                                        <constraint firstItem="3jy-Va-vzE" firstAttribute="centerY" secondItem="IjK-Gk-8Pj" secondAttribute="centerY" id="oEJ-T5-Thp"/>
+                                        <constraint firstAttribute="trailing" secondItem="3jy-Va-vzE" secondAttribute="trailing" constant="15" id="qGe-Im-bDJ"/>
+                                        <constraint firstItem="HhL-BG-U92" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="xBk-rE-X8K"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -58,6 +82,8 @@
                         <blurEffect style="light"/>
                     </visualEffectView>
                     <connections>
+                        <outlet property="answerLabel" destination="HhL-BG-U92" id="82r-BC-MK5"/>
+                        <outlet property="answerReasoning" destination="3jy-Va-vzE" id="Zqu-RE-kLP"/>
                         <outlet property="closePopUpbutton" destination="hQz-e4-X4z" id="KUU-au-fCj"/>
                         <outlet property="popUpView" destination="IjK-Gk-8Pj" id="Lsa-Cu-0PF"/>
                     </connections>
