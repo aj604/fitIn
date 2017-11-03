@@ -16,6 +16,18 @@ enum ErrorTypes : Int {
     case Empty
 }
 
+func makeAttrib(_ value: Int) -> AWSDynamoDBAttributeValue {
+    let attrib = AWSDynamoDBAttributeValue();
+    attrib!.n = String(value)
+    return attrib!
+}
+
+func makeAttrib(_ value: String) -> AWSDynamoDBAttributeValue {
+    let attrib = AWSDynamoDBAttributeValue();
+    attrib!.s = value
+    return attrib!
+}
+
 class DynamoHandler {
     var paginatedOutput: AWSDynamoDBPaginatedOutput?
     var dynamo: AWSDynamoDB
@@ -29,18 +41,6 @@ class DynamoHandler {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
         dynamo = AWSDynamoDB.default();
-    }
-    
-    func makeAttrib(_ value: Int) -> AWSDynamoDBAttributeValue {
-        let attrib = AWSDynamoDBAttributeValue();
-        attrib!.n = String(value)
-        return attrib!
-    }
-    
-    func makeAttrib(_ value: String) -> AWSDynamoDBAttributeValue {
-        let attrib = AWSDynamoDBAttributeValue();
-        attrib!.s = value
-        return attrib!
     }
     
     func putScenario(_ scenario: Scenario) -> AWSTask<Scenario>{

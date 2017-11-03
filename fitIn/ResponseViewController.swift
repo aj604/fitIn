@@ -27,8 +27,8 @@ class ResponseViewController : UIViewController {
     @IBOutlet weak var multipleChoiceD: UIButton!
     
     // MARK: Members
-    var situationType : Scenario.responseType?
-    var inputAnswer : Scenario.responseType?
+    var situationType : Scenario.ScenarioType?
+    var inputAnswer : Scenario.ScenarioType?
     
     // MARK: Appearence Funcs
     private func enableYesNo() {
@@ -82,25 +82,25 @@ class ResponseViewController : UIViewController {
     
     // MARK: UI Funcs
     @IBAction func picIsAntiSocial(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.yesOrNo(0)
+        inputAnswer = Scenario.ScenarioType.yesOrNo(0)
     }
     @IBAction func picIsProSocial(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.yesOrNo(1)
+        inputAnswer = Scenario.ScenarioType.yesOrNo(1)
     }
     @IBAction func multipleChoiceA(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.multipleChoice(0)
+        inputAnswer = Scenario.ScenarioType.multipleChoice(0)
     }
     @IBAction func multipleChoiceB(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.multipleChoice(1)
+        inputAnswer = Scenario.ScenarioType.multipleChoice(1)
     }
     @IBAction func multipleChoiceC(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.multipleChoice(2)
+        inputAnswer = Scenario.ScenarioType.multipleChoice(2)
     }
     @IBAction func multipleChoiceD(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.multipleChoice(3)
+        inputAnswer = Scenario.ScenarioType.multipleChoice(3)
     }
     @IBAction func submitSlider(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.slider(Int(sliderBar.value))
+        inputAnswer = Scenario.ScenarioType.slider(Int(sliderBar.value))
     }
     
     override func viewDidLoad() {
