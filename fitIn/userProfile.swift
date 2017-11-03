@@ -11,7 +11,7 @@ import Foundation
 
 class UserProfile {
     //Variables:
-    var emailAddress: String
+    var emailAddress: String = "0"
     var userName: String
     var userAge: Int
     var userLifetime: Int //the time for which the user has spent on our application, it is measured in seconds
