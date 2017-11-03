@@ -15,6 +15,7 @@
 		0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF381F896F3400ECB59B /* ScenarioHandler.swift */; };
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
+		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
 		D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */; };
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
 		FB0F0A101FA2C88E00A9E879 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; };
@@ -25,6 +26,8 @@
 		FB0F0A171FA2CB0E00A9E879 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; };
 		FB0F0A181FA2CB0E00A9E879 /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB0F0A1A1FA2CB0E00A9E879 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */; };
+		FB36A2171FAC0DA900F2E221 /* AWStesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB36A2161FAC0DA900F2E221 /* AWStesting.swift */; };
 		FB968F691FA940760058BD0E /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB968F681FA940760058BD0E /* aws-resources.swift */; };
 		FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AE91FA7CC2C00D42695 /* Scenario.swift */; };
 		FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */; };
@@ -58,12 +61,15 @@
 		0499CF381F896F3400ECB59B /* ScenarioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioHandler.swift; sourceTree = "<group>"; };
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
+		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
 		D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		D39588E21FA18235003A78BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
 		FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
+		FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseViewController.swift; sourceTree = "<group>"; };
+		FB36A2161FAC0DA900F2E221 /* AWStesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWStesting.swift; sourceTree = "<group>"; };
 		FB968F681FA940760058BD0E /* aws-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		FBC51AE91FA7CC2C00D42695 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoHandler.swift; sourceTree = "<group>"; };
@@ -104,17 +110,19 @@
 			isa = PBXGroup;
 			children = (
 				FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */,
-				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
 				FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */,
 				FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */,
 				FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */,
 				FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */,
+				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
 				0464E0FE1F885D0000002403 /* ScenarioViewController.swift */,
+				FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */,
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				D39588E21FA18235003A78BD /* ProfileViewController.swift */,
 				D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
+				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
 				FB968F681FA940760058BD0E /* aws-resources.swift */,
@@ -209,13 +217,16 @@
 			files = (
 				D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
+				FB36A2171FAC0DA900F2E221 /* AWStesting.swift in Sources */,
 				0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */,
+				04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */,
 				FB968F691FA940760058BD0E /* aws-resources.swift in Sources */,
 				D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */,
 				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
+				FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
