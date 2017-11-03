@@ -74,6 +74,7 @@ class ProfileEditViewController: UIViewController {
                 UserProfile.current()?.updateEmailAddress(userEditEmailAddressField.text!)
                 userEditEmailAddressField.textColor = UIColor.black
                 inputValidationConditions[1] = true
+                dynamoHandler.putUserProfile(UserProfile.current()!)
             }
             else {
                 //input either is not long enough, or does not contain a "@" character

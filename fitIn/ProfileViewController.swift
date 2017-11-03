@@ -21,11 +21,23 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //dynamoHandler.putUserProfile(UserProfile.current()!)
         loadUser()
     }
     
     func loadUser() {
         guard let currentUser = UserProfile.current() else { return }
+        dynamoHandler
+            .getUserProfile(currentUser.emailAddress)
+            .continueWith(block:
+                { (task) -> Void in
+                    print("sucessfully finished user get with: ", task.result!.emailAddress)
+                    if(currentUser.emailAddress == task.result!.emailAddress)
+                    {
+                        print("user matches")
+                    }
+            })
+ 
         //currentUser.userName = "test"
         userNameLabel.text = currentUser.userName
         userEmailAddressLabel.text = currentUser.emailAddress
