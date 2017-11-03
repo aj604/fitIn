@@ -22,7 +22,6 @@ class ProfileEditViewController: UIViewController {
         userEditProfileSaveChangesButton.layer.borderColor = UIColor.black.cgColor
         guard let currentUser = UserProfile.current() else { return }
         userEditUsernameField.placeholder = currentUser.userName
-        userEditEmailAddressField.placeholder = currentUser.emailAddress
         userEditAgeField.placeholder = String(currentUser.userAge)
     }
     
@@ -32,7 +31,6 @@ class ProfileEditViewController: UIViewController {
     }
 
     @IBOutlet var userEditUsernameField: UITextField!
-    @IBOutlet var userEditEmailAddressField: UITextField!
     @IBOutlet var userEditAgeField: UITextField!
     @IBOutlet var userEditProfileSaveChangesButton: UIButton!
     @IBOutlet var editYourProfileLabel: UILabel!
@@ -55,7 +53,7 @@ class ProfileEditViewController: UIViewController {
                 inputValidationConditions[0] = false
             }
         }
-        if (userEditEmailAddressField.text!.count > 0) {
+        /*if (userEditEmailAddressField.text!.count > 0) {
             if (UserProfile.current()?.updateEmailAddress(userEditEmailAddressField.text!) == true) {
             //userEditEmailAddressField must be more than 5 characters long, and must contain a "@" character
             //input has been validated at this point, but the constraints can be modified in the future
@@ -69,7 +67,7 @@ class ProfileEditViewController: UIViewController {
                 userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[1] = false
             }
-        }
+        }*/
         if (userEditAgeField.text!.count > 0) {
             //userEditAgeField must only contain numbers and no spaces
             //users must be between the ages of 1-200
@@ -91,6 +89,7 @@ class ProfileEditViewController: UIViewController {
         if (inputValidationConditions[0] == true && inputValidationConditions[1] == true && inputValidationConditions[2] == true) {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
             userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
+            dynamoHandler.putUserProfile(UserProfile.current()!)
         }
     }
     /*
