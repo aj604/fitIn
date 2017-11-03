@@ -76,21 +76,17 @@ struct ScenarioHandler {
             //Failed Vote
         }
 
-        initAWS()
-
-        let dynamo: DynamoHandler = DynamoHandler();
-
         let id = String(arc4random())
         
         let exampleScenario = Scenario(scenarioID: id, type: Scenario.responseType.yesOrNo(1))
         
-        dynamo.setObj(tableName: SCENARIO_MASTER_TABLE, obj: exampleScenario)
+        dynamoHandler.putScenario(exampleScenario);
         
         // setObj is async, wait a second before getting
         sleep(2)
         
-        dynamo
-            .getScenario(id: id)
+        dynamoHandler
+            .getScenario(id)
             .continueWith(block:
             { (task) -> Void in
                 print("sucessfully finished scenario get with: ", task.result!.scenarioID)
@@ -100,19 +96,19 @@ struct ScenarioHandler {
                 }
             })
         
-        /*let randomEmail = String(arc4random())
+        let randomEmail = String(arc4random())
         
         let exampleUser = UserProfile()
         exampleUser.emailAddress = randomEmail
-        print(exampleUser!)
+        print(exampleUser)
         
-        dynamo.setObj(tableName: USER_PROFILES_TABLE_PRIMARY_KEY, obj: exampleUser)
+        dynamoHandler.putUserProfile(exampleUser)
         
         // setObj is async, wait a second before getting
         sleep(2)
         
-        dynamo
-            .getUser(id: id)
+        dynamoHandler
+            .getUserProfile(randomEmail)
             .continueWith(block:
                 { (task) -> Void in
                     print("sucessfully finished user get with: ", task.result!.emailAddress)
@@ -120,7 +116,7 @@ struct ScenarioHandler {
                     {
                         print("user matches")
                     }
-            })*/
+            })
         
         currentScenario.inputAnswer = voteChoice
         if currentScenario.isRightAnswer()!{

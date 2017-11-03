@@ -9,144 +9,112 @@
 import Foundation
 import AWSDynamoDB
 
+let dynamoHandler = DynamoHandler();
+
+enum ErrorTypes : Int {
+    case RequestFailed
+    case Empty
+}
+
 class DynamoHandler {
     var paginatedOutput: AWSDynamoDBPaginatedOutput?
     var dynamo: AWSDynamoDB
     
     init() {
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
+                                                                identityPoolId: AWS_IDENTITY_POOL)
+        
+        let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
         dynamo = AWSDynamoDB.default();
     }
     
-    func setObj<T: Any>(tableName: String, obj: T) {
+    func makeAttrib(_ value: Int) -> AWSDynamoDBAttributeValue {
+        let attrib = AWSDynamoDBAttributeValue();
+        attrib!.n = String(value)
+        return attrib!
+    }
+    
+    func makeAttrib(_ value: String) -> AWSDynamoDBAttributeValue {
+        let attrib = AWSDynamoDBAttributeValue();
+        attrib!.s = value
+        return attrib!
+    }
+    
+    func putScenario(_ scenario: Scenario) -> AWSTask<Scenario>{
         let put = AWSDynamoDBPutItemInput()
         
-        put!.tableName = tableName
-        put!.item = [:]
+        put!.tableName = SCENARIO_MASTER_TABLE
+        put!.item = [
+            SCENARIO_MASTER_TABLE_PRIMARY_KEY: makeAttrib(scenario.scenarioID)
+        ]
         
-        let mirror = Mirror(reflecting: obj)
-        print(mirror)
-        for case let (label, value) in mirror.children {
-            print("member ", label!)
-            let attrib = AWSDynamoDBAttributeValue()
-            
-            let t = "\(type(of: value))"
-            
-            // this is kind of evil....
-            var validType = true;
-            switch t {
-                case "String":
-                    attrib!.s = value as! String
-                /*case "Int":
-                    attrib!.n = String(value)*/
-                
-                // todo more if we need them
-                
-                // todo figure out how we want to deal with optionals :(
-                default:
-                    print("unsupported type in object", t)
-                    validType = false;
-                }
-            if(validType) {
-                print("valid")
-                    put!.item!.merge([label!: attrib!], uniquingKeysWith:
-                    {
-                        (a: AWSDynamoDBAttributeValue, b: AWSDynamoDBAttributeValue) in
-                        return a;
-                })
-            }
-        }
-
-        dynamo
+        return dynamo
             .putItem(put!)
             .continueWith {
-            (task:AWSTask<AWSDynamoDBPutItemOutput>) -> Any? in
+                (task:AWSTask<AWSDynamoDBPutItemOutput>) -> AWSTask<Scenario> in
                 if let error = task.error {
-                    print("The request failed. Error: \(error)")
-                    return nil
+                    print("failed put request to user. Error: \(error)")
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
                 }
-                print("The put request successsge5gwe5ge5w5we5h")
+                print("successful put request to scenario")
                 // Do something with task.result
                 
-                return nil
-            }
+                // todo actual return value
+                return AWSTask(result: Scenario())
+        } as! AWSTask<Scenario>
     }
     
     
-    // todo use this?
-    /*func getObj<T: Databaseable>(tableName: String, obj: T) -> AWSTask<T> {
-        let key = AWSDynamoDBAttributeValue()
-        key?.s = "12345"
+    func putUserProfile(_ userProfile: UserProfile) -> AWSTask<UserProfile>{
+        let put = AWSDynamoDBPutItemInput()
         
-        let get = AWSDynamoDBGetItemInput()
-        get?.tableName = SCENARIO_MASTER_TABLE
-        get?.key = [
-            SCENARIO_MASTER_TABLE_PRIMARY_KEY: key!
+        put!.tableName = USER_PROFILES_TABLE
+        put!.item = [
+            USER_PROFILES_TABLE_PRIMARY_KEY: makeAttrib(userProfile.emailAddress)
         ]
         
-        var result = T();
-        
-        return dynamo.getItem(get!).continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> Any? in
-            if let error = task.error {
-                print("The request failed. Error: \(error)")
-                return nil
-            }
-            print("The get request successsge5gwe5ge5w5we5h")
-            // Do something with task.result
-            print("item ", task.result?.item)
-            print("scenariosrth", obj as! T)
-            
-            // ***************************************************
-            // TODO figure out how to dynamically assign task to a
-            // class
-            // ***************************************************
-            
-            /*let mirror = Mirror(reflecting: obj)
-            print(mirror)
-            for case let (label, value) in mirror.children {
-                print("member ", label!)
-                
-                // let objectType = "\(type(of: value))"
-                // let dataBaseType = "\(type(of: task.item[label]))"
-
-                (obj as! T).setValue(value, forKey: label!)
-            }*/
-            
-            for item in task.result!.item! {
-            
-                let objectType = "\(type(of: result[item.key]))"
-                switch objectType {
-                case "String":
-                    result[item.key] = item.value.s
-                case "Int":
-                    result[item.key] = item.value.n
-                default:
-                    print("unsupported type: ", objectType)
-                    result[item.key] = item.value
-                }
-            }
-            
-            print(result)
-            
-            return result
-        } as! AWSTask<T>
-    }*/
-    
-    func getScenario(id: String) -> AWSTask<Scenario> {
-        let key = AWSDynamoDBAttributeValue()
-        key?.s = id
-        
-        let get = AWSDynamoDBGetItemInput()
-        get?.tableName = SCENARIO_MASTER_TABLE
-        get?.key = [
-            SCENARIO_MASTER_TABLE_PRIMARY_KEY: key!
-        ]
-        
-        return dynamo.getItem(get!)
-            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<Scenario> in
+        return dynamo
+            .putItem(put!)
+            .continueWith {
+                (task:AWSTask<AWSDynamoDBPutItemOutput>) -> AWSTask<UserProfile> in
                 if let error = task.error {
-                    print("The request failed. Error: \(error)")
-                    return AWSTask(result: nil)
+                    print("failed put request to user profile. Error: \(error)")
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
                 }
+                print("successful put request to user")
+                // Do something with task.result
+                
+                // todo return return of put
+                return AWSTask(result: UserProfile())
+        } as! AWSTask<UserProfile>
+    }
+    
+    func getScenario(_ id: String) -> AWSTask<Scenario> {
+        
+        let get = AWSDynamoDBGetItemInput()
+        get?.tableName = SCENARIO_MASTER_TABLE
+        get?.key = [
+            SCENARIO_MASTER_TABLE_PRIMARY_KEY: makeAttrib(id)
+        ]
+        get!.consistentRead = true
+        
+        return dynamo
+            .getItem(get!)
+            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<Scenario>? in
+                if let error = task.error {
+                    print("failed get request to scenario. Error: \(error)")
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
+                }
+                
+                if(task.result!.item == nil) {
+                    // no object found.
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.Empty.rawValue))
+                }
+                
+                print("successful get request to scenario", task)
                 
                 let result = Scenario();
                 let item = task.result!.item!
@@ -163,40 +131,47 @@ class DynamoHandler {
             } as! AWSTask<Scenario>
     }
     
-    /*func getUser(id: String) -> AWSTask<UserProfile> {
-        let key = AWSDynamoDBAttributeValue()
-        key!.s = id
+    func getUserProfile(_ id: String) -> AWSTask<UserProfile> {
         
         let get = AWSDynamoDBGetItemInput()
+        
         get!.tableName = USER_PROFILES_TABLE
         get!.key = [
-            USER_PROFILES_TABLE_PRIMARY_KEY: key!
+            USER_PROFILES_TABLE_PRIMARY_KEY: makeAttrib(id)
         ]
         
-        return dynamo.getItem(get!)
-            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<UserProfile> in
+        get!.consistentRead = true
+        
+        return dynamo
+            .getItem(get!)
+            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<UserProfile>? in
                 if let error = task.error {
-                    print("The request failed. Error: \(error)")
-                    return AWSTask(result: nil)
+                    print("failed get request to user profile. Error: \(error)")
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
+                }
+                
+                if(task.result!.item == nil) {
+                    // no object found.
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.Empty.rawValue))
                 }
                 
                 let result = UserProfile();
                 
-                print("user task done,", task)
+                print("successful get to user profile,", task)
                 
                 let item = task.result!.item
                 
                 // **************************************************
                 // ADD MORE ASSIGNMENT HERE
                 
-                result.emailAddress = item?[USER_PROFILES_TABLE_PRIMARY_KEY]!.s!
+                result.emailAddress = (item?[USER_PROFILES_TABLE_PRIMARY_KEY]?.s)!
                 
                 // **************************************************
 
                 return AWSTask(result: result)
                 
             } as! AWSTask<UserProfile>
-    }*/
+    }
 
     
 }
