@@ -10,9 +10,16 @@ import UIKit
 
 class popUpViewController: UIViewController {
 
+    @IBAction func closePopUp(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBOutlet weak var closePopUpbutton: UIButton!
+    @IBOutlet weak var popUpView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        popUpView.layer.cornerRadius = 10;
+        popUpView.layer.masksToBounds = true;
+        closePopUpbutton.layer.cornerRadius = 3;
         // Do any additional setup after loading the view.
     }
 

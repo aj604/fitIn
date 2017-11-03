@@ -27,9 +27,16 @@
                                     <rect key="frame" x="50" y="50" width="275" height="567"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQz-e4-X4z">
-                                            <rect key="frame" x="114" y="522" width="46" height="30"/>
+                                            <rect key="frame" x="113" y="522" width="48" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Button"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="iJT-RK-Y5a"/>
+                                                <constraint firstAttribute="height" constant="30" id="wVI-UG-Lub"/>
+                                            </constraints>
+                                            <state key="normal" title="Got it!"/>
+                                            <connections>
+                                                <action selector="closePopUp:" destination="fB4-9g-ERa" eventType="touchUpInside" id="NVh-NE-KPY"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.28033696590000001" green="0.7096748383" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,6 +57,10 @@
                         </view>
                         <blurEffect style="light"/>
                     </visualEffectView>
+                    <connections>
+                        <outlet property="closePopUpbutton" destination="hQz-e4-X4z" id="KUU-au-fCj"/>
+                        <outlet property="popUpView" destination="IjK-Gk-8Pj" id="Lsa-Cu-0PF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOQ-N6-XlA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
