@@ -302,13 +302,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NmH-aI-cNE">
-                                        <rect key="frame" x="64.5" y="323.5" width="246" height="323.5"/>
+                                        <rect key="frame" x="62.5" y="323.5" width="250" height="323.5"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bcn-kA-Fpz">
-                                                <rect key="frame" x="-2" y="0.0" width="250" height="163"/>
+                                                <rect key="frame" x="-2" y="0.0" width="254" height="163"/>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZJ-0z-JhI">
-                                                <rect key="frame" x="98.5" y="162" width="49" height="161.5"/>
+                                                <rect key="frame" x="100.5" y="162" width="49" height="161.5"/>
                                                 <state key="normal" title="Submit"/>
                                                 <connections>
                                                     <action selector="submit:" destination="iml-EJ-WA0" eventType="touchUpInside" id="3v2-fQ-d6X"/>
