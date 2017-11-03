@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pqy-Lf-Jbq">
-                                <rect key="frame" x="30" y="356" width="304" height="30"/>
+                                <rect key="frame" x="30" y="356" width="306" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -137,14 +137,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KbY-pK-W7c">
-                                <rect key="frame" x="156" y="559" width="52" height="30"/>
-                                <state key="normal" title="Sign up"/>
+                                <rect key="frame" x="156" y="559" width="55" height="30"/>
+                                <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <segue destination="hMr-Sl-Fej" kind="show" id="YPM-iz-gLm"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoS-GU-ayl">
-                                <rect key="frame" x="30" y="257" width="304" height="30"/>
+                                <rect key="frame" x="30" y="257" width="306" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -181,12 +181,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDI-RV-PZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1462" y="919"/>
+            <point key="canvasLocation" x="1461.5999999999999" y="918.89055472263874"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="IBN-rL-xZL">
             <objects>
-                <viewController id="hMr-Sl-Fej" sceneMemberID="viewController">
+                <viewController id="hMr-Sl-Fej" customClass="SignUpViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lDM-yT-9bA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,6 +260,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4C8-AZ-F7b">
                                 <rect key="frame" x="161" y="543" width="52" height="30"/>
                                 <state key="normal" title="Sign up"/>
+                                <connections>
+                                    <action selector="CreateNewUserFunction:" destination="hMr-Sl-Fej" eventType="touchUpInside" id="efR-QP-OKJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -301,6 +304,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QgA-sW-fIJ"/>
                     </view>
+                    <connections>
+                        <outlet property="AgeTextField" destination="rAc-tw-LTN" id="BPA-l4-Wv8"/>
+                        <outlet property="ConfirmPasswordTextField" destination="JdS-Ht-iDm" id="uWG-jc-iL8"/>
+                        <outlet property="CreateNewUserVariable" destination="4C8-AZ-F7b" id="Hxc-BC-uDm"/>
+                        <outlet property="EmailTextField" destination="x1e-XL-upO" id="VoM-VA-FBa"/>
+                        <outlet property="PasswordTextField" destination="2Mq-op-gZQ" id="80k-wO-HZk"/>
+                        <outlet property="UserNameTextField" destination="0M9-k7-XqL" id="NXl-f6-94t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkB-9e-YOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -746,7 +757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7UD-sK-Qfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="851"/>
+            <point key="canvasLocation" x="996" y="1382"/>
         </scene>
     </scenes>
     <resources>
