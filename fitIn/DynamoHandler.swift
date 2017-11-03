@@ -47,9 +47,9 @@ class DynamoHandler {
         let put = AWSDynamoDBPutItemInput()
         
         put!.tableName = SCENARIO_MASTER_TABLE
-        put!.item = [
-            SCENARIO_MASTER_TABLE_PRIMARY_KEY: makeAttrib(scenario.scenarioID)
-        ]
+        put!.item = scenario.toDBDictionary()
+        
+        print("utrgaegaerg", put!.item)
         
         return dynamo
             .putItem(put!)
@@ -119,12 +119,7 @@ class DynamoHandler {
                 let result = Scenario();
                 let item = task.result!.item!
                 
-                // **************************************************
-                // ADD MORE ASSIGNMENT HERE
-                
-                result.scenarioID = item[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!.s!
-                
-                // **************************************************
+                result.fromDBDictionary(item)
                 
                 return AWSTask(result: result)
             

@@ -52,8 +52,8 @@ class Scenario {
     var createdBy: String = "Anonymous"
     var tags = [String]() // List of metadata / Scenario Tags
     
-    var questionText: String = ""
-    var answerReasoning: String = ""
+    var questionText: String = "a"
+    var answerReasoning: String = "a"
     var imageLoc : URL
     
     var response: Int = 0 // temporary, replace with UpdateScenario struct
@@ -96,29 +96,11 @@ class Scenario {
             // "averageAnswer": makeAttrib(averageAnswer), // todo double
             // "standardDeviation": makeAttrib(self.averageTimeToAnswer)
             // "averageTimeToAnswer": makeAttrib(self.averageTimeToAnswer)
-            "numberofAnswers": makeAttrib(self.numberOfAnswers)
+            "numberOfAnswers": makeAttrib(self.numberOfAnswers)
         ]
     }
     
     func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
-        
-        /*// metadata
-         var scenarioID : String = "0"
-         let createdBy: String = "Anonymous"
-         var tags = [String]() // List of metadata / Scenario Tags
-         
-         let questionText: String
-         var answerReasoning: String
-         var imageLoc : URL
-         
-         var response: Int // temporary, replace with UpdateScenario struct
-         
-         var type : ScenarioType
-         var initialAnswer: Int // answer set by creator
-         var averageAnswer: Double
-         var standardDeviation : Double
-         var averageTimeToAnswer: Double
-         var numberOfAnswers: Int*/
         
         self.scenarioID = dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!.s!
         self.createdBy = dict["createdBy"]!.s!
@@ -128,11 +110,11 @@ class Scenario {
         self.answerReasoning = dict["answerReasoning"]!.s!
         self.imageLoc = URL(string: dict["imageLoc"]!.s!)!
         
-        self.type = ScenarioType(rawValue: Int(dict["type"]!.s!)!)!
+        self.type = ScenarioType(rawValue: Int(dict["type"]!.n!)!)!
         self.initialAnswer = Int(dict["initialAnswer"]!.n!)!
-        self.averageAnswer = Double(dict["initialAnswer"]!.n!)!
-        self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
-        self.averageTimeToAnswer = Double(dict["averageTimeToAnswer"]!.n!)!
+        // self.averageAnswer = Double(dict["initialAnswer"]!.n!)!
+        // self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
+        // self.averageTimeToAnswer = Double(dict["averageTimeToAnswer"]!.n!)!
         self.numberOfAnswers = Int(dict["numberOfAnswers"]!.n!)!
     
     }

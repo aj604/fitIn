@@ -89,6 +89,7 @@ struct ScenarioHandler {
             .getScenario(id)
             .continueWith(block:
             { (task) -> Void in
+                print("egagagarg", task.result!)
                 print("sucessfully finished scenario get with: ", task.result!.scenarioID)
                 if(id == task.result!.scenarioID)
                 {
