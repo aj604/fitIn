@@ -18,7 +18,7 @@ struct ScenarioHandler {
     private var user = UserProfile() //User Data, Info stored here
     
     // instantiation of Scenario, only one Scenario is loaded at a time
-    private var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.responseType.yesOrNo(1)) {
+    private var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
         // This willSet preloads image data for a smooth transition to next Scenario
         willSet{
             if let buffer = nextScenario?.getImageData() {
@@ -37,7 +37,7 @@ struct ScenarioHandler {
     // preload next Scenario
     private var nextScenario : Scenario? {
         didSet {
-            if let buffer = nextScenario?.getScenarioType() {
+            if let buffer = nextScenario?.type {
                 nextScenarioType = buffer
             }
         }
@@ -45,22 +45,22 @@ struct ScenarioHandler {
     
     // Variable to store the type of the next Scenario. This will be used to tell the view controller
     // what type of view to load for the incoming expected response
-    private var nextScenarioType : String?
+    private var nextScenarioType : Scenario.ScenarioType?
     
     //Image Data to use for UIImageView
     private var imageData = Data()
     
     // General container for all response types
     // When set, begins segue
-    var voteChoice : Scenario.responseType? {
+    var voteChoice : Int? {
         // When the controller sets voteChoice it will automatically call the vote function
         // Insert transition methods here
         didSet {
-            if voteChoice != nil {
+            if(voteChoice != nil) {
                 if vote() == false {
                     print("failedVote")
                 }
-           }
+            }
         }
     }
     
@@ -69,7 +69,7 @@ struct ScenarioHandler {
     // lodge a vote.
     // Pre: voteChoice is set to specific case of responseType with its associatedValue
     // Post: Returns bool? based on right/wrong answer or a nil bug
-    mutating func vote() -> Bool{
+    mutating func vote() -> Bool {
         if voteChoice == nil {
             print("voteChoice is not set")
             return false
@@ -78,7 +78,7 @@ struct ScenarioHandler {
 
         let id = String(arc4random())
         
-        let exampleScenario = Scenario(scenarioID: id, type: Scenario.responseType.yesOrNo(1))
+        let exampleScenario = Scenario(scenarioID: id, type: Scenario.ScenarioType.yesOrNo)
         
         dynamoHandler.putScenario(exampleScenario);
         
@@ -89,6 +89,7 @@ struct ScenarioHandler {
             .getScenario(id)
             .continueWith(block:
             { (task) -> Void in
+                print("egagagarg", task.result!)
                 print("sucessfully finished scenario get with: ", task.result!.scenarioID)
                 if(id == task.result!.scenarioID)
                 {
@@ -118,8 +119,8 @@ struct ScenarioHandler {
                     }
             })
         
-        currentScenario.inputAnswer = voteChoice
-        if currentScenario.isRightAnswer()!{
+        currentScenario.response = voteChoice!
+        if currentScenario.isRightAnswer() {
             user.gotCorrect() // Log vote in the user struct
             return true
         }
@@ -137,7 +138,7 @@ struct ScenarioHandler {
             // This is the temporary next Scenario being loaded
             // Will replace with Scenario from server after that functionality is there
             print("default setting next Scenario and transitioning")
-            nextScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.responseType.yesOrNo(0))
+            nextScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo)
             nextScenario?.setScenarioURL(url: "https://i.redd.it/k8w5wgzvm0uz.jpg")
             currentScenario = nextScenario!
         }

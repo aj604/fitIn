@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import AWSDynamoDB
 
 class Scenario {
 
     // Enum for the type of response that the Scenario requires
     // MAY potentially use associated values for storing of answer type
-    enum responseType {
-        case yesOrNo(Int)
-        case slider(Int)
-        case multipleChoice(Int)
+    enum ScenarioType : Int {
+        case yesOrNo
+        case slider
+        case multipleChoice
         
         // Helper func to determine the type of response box our next view will need
         // Could use something like an int as an identifier
@@ -30,54 +31,92 @@ class Scenario {
                 return "multipleChoice"
             }
         }
-        // Unwraps associated Value or returns nil
-        fileprivate func getValue() -> Int {
-            switch self{
-            case .yesOrNo(let value):
-                return value
-            case .multipleChoice(let value):
-                return value
-            case .slider(let value):
-                return value
+        
+        /*fileprivate func fromType(_ typeString: String) -> responseType {
+            switch typeString {
+            case ."yesOrNo"
+                return
+            case .slider:
+                return "slider"
+            case .multipleChoice:
+                return "multipleChoice"
             }
-        }
+        }*/
     }
     
     
     //MARK: VARIABLES
-    var scenarioID: String = "0"
-    var inputAnswer : responseType?
-    var scenarioTags = [String]() // List of metadata / Scenario Tags
-    // just a random imgur url for initialization, has one more URL it will segue to on vote()
-    private var imageLoc : URL
-    private var response : responseType // Includes both the type of response and the answer
-    private var tipsForNextTime : String
     
-    /* Future Members
-     let scenarioID: Int
-     let createdBy: String
-     let questionText: String
-     var timeToAnswer = [Int]() //this is in milliseconds
-     var averageAnswer: Double
-     var standardDeviation : Double
-     var averageTimeToAnswer: Double
-     var numberOfAnswers: Int
-*/
+    // metadata
+    var scenarioID : String = "0"
+    var createdBy: String = "Anonymous"
+    var tags = [String]() // List of metadata / Scenario Tags
+    
+    var questionText: String = "a"
+    var answerReasoning: String = "a"
+    var imageLoc : URL
+    
+    var response: Int = 0 // temporary, replace with UpdateScenario struct
+    
+    var type : ScenarioType = ScenarioType.yesOrNo
+    var initialAnswer: Int = 0// answer set by creator
+    var averageAnswer: Double = 0.0
+    var standardDeviation : Double = 0.0
+    var averageTimeToAnswer: Double = 0.0
+    var numberOfAnswers: Int = 0
+
  //MARK: METHODS
     
     required init() {
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
-        response = responseType.yesOrNo(0)
-        tipsForNextTime = "Sucks to suck"
+        answerReasoning = "Sucks to suck"
     }
 
     // Need to make this a load function from our DB based upon Scenario ID
     // Will init the imageURL either locally or from URL from db
-    init(scenarioID: String, type : responseType) {
+    init(scenarioID: String, type : ScenarioType) {
         self.scenarioID = scenarioID
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
-        response = type
-        tipsForNextTime = "Sucks to suck"
+        answerReasoning = "Sucks to suck"
+    }
+    
+    func toDBDictionary() -> [String : AWSDynamoDBAttributeValue] {
+        
+        return [
+            SCENARIO_MASTER_TABLE_PRIMARY_KEY: makeAttrib(self.scenarioID),
+            "createdBy": makeAttrib(self.createdBy),
+            // "tags": makeAttrib(<#T##value: Int##Int#>), // todo array of strings
+            
+            "questionText": makeAttrib(self.questionText),
+            "answerReasoning": makeAttrib(self.answerReasoning),
+            "imageLoc": makeAttrib(self.imageLoc.absoluteString),
+            
+            "type": makeAttrib(self.type.rawValue),
+            "initialAnswer": makeAttrib(self.initialAnswer),
+            // "averageAnswer": makeAttrib(averageAnswer), // todo double
+            // "standardDeviation": makeAttrib(self.averageTimeToAnswer)
+            // "averageTimeToAnswer": makeAttrib(self.averageTimeToAnswer)
+            "numberOfAnswers": makeAttrib(self.numberOfAnswers)
+        ]
+    }
+    
+    func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
+        
+        self.scenarioID = dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!.s!
+        self.createdBy = dict["createdBy"]!.s!
+        //self.tags = dict["tags"]!.ss!
+        
+        self.questionText = dict["questionText"]!.s!
+        self.answerReasoning = dict["answerReasoning"]!.s!
+        self.imageLoc = URL(string: dict["imageLoc"]!.s!)!
+        
+        self.type = ScenarioType(rawValue: Int(dict["type"]!.n!)!)!
+        self.initialAnswer = Int(dict["initialAnswer"]!.n!)!
+        // self.averageAnswer = Double(dict["initialAnswer"]!.n!)!
+        // self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
+        // self.averageTimeToAnswer = Double(dict["averageTimeToAnswer"]!.n!)!
+        self.numberOfAnswers = Int(dict["numberOfAnswers"]!.n!)!
+    
     }
     
     func setscenarioID(value: String) {
@@ -99,16 +138,12 @@ class Scenario {
     // general answer checking method
     // Pre: Scenario is loaded and inputAnswer != nil
     // Post: Bool? determining if they got the right answer or if inputAnswer wasnt initialized
-    func isRightAnswer() -> Bool? {
-        if let answer = inputAnswer {
-            if response.getValue() == answer.getValue() {
-                return true
-            }
-            return false
-        }
-        print("Code should never get here, This means answer was not set properly")
-        return nil
+    func isRightAnswer() -> Bool {
         
+        if response == initialAnswer {
+            return true
+        }
+        return false
     }
     
     // Helper func to set image URL before database urls can be tested
@@ -116,12 +151,7 @@ class Scenario {
         //really bad practice for force unwrap on a UI Item
         imageLoc = URL(string: url)!
     }
-    
-    // Returns a string of the response type expected for the current Scenario
-    func getScenarioType() -> String {
-        return response.getType()
-    }
-    
+        
     // Returns image data for the Scenario, Used in situationHandler
     func getImageData() -> Data { // Get Image Data from URL / Local
         var imageOut = Data()//Data type, to prep image for UIImageView
