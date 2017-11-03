@@ -39,6 +39,8 @@ class ProfileEditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet weak var userEditUsernameIcon: UIImageView!
+    @IBOutlet weak var userEditAgeIcon: UIImageView!
     @IBOutlet var userEditUsernameField: UITextField!
     @IBOutlet var userEditAgeField: UITextField!
     @IBOutlet var userEditProfileSaveChangesButton: UIButton!
@@ -52,6 +54,7 @@ class ProfileEditViewController: UIViewController {
         if (userEditUsernameField.text!.count > 0 && UserProfile.current()?.isUserLoggedIn == true) {
             if (UserProfile.current()?.updateUsername(userEditUsernameField.text!) == true) {
                 userEditUsernameField.textColor = UIColor.black
+                userEditUsernameIcon.backgroundColor = UIColor(patternImage: UIImage(named: "right.png")!)
                 inputValidationConditions[0] = true
             }
             else {
@@ -59,6 +62,7 @@ class ProfileEditViewController: UIViewController {
                 userEditUsernameField.textColor = UIColor.red
                 //userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "savechanges_Red.png")!)
+                userEditUsernameIcon.backgroundColor = UIColor(patternImage: UIImage(named: "cross.png")!)
                 inputValidationConditions[0] = false
             }
         }
@@ -85,6 +89,7 @@ class ProfileEditViewController: UIViewController {
             if (temp == userEditAgeField.text! && UserProfile.current()?.updateUserAge(Int(userEditAgeField.text!)!) == true) {
                 //input has been validated to contain #s only and they ARE between 1 and 200, so change colour of buttons and fields and update user's age
                 userEditAgeField.textColor = UIColor.black
+                userEditAgeIcon.backgroundColor = UIColor(patternImage: UIImage(named: "right.png")!)
                 inputValidationConditions[2] = true
             }
             else {
@@ -93,6 +98,7 @@ class ProfileEditViewController: UIViewController {
                 userEditAgeField.textColor = UIColor.red
                 //userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "savechanges_Red.png")!)
+                userEditAgeIcon.backgroundColor = UIColor(patternImage: UIImage(named: "cross.png")!)
                 inputValidationConditions[2] = false
             }
         }
