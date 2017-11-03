@@ -12,8 +12,8 @@ class ProfileEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+        //self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
         editYourProfileLabel.textColor = UIColor.white
         editYourProfileLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
         userEditProfileSaveChangesButton.backgroundColor = UIColor.white
@@ -40,7 +40,7 @@ class ProfileEditViewController: UIViewController {
     //element 0 is for username, element 1 is for email address, element 2 is for age, element 3 will be for password
     
     @IBAction func userEditProfileSaveChanges(_ sender: Any) {
-        if (userEditUsernameField.text!.count > 0) {
+        if (userEditUsernameField.text!.count > 0 && UserProfile.current()?.isUserLoggedIn == true) {
             if (UserProfile.current()?.updateUsername(userEditUsernameField.text!) == true) {
                 userEditUsernameField.textColor = UIColor.black
                 inputValidationConditions[0] = true
@@ -68,7 +68,7 @@ class ProfileEditViewController: UIViewController {
                 inputValidationConditions[1] = false
             }
         }*/
-        if (userEditAgeField.text!.count > 0) {
+        if (userEditAgeField.text!.count > 0 && UserProfile.current()?.isUserLoggedIn == true) {
             //userEditAgeField must only contain numbers and no spaces
             //users must be between the ages of 1-200
             let temp = userEditAgeField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
@@ -86,7 +86,7 @@ class ProfileEditViewController: UIViewController {
                 inputValidationConditions[2] = false
             }
         }
-        if (inputValidationConditions[0] == true && inputValidationConditions[1] == true && inputValidationConditions[2] == true) {
+        if (inputValidationConditions[0] == true && inputValidationConditions[1] == true && inputValidationConditions[2] == true && UserProfile.current()?.isUserLoggedIn == true) {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
             userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
             dynamoHandler.putUserProfile(UserProfile.current()!)

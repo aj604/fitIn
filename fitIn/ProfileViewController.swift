@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
+        //self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
         /*userEditProfileButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         userEditProfileButton.layer.cornerRadius = 5
         userEditProfileButton.layer.borderWidth = 1
@@ -21,30 +21,33 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
         loadUser()
     }
     
     func loadUser() {
         guard let currentUser = UserProfile.current() else { return }
         //currentUser.userName = "test"
-        dynamoHandler
-            .getUserProfile(currentUser.emailAddress)
-            .continueWith(block:
-                { (task) -> Void in
-                    print("sucessfully finished user get with: ", task.result!.emailAddress)
-                    if(currentUser.emailAddress == task.result!.emailAddress)
-                    {
-                        print("user matches")
-                        currentUser.emailAddress = task.result!.emailAddress
-                        currentUser.userName = task.result!.userName
-                        currentUser.userAge = task.result!.userAge
-                        currentUser.userLifetime = task.result!.userLifetime
-                        currentUser.numScenariosAnswered = task.result!.numScenariosAnswered
-                        currentUser.numScenariosCorrect = task.result!.numScenariosCorrect
-                        currentUser.averageResponseTime = task.result!.averageResponseTime
-                    }
-            })
-        
+        if (currentUser.isUserLoggedIn == true)
+        {
+            dynamoHandler
+                .getUserProfile(currentUser.emailAddress)
+                .continueWith(block:
+                    { (task) -> Void in
+                        print("sucessfully finished user get with: ", currentUser.emailAddress)
+                        if(currentUser.emailAddress == task.result!.emailAddress)
+                        {
+                            print("user matches")
+                            currentUser.emailAddress = task.result!.emailAddress
+                            currentUser.userName = task.result!.userName
+                            currentUser.userAge = task.result!.userAge
+                            currentUser.userLifetime = task.result!.userLifetime
+                            currentUser.numScenariosAnswered = task.result!.numScenariosAnswered
+                            currentUser.numScenariosCorrect = task.result!.numScenariosCorrect
+                            currentUser.averageResponseTime = task.result!.averageResponseTime
+                        }
+                })
+        }
         userNameLabel.text = currentUser.userName
         userEmailAddressLabel.text = currentUser.emailAddress
         userAgeLabel.text = String(currentUser.userAge)
