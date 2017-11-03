@@ -30,13 +30,16 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func UpdateInformationOnDatabase(_ sender: Any) {
+        //if (PasswordTextField.text! == ConfirmPasswordTextField.text!)
         
-        currentUser?.emailAddress = EmailTextField.text!
-        currentUser?.userName = UserNameTextField.text!
-        currentUser?.userAge = Int(AgeTextField.text!)!
-        print(currentUser!.emailAddress)
-        print(currentUser!.userAge)
-        print(currentUser!.userName)
+            currentUser?.emailAddress = EmailTextField.text!
+            currentUser?.userName = UserNameTextField.text!
+            currentUser?.userAge = Int(AgeTextField.text!)!
+            //print(currentUser?.emailAddress ?? "")
+            //print(currentUser?.userAge ?? "")
+            //print(currentUser?.userName ?? "")
+            //currentUser = dynamoHandler.putUserProfile(currentUser!).result
+        
     }
     
     /*

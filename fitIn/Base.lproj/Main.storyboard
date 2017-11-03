@@ -106,7 +106,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-Ok-Wbp">
-                                <rect key="frame" x="30" y="314" width="79" height="21"/>
+                                <rect key="frame" x="30" y="314" width="312" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -171,6 +171,7 @@
                             <constraint firstItem="WZ7-Hk-h0K" firstAttribute="top" secondItem="pqy-Lf-Jbq" secondAttribute="bottom" constant="32" id="rgL-rj-Wpp"/>
                             <constraint firstItem="vGu-6E-LCV" firstAttribute="top" secondItem="WZ7-Hk-h0K" secondAttribute="bottom" constant="71" id="tpQ-8Y-D1g"/>
                             <constraint firstItem="KbY-pK-W7c" firstAttribute="leading" secondItem="Ej4-KC-6jI" secondAttribute="leading" constant="156" id="vAr-OU-VF7"/>
+                            <constraint firstItem="Ej4-KC-6jI" firstAttribute="trailing" secondItem="aEg-Ok-Wbp" secondAttribute="trailing" constant="33" id="wjs-8x-Qrm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ej4-KC-6jI"/>
                     </view>
@@ -181,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDI-RV-PZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1462" y="919"/>
+            <point key="canvasLocation" x="1461.5" y="918.5"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="IBN-rL-xZL">
@@ -260,6 +261,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4C8-AZ-F7b">
                                 <rect key="frame" x="161" y="543" width="52" height="30"/>
                                 <state key="normal" title="Sign up"/>
+                                <connections>
+                                    <action selector="SignUpUser:" destination="hMr-Sl-Fej" eventType="touchUpInside" id="jVO-2b-X1X"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

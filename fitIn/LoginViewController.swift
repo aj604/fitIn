@@ -39,10 +39,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func Login(_ sender: UIButton) {
         
-        currentuser!.emailAddress = EmailTextField.text!
+        print(EmailTextField.text!)
+        currentuser?.emailAddress = EmailTextField.text!
         password = PasswordFromLoginScreen.text!
         
-        print(currentuser!.emailAddress, password)
+        print(currentuser?.emailAddress ?? "", password)
+        //currentuser = dynamoHandler.getUserProfile((currentuser?.emailAddress)!).result
         
     }
     
