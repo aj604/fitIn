@@ -23,6 +23,7 @@ class UserProfile {
     var averageResponseTime: Int //the average response time of a user, it is measured in milliseconds
     var favorites = [Int64]() //the array of long ints, each of which represent the id for a scenario
     var isUserLoggedIn: Bool
+    var passwordToken: String
         
     //Methods:
     init() {
@@ -35,6 +36,7 @@ class UserProfile {
         averageResponseTime = 0
         favorites = []
         isUserLoggedIn = false
+        passwordToken = "password"
         //self.getUser()
     }
     
@@ -51,6 +53,7 @@ class UserProfile {
             "averageResponseTime": makeAttrib(self.averageResponseTime),
             // "favorites": makeAttrib(self.favorites), // todo array of ints
             // "isUserLoggedIn": makeAttrib(self.isUserLoggedIn), todo bools
+            "passwordToken": makeAttrib(self.passwordToken)
         ]
     }
     
@@ -66,6 +69,7 @@ class UserProfile {
         self.averageResponseTime = Int(dict["averageResponseTime"]!.n!)!
         // self.favorites = Int(dict["userAge"]!.n!)!
         // self.isUserLoggedIn = Int(dict["userAge"]!.n!)!
+        self.passwordToken = dict["passwordToken"]!.s!
     }
     
     func getUser() {
