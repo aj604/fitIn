@@ -11,6 +11,11 @@ import AWSDynamoDB
 
 let dynamoHandler = DynamoHandler();
 
+enum ErrorTypes : Int {
+    case RequestFailed
+    case Empty
+}
+
 class DynamoHandler {
     var paginatedOutput: AWSDynamoDBPaginatedOutput?
     var dynamo: AWSDynamoDB
@@ -49,10 +54,10 @@ class DynamoHandler {
         return dynamo
             .putItem(put!)
             .continueWith {
-                (task:AWSTask<AWSDynamoDBPutItemOutput>) -> AWSTask<Scenario>? in
+                (task:AWSTask<AWSDynamoDBPutItemOutput>) -> AWSTask<Scenario> in
                 if let error = task.error {
                     print("failed put request to user. Error: \(error)")
-                    return nil
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
                 }
                 print("successful put request to scenario")
                 // Do something with task.result
@@ -74,10 +79,10 @@ class DynamoHandler {
         return dynamo
             .putItem(put!)
             .continueWith {
-                (task:AWSTask<AWSDynamoDBPutItemOutput>) -> AWSTask<UserProfile>? in
+                (task:AWSTask<AWSDynamoDBPutItemOutput>) -> AWSTask<UserProfile> in
                 if let error = task.error {
                     print("failed put request to user profile. Error: \(error)")
-                    return nil
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
                 }
                 print("successful put request to user")
                 // Do something with task.result
@@ -98,10 +103,15 @@ class DynamoHandler {
         
         return dynamo
             .getItem(get!)
-            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<Scenario> in
+            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<Scenario>? in
                 if let error = task.error {
                     print("failed get request to scenario. Error: \(error)")
-                    return AWSTask(result: nil)
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
+                }
+                
+                if(task.result!.item == nil) {
+                    // no object found.
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.Empty.rawValue))
                 }
                 
                 print("successful get request to scenario", task)
@@ -134,10 +144,15 @@ class DynamoHandler {
         
         return dynamo
             .getItem(get!)
-            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<UserProfile> in
+            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<UserProfile>? in
                 if let error = task.error {
                     print("failed get request to user profile. Error: \(error)")
-                    return AWSTask(result: nil)
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
+                }
+                
+                if(task.result!.item == nil) {
+                    // no object found.
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.Empty.rawValue))
                 }
                 
                 let result = UserProfile();
