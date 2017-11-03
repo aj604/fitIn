@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,6 +12,49 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Pop Up View Controller-->
+        <scene sceneID="n7X-K3-84B">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="fB4-9g-ERa" customClass="popUpViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="h0f-FO-kC6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mpL-o8-L7E">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IjK-Gk-8Pj">
+                                    <rect key="frame" x="50" y="50" width="275" height="567"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQz-e4-X4z">
+                                            <rect key="frame" x="114" y="522" width="46" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.28033696590000001" green="0.7096748383" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="hQz-e4-X4z" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="8dA-eb-MAD"/>
+                                        <constraint firstAttribute="bottom" secondItem="hQz-e4-X4z" secondAttribute="bottom" constant="15" id="fUh-J7-Mfa"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="IjK-Gk-8Pj" secondAttribute="trailing" constant="50" id="7ul-jD-b0n"/>
+                                <constraint firstAttribute="bottom" secondItem="IjK-Gk-8Pj" secondAttribute="bottom" constant="50" id="Eyb-Ak-Lo1"/>
+                                <constraint firstItem="IjK-Gk-8Pj" firstAttribute="leading" secondItem="mpL-o8-L7E" secondAttribute="leading" constant="50" id="R5t-jC-eJC"/>
+                                <constraint firstItem="IjK-Gk-8Pj" firstAttribute="centerY" secondItem="mpL-o8-L7E" secondAttribute="centerY" id="Urb-qU-zXZ"/>
+                                <constraint firstItem="IjK-Gk-8Pj" firstAttribute="centerX" secondItem="mpL-o8-L7E" secondAttribute="centerX" id="Yfd-aC-W2e"/>
+                                <constraint firstItem="IjK-Gk-8Pj" firstAttribute="top" secondItem="mpL-o8-L7E" secondAttribute="top" constant="50" id="fgd-m0-33I"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MOQ-N6-XlA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1418" y="-567"/>
+        </scene>
         <!--Scenario View Controller-->
         <scene sceneID="aWW-ih-8rf">
             <objects>
@@ -37,6 +80,7 @@
                                                         <state key="normal" title="Anti-Social"/>
                                                         <connections>
                                                             <action selector="antiSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="u9m-5a-lll"/>
+                                                            <segue destination="fB4-9g-ERa" kind="presentation" id="0vN-Dl-Rbe"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLn-kY-y5i">
@@ -44,6 +88,7 @@
                                                         <state key="normal" title="Pro-Social"/>
                                                         <connections>
                                                             <action selector="proSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="s5T-JO-GTG"/>
+                                                            <segue destination="fB4-9g-ERa" kind="presentation" id="OLQ-vJ-0i4"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -755,5 +800,8 @@
         <image name="personPickingUpPoop.jpg" width="1080" height="717"/>
         <image name="profilepicdefault" width="210" height="210"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OLQ-vJ-0i4"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
