@@ -9,10 +9,10 @@
 
 import Foundation
 
-class userProfile {
+class UserProfile {
     //Variables:
-    var userName: String
     var emailAddress: String
+    var userName: String
     var userAge: Int
     var userLifetime: Int //the time for which the user has spent on our application, it is measured in seconds
     var numScenariosAnswered: Int
@@ -20,7 +20,7 @@ class userProfile {
     var averageResponseTime: Int //the average response time of a user, it is measured in milliseconds
     var favorites = [Int64]() //the array of long ints, each of which represent the id for a scenario
     var isUserLoggedIn: Bool
-    
+        
     //Methods:
     init() {
         userName = "Test userName"

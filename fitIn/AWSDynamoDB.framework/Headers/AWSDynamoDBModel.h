@@ -213,7 +213,7 @@ typedef NS_ENUM(NSInteger, AWSDynamoDBTableStatus) {
 /**
  <p>Represents the data for an attribute. You can set one, and only one, of the elements.</p><p>Each attribute in an item is a name-value pair. An attribute can be single-valued or multi-valued set. For example, a book item can have title and authors attributes. Each book has one title but can have many authors. The multi-valued attribute is a set; duplicate values are not allowed.</p>
  */
-@interface AWSDynamoDBAttributeValue : AWSModel
+@interface    AWSDynamoDBAttributeValue : AWSModel
 
 
 /**
