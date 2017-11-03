@@ -9,13 +9,11 @@
 
 import Foundation
 
-class userProfile {
-    
-    private static var currentUser: userProfile? = userProfile()
-    
+class UserProfile {
     //Variables:
-    var userName: String
+    private static var currentUser: UserProfile? = UserProfile()
     var emailAddress: String
+    var userName: String
     var userAge: Int
     var userLifetime: Int //the time for which the user has spent on our application, it is measured in seconds
     var numScenariosAnswered: Int
@@ -23,7 +21,7 @@ class userProfile {
     var averageResponseTime: Int //the average response time of a user, it is measured in milliseconds
     var favorites = [Int64]() //the array of long ints, each of which represent the id for a scenario
     var isUserLoggedIn: Bool
-    
+        
     //Methods:
     init() {
         userName = "Test userName"
@@ -88,7 +86,7 @@ class userProfile {
         return
     }
     
-    class func current() -> userProfile? {
+    class func current() -> UserProfile? {
         return currentUser
     }
     
@@ -100,12 +98,20 @@ class userProfile {
 
 /*struct userProfile {
     //MARK: VARIABLES
-    private var correct : Int
-    private var incorrect : Int
+    private var correct : Int {
+        didSet {
+            print("User got an answer correct! \nuser now has \(correct) correct answers\n")
+        }
+    }
+    private var incorrect : Int{
+        didSet {
+            print("User got an answer wrong :( \nuser now has \(incorrect) incorrect answers\n")
+        }
+    }
     
     
     //MARK: METHODS
-    init(userID: String){
+    init(){
         correct = 0
         incorrect = 0
     }

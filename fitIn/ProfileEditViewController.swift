@@ -20,7 +20,7 @@ class ProfileEditViewController: UIViewController {
         userEditProfileSaveChangesButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         userEditProfileSaveChangesButton.layer.borderWidth = 2
         userEditProfileSaveChangesButton.layer.borderColor = UIColor.black.cgColor
-        guard let currentUser = userProfile.current() else { return }
+        guard let currentUser = UserProfile.current() else { return }
         userEditUsernameField.placeholder = currentUser.userName
         userEditEmailAddressField.placeholder = currentUser.emailAddress
         userEditAgeField.placeholder = String(currentUser.userAge)
@@ -55,7 +55,7 @@ class ProfileEditViewController: UIViewController {
             //unfortunately it does not distinguish case insensitive usernames, but I will leave this for now as username format needs to be discussed
             //https://stackoverflow.com/questions/38185917/swift-how-to-censor-filter-text-entered-for-swear-words-etc
             if (userEditUsernameField.text!.count > 5 && (containsSwearWord(text: userEditUsernameField.text!, swearWords: listOfSwearWords) == false)) {
-                userProfile.current()?.updateUsername(userEditUsernameField.text!)
+                UserProfile.current()?.updateUsername(userEditUsernameField.text!)
                 userEditUsernameField.textColor = UIColor.black
                 inputValidationConditions[0] = true
             }
@@ -71,7 +71,7 @@ class ProfileEditViewController: UIViewController {
             if (userEditEmailAddressField.text!.count > 5 && userEditEmailAddressField.text!.range(of:"@") != nil) {
             //userEditEmailAddressField must be more than 5 characters long, and must contain a "@" character
             //input has been validated at this point, but the constraints can be modified in the future
-                userProfile.current()?.updateEmailAddress(userEditEmailAddressField.text!)
+                UserProfile.current()?.updateEmailAddress(userEditEmailAddressField.text!)
                 userEditEmailAddressField.textColor = UIColor.black
                 inputValidationConditions[1] = true
             }
@@ -90,7 +90,7 @@ class ProfileEditViewController: UIViewController {
             //https://stackoverflow.com/questions/34354740/how-do-you-confirm-a-string-only-contains-numbers-in-swift
             if (temp == userEditAgeField.text! && (Int(userEditAgeField.text!)! >= 1 && Int(userEditAgeField.text!)! <= 200)) {
                 //input has been validated to contain #s only and they ARE between 1 and 200, so change colour of buttons and fields and update user's age
-                userProfile.current()?.updateUserAge(Int(userEditAgeField.text!)!)
+                UserProfile.current()?.updateUserAge(Int(userEditAgeField.text!)!)
                 userEditAgeField.textColor = UIColor.black
                 inputValidationConditions[2] = true
             }

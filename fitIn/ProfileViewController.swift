@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
     }
     
     func loadUser() {
-        guard let currentUser = userProfile.current() else { return }
+        guard let currentUser = UserProfile.current() else { return }
         //currentUser.userName = "test"
         userNameLabel.text = currentUser.userName
         userEmailAddressLabel.text = currentUser.emailAddress
