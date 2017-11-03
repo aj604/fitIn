@@ -27,6 +27,24 @@ class ProfileViewController: UIViewController {
     func loadUser() {
         guard let currentUser = UserProfile.current() else { return }
         //currentUser.userName = "test"
+        dynamoHandler
+            .getUserProfile(currentUser.emailAddress)
+            .continueWith(block:
+                { (task) -> Void in
+                    print("sucessfully finished user get with: ", task.result!.emailAddress)
+                    if(currentUser.emailAddress == task.result!.emailAddress)
+                    {
+                        print("user matches")
+                        currentUser.emailAddress = task.result!.emailAddress
+                        currentUser.userName = task.result!.userName
+                        currentUser.userAge = task.result!.userAge
+                        currentUser.userLifetime = task.result!.userLifetime
+                        currentUser.numScenariosAnswered = task.result!.numScenariosAnswered
+                        currentUser.numScenariosCorrect = task.result!.numScenariosCorrect
+                        currentUser.averageResponseTime = task.result!.averageResponseTime
+                    }
+            })
+        
         userNameLabel.text = currentUser.userName
         userEmailAddressLabel.text = currentUser.emailAddress
         userAgeLabel.text = String(currentUser.userAge)
