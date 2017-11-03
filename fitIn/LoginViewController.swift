@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     //Variables
-    var currentuser = userProfile.current()
+    var currentuser = UserProfile.current()
     var password: String = ""
     
     //Outlets
