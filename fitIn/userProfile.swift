@@ -146,6 +146,8 @@ class UserProfile {
     
 }
 
+
+
 /*struct userProfile {
     //MARK: VARIABLES
     private var correct : Int {
