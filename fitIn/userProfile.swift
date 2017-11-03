@@ -15,7 +15,6 @@ class UserProfile {
     private static var currentUser: UserProfile? = UserProfile()
     var emailAddress: String
     var userName: String
-    
     var userAge: Int
     var userLifetime: Int //the time for which the user has spent on our application, it is measured in seconds
     var numScenariosAnswered: Int
@@ -35,7 +34,7 @@ class UserProfile {
         numScenariosCorrect = 0
         averageResponseTime = 0
         favorites = []
-        isUserLoggedIn = false
+        isUserLoggedIn = true
         passwordToken = "password"
         //self.getUser()
     }
