@@ -10,7 +10,7 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    var currentUser = userProfile.current()
+    var currentUser = UserProfile.current()
 
     @IBOutlet weak var UserNameTextField: UITextField!
     @IBOutlet weak var EmailTextField: UITextField!

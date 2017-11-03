@@ -17,6 +17,7 @@
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
 		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
 		0E340AC91FACEDC300F7730B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E340AC81FACEDC300F7730B /* LoginViewController.swift */; };
+		0EC208991FACF38900CD8CAE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC208981FACF38900CD8CAE /* SignUpViewController.swift */; };
 		D327BA3D1FAC1AD2001A3156 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */; };
 		D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */; };
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
@@ -63,6 +64,7 @@
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
 		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
 		0E340AC81FACEDC300F7730B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0EC208981FACF38900CD8CAE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		D39588E21FA18235003A78BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
 				0E340AC81FACEDC300F7730B /* LoginViewController.swift */,
+				0EC208981FACF38900CD8CAE /* SignUpViewController.swift */,
 				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
 				D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */,
@@ -227,6 +230,7 @@
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
+				0EC208991FACF38900CD8CAE /* SignUpViewController.swift in Sources */,
 				FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
