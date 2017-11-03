@@ -8,12 +8,14 @@
 //
 
 import Foundation
+import AWSDynamoDB
 
 class UserProfile {
     //Variables:
     private static var currentUser: UserProfile? = UserProfile()
     var emailAddress: String
     var userName: String
+    
     var userAge: Int
     var userLifetime: Int //the time for which the user has spent on our application, it is measured in seconds
     var numScenariosAnswered: Int
@@ -35,6 +37,37 @@ class UserProfile {
         isUserLoggedIn = false
         //self.getUser()
     }
+    
+    func toDBDictionary() -> [String : AWSDynamoDBAttributeValue] {
+        
+        return [
+            USER_PROFILES_TABLE_PRIMARY_KEY: makeAttrib(self.emailAddress),
+            "userName": makeAttrib(self.userName),
+            
+            "userAge": makeAttrib(self.userAge),
+            "userLifetime": makeAttrib(self.userLifetime),
+            "numScenariosAnswered": makeAttrib(self.numScenariosAnswered),
+            "numScenariosCorrect": makeAttrib(self.numScenariosCorrect),
+            "averageResponseTime": makeAttrib(self.averageResponseTime),
+            // "favorites": makeAttrib(self.favorites), // todo array of ints
+            // "isUserLoggedIn": makeAttrib(self.isUserLoggedIn), todo bools
+        ]
+    }
+    
+    func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
+        
+        self.emailAddress = dict[USER_PROFILES_TABLE_PRIMARY_KEY]!.s!
+        self.userName = dict["userName"]!.s!
+
+        self.userAge = Int(dict["userAge"]!.n!)!
+        self.userLifetime = Int(dict["userLifetime"]!.n!)!
+        self.numScenariosAnswered = Int(dict["numScenariosAnswered"]!.n!)!
+        self.numScenariosCorrect = Int(dict["numScenariosCorrect"]!.n!)!
+        self.averageResponseTime = Int(dict["averageResponseTime"]!.n!)!
+        // self.favorites = Int(dict["userAge"]!.n!)!
+        // self.isUserLoggedIn = Int(dict["userAge"]!.n!)!
+    }
+    
     func getUser() {
         //once the user has logged in the application will need to call this function as we cannot ...
         //... immediately access the database without setting placeholder values for the variables

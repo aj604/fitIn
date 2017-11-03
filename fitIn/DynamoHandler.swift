@@ -49,8 +49,6 @@ class DynamoHandler {
         put!.tableName = SCENARIO_MASTER_TABLE
         put!.item = scenario.toDBDictionary()
         
-        print("utrgaegaerg", put!.item)
-        
         return dynamo
             .putItem(put!)
             .continueWith {
@@ -72,9 +70,7 @@ class DynamoHandler {
         let put = AWSDynamoDBPutItemInput()
         
         put!.tableName = USER_PROFILES_TABLE
-        put!.item = [
-            USER_PROFILES_TABLE_PRIMARY_KEY: makeAttrib(userProfile.emailAddress)
-        ]
+        put!.item = userProfile.toDBDictionary()
         
         return dynamo
             .putItem(put!)
@@ -154,14 +150,9 @@ class DynamoHandler {
                 
                 print("successful get to user profile,", task)
                 
-                let item = task.result!.item
+                let item = task.result!.item!
                 
-                // **************************************************
-                // ADD MORE ASSIGNMENT HERE
-                
-                result.emailAddress = (item?[USER_PROFILES_TABLE_PRIMARY_KEY]?.s)!
-                
-                // **************************************************
+                result.fromDBDictionary(item)
 
                 return AWSTask(result: result)
                 
