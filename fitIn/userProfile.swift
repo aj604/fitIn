@@ -11,6 +11,7 @@ import Foundation
 
 class UserProfile {
     //Variables:
+    private static var currentUser: UserProfile? = UserProfile()
     var emailAddress: String
     var userName: String
     var userAge: Int
@@ -76,10 +77,22 @@ class UserProfile {
         //https://en.wikipedia.org/wiki/Moving_average
         averageResponseTime = (intParameter + self.numScenariosAnswered*self.averageResponseTime)/(self.numScenariosAnswered + 1)
     }
+    func updateUsername (_ stringParameter: String) {
+        userName = stringParameter
+    }
     func updateDatabase () {
         //this function will update the database with whatever is locally stored
         //but for now it is temporarily doing nothing
         return
+    }
+    
+    class func current() -> UserProfile? {
+        return currentUser
+    }
+    
+    class func login() {
+        
+        // set currentUser
     }
 }
 
