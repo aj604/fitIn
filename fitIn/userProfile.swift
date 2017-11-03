@@ -88,11 +88,23 @@ class UserProfile {
         favorites[favorites.count] = intArrayParameter
         //sets the last element of the favorites array to the id of the "favourited" scenario
     }
-    func updateEmailAddress (_ stringParameter: String) {
-        emailAddress = stringParameter
+    func updateEmailAddress (_ stringParameter: String) -> Bool {
+        if (stringParameter.count > 5 && stringParameter.range(of:"@") != nil) {
+            //userEditEmailAddressField must be more than 5 characters long, and must contain a "@" character
+            //input has been validated at this point, but the constraints can be modified in the future
+            emailAddress = stringParameter
+            return true
+        }
+        return false
     }
-    func updateUserAge (_ intParameter: Int) {
-        userAge = intParameter
+    func updateUserAge (_ intParameter: Int) -> Bool {
+        //userEditAgeField must only contain numbers and no spaces
+        //users must be between the ages of 1-200
+        if (intParameter >= 1 && intParameter <= 200) {
+            userAge = intParameter
+            return true
+        }
+        return false
     }
     func updateUserLifetime (_ intParameter: Int) {
         userLifetime = intParameter
@@ -110,23 +122,28 @@ class UserProfile {
         //https://en.wikipedia.org/wiki/Moving_average
         averageResponseTime = (intParameter + self.numScenariosAnswered*self.averageResponseTime)/(self.numScenariosAnswered + 1)
     }
-    func updateUsername (_ stringParameter: String) {
-        userName = stringParameter
+    func updateUsername (_ stringParameter: String) -> Bool {
+        //userEditUsernameField must be more than 5 characters long and must not contain profanity, detailed in listofSwearWords array
+        //unfortunately it does not distinguish case insensitive usernames, but I will leave this for now as username format needs to be discussed
+        if (stringParameter.count > 5 && (containsSwearWord(text: stringParameter, swearWords: listOfSwearWords) == false)) {
+            userName = stringParameter
+            return true
+        }
+        return false
     }
-    func updateDatabase () {
-        //this function will update the database with whatever is locally stored
-        //but for now it is temporarily doing nothing
-        return
+    
+    func containsSwearWord(text: String, swearWords: [String]) -> Bool {
+        return swearWords
+            .reduce(false) { $0 || text.contains($1.lowercased()) }
     }
+    //https://stackoverflow.com/questions/38185917/swift-how-to-censor-filter-text-entered-for-swear-words-etc
+    let listOfSwearWords = ["fuck", "shit", "crap", "bitch", "cunt", "slut"]
+    //feel free to add any that I may have missed @ groupmates :)
     
     class func current() -> UserProfile? {
         return currentUser
     }
     
-    class func login() {
-        
-        // set currentUser
-    }
 }
 
 /*struct userProfile {

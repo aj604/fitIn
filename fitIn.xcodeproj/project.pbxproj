@@ -16,7 +16,7 @@
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
 		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
-		D327BA3D1FAC1AD2001A3156 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */; };
+		D31258D21FACEE3C0037D591 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31258D11FACEE3C0037D591 /* aws-resources.swift */; };
 		D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */; };
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
 		FB0F0A101FA2C88E00A9E879 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; };
@@ -61,7 +61,7 @@
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
 		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
-		D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
+		D31258D11FACEE3C0037D591 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		D39588E21FA18235003A78BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 				0464E1001F885D0000002403 /* Main.storyboard */,
 				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
-				D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */,
+				D31258D11FACEE3C0037D591 /* aws-resources.swift */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
 			);
 			path = fitIn;
@@ -214,10 +214,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */,
+				D31258D21FACEE3C0037D591 /* aws-resources.swift in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */,
 				04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */,
-				D327BA3D1FAC1AD2001A3156 /* aws-resources.swift in Sources */,
 				D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */,
 				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
