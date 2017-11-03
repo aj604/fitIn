@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSDynamoDB
 
 class SignUpViewController: UIViewController {
     
@@ -29,14 +30,52 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func UpdateInformationOnDatabase(_ sender: Any) {
-        
+    @IBAction func AddUserButton(_ sender: Any) {
+      /*
         currentUser?.emailAddress = EmailTextField.text!
         currentUser?.userName = UserNameTextField.text!
         currentUser?.userAge = Int(AgeTextField.text!)!
         print(currentUser!.emailAddress)
         print(currentUser!.userAge)
         print(currentUser!.userName)
+        
+        
+        */
+        
+        print("esrgserg")
+        
+        let email = EmailTextField.text!
+        var password = PasswordTextField.text!
+        
+        // TODO
+        // add encryption to password
+
+        UserProfile.current()!.emailAddress = email
+        UserProfile.current()!.passwordToken = password
+        
+        dynamoHandler
+            .getUserProfile(email)
+            .continueWith(block:
+                { (task) -> AWSTask<UserProfile> in
+                    if(task.result == nil)
+                    {
+                        // user does not exist
+                        return dynamoHandler.putUserProfile(UserProfile.current()!)
+                    } else
+                    {
+                        print("user exists, try again")
+                        return AWSTask(error: NSError(domain: "", code: ErrorTypes.Exists.rawValue))
+                    }
+                })
+            .continueWith(block:
+                { (task) -> Void in
+                    if(task.error == nil) {
+                        print("success, new user")
+                    } else {
+                        print("failed to put")
+                    }
+                })
+        
     }
     
     /*
