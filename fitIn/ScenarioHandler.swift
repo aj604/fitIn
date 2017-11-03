@@ -108,7 +108,7 @@ struct ScenarioHandler {
         sleep(2)
         
         dynamoHandler
-            .getUserProfile(id)
+            .getUserProfile(randomEmail)
             .continueWith(block:
                 { (task) -> Void in
                     print("sucessfully finished user get with: ", task.result!.emailAddress)

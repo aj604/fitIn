@@ -131,7 +131,6 @@ class DynamoHandler {
         ]
         
         get!.consistentRead = true
-        get!.
         
         return dynamo
             .getItem(get!)
