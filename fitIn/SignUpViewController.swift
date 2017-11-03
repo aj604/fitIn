@@ -99,6 +99,8 @@ class SignUpViewController: UIViewController {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
             CreateNewUserVariable.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
             dynamoHandler.putUserProfile(currentUser!)
+            currentUser?.isUserLoggedIn = true
+            
         }
         
     }
