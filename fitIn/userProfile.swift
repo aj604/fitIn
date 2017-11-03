@@ -12,12 +12,7 @@ import AWSDynamoDB
 
 class UserProfile {
     //Variables:
-<<<<<<< HEAD
-    private static var currentUser: userProfile? = userProfile() //put this right above the variables
-    var userName: String
-=======
     private static var currentUser: UserProfile? = UserProfile()
->>>>>>> master
     var emailAddress: String
     var userName: String
     
@@ -123,10 +118,6 @@ class UserProfile {
         //but for now it is temporarily doing nothing
         return
     }
-<<<<<<< HEAD
-    class func current() -> userProfile? { //put this under the methods
-          return currentUser
-=======
     
     class func current() -> UserProfile? {
         return currentUser
@@ -135,7 +126,6 @@ class UserProfile {
     class func login() {
         
         // set currentUser
->>>>>>> master
     }
 }
 
