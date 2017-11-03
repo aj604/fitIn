@@ -28,7 +28,7 @@ class ResponseViewController : UIViewController {
     
     // MARK: Members
     var situationType : Scenario.ScenarioType?
-    var inputAnswer : Scenario.ScenarioType?
+    var inputAnswer : Int?
     
     // MARK: Appearence Funcs
     private func enableYesNo() {
@@ -64,15 +64,15 @@ class ResponseViewController : UIViewController {
     private func updateUI() {
         if let unwrap = situationType {
             switch unwrap{
-            case .yesOrNo(_):
+            case .yesOrNo:
                 enableYesNo()
                 disableSlider()
                 disableMultipleChoice()
-            case .multipleChoice(_):
+            case .multipleChoice:
                 enableMultipleChoice()
                 disableSlider()
                 disableYesNo()
-            case .slider(_):
+            case .slider:
                 enableSlider()
                 disableYesNo()
                 disableMultipleChoice()
@@ -82,25 +82,26 @@ class ResponseViewController : UIViewController {
     
     // MARK: UI Funcs
     @IBAction func picIsAntiSocial(_ sender: UIButton) {
-        inputAnswer = Scenario.ScenarioType.yesOrNo(0)
+        inputAnswer = 0
+        
     }
     @IBAction func picIsProSocial(_ sender: UIButton) {
-        inputAnswer = Scenario.ScenarioType.yesOrNo(1)
+        inputAnswer = 1
     }
     @IBAction func multipleChoiceA(_ sender: UIButton) {
-        inputAnswer = Scenario.ScenarioType.multipleChoice(0)
+        inputAnswer = 0
     }
     @IBAction func multipleChoiceB(_ sender: UIButton) {
-        inputAnswer = Scenario.ScenarioType.multipleChoice(1)
+        inputAnswer = 1
     }
     @IBAction func multipleChoiceC(_ sender: UIButton) {
-        inputAnswer = Scenario.ScenarioType.multipleChoice(2)
+        inputAnswer = 2
     }
     @IBAction func multipleChoiceD(_ sender: UIButton) {
-        inputAnswer = Scenario.ScenarioType.multipleChoice(3)
+        inputAnswer = 3
     }
     @IBAction func submitSlider(_ sender: UIButton) {
-        inputAnswer = Scenario.ScenarioType.slider(Int(sliderBar.value))
+        inputAnswer = Int(sliderBar.value)
     }
     
     override func viewDidLoad() {

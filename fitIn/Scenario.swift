@@ -52,18 +52,18 @@ class Scenario {
     var createdBy: String = "Anonymous"
     var tags = [String]() // List of metadata / Scenario Tags
     
-    var questionText: String
-    var answerReasoning: String
+    var questionText: String = ""
+    var answerReasoning: String = ""
     var imageLoc : URL
     
-    var response: Int // temporary, replace with UpdateScenario struct
+    var response: Int = 0 // temporary, replace with UpdateScenario struct
     
-    var type : ScenarioType
-    var initialAnswer: Int // answer set by creator
-    var averageAnswer: Double
-    var standardDeviation : Double
-    var averageTimeToAnswer: Double
-    var numberOfAnswers: Int
+    var type : ScenarioType = ScenarioType.yesOrNo
+    var initialAnswer: Int = 0// answer set by creator
+    var averageAnswer: Double = 0.0
+    var standardDeviation : Double = 0.0
+    var averageTimeToAnswer: Double = 0.0
+    var numberOfAnswers: Int = 0
 
  //MARK: METHODS
     
@@ -128,7 +128,7 @@ class Scenario {
         self.answerReasoning = dict["answerReasoning"]!.s!
         self.imageLoc = URL(string: dict["imageLoc"]!.s!)!
         
-        self.type = ScenarioType(rawValue: Int(dict["type"]!.s!)!)
+        self.type = ScenarioType(rawValue: Int(dict["type"]!.s!)!)!
         self.initialAnswer = Int(dict["initialAnswer"]!.n!)!
         self.averageAnswer = Double(dict["initialAnswer"]!.n!)!
         self.standardDeviation = Double(dict["standardDeviation"]!.n!)!

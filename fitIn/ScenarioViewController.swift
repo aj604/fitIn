@@ -23,12 +23,12 @@ class ScenarioViewController: UIViewController {
     
     //User input
     @IBAction func proSocialPic(_ sender: UIButton) {
-        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo(1)
+        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo.rawValue
         scenarioController.loadNextScenario()
         updateUI()
     }
     @IBAction func antiSocialPic(_ sender: UIButton) {
-        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo(0)
+        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo.rawValue
         scenarioController.loadNextScenario()
         updateUI()
     }

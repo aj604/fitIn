@@ -45,7 +45,7 @@ struct ScenarioHandler {
     
     // Variable to store the type of the next Scenario. This will be used to tell the view controller
     // what type of view to load for the incoming expected response
-    private var nextScenarioType : Scenario.scenarioAnswerType?
+    private var nextScenarioType : Scenario.ScenarioType?
     
     //Image Data to use for UIImageView
     private var imageData = Data()
