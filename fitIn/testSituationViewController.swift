@@ -8,27 +8,28 @@
 
 import UIKit
 
-class ScenarioViewController: UIViewController {
+class testScenarioViewController: UIViewController {
     
     
     //Image View, Put Image HERE!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var scenarioName: UILabel!
     //Control Current Scenario
     private var scenarioController = ScenarioHandler()
     
     // Eventually this will be access point for subView
-    //fileprivate var responseController : responseViewController
-    
+    fileprivate var responseController : ResponseViewController!
+    @IBOutlet weak var responseControllerhmm: UIView!
     
     //User input
     @IBAction func proSocialPic(_ sender: UIButton) {
-        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo.rawValue
+        scenarioController.voteChoice = 1
         scenarioController.loadNextScenario()
         updateUI()
     }
     @IBAction func antiSocialPic(_ sender: UIButton) {
-        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo.rawValue
+        scenarioController.voteChoice = 0
         scenarioController.loadNextScenario()
         updateUI()
     }
@@ -61,4 +62,5 @@ class ScenarioViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
+
 

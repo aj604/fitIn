@@ -8,12 +8,19 @@
 //
 
 import Foundation
+import AWSDynamoDB
 
-class userProfile {
+class UserProfile {
     //Variables:
+<<<<<<< HEAD
     private static var currentUser: userProfile? = userProfile() //put this right above the variables
     var userName: String
+=======
+    private static var currentUser: UserProfile? = UserProfile()
+>>>>>>> master
     var emailAddress: String
+    var userName: String
+    
     var userAge: Int
     var userLifetime: Int //the time for which the user has spent on our application, it is measured in seconds
     var numScenariosAnswered: Int
@@ -21,7 +28,7 @@ class userProfile {
     var averageResponseTime: Int //the average response time of a user, it is measured in milliseconds
     var favorites = [Int64]() //the array of long ints, each of which represent the id for a scenario
     var isUserLoggedIn: Bool
-    
+        
     //Methods:
     init() {
         userName = "Test userName"
@@ -35,6 +42,37 @@ class userProfile {
         isUserLoggedIn = false
         //self.getUser()
     }
+    
+    func toDBDictionary() -> [String : AWSDynamoDBAttributeValue] {
+        
+        return [
+            USER_PROFILES_TABLE_PRIMARY_KEY: makeAttrib(self.emailAddress),
+            "userName": makeAttrib(self.userName),
+            
+            "userAge": makeAttrib(self.userAge),
+            "userLifetime": makeAttrib(self.userLifetime),
+            "numScenariosAnswered": makeAttrib(self.numScenariosAnswered),
+            "numScenariosCorrect": makeAttrib(self.numScenariosCorrect),
+            "averageResponseTime": makeAttrib(self.averageResponseTime),
+            // "favorites": makeAttrib(self.favorites), // todo array of ints
+            // "isUserLoggedIn": makeAttrib(self.isUserLoggedIn), todo bools
+        ]
+    }
+    
+    func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
+        
+        self.emailAddress = dict[USER_PROFILES_TABLE_PRIMARY_KEY]!.s!
+        self.userName = dict["userName"]!.s!
+
+        self.userAge = Int(dict["userAge"]!.n!)!
+        self.userLifetime = Int(dict["userLifetime"]!.n!)!
+        self.numScenariosAnswered = Int(dict["numScenariosAnswered"]!.n!)!
+        self.numScenariosCorrect = Int(dict["numScenariosCorrect"]!.n!)!
+        self.averageResponseTime = Int(dict["averageResponseTime"]!.n!)!
+        // self.favorites = Int(dict["userAge"]!.n!)!
+        // self.isUserLoggedIn = Int(dict["userAge"]!.n!)!
+    }
+    
     func getUser() {
         //once the user has logged in the application will need to call this function as we cannot ...
         //... immediately access the database without setting placeholder values for the variables
@@ -77,13 +115,27 @@ class userProfile {
         //https://en.wikipedia.org/wiki/Moving_average
         averageResponseTime = (intParameter + self.numScenariosAnswered*self.averageResponseTime)/(self.numScenariosAnswered + 1)
     }
+    func updateUsername (_ stringParameter: String) {
+        userName = stringParameter
+    }
     func updateDatabase () {
         //this function will update the database with whatever is locally stored
         //but for now it is temporarily doing nothing
         return
     }
+<<<<<<< HEAD
     class func current() -> userProfile? { //put this under the methods
           return currentUser
+=======
+    
+    class func current() -> UserProfile? {
+        return currentUser
+    }
+    
+    class func login() {
+        
+        // set currentUser
+>>>>>>> master
     }
 }
 

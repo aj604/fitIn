@@ -15,11 +15,15 @@
 		0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF381F896F3400ECB59B /* ScenarioHandler.swift */; };
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
+<<<<<<< HEAD
 		CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */; };
 		CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */; };
+=======
+		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
+		D327BA3D1FAC1AD2001A3156 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */; };
+		D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */; };
+>>>>>>> master
 		D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39588E21FA18235003A78BD /* ProfileViewController.swift */; };
-		FB0F0A081FA2C6CC00A9E879 /* AWStesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */; };
-		FB0F0A0A1FA2C75E00A9E879 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */; };
 		FB0F0A101FA2C88E00A9E879 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; };
 		FB0F0A131FA2CB0E00A9E879 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */; };
 		FB0F0A141FA2CB0E00A9E879 /* AWSCognito.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -28,7 +32,9 @@
 		FB0F0A171FA2CB0E00A9E879 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; };
 		FB0F0A181FA2CB0E00A9E879 /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB0F0A1A1FA2CB0E00A9E879 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */; };
 		FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AE91FA7CC2C00D42695 /* Scenario.swift */; };
+		FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,16 +65,22 @@
 		0499CF381F896F3400ECB59B /* ScenarioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioHandler.swift; sourceTree = "<group>"; };
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+=======
+		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
+		D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
+		D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+>>>>>>> master
 		D39588E21FA18235003A78BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWStesting.swift; sourceTree = "<group>"; };
-		FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
 		FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
+		FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseViewController.swift; sourceTree = "<group>"; };
 		FBC51AE91FA7CC2C00D42695 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
+		FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,22 +117,28 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
+				FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */,
 				FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */,
 				FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */,
 				FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */,
 				FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */,
+				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
 				0464E0FE1F885D0000002403 /* ScenarioViewController.swift */,
+				FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */,
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				D39588E21FA18235003A78BD /* ProfileViewController.swift */,
+				D36157DE1FA2B4930031CC77 /* ProfileEditViewController.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
+<<<<<<< HEAD
 				CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */,
 				CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */,
+=======
+				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
+>>>>>>> master
 				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
+				D327BA3C1FAC1AD2001A3156 /* aws-resources.swift */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
-				FB0F0A071FA2C6CC00A9E879 /* AWStesting.swift */,
-				FB0F0A091FA2C75E00A9E879 /* aws-resources.swift */,
 			);
 			path = fitIn;
 			sourceTree = "<group>";
@@ -210,16 +228,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB0F0A0A1FA2C75E00A9E879 /* aws-resources.swift in Sources */,
+				D36157DF1FA2B4930031CC77 /* ProfileEditViewController.swift in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
+<<<<<<< HEAD
 				0464E0FF1F885D0000002403 /* SituationViewController.swift in Sources */,
 				CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */,
 				D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */,
 				CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */,
 				FB0F0A081FA2C6CC00A9E879 /* AWStesting.swift in Sources */,
+=======
+				0464E0FF1F885D0000002403 /* ScenarioViewController.swift in Sources */,
+				04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */,
+				D327BA3D1FAC1AD2001A3156 /* aws-resources.swift in Sources */,
+				D39588E31FA18235003A78BD /* ProfileViewController.swift in Sources */,
+				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,
+>>>>>>> master
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
+				FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +326,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -348,6 +376,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

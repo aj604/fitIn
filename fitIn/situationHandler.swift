@@ -14,7 +14,11 @@ import Foundation
 struct situationHandler {
     // MARK: VARIABLES
     
+<<<<<<< HEAD
     private var user = userProfile.current() //User Data, Info stored here
+=======
+    private var currentUser = userProfile.current() //User Data, Info stored here
+>>>>>>> master
     // instantiation of situation, only one situation is loaded at a time
     //
     // FUTURE: Maybe preload upcoming situation
@@ -64,10 +68,17 @@ struct situationHandler {
         }
         currentSituation.inputAnswer = voteChoice
         if currentSituation.isRightAnswer()!{
+<<<<<<< HEAD
             user?.gotCorrect()
             return true
         }
         user?.gotIncorrect()
+=======
+            currentUser?.gotCorrect()
+            return true
+        }
+        currentUser?.gotIncorrect()
+>>>>>>> master
         return true
     }
     
