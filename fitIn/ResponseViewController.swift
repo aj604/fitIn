@@ -8,8 +8,14 @@
 
 import UIKit
 
-class responseViewController: UIViewController {
+class ResponseViewController : UIViewController {
+
+//responseViewController represents the contained controller view within ScenarioViewController
+//Contains 3 distinct type of inputs for questions.
     
+//Although it appears that there are a bunch of buttons, only the ones pertaining to the input format of the current
+// scenario will be visible at any one time.
+
     //MARK: Button Outlets
     @IBOutlet weak var antiSocialButton: UIButton!
     @IBOutlet weak var proSocialButton: UIButton!
@@ -21,11 +27,10 @@ class responseViewController: UIViewController {
     @IBOutlet weak var multipleChoiceD: UIButton!
     
     // MARK: Members
-    var situationType : Scenario.responseType?
-    var inputAnswer : Scenario.responseType?
+    var situationType : Scenario.ScenarioType?
+    var inputAnswer : Int?
     
-    
-    
+    // MARK: Appearence Funcs
     private func enableYesNo() {
         antiSocialButton.isHidden = false
         proSocialButton.isHidden = false
@@ -55,19 +60,19 @@ class responseViewController: UIViewController {
         multipleChoiceD.isHidden = true
     }
     
-    
+    // This function sets the UI for the type of expected input
     private func updateUI() {
         if let unwrap = situationType {
             switch unwrap{
-            case .yesOrNo(_):
+            case .yesOrNo:
                 enableYesNo()
                 disableSlider()
                 disableMultipleChoice()
-            case .multipleChoice(_):
+            case .multipleChoice:
                 enableMultipleChoice()
                 disableSlider()
                 disableYesNo()
-            case .slider(_):
+            case .slider:
                 enableSlider()
                 disableYesNo()
                 disableMultipleChoice()
@@ -77,29 +82,31 @@ class responseViewController: UIViewController {
     
     // MARK: UI Funcs
     @IBAction func picIsAntiSocial(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.yesOrNo(0)
+        inputAnswer = 0
+        
     }
     @IBAction func picIsProSocial(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.yesOrNo(1)
+        inputAnswer = 1
     }
     @IBAction func multipleChoiceA(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.multipleChoice(0)
+        inputAnswer = 0
     }
     @IBAction func multipleChoiceB(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.multipleChoice(1)
+        inputAnswer = 1
     }
     @IBAction func multipleChoiceC(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.multipleChoice(2)
+        inputAnswer = 2
     }
     @IBAction func multipleChoiceD(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.multipleChoice(3)
+        inputAnswer = 3
     }
     @IBAction func submitSlider(_ sender: UIButton) {
-        inputAnswer = Scenario.responseType.slider(Int(sliderBar.value))
+        inputAnswer = Int(sliderBar.value)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
         
         // Do any additional setup after loading the view.
     }
