@@ -16,10 +16,11 @@ class ProfileEditViewController: UIViewController {
         //self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
         editYourProfileLabel.textColor = UIColor.white
         editYourProfileLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
-        userEditProfileSaveChangesButton.backgroundColor = UIColor.white
+        /*userEditProfileSaveChangesButton.backgroundColor = UIColor.white
         userEditProfileSaveChangesButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         userEditProfileSaveChangesButton.layer.borderWidth = 2
-        userEditProfileSaveChangesButton.layer.borderColor = UIColor.black.cgColor
+        userEditProfileSaveChangesButton.layer.borderColor = UIColor.black.cgColor*/
+        userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "save_changes_default.png")!)
         guard let currentUser = UserProfile.current() else { return }
         if (currentUser.isUserLoggedIn == true) {
             userEditUsernameField.placeholder = currentUser.userName
@@ -56,8 +57,8 @@ class ProfileEditViewController: UIViewController {
             else {
                 //userEditProfileSaveChangesButton.setTitleColor(UIColor.red, for: UIControlState.normal)
                 userEditUsernameField.textColor = UIColor.red
-                userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
-                
+                //userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
+                userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "savechanges_Red.png")!)
                 inputValidationConditions[0] = false
             }
         }
@@ -90,13 +91,15 @@ class ProfileEditViewController: UIViewController {
                 //input either contains an illegal character or is NOT between 1 and 200, so change colour of butons and fields
                 //userEditProfileSaveChangesButton.setTitleColor(UIColor.red, for: UIControlState.normal)
                 userEditAgeField.textColor = UIColor.red
-                userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
+                //userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
+                userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "savechanges_Red.png")!)
                 inputValidationConditions[2] = false
             }
         }
         if (inputValidationConditions[0] == true && inputValidationConditions[1] == true && inputValidationConditions[2] == true && UserProfile.current()?.isUserLoggedIn == true) {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
-            userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
+            //userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
+            userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "savechanges_green.png")!)
             dynamoHandler.putUserProfile(UserProfile.current()!)
         }
     }
