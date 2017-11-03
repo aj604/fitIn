@@ -13,11 +13,13 @@ class ProfileEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 2/255, green: 157/255, blue: 224/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
         editYourProfileLabel.textColor = UIColor.white
         editYourProfileLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
         userEditProfileSaveChangesButton.backgroundColor = UIColor.white
         userEditProfileSaveChangesButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        userEditProfileSaveChangesButton.layer.borderWidth = 2
+        userEditProfileSaveChangesButton.layer.borderColor = UIColor.black.cgColor
         guard let currentUser = userProfile.current() else { return }
         userEditUsernameField.placeholder = currentUser.userName
         userEditEmailAddressField.placeholder = currentUser.emailAddress

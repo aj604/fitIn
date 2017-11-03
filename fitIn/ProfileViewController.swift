@@ -12,8 +12,11 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 2/255, green: 157/255, blue: 224/255, alpha: 1.0)
-        userEditProfileButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
+        /*userEditProfileButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        userEditProfileButton.layer.cornerRadius = 5
+        userEditProfileButton.layer.borderWidth = 1
+        userEditProfileButton.layer.borderColor = UIColor.white.cgColor*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +34,7 @@ class ProfileViewController: UIViewController {
         userNumScenariosCorrectLabel.text = String(currentUser.numScenariosCorrect)
         userNumScenariosAnsweredLabel.text = String(currentUser.numScenariosAnswered)
         userAverageResponseTimeLabel.text = String(currentUser.averageResponseTime)
+        userProfilesLabel.textColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,6 +42,7 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet weak var userProfilesLabel: UILabel!
     @IBOutlet var userEditProfileButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailAddressLabel: UILabel!
@@ -46,6 +51,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userNumScenariosCorrectLabel: UILabel!
     @IBOutlet weak var userNumScenariosAnsweredLabel: UILabel!
     @IBOutlet weak var userAverageResponseTimeLabel: UILabel!
+    
 
     /*
      // MARK: - Navigation
