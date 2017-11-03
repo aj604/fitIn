@@ -21,8 +21,16 @@ class ProfileEditViewController: UIViewController {
         userEditProfileSaveChangesButton.layer.borderWidth = 2
         userEditProfileSaveChangesButton.layer.borderColor = UIColor.black.cgColor
         guard let currentUser = UserProfile.current() else { return }
-        userEditUsernameField.placeholder = currentUser.userName
-        userEditAgeField.placeholder = String(currentUser.userAge)
+        if (currentUser.isUserLoggedIn == true) {
+            userEditUsernameField.placeholder = currentUser.userName
+            userEditAgeField.placeholder = String(currentUser.userAge)
+        }
+        else {
+            userEditUsernameField.placeholder = "Please login to use this feature."
+            userEditAgeField.placeholder = "Please login to use this feature."
+            userEditUsernameField.isUserInteractionEnabled = false
+            userEditAgeField.isUserInteractionEnabled = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
