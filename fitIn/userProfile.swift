@@ -34,7 +34,7 @@ class UserProfile {
         numScenariosCorrect = 0
         averageResponseTime = 0
         favorites = []
-        isUserLoggedIn = false
+        isUserLoggedIn = true
         passwordToken = "password"
         //self.getUser()
     }

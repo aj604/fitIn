@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+        self.navigationItem.title = "Profile Information"
         loadUser()
     }
     
@@ -49,22 +50,22 @@ class ProfileViewController: UIViewController {
         if (currentUser.isUserLoggedIn == true)
         {
             dynamoHandler
-                .getUserProfile(currentUser.emailAddress)
-                .continueWith(block:
-                    { (task) -> Void in
-                        print("sucessfully finished user get with: ", currentUser.emailAddress)
-                        if(currentUser.emailAddress == task.result!.emailAddress)
-                        {
-                            print("user matches")
-                            currentUser.emailAddress = task.result!.emailAddress
-                            currentUser.userName = task.result!.userName
-                            currentUser.userAge = task.result!.userAge
-                            currentUser.userLifetime = task.result!.userLifetime
-                            currentUser.numScenariosAnswered = task.result!.numScenariosAnswered
-                            currentUser.numScenariosCorrect = task.result!.numScenariosCorrect
-                            currentUser.averageResponseTime = task.result!.averageResponseTime
-                        }
-                })
+            .getUserProfile(currentUser.emailAddress)
+            .continueWith(block:
+            { (task) -> Void in
+                print("sucessfully finished user get with: ", currentUser.emailAddress)
+                if(currentUser.emailAddress == task.result?.emailAddress)
+                {
+                    print("user matches")
+                    currentUser.emailAddress = task.result!.emailAddress
+                    currentUser.userName = task.result!.userName
+                    currentUser.userAge = task.result!.userAge
+                    currentUser.userLifetime = task.result!.userLifetime
+                    currentUser.numScenariosAnswered = task.result!.numScenariosAnswered
+                    currentUser.numScenariosCorrect = task.result!.numScenariosCorrect
+                    currentUser.averageResponseTime = task.result!.averageResponseTime
+                }
+            })
         }
         userNameLabel.text = currentUser.userName
         userEmailAddressLabel.text = currentUser.emailAddress
