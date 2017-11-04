@@ -51,6 +51,16 @@ class ProfileEditViewController: UIViewController {
     //element 0 is for username, element 1 is for email address, element 2 is for age, element 3 will be for password
     
     @IBAction func userEditProfileSaveChanges(_ sender: Any) {
+        if (UserProfile.current()?.isUserLoggedIn == false) {
+            //https://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038
+            //https://stackoverflow.com/questions/26956016/cancel-button-in-uialertcontroller-with-uialertcontrollerstyle-actionsheet
+            // Initialize Alert View
+            let alertController = UIAlertController(title: "Validation Error", message: "Please login or sign up with an account.", preferredStyle: .alert)
+            // Add Options to Alert
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+            // Show Alert View
+            self.present(alertController, animated: true, completion: nil)
+        }
         if (userEditUsernameField.text!.count > 0 && UserProfile.current()?.isUserLoggedIn == true) {
             if (UserProfile.current()?.updateUsername(userEditUsernameField.text!) == true) {
                 userEditUsernameField.textColor = UIColor.black

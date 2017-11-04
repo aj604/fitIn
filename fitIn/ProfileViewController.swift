@@ -25,9 +25,27 @@ class ProfileViewController: UIViewController {
         loadUser()
     }
     
+    func segueToLogin() -> Void{
+        //temporary "solution" to segue into login screen when user is not logged in
+        hackyButton.sendActions(for: UIControlEvents.touchUpInside)
+    }
+    
     func loadUser() {
         guard let currentUser = UserProfile.current() else { return }
         //currentUser.userName = "test"
+        hackyButton.isHidden = true
+        if (currentUser.isUserLoggedIn == false) {
+            //https://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038
+            //https://stackoverflow.com/questions/26956016/cancel-button-in-uialertcontroller-with-uialertcontrollerstyleactionsheet
+            // Initialize Alert View
+            let alertController = UIAlertController(title: "Validation Error", message: "Please login or sign up with an account.", preferredStyle: .alert)
+            // Add Options to Alert
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
+                self.segueToLogin()
+            }))
+            // Show Alert View
+            self.present(alertController, animated: true, completion: nil)
+        }
         if (currentUser.isUserLoggedIn == true)
         {
             dynamoHandler
@@ -72,8 +90,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userNumScenariosCorrectLabel: UILabel!
     @IBOutlet weak var userNumScenariosAnsweredLabel: UILabel!
     @IBOutlet weak var userAverageResponseTimeLabel: UILabel!
+    @IBOutlet weak var hackyButton: UIButton!
     
-
     /*
      // MARK: - Navigation
 

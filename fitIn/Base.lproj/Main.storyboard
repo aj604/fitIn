@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -141,7 +141,7 @@
                                                 <rect key="frame" x="168.5" y="366.5" width="38" height="114.5"/>
                                                 <state key="normal" title="Login"/>
                                                 <connections>
-                                                    <segue destination="mVg-9T-mi2" kind="show" id="Qlg-hF-YsV"/>
+                                                    <segue destination="mVg-9T-mi2" kind="show" identifier="toLogin" id="Qlg-hF-YsV"/>
                                                 </connections>
                                             </button>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="LrU-kg-Zx9">
@@ -385,13 +385,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NmH-aI-cNE">
-                                        <rect key="frame" x="60.5" y="323.5" width="254" height="323.5"/>
+                                        <rect key="frame" x="52.5" y="323.5" width="270" height="323.5"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bcn-kA-Fpz">
-                                                <rect key="frame" x="-2" y="0.0" width="258" height="163"/>
+                                                <rect key="frame" x="-2" y="0.0" width="274" height="163"/>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZJ-0z-JhI">
-                                                <rect key="frame" x="102.5" y="162" width="49" height="161.5"/>
+                                                <rect key="frame" x="110.5" y="162" width="49" height="161.5"/>
                                                 <state key="normal" title="Submit"/>
                                                 <connections>
                                                     <action selector="submit:" destination="iml-EJ-WA0" eventType="touchUpInside" id="3v2-fQ-d6X"/>
@@ -703,11 +703,20 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKt-XJ-Xoa">
+                                <rect key="frame" x="320" y="64" width="1" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="mVg-9T-mi2" kind="show" id="Rjw-c3-Bar"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="hHl-Qp-0a0"/>
                     </view>
                     <connections>
+                        <outlet property="hackyButton" destination="wKt-XJ-Xoa" id="RbQ-Za-XPJ"/>
                         <outlet property="userAgeLabel" destination="gWX-VJ-05q" id="cTW-hc-uAY"/>
                         <outlet property="userAverageResponseTimeLabel" destination="7Wp-O3-PkR" id="qoI-2S-Gwb"/>
                         <outlet property="userEditProfileButton" destination="fdn-55-t6Q" id="sj1-br-oJ2"/>
@@ -1015,6 +1024,7 @@
         <image name="profilepicdefault" width="210" height="210"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Rjw-c3-Bar"/>
         <segue reference="OLQ-vJ-0i4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
