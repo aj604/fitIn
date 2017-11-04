@@ -39,6 +39,7 @@
 		FB80D1AE1FAD00A7005CED02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */; };
 		FB80D1B01FAD00C2005CED02 /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1AF1FAD00C2005CED02 /* ScenarioViewController.swift */; };
 		FB80D1B21FAD0234005CED02 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */; };
+		FB80D1C51FAD819E005CED02 /* TestDynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */; };
 		FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AE91FA7CC2C00D42695 /* Scenario.swift */; };
 		FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FB80D1AF1FAD00C2005CED02 /* ScenarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
 		FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDynamoHandler.swift; sourceTree = "<group>"; };
 		FBC51AE91FA7CC2C00D42695 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +203,7 @@
 				D3B58BBB1FAD3ECC00436A80 /* AWSS3.framework */,
 				D3B58BBD1FAD3ECD00436A80 /* UserProfileTest.swift */,
 				D3B58BB31FAD3EAF00436A80 /* Info.plist */,
+				FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */,
 			);
 			path = fitInTests;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			files = (
 				D3B58BC21FAD3ECD00436A80 /* UserProfileTest.swift in Sources */,
 				D3B58BB21FAD3EAF00436A80 /* fitInTests.swift in Sources */,
+				FB80D1C51FAD819E005CED02 /* TestDynamoHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
