@@ -13,6 +13,7 @@ class ProfileEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+        self.navigationItem.title = "Profile Modification"
         //self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
         editYourProfileLabel.textColor = UIColor.white
         editYourProfileLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 28)
@@ -38,7 +39,7 @@ class ProfileEditViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+	
     @IBOutlet weak var userEditUsernameIcon: UIImageView!
     @IBOutlet weak var userEditAgeIcon: UIImageView!
     @IBOutlet var userEditUsernameField: UITextField!
@@ -63,6 +64,14 @@ class ProfileEditViewController: UIViewController {
                 //userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "savechanges_Red.png")!)
                 userEditUsernameIcon.backgroundColor = UIColor(patternImage: UIImage(named: "cross.png")!)
+                //https://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038
+                //https://stackoverflow.com/questions/26956016/cancel-button-in-uialertcontroller-with-uialertcontrollerstyle-actionsheet
+                // Initialize Alert View
+                let alertController = UIAlertController(title: "Validation Error", message: "Please enter a username longer than 5 characters and without profanity.", preferredStyle: .alert)
+                // Add Options to Alert
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                // Show Alert View
+                self.present(alertController, animated: true, completion: nil)
                 inputValidationConditions[0] = false
             }
         }
@@ -99,6 +108,14 @@ class ProfileEditViewController: UIViewController {
                 //userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "savechanges_Red.png")!)
                 userEditAgeIcon.backgroundColor = UIColor(patternImage: UIImage(named: "cross.png")!)
+                //https://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038
+                //https://stackoverflow.com/questions/26956016/cancel-button-in-uialertcontroller-with-uialertcontrollerstyle-actionsheet
+                // Initialize Alert View
+                let alertController = UIAlertController(title: "Validation Error", message: "Please enter an age between 1 and 200.", preferredStyle: .alert)
+                // Add Options to Alert
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                // Show Alert View
+                self.present(alertController, animated: true, completion: nil)
                 inputValidationConditions[2] = false
             }
         }
@@ -106,6 +123,14 @@ class ProfileEditViewController: UIViewController {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
             //userEditProfileSaveChangesButton.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
             userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "savechanges_green.png")!)
+            //https://code.tutsplus.com/tutorials/ios-fundamentals-uialertview-and-uialertcontroller--cms-24038
+            //https://stackoverflow.com/questions/26956016/cancel-button-in-uialertcontroller-with-uialertcontrollerstyle-actionsheet
+            // Initialize Alert View
+            let alertController = UIAlertController(title: "Modification Success", message: "Your changes have been saved correctly.", preferredStyle: .alert)
+            // Add Options to Alert
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+            // Show Alert View
+            self.present(alertController, animated: true, completion: nil)
             dynamoHandler.putUserProfile(UserProfile.current()!)
         }
     }
