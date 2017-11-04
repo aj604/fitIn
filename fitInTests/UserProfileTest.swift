@@ -38,9 +38,15 @@ class UserProfileTest: XCTestCase {
         XCTAssertTrue(boolean == true)
     }
     
-    func testUserProfileAgeSetFail() {
+    func testUserProfileAgeSetFailTooOld() {
         //this test should fail as age parameter is not valid
         let boolean = UserProfile.current()?.updateUserAge(250)
+        XCTAssertTrue(boolean == false)
+    }
+    
+    func testUserProfileAgeSetFailTooYoung() {
+        //this test should fail as age parameter is not valid
+        let boolean = UserProfile.current()?.updateUserAge(-1)
         XCTAssertTrue(boolean == false)
     }
     
@@ -56,6 +62,18 @@ class UserProfileTest: XCTestCase {
         XCTAssertTrue(boolean == false)
     }
     
+    func testUserProfileUsernameSetFailWithCharacter() {
+        //this test should fail as username paramter is not valid
+        let boolean = UserProfile.current()?.updateUsername("F@IL")
+        XCTAssertTrue(boolean == false)
+    }
+    
+    func testUserProfileUsernameSetFailWithProfanity() {
+        //this test should fail as username paramter is not valid
+        let boolean = UserProfile.current()?.updateUsername("shit")
+        XCTAssertTrue(boolean == false)
+    }
+    
     func testUserProfileUsernameSetPass() {
         //this test should fail as username paramter is not valid
         let boolean = UserProfile.current()?.updateUsername("UsernamePass")
@@ -67,6 +85,14 @@ class UserProfileTest: XCTestCase {
         let oldNumScenariosAnswered = UserProfile.current()?.numScenariosAnswered
         UserProfile.current()?.gotCorrect()
         XCTAssertTrue((oldNumScenariosCorrect! + 1) == UserProfile.current()?.numScenariosCorrect)
+        XCTAssertTrue((oldNumScenariosAnswered! + 1) == UserProfile.current()?.numScenariosAnswered)
+    }
+    
+    func testUserProfileGotIncorrectAnswer() {
+        let oldNumScenariosCorrect = UserProfile.current()?.numScenariosCorrect
+        let oldNumScenariosAnswered = UserProfile.current()?.numScenariosAnswered
+        UserProfile.current()?.gotIncorrect()
+        XCTAssertTrue(oldNumScenariosCorrect! == UserProfile.current()?.numScenariosCorrect)
         XCTAssertTrue((oldNumScenariosAnswered! + 1) == UserProfile.current()?.numScenariosAnswered)
     }
     
