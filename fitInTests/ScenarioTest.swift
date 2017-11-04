@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import fitIn
 
 class ScenarioTest: XCTestCase {
     
@@ -31,5 +32,33 @@ class ScenarioTest: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
+    func testCreateScenario(){
+        let testScenario = Scenario()
+        var boolean = (testScenario.scenarioID == "0")
+        boolean = boolean &&  (testScenario.createdBy == "Anonymous")
+
+        boolean = boolean && (testScenario.questionText == "a")
+        boolean = boolean && (testScenario.answerReasoning == "Sucks to suck")
+        boolean = boolean && (testScenario.imageLoc == URL(string: "https:i.imgur.com/I8wCreu.jpg")!)
+        
+        boolean = boolean && (testScenario.response == 0)
+        boolean = boolean && (testScenario.initialAnswer == 0)
+        boolean = boolean && (testScenario.averageAnswer == 0.0)
+        boolean = boolean && (testScenario.standardDeviation == 0.0)
+        boolean = boolean && (testScenario.averageTimeToAnswer == 0.0)
+        boolean = boolean && (testScenario.numberOfAnswers == 0)
+        if (boolean == false){
+            XCTAssertTrue(true)
+            print("scenario init not working")
+        }
+        testScenario.setscenarioID(value: "5")
+        testScenario.setScenarioURL(url: "test.ca")
+        boolean = (testScenario.scenarioID == "5")
+        boolean = boolean && (testScenario.imageLoc == URL(string: "test.ca")!)
+        if (boolean == false){
+            XCTAssertTrue(true)
+            print("scenario update not working")
+        }
+    }
+
 }
