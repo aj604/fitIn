@@ -110,8 +110,8 @@ class SignUpViewController: UIViewController {
         // TODO
         // add encryption to password
 
-        UserProfile.current()!.emailAddress = email
-        UserProfile.current()!.passwordToken = password
+        currentUser?.emailAddress = email
+        currentUser?.passwordToken = password
 
         dynamoHandler
             .getUserProfile(email)

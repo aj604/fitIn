@@ -4,8 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -303,13 +303,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NmH-aI-cNE">
-                                        <rect key="frame" x="60.5" y="323.5" width="254" height="323.5"/>
+                                        <rect key="frame" x="54.5" y="323.5" width="266" height="323.5"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bcn-kA-Fpz">
-                                                <rect key="frame" x="-2" y="0.0" width="258" height="163"/>
+                                                <rect key="frame" x="-2" y="0.0" width="270" height="163"/>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZJ-0z-JhI">
-                                                <rect key="frame" x="102.5" y="162" width="49" height="161.5"/>
+                                                <rect key="frame" x="108.5" y="162" width="49" height="161.5"/>
                                                 <state key="normal" title="Submit"/>
                                                 <connections>
                                                     <action selector="submit:" destination="iml-EJ-WA0" eventType="touchUpInside" id="3v2-fQ-d6X"/>
@@ -925,7 +925,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7UD-sK-Qfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="996" y="1382"/>
-
         </scene>
     </scenes>
     <resources>
