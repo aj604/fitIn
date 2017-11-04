@@ -75,6 +75,14 @@ struct ScenarioHandler {
             return false
             //Failed Vote
         }
+        
+        dynamoHandler
+            .getRandomScenario()
+            .continueWith(block:
+            { (task) -> Void in
+                    print("egagagarg", task)
+                    print("sucessfully finished scenario random get with: ", task.result!.scenarioID)
+            })
 
         let id = String(arc4random())
         
@@ -89,7 +97,7 @@ struct ScenarioHandler {
             .getScenario(id)
             .continueWith(block:
             { (task) -> Void in
-                print("egagagarg", task.result!)
+                print("egagagarg", task)
                 print("sucessfully finished scenario get with: ", task.result!.scenarioID)
                 if(id == task.result!.scenarioID)
                 {
