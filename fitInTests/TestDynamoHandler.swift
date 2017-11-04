@@ -35,6 +35,7 @@ class TestDynamoHandler: XCTestCase {
             }
             
             task.waitUntilFinished();
+            initDBFirstTime = false;
         }
     }
     
@@ -76,6 +77,16 @@ class TestDynamoHandler: XCTestCase {
             .continueWith(block:
                 { (task) -> Void in
                     XCTAssertTrue(id == (task.result! as! UserProfile).emailAddress)
+            })
+            .waitUntilFinished();
+    }
+    
+    func testGetRandomScenario() {
+        dynamoHandler
+            .getRandomScenario()
+            .continueWith(block:
+            { (task) -> Void in
+                    XCTAssertTrue(task.result != nil)
             })
             .waitUntilFinished();
     }
