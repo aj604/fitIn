@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import AWSDynamoDB
 
 class SignUpViewController: UIViewController {
-    
+
     var currentUser = UserProfile.current()
 
     @IBOutlet weak var UserNameTextField: UITextField!
@@ -18,10 +19,10 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var ConfirmPasswordTextField: UITextField!
     @IBOutlet var CreateNewUserVariable: UIButton!
-    
+
     var inputValidationConditions: [Bool] = [true, true, true, true]
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
@@ -38,10 +39,10 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
+
+
     @IBAction func CreateNewUserFunction(_ sender: Any) {
-        
+
         if (UserNameTextField.text!.count > 0)
         {
             if ((currentUser?.updateUsername(UserNameTextField.text!) == true))
@@ -53,16 +54,16 @@ class SignUpViewController: UIViewController {
             {
                 UserNameTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
-                
+
                 inputValidationConditions[0] = false
             }
         }
-        
-        
+
+
         if (AgeTextField.text!.count > 0)
         {
             let temp = AgeTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
-            
+
             if (temp == AgeTextField.text! && currentUser?.updateUserAge(Int(AgeTextField.text!)!) == true)
             {
                 AgeTextField.textColor = UIColor.black
@@ -75,7 +76,7 @@ class SignUpViewController: UIViewController {
                 inputValidationConditions[1] = false
             }
         }
-        
+
         if (EmailTextField.text!.count > 0)
         {
             if (currentUser?.updateEmailAddress(EmailTextField.text!) == true)
@@ -94,18 +95,50 @@ class SignUpViewController: UIViewController {
                 inputValidationConditions[2] = false
             }
         }
-        
+
         if (inputValidationConditions[0] == true && inputValidationConditions[1] == true && inputValidationConditions[2] == true) {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
             CreateNewUserVariable.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
             dynamoHandler.putUserProfile(currentUser!)
             currentUser?.isUserLoggedIn = true
-            
+
         }
-        
+
+        let email = EmailTextField.text!
+        var password = PasswordTextField.text!
+
+        // TODO
+        // add encryption to password
+
+        UserProfile.current()!.emailAddress = email
+        UserProfile.current()!.passwordToken = password
+
+        dynamoHandler
+            .getUserProfile(email)
+            .continueWith(block:
+                { (task) -> AWSTask<UserProfile> in
+                    if(task.result == nil)
+                    {
+                        // user does not exist
+                        return dynamoHandler.putUserProfile(UserProfile.current()!)
+                    } else
+                    {
+                        print("user exists, try again")
+                        return AWSTask(error: NSError(domain: "", code: ErrorTypes.Exists.rawValue))
+                    }
+                })
+            .continueWith(block:
+                { (task) -> Void in
+                    if(task.error == nil) {
+                        print("success, new user")
+                    } else {
+                        print("failed to put")
+                    }
+                })
+
     }
-    
-    
+
+
     /*
     // MARK: - Navigation
 

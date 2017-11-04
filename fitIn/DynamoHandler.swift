@@ -14,6 +14,7 @@ let dynamoHandler = DynamoHandler();
 enum ErrorTypes : Int {
     case RequestFailed
     case Empty
+    case Exists
 }
 
 func makeAttrib(_ value: Int) -> AWSDynamoDBAttributeValue {
@@ -135,15 +136,20 @@ class DynamoHandler {
         
         return dynamo
             .getItem(get!)
-            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<UserProfile>? in
+            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<AnyObject> in
+                
+                print("get task is ", task)
+                
                 if let error = task.error {
                     print("failed get request to user profile. Error: \(error)")
-                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
+                    let task = AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue)) as AWSTask<AnyObject>
+                    return task
                 }
                 
                 if(task.result!.item == nil) {
                     // no object found.
-                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.Empty.rawValue))
+                    let task = AWSTask(error: NSError(domain: "", code: ErrorTypes.Empty.rawValue)) as AWSTask<AnyObject>
+                    return task
                 }
                 
                 let result = UserProfile();

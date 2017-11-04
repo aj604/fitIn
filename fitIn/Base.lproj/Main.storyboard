@@ -672,14 +672,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iGb-Ys-B9K">
-                                <rect key="frame" x="27" y="400" width="320" height="30"/>
+                                <rect key="frame" x="27" y="400" width="309" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="This feature is currently unavailable..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="09Q-YV-VnH">
-                                <rect key="frame" x="26" y="487" width="320" height="30"/>
+                                <rect key="frame" x="26" y="487" width="310" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="textColor"/>
@@ -687,7 +687,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gcv-iD-YCN">
-                                <rect key="frame" x="27" y="568" width="320" height="30"/>
+                                <rect key="frame" x="27" y="568" width="309" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -705,9 +705,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRp-Qg-2V2">
-                                <rect key="frame" x="225" y="609" width="121" height="41"/>
+                                <rect key="frame" x="158" y="609" width="188" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save Changes"/>
                                 <connections>
                                     <action selector="userEditProfileSaveChanges:" destination="o8p-5p-T0j" eventType="touchUpInside" id="2eu-Ie-9Mj"/>
                                 </connections>
@@ -717,6 +716,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="profilepicdefault"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AqJ-1q-aO7">
+                                <rect key="frame" x="331" y="551" width="56" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXJ-TT-GGH">
+                                <rect key="frame" x="331" y="383" width="56" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Kf4-96-oYE"/>
@@ -724,8 +731,10 @@
                     <connections>
                         <outlet property="editYourProfileLabel" destination="uN2-tR-IxR" id="qdk-ml-EdJ"/>
                         <outlet property="userEditAgeField" destination="Gcv-iD-YCN" id="oGB-yb-45l"/>
+                        <outlet property="userEditAgeIcon" destination="AqJ-1q-aO7" id="csK-2m-cYG"/>
                         <outlet property="userEditProfileSaveChangesButton" destination="BRp-Qg-2V2" id="lgH-Zp-zmm"/>
                         <outlet property="userEditUsernameField" destination="iGb-Ys-B9K" id="OjP-CC-Fgf"/>
+                        <outlet property="userEditUsernameIcon" destination="jXJ-TT-GGH" id="a4R-bO-k6Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LZ-2r-rqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -916,6 +925,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7UD-sK-Qfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="996" y="1382"/>
+
         </scene>
     </scenes>
     <resources>
