@@ -17,6 +17,7 @@
 		04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */; };
 		04DA17F21FAD142A00A822AD /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17F11FAD142A00A822AD /* SliderViewController.swift */; };
 		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
+		0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */; };
 		CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */; };
 		CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */; };
 		D38B19131FAD0E7300F27E6F /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B19121FAD0E7300F27E6F /* aws-resources.swift */; };
@@ -66,6 +67,7 @@
 		04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
 		04DA17F11FAD142A00A822AD /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
+		0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D38B19121FAD0E7300F27E6F /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
+				0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */,
 				04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */,
 				04DA17F11FAD142A00A822AD /* SliderViewController.swift */,
 				CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */,
@@ -235,6 +238,7 @@
 				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
 				FB80D1B01FAD00C2005CED02 /* ScenarioViewController.swift in Sources */,
+				0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */,
 				04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,

@@ -151,4 +151,10 @@ struct ScenarioHandler {
         //maybe change?
         return imageData
     }
+    
+    //return scenario answer reasoning
+    func returnReasoning() -> String {
+        return currentScenario.answerReasoning
+    }
+    
 }

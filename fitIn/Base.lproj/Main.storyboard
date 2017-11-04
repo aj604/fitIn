@@ -1,16 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Pop Up View Controller-->
+        <scene sceneID="n7X-K3-84B">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="fB4-9g-ERa" customClass="popUpViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="h0f-FO-kC6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mpL-o8-L7E">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IjK-Gk-8Pj">
+                                    <rect key="frame" x="50" y="50" width="275" height="567"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQz-e4-X4z">
+                                            <rect key="frame" x="113" y="522" width="48" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="iJT-RK-Y5a"/>
+                                                <constraint firstAttribute="height" constant="30" id="wVI-UG-Lub"/>
+                                            </constraints>
+                                            <state key="normal" title="Got it!"/>
+                                            <connections>
+                                                <action selector="closePopUp:" destination="fB4-9g-ERa" eventType="touchUpInside" id="NVh-NE-KPY"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-BG-U92">
+                                            <rect key="frame" x="105.5" y="15" width="65" height="21"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="YLb-rY-YLb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jy-Va-vzE">
+                                            <rect key="frame" x="15" y="273" width="245" height="21"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.8269919577495668" green="0.88373668760024604" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="3jy-Va-vzE" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="7wh-2x-3Tt"/>
+                                        <constraint firstItem="HhL-BG-U92" firstAttribute="top" secondItem="IjK-Gk-8Pj" secondAttribute="top" constant="15" id="8Kt-fb-pqQ"/>
+                                        <constraint firstItem="hQz-e4-X4z" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="8dA-eb-MAD"/>
+                                        <constraint firstItem="HhL-BG-U92" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="IoC-lT-foc"/>
+                                        <constraint firstItem="3jy-Va-vzE" firstAttribute="leading" secondItem="IjK-Gk-8Pj" secondAttribute="leading" constant="15" id="Y6g-KS-dFn"/>
+                                        <constraint firstAttribute="bottom" secondItem="hQz-e4-X4z" secondAttribute="bottom" constant="15" id="fUh-J7-Mfa"/>
+                                        <constraint firstItem="3jy-Va-vzE" firstAttribute="centerY" secondItem="IjK-Gk-8Pj" secondAttribute="centerY" id="oEJ-T5-Thp"/>
+                                        <constraint firstAttribute="trailing" secondItem="3jy-Va-vzE" secondAttribute="trailing" constant="15" id="qGe-Im-bDJ"/>
+                                        <constraint firstItem="HhL-BG-U92" firstAttribute="centerX" secondItem="IjK-Gk-8Pj" secondAttribute="centerX" id="xBk-rE-X8K"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="IjK-Gk-8Pj" secondAttribute="trailing" constant="50" id="7ul-jD-b0n"/>
+                                <constraint firstAttribute="bottom" secondItem="IjK-Gk-8Pj" secondAttribute="bottom" constant="50" id="Eyb-Ak-Lo1"/>
+                                <constraint firstItem="IjK-Gk-8Pj" firstAttribute="leading" secondItem="mpL-o8-L7E" secondAttribute="leading" constant="50" id="R5t-jC-eJC"/>
+                                <constraint firstItem="IjK-Gk-8Pj" firstAttribute="centerY" secondItem="mpL-o8-L7E" secondAttribute="centerY" id="Urb-qU-zXZ"/>
+                                <constraint firstItem="IjK-Gk-8Pj" firstAttribute="centerX" secondItem="mpL-o8-L7E" secondAttribute="centerX" id="Yfd-aC-W2e"/>
+                                <constraint firstItem="IjK-Gk-8Pj" firstAttribute="top" secondItem="mpL-o8-L7E" secondAttribute="top" constant="50" id="fgd-m0-33I"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                    <connections>
+                        <outlet property="answerLabel" destination="HhL-BG-U92" id="82r-BC-MK5"/>
+                        <outlet property="answerReasoning" destination="3jy-Va-vzE" id="Zqu-RE-kLP"/>
+                        <outlet property="closePopUpbutton" destination="hQz-e4-X4z" id="KUU-au-fCj"/>
+                        <outlet property="popUpView" destination="IjK-Gk-8Pj" id="Lsa-Cu-0PF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MOQ-N6-XlA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1418" y="-567"/>
+        </scene>
         <!--Scenario View Controller-->
         <scene sceneID="aWW-ih-8rf">
             <objects>
@@ -36,6 +117,7 @@
                                                         <state key="normal" title="Anti-Social"/>
                                                         <connections>
                                                             <action selector="antiSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="u9m-5a-lll"/>
+                                                            <segue destination="fB4-9g-ERa" kind="presentation" id="0vN-Dl-Rbe"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLn-kY-y5i">
@@ -43,6 +125,7 @@
                                                         <state key="normal" title="Pro-Social"/>
                                                         <connections>
                                                             <action selector="proSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="s5T-JO-GTG"/>
+                                                            <segue destination="fB4-9g-ERa" kind="presentation" id="OLQ-vJ-0i4"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -931,5 +1014,8 @@
         <image name="personPickingUpPoop.jpg" width="1080" height="717"/>
         <image name="profilepicdefault" width="210" height="210"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OLQ-vJ-0i4"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
