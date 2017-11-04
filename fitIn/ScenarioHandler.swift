@@ -76,57 +76,6 @@ struct ScenarioHandler {
             //Failed Vote
         }
         
-        dynamoHandler
-            .getRandomScenario()
-            .continueWith(block:
-            { (task) -> Void in
-                    print("egagagarg", task)
-                    print("sucessfully finished scenario random get with: ", task.result!.scenarioID)
-            })
-
-        let id = String(arc4random())
-        
-        let exampleScenario = Scenario(scenarioID: id, type: Scenario.ScenarioType.yesOrNo)
-        
-        dynamoHandler.putScenario(exampleScenario);
-        
-        // setObj is async, wait a second before getting
-        sleep(2)
-        
-        dynamoHandler
-            .getScenario(id)
-            .continueWith(block:
-            { (task) -> Void in
-                print("egagagarg", task)
-                print("sucessfully finished scenario get with: ", task.result!.scenarioID)
-                if(id == task.result!.scenarioID)
-                {
-                    print("scenario matches")
-                }
-            })
-        
-        let randomEmail = String(arc4random())
-        
-        let exampleUser = UserProfile()
-        exampleUser.emailAddress = randomEmail
-        print(exampleUser)
-        
-        dynamoHandler.putUserProfile(exampleUser)
-        
-        // setObj is async, wait a second before getting
-        sleep(2)
-        
-        dynamoHandler
-            .getUserProfile(randomEmail)
-            .continueWith(block:
-                { (task) -> Void in
-                    print("sucessfully finished user get with: ", task.result!.emailAddress)
-                    if(randomEmail == task.result!.emailAddress)
-                    {
-                        print("user matches")
-                    }
-            })
-        
         currentScenario.response = voteChoice!
         if currentScenario.isRightAnswer() {
             user.gotCorrect() // Log vote in the user struct
