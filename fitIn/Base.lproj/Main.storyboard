@@ -483,6 +483,9 @@
                                 <rect key="frame" x="120" y="578" width="134" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="signupbutton_resized"/>
+                                <connections>
+                                    <action selector="CreateNewUserFunction:" destination="hMr-Sl-Fej" eventType="touchUpInside" id="lpE-xi-AMZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.42838880959999998" green="0.54097697619999996" blue="0.62000317260000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -523,6 +526,7 @@
                     <connections>
                         <outlet property="AgeTextField" destination="rAc-tw-LTN" id="fBH-yp-OrE"/>
                         <outlet property="ConfirmPasswordTextField" destination="JdS-Ht-iDm" id="brL-u8-yVV"/>
+                        <outlet property="CreateNewUserVariable" destination="4C8-AZ-F7b" id="x8b-nO-Ynp"/>
                         <outlet property="EmailTextField" destination="x1e-XL-upO" id="a6Z-jC-OIJ"/>
                         <outlet property="PasswordTextField" destination="2Mq-op-gZQ" id="OPi-4K-wbj"/>
                         <outlet property="UserNameTextField" destination="0M9-k7-XqL" id="I4b-Hm-U9S"/>
