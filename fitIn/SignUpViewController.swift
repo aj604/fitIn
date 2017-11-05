@@ -41,17 +41,27 @@ class SignUpViewController: UIViewController {
         
         
         */
-        
-        print("esrgserg")
-        
+
         let email = EmailTextField.text!
-        var password = PasswordTextField.text!
+        let password = PasswordTextField.text!
+        let temp = AgeTextField.text!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+        //https://stackoverflow.com/questions/34354740/how-do-you-confirm-a-string-only-contains-numbers-in-swift
+        if (temp == AgeTextField.text!) {
+            //this returns a boolean so use this when displaying UI to validate input
+            UserProfile.current()?.updateUserAge(Int(AgeTextField.text!)!)
+        }
+        else
+        {
+            //5 years old is the arbitrary default age
+            UserProfile.current()?.userAge = 5
+        }
         
         // TODO
         // add encryption to password
 
         UserProfile.current()!.emailAddress = email
         UserProfile.current()!.passwordToken = password
+        //UserProfile.current()!.userAge = age
         
         dynamoHandler
             .getUserProfile(email)

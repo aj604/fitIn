@@ -483,6 +483,9 @@
                                 <rect key="frame" x="120" y="578" width="134" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="signupbutton_resized"/>
+                                <connections>
+                                    <action selector="AddUserButton:" destination="hMr-Sl-Fej" eventType="touchUpInside" id="8IC-lD-D17"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.42838880959999998" green="0.54097697619999996" blue="0.62000317260000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
