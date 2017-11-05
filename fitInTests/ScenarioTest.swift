@@ -20,7 +20,7 @@ class ScenarioTest: XCTestCase {
     
 
     func testCreateScenario(){
-        
+        //make sure scenario fields are all right types
         let stringType = type(of:"blah")
         let urlType = type(of: URL(string: "blah.com")!)
         let tempInt:Int = 3
@@ -49,56 +49,42 @@ class ScenarioTest: XCTestCase {
         let attribType = type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY])
         
         var boolean = (type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == attribType)
-        print(type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]))
-        print(attribType)
         boolean = boolean &&  (type(of: returnedDictionary["createdBy"]) == attribType)
-        print(boolean)
         boolean = boolean && (type(of: returnedDictionary["questionText"]) == attribType)
-        print(boolean)
         boolean = boolean && (type(of: returnedDictionary["answerReasoning"]) == attribType)
-        print(boolean)
         boolean = boolean && (type(of: returnedDictionary["imageLoc"]) == attribType)
-        print(boolean)
         boolean = boolean && (type(of:returnedDictionary["type"]) == attribType)
-        print(boolean)
         boolean = boolean && (type(of:returnedDictionary["initialAnswer"]) == attribType)
-        print(boolean)
-        //boolean = boolean && (type(of:returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == doubleType)
-        //boolean = boolean && (type(of:returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == doubleType)
-        //boolean = boolean && (type(of:returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == doubleType)
         boolean = boolean && (type(of:returnedDictionary["numberOfAnswers"]) == attribType)
-        print(boolean)
         //this test should pass as it is checking for all the types
         XCTAssertTrue(boolean == true)
     }
-    /*func testRetrieveFromDB(){
-        let returned1Dictionary = testScenario.toDBDictionary();
-        let returnedDictionary = testScenario.fromDBDictionary(returned1Dictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY])
-        let attribType = type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY])
+    func testRetrieveFromDB(){
+        //make sure scenario fields are all right types
+        let returned1Dictionary = testScenario.toDBDictionary()
+        testScenario.fromDBDictionary(returned1Dictionary)
         
-        var boolean = (type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == attribType)
-        print(type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]))
-        print(attribType)
-        boolean = boolean &&  (type(of: returnedDictionary["createdBy"]) == attribType)
-        print(boolean)
-        boolean = boolean && (type(of: returnedDictionary["questionText"]) == attribType)
-        print(boolean)
-        boolean = boolean && (type(of: returnedDictionary["answerReasoning"]) == attribType)
-        print(boolean)
-        boolean = boolean && (type(of: returnedDictionary["imageLoc"]) == attribType)
-        print(boolean)
-        boolean = boolean && (type(of:returnedDictionary["type"]) == attribType)
-        print(boolean)
-        boolean = boolean && (type(of:returnedDictionary["initialAnswer"]) == attribType)
-        print(boolean)
-        //boolean = boolean && (type(of:returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == doubleType)
-        //boolean = boolean && (type(of:returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == doubleType)
-        //boolean = boolean && (type(of:returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == doubleType)
-        boolean = boolean && (type(of:returnedDictionary["numberOfAnswers"]) == attribType)
-        print(boolean)
+        let stringType = type(of:"blah")
+        let urlType = type(of: URL(string: "blah.com")!)
+        let tempInt:Int = 3
+        //let tempDouble: Double = 3.3
+        let intType = type(of:tempInt)
+        //let doubleType = type(of: tempDouble)
+        
+        var boolean = (type(of: testScenario.scenarioID) == stringType)
+        boolean = boolean &&  (type(of: testScenario.createdBy) == stringType)
+        boolean = boolean && (type(of: testScenario.questionText) == stringType)
+        boolean = boolean && (type(of: testScenario.answerReasoning) == stringType)
+        boolean = boolean && (type(of: testScenario.imageLoc) == urlType)
+        boolean = boolean && (type(of:testScenario.response) == intType)
+        boolean = boolean && (type(of:testScenario.initialAnswer) == intType)
+        //boolean = boolean && (type(of:testScenario.averageAnswer) == doubleType)
+        //boolean = boolean && (type(of:testScenario.standardDeviation) == doubleType)
+        //boolean = boolean && (type(of:testScenario.averageTimeToAnswer) == doubleType)
+        boolean = boolean && (type(of:testScenario.numberOfAnswers) == intType)
         //this test should pass as it is checking for all the types
         XCTAssertTrue(boolean == true)
-    }*/
+    }
 
 
 }
