@@ -3,8 +3,10 @@
 //  fitIn
 //
 //  Created by Vlad Polin on 10/26/17.
-//  Copyright © 2017 AJ productions. All rights reserved.
-//
+//  Copyright © 2017 group of 5. All rights reserved.
+//  contributors: Vlad Polin
+//  Known bugs:
+//              - 
 
 import UIKit
 

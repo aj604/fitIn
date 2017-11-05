@@ -3,8 +3,10 @@
 //  fitIn
 //
 //  Created by Avery Jones on 2017-11-03.
-//  Copyright © 2017 AJ productions. All rights reserved.
-//
+//  Copyright © 2017 group of 5. All rights reserved.
+//  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
+//  Known bugs:
+//  
 
 import UIKit
 

@@ -5,7 +5,9 @@
 //  Created by Avery Jones on 2017-10-07.
 //  Modified by Vladislav Polin on 2017-10-25 onwards.
 //  Copyright © 2017 group of 5. All rights reserved.
-//
+//  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
+//  Known bugs:
+//  
 
 import Foundation
 import AWSDynamoDB
