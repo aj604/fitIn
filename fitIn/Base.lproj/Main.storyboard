@@ -124,7 +124,7 @@
                                                         <state key="normal" title="Anti-Social"/>
                                                         <connections>
                                                             <action selector="antiSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="u9m-5a-lll"/>
-                                                            <segue destination="fB4-9g-ERa" kind="presentation" id="0vN-Dl-Rbe"/>
+                                                            <segue destination="fB4-9g-ERa" kind="presentation" identifier="antisocial" id="0vN-Dl-Rbe"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLn-kY-y5i">
@@ -132,7 +132,7 @@
                                                         <state key="normal" title="Pro-Social"/>
                                                         <connections>
                                                             <action selector="proSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="s5T-JO-GTG"/>
-                                                            <segue destination="fB4-9g-ERa" kind="presentation" id="OLQ-vJ-0i4"/>
+                                                            <segue destination="fB4-9g-ERa" kind="presentation" identifier="prosocial" id="OLQ-vJ-0i4"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
