@@ -15,6 +15,7 @@ class ScenarioViewController: UIViewController {
     
     //Image View, Put Image HERE!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var questionDescription: UILabel!
     
     //Control Current Scenario
     private var scenarioController = ScenarioHandler()
@@ -41,6 +42,7 @@ class ScenarioViewController: UIViewController {
         if let image = UIImage(data: scenarioController.loadScenarioImageData()){
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
+            questionDescription.text! = scenarioController.currentScenario.questionText
         }
     }
     
