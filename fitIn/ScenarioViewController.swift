@@ -4,7 +4,9 @@
 //
 //  Created by Avery Jones on 2017-10-06.
 //  Copyright © 2017 group of 5. All rights reserved.
-//
+//  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
+//  Known bugs:
+//  
 
 import UIKit
 
@@ -59,6 +61,12 @@ class ScenarioViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "prosocial" || segue.identifier == "antisocial" {
+            let popView =  	segue.destination as! popUpViewController
+            popView.passedReasoning = scenarioController.returnReasoning()
+        }
     }
 }
 

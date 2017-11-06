@@ -4,11 +4,16 @@
 //
 //  Created by Avery Jones on 2017-10-07.
 //  Copyright © 2017 group of 5. All rights reserved.
-//
+//  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
+//  Known bugs:
+//              - 
 
 import Foundation
 import AWSDynamoDB
 
+
+// This class represents a Scenario that the user would see in their typical
+// interaction with our app.
 class Scenario {
 
     // Enum for the type of response that the Scenario requires
@@ -17,32 +22,16 @@ class Scenario {
         case yesOrNo
         case slider
         case multipleChoice
-        
-        // Helper func to determine the type of response box our next view will need
-        // Could use something like an int as an identifier
-        // Accessed via Scenario.getResponseType()
-        fileprivate func getType() -> String {
-            switch self {
-            case .yesOrNo:
-                return "yesOrNo"
-            case .slider:
-                return "slider"
-            case .multipleChoice:
-                return "multipleChoice"
-            }
-        }
-        
-        /*fileprivate func fromType(_ typeString: String) -> responseType {
-            switch typeString {
-            case ."yesOrNo"
-                return
-            case .slider:
-                return "slider"
-            case .multipleChoice:
-                return "multipleChoice"
-            }
-        }*/
     }
+    
+    static let MAX_ANSWER_VALUE     = 10
+    static let MIN_ANSWER_VALUE     = 0
+    static let ANSWER_YES           = 10
+    static let ANSWER_NO            = 0
+    static let ANSWER_A             = 0 / 3
+    static let ANSWER_B             = MAX_ANSWER_VALUE / 3
+    static let ANSWER_C             = MAX_ANSWER_VALUE * 2 / 3
+    static let ANSWER_D             = MAX_ANSWER_VALUE
     
     
     //MARK: VARIABLES
@@ -59,7 +48,7 @@ class Scenario {
     var response: Int = 0 // temporary, replace with UpdateScenario struct
     
     var type : ScenarioType = ScenarioType.yesOrNo
-    var initialAnswer: Int = 0// answer set by creator
+    var initialAnswer: Int = 0 // answer set by creator
     var averageAnswer: Double = 0.0
     var standardDeviation : Double = 0.0
     var averageTimeToAnswer: Double = 0.0
@@ -67,9 +56,11 @@ class Scenario {
 
  //MARK: METHODS
     
+    // default init
     required init() {
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
         answerReasoning = "Sucks to suck"
+        initialAnswer = Int(arc4random()) % Scenario.MAX_ANSWER_VALUE
     }
 
     // Need to make this a load function from our DB based upon Scenario ID
@@ -80,6 +71,7 @@ class Scenario {
         answerReasoning = "Sucks to suck"
     }
     
+    // Creates and returns a DynamoDB compatible dictionary representing this class.
     func toDBDictionary() -> [String : AWSDynamoDBAttributeValue] {
         
         return [
@@ -100,6 +92,7 @@ class Scenario {
         ]
     }
     
+    // Creates a Scenario from a DynamoDB dictionary
     func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
         
         self.scenarioID = dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!.s!

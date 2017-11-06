@@ -5,11 +5,14 @@
 //  Created by Avery Jones on 2017-10-07.
 //  Modified by Vladislav Polin on 2017-10-25 onwards.
 //  Copyright © 2017 group of 5. All rights reserved.
-//
+//  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
+//  Known bugs:
+//  
 
 import Foundation
 import AWSDynamoDB
 
+// This is a UserProfile class, it represents a single user and all related statistical data.
 class UserProfile {
     //Variables:
     private static var currentUser: UserProfile? = UserProfile()
@@ -39,6 +42,7 @@ class UserProfile {
         //self.getUser()
     }
     
+    // Creates and returns a DynamoDB compatible dictionary representing this class.
     func toDBDictionary() -> [String : AWSDynamoDBAttributeValue] {
         
         return [
@@ -55,7 +59,8 @@ class UserProfile {
             "passwordToken": makeAttrib(self.passwordToken)
         ]
     }
-    
+
+    // Creates a UserProfile from a DynamoDB dictionary
     func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
         
         self.emailAddress = dict[USER_PROFILES_TABLE_PRIMARY_KEY]!.s!
@@ -148,33 +153,3 @@ class UserProfile {
     }
     
 }
-
-
-
-/*struct userProfile {
-    //MARK: VARIABLES
-    private var correct : Int {
-        didSet {
-            print("User got an answer correct! \nuser now has \(correct) correct answers\n")
-        }
-    }
-    private var incorrect : Int{
-        didSet {
-            print("User got an answer wrong :( \nuser now has \(incorrect) incorrect answers\n")
-        }
-    }
-    
-    
-    //MARK: METHODS
-    init(){
-        correct = 0
-        incorrect = 0
-    }
-    
-    mutating func gotCorrect(){
-        correct += 1
-    }
-    mutating func gotIncorrect(){
-        incorrect += 1
-    }
-}*/
