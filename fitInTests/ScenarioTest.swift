@@ -10,8 +10,7 @@ import XCTest
 @testable import fitIn
 
 class ScenarioTest: XCTestCase {
-    //create a scenario we will fudge with
-    let testScenario = Scenario()
+
     
     override func setUp() {
         super.setUp()
@@ -20,6 +19,8 @@ class ScenarioTest: XCTestCase {
     
 
     func testCreateScenario(){
+        //create a scenario we will fudge with
+        let testScenario = Scenario()
         //make sure scenario fields are all right types
         let stringType = type(of:"blah")
         let urlType = type(of: URL(string: "blah.com")!)
@@ -45,9 +46,11 @@ class ScenarioTest: XCTestCase {
     }
     
     func testUploadToDB(){
+        //create a scenario we will fudge with
+        let testScenario = Scenario()
         let returnedDictionary = testScenario.toDBDictionary();
         let attribType = type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY])
-        
+        print(type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!))
         var boolean = (type(of: returnedDictionary[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) == attribType)
         boolean = boolean &&  (type(of: returnedDictionary["createdBy"]) == attribType)
         boolean = boolean && (type(of: returnedDictionary["questionText"]) == attribType)
@@ -60,6 +63,8 @@ class ScenarioTest: XCTestCase {
         XCTAssertTrue(boolean == true)
     }
     func testRetrieveFromDB(){
+        //create a scenario we will fudge with
+        let testScenario = Scenario()
         //make sure scenario fields are all right types
         let returned1Dictionary = testScenario.toDBDictionary()
         testScenario.fromDBDictionary(returned1Dictionary)
