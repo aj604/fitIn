@@ -164,7 +164,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZ6-1R-90K">
                                                                 <rect key="frame" x="0.0" y="0.0" width="1080" height="33"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <state key="normal" title="Profiles?">
+                                                                <state key="normal" title="Profile">
                                                                     <color key="titleColor" red="0.88607311248779297" green="0.89026767015457153" blue="0.89013552665710449" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
