@@ -1024,11 +1024,8 @@
         <image name="submit_button" width="143" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
         <segue reference="Rw9-F8-rqr"/>
-=======
         <segue reference="Rjw-c3-Bar"/>
->>>>>>> 3c461b72463ea929f2f677dbb6f79d8bee92dc68
         <segue reference="OLQ-vJ-0i4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
