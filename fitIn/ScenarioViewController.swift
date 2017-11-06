@@ -63,9 +63,10 @@ class ScenarioViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
         if segue.identifier == "prosocial" || segue.identifier == "antisocial" {
-            let popView =  	segue.destination as! popUpViewController
-            popView.passedReasoning = scenarioController.returnReasoning()
+                let popView = segue.destination as! popUpViewController
+                popView.passedReasoning = scenarioController.returnReasoning()
         }
     }
 }
