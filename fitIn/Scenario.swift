@@ -4,11 +4,16 @@
 //
 //  Created by Avery Jones on 2017-10-07.
 //  Copyright © 2017 group of 5. All rights reserved.
-//
+//  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
+//  Known bugs:
+//              - 
 
 import Foundation
 import AWSDynamoDB
 
+
+// This class represents a Scenario that the user would see in their typical
+// interaction with our app.
 class Scenario {
 
     // Enum for the type of response that the Scenario requires
@@ -51,6 +56,7 @@ class Scenario {
 
  //MARK: METHODS
     
+    // default init
     required init() {
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
         answerReasoning = "Sucks to suck"
@@ -65,6 +71,7 @@ class Scenario {
         answerReasoning = "Sucks to suck"
     }
     
+    // Creates and returns a DynamoDB compatible dictionary representing this class.
     func toDBDictionary() -> [String : AWSDynamoDBAttributeValue] {
         
         return [
@@ -85,6 +92,7 @@ class Scenario {
         ]
     }
     
+    // Creates a Scenario from a DynamoDB dictionary
     func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
         
         self.scenarioID = dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!.s!

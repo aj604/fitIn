@@ -3,36 +3,49 @@
 //  fitIn
 //
 //  Created by schecko on 10/30/17.
-//  Copyright © 2017 AJ productions. All rights reserved.
-//
+//  Copyright © 2017 group of 5. All rights reserved.
+//  contributors: Scott Checko
+//  Known bugs:
+//              - PUT requests return the default constructor objects of Scenario and UserProfile
+//                instead of the put response.
 
 import Foundation
 import AWSDynamoDB
 
+// This is the global DynamoHandler object, which is intended to be a singleton
 let dynamoHandler = DynamoHandler();
 
+// Some special error types returned by functions in DynamoHandler
 enum ErrorTypes : Int {
     case RequestFailed
     case Empty
     case Exists
 }
 
+// Helper function to make and return an AWSDynamoDBAttributeValue (int overload)
+// without this, the code ends up looking quite discontinuous and hard to read
 func makeAttrib(_ value: Int) -> AWSDynamoDBAttributeValue {
     let attrib = AWSDynamoDBAttributeValue();
     attrib!.n = String(value)
     return attrib!
 }
 
+// Helper function to make and return an AWSDynamoDBAttributeValue (string overload)
+// without this, the code ends up looking quite discontinuous and hard to read
 func makeAttrib(_ value: String) -> AWSDynamoDBAttributeValue {
     let attrib = AWSDynamoDBAttributeValue();
     attrib!.s = value
     return attrib!
 }
 
+// This object wraps direct AWSDynamoDB function calls,
+// and specializes them for our use case for ease of use.
 class DynamoHandler {
     var paginatedOutput: AWSDynamoDBPaginatedOutput?
     var dynamo: AWSDynamoDB
     
+    // Default and only constructor, sets up some global (hidden by AWS) AWS resources
+    // and initializes the dynamo member variable.
     init() {
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
                                                                 identityPoolId: AWS_IDENTITY_POOL)
@@ -44,6 +57,9 @@ class DynamoHandler {
         dynamo = AWSDynamoDB.default();
     }
     
+    // Asyncronously PUTs to AWS DynamoDB, after converting the scenario to a dictionary
+    // This function returns an AWSTask, which contains the result of the PUT once the 
+    // PUT completes.
     func putScenario(_ scenario: Scenario) -> AWSTask<Scenario>{
         let put = AWSDynamoDBPutItemInput()
         
@@ -66,7 +82,9 @@ class DynamoHandler {
         } as! AWSTask<Scenario>
     }
     
-    
+    // Asyncronously PUTs to AWS DynamoDB, after converting the UserProfile to a dictionary
+    // This function returns an AWSTask, which contains the result of the PUT once the 
+    // PUT completes.
     func putUserProfile(_ userProfile: UserProfile) -> AWSTask<UserProfile>{
         let put = AWSDynamoDBPutItemInput()
         
@@ -89,6 +107,9 @@ class DynamoHandler {
         } as! AWSTask<UserProfile>
     }
     
+    // Asyncronously GETs to AWS DynamoDB, requesting a Scenario uniquely identified by a scenarioID
+    // This function returns an AWSTask, which contains the result of the GET once the 
+    // GET completes.
     func getScenario(_ id: String) -> AWSTask<Scenario> {
         
         let get = AWSDynamoDBGetItemInput()
@@ -121,6 +142,10 @@ class DynamoHandler {
             
             } as! AWSTask<Scenario>
     }
+
+    // Asyncronously GETs to AWS DynamoDB, requesting a UserProfile uniquely identified by a emailAddress
+    // This function returns an AWSTask, which contains the result of the GET once the 
+    // GET completes.
     
     func getRandomScenario() -> AWSTask<Scenario> {
         
@@ -178,7 +203,7 @@ class DynamoHandler {
         } as! AWSTask<Scenario>
     }
     
-    func getUserProfile(_ id: String) -> AWSTask<UserProfile> {
+  func getUserProfile(_ id: String) -> AWSTask<UserProfile> {
         
         let get = AWSDynamoDBGetItemInput()
         
