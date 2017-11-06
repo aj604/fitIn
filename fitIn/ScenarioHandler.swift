@@ -9,6 +9,7 @@
 //            
 
 import Foundation
+import AWSDynamoDB
 
 //This is the ScenarioHandler class, it instantiates the other classes and interprets events
 
@@ -19,8 +20,10 @@ struct ScenarioHandler {
     
     private var user = UserProfile() //User Data, Info stored here
     
+    var getNextScenarioTask = dynamoHandler.getRandomScenario()
+    
     // instantiation of Scenario, only one Scenario is loaded at a time
-    private var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
+    var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
         // This willSet preloads image data for a smooth transition to next Scenario
         willSet{
             if let buffer = nextScenario?.getImageData() {
@@ -91,16 +94,16 @@ struct ScenarioHandler {
     // handles some transition to next state
     // Other transitions calculated in observing properties
     mutating func loadNextScenario(){
-        if let upcoming = nextScenario {
-            currentScenario = upcoming
-        } else {
-            // This is the temporary next Scenario being loaded
-            // Will replace with Scenario from server after that functionality is there
-            print("default setting next Scenario and transitioning")
-            nextScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo)
-            nextScenario?.setScenarioURL(url: "https://i.redd.it/k8w5wgzvm0uz.jpg")
-            currentScenario = nextScenario!
+        // wait for the task if it has not completed.
+        if(!getNextScenarioTask.isCompleted) {
+            getNextScenarioTask.waitUntilFinished()
         }
+        
+        // task is complete, nextScenario is valid
+        self.currentScenario = getNextScenarioTask.result!
+        self.imageData = currentScenario.getImageData()
+        
+        getNextScenarioTask = dynamoHandler.getRandomScenario()
     }
     
     // Import Scenario image data

@@ -59,7 +59,7 @@ class Scenario {
     // default init
     required init() {
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
-        answerReasoning = "Sucks to suck"
+        answerReasoning = String(arc4random())
         initialAnswer = Int(arc4random()) % Scenario.MAX_ANSWER_VALUE
     }
 
@@ -68,7 +68,7 @@ class Scenario {
     init(scenarioID: String, type : ScenarioType) {
         self.scenarioID = scenarioID
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
-        answerReasoning = "Sucks to suck"
+        answerReasoning = String(arc4random())
     }
     
     // Creates and returns a DynamoDB compatible dictionary representing this class.
