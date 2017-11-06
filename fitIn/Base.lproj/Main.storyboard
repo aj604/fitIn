@@ -491,7 +491,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="signupbutton_resized"/>
                                 <connections>
-                                    <action selector="AddUserButton:" destination="hMr-Sl-Fej" eventType="touchUpInside" id="8IC-lD-D17"/>
+                                    <action selector="CreateNewUserFunction:" destination="hMr-Sl-Fej" eventType="touchUpInside" id="CGm-8c-62b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -533,6 +533,7 @@
                     <connections>
                         <outlet property="AgeTextField" destination="rAc-tw-LTN" id="fBH-yp-OrE"/>
                         <outlet property="ConfirmPasswordTextField" destination="JdS-Ht-iDm" id="brL-u8-yVV"/>
+                        <outlet property="CreateNewUserVariable" destination="4C8-AZ-F7b" id="enI-q5-GX4"/>
                         <outlet property="EmailTextField" destination="x1e-XL-upO" id="a6Z-jC-OIJ"/>
                         <outlet property="PasswordTextField" destination="2Mq-op-gZQ" id="OPi-4K-wbj"/>
                         <outlet property="UserNameTextField" destination="0M9-k7-XqL" id="I4b-Hm-U9S"/>
