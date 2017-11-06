@@ -15,7 +15,7 @@ class SliderViewController: UIViewController {
     @IBOutlet weak var sliderValue: UISlider!
     
     //Control Current Scenario
-    private var scenarioController = ScenarioHandler()
+    var scenarioController = ScenarioHandler()
     
     //User input
     @IBAction func submit(_ sender: UIButton) {
@@ -30,6 +30,16 @@ class SliderViewController: UIViewController {
         if let image = UIImage(data: scenarioController.loadScenarioImageData()){
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier! == "yesNoSegue"{
+            let destination = segue.destination as! ScenarioViewController
+            destination.scenarioController = scenarioController
+        } else if segue.identifier == "multipleChoiceSegue" {
+            let destination = segue.destination as! MultipleChoiceViewController
+            destination.scenarioController = scenarioController
         }
     }
     
