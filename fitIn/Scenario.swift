@@ -151,14 +151,15 @@ class Scenario {
     func getImageData() -> Void { // Get Image Data from URL / Local
         var imageOut = Data()//Data type, to prep image for UIImageView
         do{
-            try imageOut = Data(contentsOf: imageLoc) //Primary image location
-        } catch {
+            try? imageOut = Data(contentsOf: imageLoc) //Primary image location
+        /*} catch {
             do{
                 // backup local failedToLoad resource. Should not fail... needs work
-                try imageOut = Data(contentsOf: Bundle.main.url(forResource: "failedToLoad", withExtension: ".png")!)
+                print("Uhoh shouldnt get here")
+                try? imageOut = Data(contentsOf: Bundle.main.url(forResource: "failedToLoad", withExtension: ".png")!)
             } catch {
                 print("UHOH Cant find our local failed to load image!")
-            }
+            }*/
         }
         self.imageData = imageOut
     }
