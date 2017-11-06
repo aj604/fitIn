@@ -96,11 +96,10 @@ class DynamoHandler {
         get?.key = [
             SCENARIO_MASTER_TABLE_PRIMARY_KEY: makeAttrib(id)
         ]
-        get!.consistentRead = true
         
         return dynamo
             .getItem(get!)
-            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<Scenario>? in
+            .continueWith { (task:AWSTask<AWSDynamoDBGetItemOutput>) -> AWSTask<Scenario> in
                 if let error = task.error {
                     print("failed get request to scenario. Error: \(error)")
                     return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
@@ -123,6 +122,62 @@ class DynamoHandler {
             } as! AWSTask<Scenario>
     }
     
+    func getRandomScenario() -> AWSTask<Scenario> {
+        
+        let query = AWSDynamoDBQueryInput()
+        query!.tableName = SCENARIO_MASTER_TABLE
+        query!.limit = 1
+        query!.indexName = "initialAnswer-scenarioID-index"
+        query!.keyConditionExpression = "#index = :indexValue AND #primaryKey >= :primaryKeyValue"
+        query!.expressionAttributeNames = [
+            "#index": "initialAnswer",
+            "#primaryKey": "scenarioID"
+        ]
+        query!.expressionAttributeValues = [
+            ":indexValue": makeAttrib(Int(arc4random() % 10)),
+            ":primaryKeyValue": makeAttrib(String(arc4random()))
+        ]
+        
+        return dynamo
+            .query(query!)
+            .continueWith { (task:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
+                if let error = task.error {
+                    print("failed get request to scenario. Error: \(error)")
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
+                }
+                
+                if(task.result!.items == nil || Int(truncating: task.result!.count!) <= 0) {
+                    // no object found.
+                    
+                    query!.keyConditionExpression = "#index = :indexValue AND #primaryKey < :primaryKeyValue"
+                    
+                    return self
+                        .dynamo
+                        .query(query!)
+                        .continueWith { (task:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
+                            print("successful get request to scenario", task)
+                            
+                            let result = Scenario();
+                            let items = task.result!.items!
+                            
+                            if(Int(truncating: task.result!.count!) > 0)
+                            {
+                                result.fromDBDictionary(items[0])
+                            }
+                            
+                            return AWSTask(result: result)
+                        } as! AWSTask<Scenario>;
+                }
+                
+                print("successful get request to scenario", task)
+                
+                let result = Scenario();
+                let items = task.result!.items!
+                result.fromDBDictionary(items[0])
+                return AWSTask(result: result)
+        } as! AWSTask<Scenario>
+    }
+    
     func getUserProfile(_ id: String) -> AWSTask<UserProfile> {
         
         let get = AWSDynamoDBGetItemInput()
@@ -131,8 +186,6 @@ class DynamoHandler {
         get!.key = [
             USER_PROFILES_TABLE_PRIMARY_KEY: makeAttrib(id)
         ]
-        
-        get!.consistentRead = true
         
         return dynamo
             .getItem(get!)
