@@ -110,51 +110,57 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="l7U-mi-MLd">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AHa-pp-bfS">
+                                    <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AHa-pp-bfS">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personPickingUpPoop.jpg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zIH-zd-kaJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-mS-LPd">
-                                                <rect key="frame" x="63.5" y="131" width="248" height="123"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-nb-kFg">
+                                                <rect key="frame" x="0.0" y="327.5" width="375" height="319.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB8-2H-UpX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="76" height="123"/>
-                                                        <state key="normal" title="Anti-Social"/>
-                                                        <connections>
-                                                            <action selector="antiSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="u9m-5a-lll"/>
-                                                            <segue destination="fB4-9g-ERa" kind="presentation" identifier="antisocial" id="0vN-Dl-Rbe"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLn-kY-y5i">
-                                                        <rect key="frame" x="176" y="0.0" width="72" height="123"/>
-                                                        <state key="normal" title="Pro-Social"/>
-                                                        <connections>
-                                                            <action selector="proSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="s5T-JO-GTG"/>
-                                                            <segue destination="fB4-9g-ERa" kind="presentation" identifier="prosocial" id="OLQ-vJ-0i4"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-mS-LPd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB8-2H-UpX">
+                                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="160"/>
+                                                                <state key="normal" title="Anti-Social"/>
+                                                                <connections>
+                                                                    <action selector="antiSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="u9m-5a-lll"/>
+                                                                    <segue destination="fB4-9g-ERa" kind="presentation" identifier="antisocial" id="0vN-Dl-Rbe"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLn-kY-y5i">
+                                                                <rect key="frame" x="237.5" y="0.0" width="137.5" height="160"/>
+                                                                <state key="normal" title="Pro-Social"/>
+                                                                <connections>
+                                                                    <action selector="proSocialPic:" destination="JC3-6Y-NgS" eventType="touchUpInside" id="s5T-JO-GTG"/>
+                                                                    <segue destination="fB4-9g-ERa" kind="presentation" identifier="prosocial" id="OLQ-vJ-0i4"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oFR-Q0-mfl">
+                                                        <rect key="frame" x="0.0" y="160" width="375" height="159.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZ6-1R-90K">
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                                                <state key="normal" title="Profiles?"/>
+                                                                <connections>
+                                                                    <segue destination="u4m-3r-nrW" kind="show" id="nrn-h1-MKV"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnP-KR-F8I">
+                                                                <rect key="frame" x="0.0" y="30" width="375" height="129.5"/>
+                                                                <state key="normal" title="Login"/>
+                                                                <connections>
+                                                                    <segue destination="mVg-9T-mi2" kind="show" identifier="toLogin" id="Qlg-hF-YsV"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZ6-1R-90K">
-                                                <rect key="frame" x="158" y="262" width="59" height="123"/>
-                                                <state key="normal" title="Profiles?"/>
-                                                <connections>
-                                                    <segue destination="u4m-3r-nrW" kind="show" id="nrn-h1-MKV"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnP-KR-F8I">
-                                                <rect key="frame" x="168.5" y="393" width="38" height="123"/>
-                                                <state key="normal" title="Login"/>
-                                                <connections>
-                                                    <segue destination="mVg-9T-mi2" kind="show" identifier="toLogin" id="Qlg-hF-YsV"/>
-                                                </connections>
-                                            </button>
-                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="LrU-kg-Zx9">
-                                                <rect key="frame" x="168" y="524" width="39" height="123"/>
-                                                <color key="pageIndicatorTintColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            </pageControl>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -172,6 +178,7 @@
                         <viewLayoutGuide key="safeArea" id="PsI-tO-UFw"/>
                     </view>
                     <navigationItem key="navigationItem" id="PM8-wC-2oI"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="zIH-zd-kaJ" id="biC-y7-gUK"/>
                     </connections>
@@ -1024,8 +1031,8 @@
         <image name="submit_button" width="143" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Qlg-hF-YsV"/>
         <segue reference="Rw9-F8-rqr"/>
-        <segue reference="Rjw-c3-Bar"/>
         <segue reference="OLQ-vJ-0i4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
