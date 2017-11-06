@@ -189,7 +189,7 @@ class DynamoHandler {
                             {
                                 result.fromDBDictionary(items[0])
                             }
-                            
+                            result.getImageData()
                             return AWSTask(result: result)
                         } as! AWSTask<Scenario>;
                 }
@@ -199,6 +199,7 @@ class DynamoHandler {
                 let result = Scenario();
                 let items = task.result!.items!
                 result.fromDBDictionary(items[0])
+                result.getImageData()
                 return AWSTask(result: result)
         } as! AWSTask<Scenario>
     }

@@ -26,9 +26,9 @@ struct ScenarioHandler {
     var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
         // This willSet preloads image data for a smooth transition to next Scenario
         willSet{
-            if let buffer = nextScenario?.getImageData() {
-                imageData = buffer
-            }
+            /*if let buffer = nextScenario?.getImageData() {
+                nextScenario!.imageData = buffer
+            }*/
         }
         
         // This didSet assumes that we have segued to our next Scenario and we are initializing our handler
@@ -101,17 +101,15 @@ struct ScenarioHandler {
         
         // task is complete, nextScenario is valid
         self.currentScenario = getNextScenarioTask.result!
-        self.imageData = currentScenario.getImageData()
         
         getNextScenarioTask = dynamoHandler.getRandomScenario()
     }
     
     // Import Scenario image data
     mutating func loadScenarioImageData() -> Data {
-        imageData = currentScenario.getImageData()
         //Currently Returns image data, to keep the var private
         //maybe change?
-        return imageData
+        return currentScenario.imageData
     }
     
     //return scenario answer reasoning

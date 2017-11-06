@@ -53,6 +53,8 @@ class Scenario {
     var standardDeviation : Double = 0.0
     var averageTimeToAnswer: Double = 0.0
     var numberOfAnswers: Int = 0
+    
+    var imageData = Data()
 
  //MARK: METHODS
     
@@ -146,7 +148,7 @@ class Scenario {
     }
         
     // Returns image data for the Scenario, Used in situationHandler
-    func getImageData() -> Data { // Get Image Data from URL / Local
+    func getImageData() -> Void { // Get Image Data from URL / Local
         var imageOut = Data()//Data type, to prep image for UIImageView
         do{
             try imageOut = Data(contentsOf: imageLoc) //Primary image location
@@ -158,6 +160,6 @@ class Scenario {
                 print("UHOH Cant find our local failed to load image!")
             }
         }
-        return imageOut
+        self.imageData = imageOut
     }
 }
