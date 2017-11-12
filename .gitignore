@@ -20,3 +20,10 @@ DerivedData
 .idea/
 # Pods - for those of you who use CocoaPods
 Pods
+
+
+#node
+built
+node_modules
+*.zip
+**/logs.txt
