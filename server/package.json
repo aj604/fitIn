@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc src/index.ts --outDir built"
   },
   "author": "Scott Checko",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^8.0.51",
+    "typescript": "^2.6.1"
+  }
 }
