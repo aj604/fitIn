@@ -11,7 +11,8 @@
             "program": "${workspaceRoot}/main.js",
             "outFiles": [
                 "${workspaceRoot}/**/*.js"
-            ]
+            ],
+            "preLaunchTask": "build"
         }
     ]
 }

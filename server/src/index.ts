@@ -1,4 +1,7 @@
 // This is the "main" file used by lambda, lambda will import it and attempt to call the handler function
+import * as AWS from "aws-sdk";
+
+let dynamo = new AWS.DynamoDB();
 
 console.log("Loading function");
 
