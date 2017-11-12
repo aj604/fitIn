@@ -1,3 +1,5 @@
+// This is the "main" file used by lambda, lambda will import it and attempt to call the handler function
+
 console.log("Loading function");
 
 exports.handler = (event, context, callback) => {

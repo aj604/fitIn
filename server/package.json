@@ -8,12 +8,15 @@
     "build": "tsc",
     "zip": "bestzip build.zip built/*",
     "upload": "bash ./upload.sh",
-    "deploy": "npm run build && npm run zip && npm run upload"
+    "invoke": "bash ./invoke.sh",
+    "deploy": "npm run build && npm run zip && npm run upload",
+    "deprun": "npm run deploy && npm run invoke"
   },
   "author": "Scott Checko",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^8.0.51",
+    "aws-sdk": "^2.149.0",
     "bestzip": "^1.1.4",
     "typescript": "^2.6.1"
   }
