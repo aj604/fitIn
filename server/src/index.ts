@@ -232,6 +232,9 @@ exports.handler = (event, context, callback) => {
     .then(() => {
         callback(null, "Success");
     })
+    .catch((error) => {
+        callback(new Error("failure: " + error));
+    })
 
 
 };
