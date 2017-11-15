@@ -47,6 +47,7 @@ class DynamoHandler {
     // Default and only constructor, sets up some global (hidden by AWS) AWS resources
     // and initializes the dynamo member variable.
     init() {
+                AWSLogger.default().logLevel = .verbose
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
                                                                 identityPoolId: AWS_IDENTITY_POOL)
         
@@ -55,6 +56,8 @@ class DynamoHandler {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
         dynamo = AWSDynamoDB.default();
+        
+
     }
     
     // Asyncronously PUTs to AWS DynamoDB, after converting the scenario to a dictionary
