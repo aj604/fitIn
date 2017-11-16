@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <deployment version="4112" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1054,12 +1055,66 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="JC3-6Y-NgS" kind="relationship" relationship="rootViewController" id="dGU-fj-Gib"/>
+                        <segue destination="i2c-Lk-8UZ" kind="relationship" relationship="rootViewController" id="mYW-eM-kyX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzc-fq-Xm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="690" y="132"/>
+            <point key="canvasLocation" x="-316" y="132"/>
+        </scene>
+        <!--Main Menu View Controller-->
+        <scene sceneID="mqT-cQ-dRU">
+            <objects>
+                <viewController id="i2c-Lk-8UZ" customClass="MainMenuViewController" customModule="fitIn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FYo-Wb-afX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="S9c-Uv-3Yo">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO_RESIZED" translatesAutoresizingMaskIntoConstraints="NO" id="Sau-tv-2eC">
+                                <rect key="frame" x="67.5" y="139" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="gpK-l5-ocC"/>
+                                    <constraint firstAttribute="height" constant="128" id="rkC-4F-Jl7"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kC0-hA-Fgx">
+                                <rect key="frame" x="137" y="318.5" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="r29-6j-FOn"/>
+                                </constraints>
+                                <state key="normal" title="Scenarios">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="JC3-6Y-NgS" kind="show" id="UDg-Ja-PYf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kC0-hA-Fgx" firstAttribute="centerX" secondItem="FYo-Wb-afX" secondAttribute="centerX" id="6tf-EY-MT1"/>
+                            <constraint firstItem="yIS-uW-t84" firstAttribute="bottom" secondItem="S9c-Uv-3Yo" secondAttribute="bottom" id="AFI-Gx-xIw"/>
+                            <constraint firstItem="yIS-uW-t84" firstAttribute="trailing" secondItem="S9c-Uv-3Yo" secondAttribute="trailing" id="GdU-Wq-hP3"/>
+                            <constraint firstItem="Sau-tv-2eC" firstAttribute="top" secondItem="yIS-uW-t84" secondAttribute="top" constant="75" id="Gwi-uY-Daz"/>
+                            <constraint firstItem="S9c-Uv-3Yo" firstAttribute="leading" secondItem="yIS-uW-t84" secondAttribute="leading" id="Zji-f8-crf"/>
+                            <constraint firstItem="Sau-tv-2eC" firstAttribute="centerX" secondItem="FYo-Wb-afX" secondAttribute="centerX" id="j66-VV-jIz"/>
+                            <constraint firstItem="S9c-Uv-3Yo" firstAttribute="top" secondItem="yIS-uW-t84" secondAttribute="top" id="sxx-LR-WXj"/>
+                            <constraint firstItem="kC0-hA-Fgx" firstAttribute="centerY" secondItem="FYo-Wb-afX" secondAttribute="centerY" id="yeF-Od-bEc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yIS-uW-t84"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vUl-ih-3GU"/>
+                    <connections>
+                        <outlet property="toScenario" destination="kC0-hA-Fgx" id="9wB-w9-TX5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xo7-Rv-3h2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="560.79999999999995" y="131.78410794602701"/>
         </scene>
         <!--Test Scenario View Controller-->
         <scene sceneID="Edg-xc-TNc">
@@ -1243,7 +1298,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qlg-hF-YsV"/>
-        <segue reference="Rw9-F8-rqr"/>
+        <segue reference="UDg-Ja-PYf"/>
         <segue reference="OLQ-vJ-0i4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

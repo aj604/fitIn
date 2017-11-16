@@ -17,6 +17,7 @@
 		04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */; };
 		04DA17F21FAD142A00A822AD /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17F11FAD142A00A822AD /* SliderViewController.swift */; };
 		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
+		0EA8471B1FBD4A8F009E816D /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA8471A1FBD4A8F009E816D /* MainMenuViewController.swift */; };
 		0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */; };
 		0EE618D21FAD655900315A89 /* ScenarioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE618D11FAD655900315A89 /* ScenarioTest.swift */; };
 		CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */; };
@@ -88,6 +89,7 @@
 		04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
 		04DA17F11FAD142A00A822AD /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
+		0EA8471A1FBD4A8F009E816D /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		0EE618D11FAD655900315A89 /* ScenarioTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioTest.swift; sourceTree = "<group>"; };
 		CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
+				0EA8471A1FBD4A8F009E816D /* MainMenuViewController.swift */,
 				0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */,
 				04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */,
 				04DA17F11FAD142A00A822AD /* SliderViewController.swift */,
@@ -271,7 +274,7 @@
 				TargetAttributes = {
 					0464E0F81F885D0000002403 = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					D3B58BAE1FAD3EAF00436A80 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -341,6 +344,7 @@
 				0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */,
 				04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
+				0EA8471B1FBD4A8F009E816D /* MainMenuViewController.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
 				FB80D1B21FAD0234005CED02 /* ProfileEditViewController.swift in Sources */,
 				FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */,
@@ -501,7 +505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,6 +515,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.sfu.cmpt275.fitIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -520,7 +525,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -530,6 +535,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.sfu.cmpt275.fitIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
