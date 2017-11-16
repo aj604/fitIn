@@ -18,7 +18,7 @@ class ScenarioViewController: UIViewController {
     @IBOutlet weak var questionDescription: UILabel!
     
     //Control Current Scenario
-    private var scenarioController = ScenarioHandler()
+    var scenarioController = ScenarioHandler()
     
     // Eventually this will be access point for subView
     //fileprivate var responseController : responseViewController
@@ -69,6 +69,14 @@ class ScenarioViewController: UIViewController {
         if segue.identifier == "prosocial" || segue.identifier == "antisocial" {
                 let popView = segue.destination as! popUpViewController
                 popView.passedReasoning = scenarioController.returnReasoning()
+        }
+        if segue.identifier == "sliderSegue" {
+            let destination = segue.destination as? SliderViewController
+            destination?.scenarioController = scenarioController
+        }
+        if segue.identifier == "multipleChoiceSegue" {
+            let destination = segue.destination as? MultipleChoiceViewController
+            destination?.scenarioController = scenarioController
         }
     }
 }

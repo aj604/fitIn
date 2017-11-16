@@ -13,7 +13,7 @@ import UIKit
 class MultipleChoiceViewController: UIViewController {
     
     //Control Current Scenario
-    private var scenarioController = ScenarioHandler()
+    var scenarioController = ScenarioHandler()
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scenarioDescription: UILabel!
     
@@ -65,6 +65,17 @@ class MultipleChoiceViewController: UIViewController {
             imageView.image = image
         } else {
             print("hmm something went wrong buffering the initial image")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "yesOrNoSegue" {
+            let destination = segue.destination as? ScenarioViewController
+            destination?.scenarioController = scenarioController
+        }
+        if segue.identifier == "sliderSegue" {
+            let destination = segue.destination as? SliderViewController
+            destination?.scenarioController = scenarioController
         }
     }
 }
