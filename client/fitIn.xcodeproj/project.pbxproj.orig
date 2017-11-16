@@ -162,8 +162,6 @@
 				CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */,
 				CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */,
 				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
-                0EA8471A1FBD4A8F009E816D /* MainMenuViewController.swift */,
-				0EF2941E1FBD610F001D0EC4 /* MustLoginPopupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -213,10 +211,24 @@
 				FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */,
 				FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */,
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
+<<<<<<< HEAD
+				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
+				0464E1001F885D0000002403 /* Main.storyboard */,
+				0EA8471A1FBD4A8F009E816D /* MainMenuViewController.swift */,
+				0EF2941E1FBD610F001D0EC4 /* MustLoginPopupViewController.swift */,
+				0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */,
+				04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */,
+				04DA17F11FAD142A00A822AD /* SliderViewController.swift */,
+				CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */,
+				CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */,
+				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
+				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
+=======
 				FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */,
 				042CBD291FBE2CA300ACE7B1 /* Models */,
 				042CBD2A1FBE2CD900ACE7B1 /* Views */,
 				042CBD281FBE2C7B00ACE7B1 /* Controllers */,
+>>>>>>> master
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
 			);
 			path = fitIn;
