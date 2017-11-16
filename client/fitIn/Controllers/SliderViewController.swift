@@ -17,7 +17,7 @@ class SliderViewController: UIViewController {
     @IBOutlet weak var sliderValue: UISlider!
     
     //Control Current Scenario
-    private var scenarioController = ScenarioHandler()
+    var scenarioController = ScenarioHandler()
     
     //User input
     @IBAction func submit(_ sender: UIButton) {
@@ -52,6 +52,18 @@ class SliderViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "yesOrNoSegue" {
+            let destination = segue.destination as? ScenarioViewController
+            destination?.scenarioController = scenarioController
+        }
+        if segue.identifier == "multipleChoiceSegue" {
+            let destination = segue.destination as? MultipleChoiceViewController
+            destination?.scenarioController = scenarioController
+        }
     }
 }
 

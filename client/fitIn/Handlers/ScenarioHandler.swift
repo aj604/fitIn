@@ -98,7 +98,6 @@ struct ScenarioHandler {
         if(!getNextScenarioTask.isCompleted) {
             getNextScenarioTask.waitUntilFinished()
         }
-        
         // task is complete, nextScenario is valid
         self.currentScenario = getNextScenarioTask.result!
         
