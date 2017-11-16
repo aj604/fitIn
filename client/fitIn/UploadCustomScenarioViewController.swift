@@ -10,10 +10,17 @@ import UIKit
 
 class UploadCustomScenarioViewController: UIViewController {
 
+    @IBOutlet weak var placeholderScenarioImage: UIImageView!
+    @IBOutlet weak var placeholderScenarioButton: UIButton!
+    var placeholderImage = UIImage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        //placeholderScenarioButton.backgroundImage(for: UIControlState.normal) = placeholderImage
+        //placeholderScenarioButton.imageView?.image = placeholderImage
+        //placeholderScenarioButton.setImage(placeholderImage, for: UIControlState.normal)
+        placeholderScenarioImage.image = placeholderImage
     }
 
     override func didReceiveMemoryWarning() {
