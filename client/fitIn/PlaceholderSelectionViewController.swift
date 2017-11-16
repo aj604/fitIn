@@ -49,6 +49,7 @@ class PlaceholderSelectionViewController: UIViewController, UITableViewDataSourc
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = storyboard.instantiateViewController(withIdentifier: "UploadCustomScenarioViewController") as! UploadCustomScenarioViewController
         destinationViewController.placeholderImage = UIImage(named: images[indexPath.row])!
+        destinationViewController.hackyLabel = strings[indexPath.row]
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         //passing data into the next view controller as soon as a user clicks on a picture
         //once a user clicks on a picture they are re-directed back to previous view controller
