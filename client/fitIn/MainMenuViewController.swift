@@ -10,12 +10,33 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
 
+    var currentUser = UserProfile.current()
+    
 
+    
+    
+    //add outlets for buttons
     @IBOutlet weak var toScenario: UIButton!
+    @IBOutlet weak var toLogin: UIButton!
+    @IBOutlet weak var toUpload: UIButton!
+    
+    //add segue for uploading scenarios
+    @IBAction func uploadScenario(_ sender: Any) {
+        //add conditional to disable upload if user isnt logged in
+        if (currentUser!.isUserLoggedIn) {
+            self.performSegue(withIdentifier: "MainMenuToUploadScenarioSegue", sender:self);
+        }
+        else{
+            self.performSegue(withIdentifier:"MainMenuMustLoginPopupSegue", sender:self);
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //round buttons
         toScenario.layer.cornerRadius = 3;
+        toLogin.layer.cornerRadius = 3;
+        toUpload.layer.cornerRadius = 3;
         // Do any additional setup after loading the view.
     }
 
