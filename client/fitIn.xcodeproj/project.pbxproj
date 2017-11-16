@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042CBD271FBE2C5D00ACE7B1 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBD261FBE2C5D00ACE7B1 /* aws-resources.swift */; };
 		0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E0FC1F885D0000002403 /* AppDelegate.swift */; };
 		0464E1021F885D0000002403 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1001F885D0000002403 /* Main.storyboard */; };
 		0464E1071F885D0000002403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464E1061F885D0000002403 /* Assets.xcassets */; };
@@ -23,7 +24,6 @@
 		CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */; };
 		D316E9D01FBBF16800404BAB /* PlaceholderSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */; };
 		D316E9D21FBBF3C700404BAB /* PlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */; };
-		D35B7A7A1FBD254100AF2B95 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35B7A791FBD254100AF2B95 /* aws-resources.swift */; };
 		D3B58BB21FAD3EAF00436A80 /* fitInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B58BB11FAD3EAF00436A80 /* fitInTests.swift */; };
 		D3B58BBE1FAD3ECD00436A80 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B58BB91FAD3ECB00436A80 /* AWSCore.framework */; };
 		D3B58BBF1FAD3ECD00436A80 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B58BBA1FAD3ECB00436A80 /* AWSCognito.framework */; };
@@ -76,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		042CBD261FBE2C5D00ACE7B1 /* aws-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		0464E0F91F885D0000002403 /* fitIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E0FC1F885D0000002403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464E1011F885D0000002403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderSelectionViewController.swift; sourceTree = "<group>"; };
 		D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableViewCell.swift; sourceTree = "<group>"; };
-		D35B7A791FBD254100AF2B95 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "aws-resources.swift"; path = "../../../../Desktop/aws-resources.swift"; sourceTree = "<group>"; };
 		D3B58BAF1FAD3EAF00436A80 /* fitInTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fitInTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B58BB11FAD3EAF00436A80 /* fitInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitInTests.swift; sourceTree = "<group>"; };
 		D3B58BB31FAD3EAF00436A80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,6 +143,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042CBD281FBE2C7B00ACE7B1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */,
+				FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */,
+				FB80D1AF1FAD00C2005CED02 /* ScenarioViewController.swift */,
+				D3B5B6B81FBBD1BA003914F3 /* UploadCustomScenarioViewController.swift */,
+				FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */,
+				FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */,
+				0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */,
+				04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */,
+				04DA17F11FAD142A00A822AD /* SliderViewController.swift */,
+				CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */,
+				CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */,
+				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		042CBD291FBE2CA300ACE7B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
+				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		042CBD2A1FBE2CD900ACE7B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */,
+				0464E1001F885D0000002403 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0464E0F01F885D0000002403 = {
 			isa = PBXGroup;
 			children = (
@@ -164,30 +201,16 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				D35B7A791FBD254100AF2B95 /* aws-resources.swift */,
-				D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */,
-				D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */,
-				FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */,
-				FB80D1AF1FAD00C2005CED02 /* ScenarioViewController.swift */,
-				D3B5B6B81FBBD1BA003914F3 /* UploadCustomScenarioViewController.swift */,
-				FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */,
-				FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */,
+				042CBD261FBE2C5D00ACE7B1 /* aws-resources.swift */,
 				FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */,
 				FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */,
 				FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */,
 				FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */,
-				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
-				FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */,
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
-				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
-				0464E1001F885D0000002403 /* Main.storyboard */,
-				0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */,
-				04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */,
-				04DA17F11FAD142A00A822AD /* SliderViewController.swift */,
-				CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */,
-				CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */,
-				04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */,
-				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
+				FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */,
+				042CBD291FBE2CA300ACE7B1 /* Models */,
+				042CBD2A1FBE2CD900ACE7B1 /* Views */,
+				042CBD281FBE2C7B00ACE7B1 /* Controllers */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
 			);
 			path = fitIn;
@@ -196,6 +219,7 @@
 		0464E1111F885D1B00002403 /* SupplementaryFiles */ = {
 			isa = PBXGroup;
 			children = (
+				0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */,
 				0464E0FC1F885D0000002403 /* AppDelegate.swift */,
 				0464E1061F885D0000002403 /* Assets.xcassets */,
 				0464E1081F885D0000002403 /* LaunchScreen.storyboard */,
@@ -325,7 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D35B7A7A1FBD254100AF2B95 /* aws-resources.swift in Sources */,
+				042CBD271FBE2C5D00ACE7B1 /* aws-resources.swift in Sources */,
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */,
 				CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */,
