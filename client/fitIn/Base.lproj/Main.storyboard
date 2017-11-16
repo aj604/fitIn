@@ -824,7 +824,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNR-vh-gfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2184.8000000000002" y="131.78410794602701"/>
+            <point key="canvasLocation" x="2238" y="130"/>
         </scene>
         <!--Upload Custom Scenario View Controller-->
         <scene sceneID="NOj-am-nPJ">
@@ -1093,6 +1093,19 @@
                                     <segue destination="JC3-6Y-NgS" kind="show" id="UDg-Ja-PYf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kj2-cm-JHe">
+                                <rect key="frame" x="137.5" y="378.5" width="100" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="EbY-vT-AdF"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mVg-9T-mi2" kind="show" id="iqG-yd-UeJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1100,8 +1113,10 @@
                             <constraint firstItem="yIS-uW-t84" firstAttribute="bottom" secondItem="S9c-Uv-3Yo" secondAttribute="bottom" id="AFI-Gx-xIw"/>
                             <constraint firstItem="yIS-uW-t84" firstAttribute="trailing" secondItem="S9c-Uv-3Yo" secondAttribute="trailing" id="GdU-Wq-hP3"/>
                             <constraint firstItem="Sau-tv-2eC" firstAttribute="top" secondItem="yIS-uW-t84" secondAttribute="top" constant="75" id="Gwi-uY-Daz"/>
+                            <constraint firstItem="Kj2-cm-JHe" firstAttribute="centerX" secondItem="FYo-Wb-afX" secondAttribute="centerX" id="NFy-1J-6qY"/>
                             <constraint firstItem="S9c-Uv-3Yo" firstAttribute="leading" secondItem="yIS-uW-t84" secondAttribute="leading" id="Zji-f8-crf"/>
                             <constraint firstItem="Sau-tv-2eC" firstAttribute="centerX" secondItem="FYo-Wb-afX" secondAttribute="centerX" id="j66-VV-jIz"/>
+                            <constraint firstItem="Kj2-cm-JHe" firstAttribute="top" secondItem="kC0-hA-Fgx" secondAttribute="bottom" constant="30" id="ozW-lO-GR8"/>
                             <constraint firstItem="S9c-Uv-3Yo" firstAttribute="top" secondItem="yIS-uW-t84" secondAttribute="top" id="sxx-LR-WXj"/>
                             <constraint firstItem="kC0-hA-Fgx" firstAttribute="centerY" secondItem="FYo-Wb-afX" secondAttribute="centerY" id="yeF-Od-bEc"/>
                         </constraints>
@@ -1298,7 +1313,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qlg-hF-YsV"/>
-        <segue reference="UDg-Ja-PYf"/>
+        <segue reference="Rw9-F8-rqr"/>
         <segue reference="OLQ-vJ-0i4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
