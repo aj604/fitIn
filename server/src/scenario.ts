@@ -1,15 +1,6 @@
 
 import * as AWS from "aws-sdk";
 
-// Turns out strings are not Strings.
-export function stringArrayToDBAttribArray(strings: String[]) : AWS.DynamoDB.StringAttributeValue[] {
-
-    let items : AWS.DynamoDB.StringSetAttributeValue = [];
-    return strings.map((value: String, index: Number) : AWS.DynamoDB.StringAttributeValue => 
-    {
-        return value.toString();
-    });
-}
 
 export class Scenario
 {
@@ -57,7 +48,7 @@ export class Scenario
 
         item["scenarioID"] = { S: this.scenarioID };
         item["createdBy"] = { S: this.createdBy };
-        item["tags"] = { SS: this.tags };
+        // item["tags"] = { SS: this.tags };
 
         item["questionText"] = { S: this.questionText };
         item["answerReasoning"] = { S: this.answerReasoning };

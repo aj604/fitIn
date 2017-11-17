@@ -32,16 +32,6 @@ switch(process.platform) {
 // local debugging only happens in windows or osx machines
 const THROTTLE_RATE = (platform === Platform.WINDOWS.valueOf() || platform === Platform.MAC.valueOf()) ?  1 : 1000;
 
-// might not be needed
-/*function DBAttribArrayToStringArray(strings: AWS.DynamoDB.StringAttributeValue[]) : String[] {
-
-    let items : AWS.DynamoDB.StringSetAttributeValue = [];
-    return strings.map((value: String, index: Number) : AWS.DynamoDB.StringAttributeValue => 
-    {
-        return value.toString();
-    });
-}*/
-
 function sleep(amount: Number): Promise<void> {
 
     return new Promise<void>((resolve, reject) => {
@@ -51,11 +41,14 @@ function sleep(amount: Number): Promise<void> {
     })
 }
 
-function noNan(number: number) {
-    if(Number.isNaN(number))
+function noNan(number: number): number {
+    console.log("nan", number);
+    if(Number.isNaN(number) || number != number)
     {
+        console.log("lenan")
         number = 0.0;
     }
+    return number;
 }
 
 function merge(scenario: Scenario.Scenario, update: Scenario.ScenarioUpdate): void {
@@ -84,16 +77,16 @@ function merge(scenario: Scenario.Scenario, update: Scenario.ScenarioUpdate): vo
     // last
     scenario.numberOfAnswers++;
 
-    noNan(scenario.averageAnswer);
-    noNan(scenario.averageTimeToAnswer);
-    noNan(scenario.mean);
-    noNan(scenario.currentMean);
-    noNan(scenario.standardDeviation);
+    scenario.averageAnswer = noNan(scenario.averageAnswer);
+    scenario.averageTimeToAnswer = noNan(scenario.averageTimeToAnswer);
+    scenario.mean = noNan(scenario.mean);
+    scenario.currentMean = noNan(scenario.currentMean);
+    scenario.standardDeviation = noNan(scenario.standardDeviation);
 
 }
 
 exports.handler = (event, context, callback) => {
-    console.log("Received event:", JSON.stringify(event, null, 2));
+    // console.log("Received event:", JSON.stringify(event, null, 2));
 
     // 1: scan items from the updates table
     // 2: from the updates, figure out which scenarioIDs need to be updated from the master table
@@ -111,16 +104,15 @@ exports.handler = (event, context, callback) => {
 
     dynamo.scan(scanArgs).promise()
     .then((result: AWS.DynamoDB.ScanOutput) => {
-        console.log(result);
-        console.log("done");
+
+        console.log("successfully scanned " + result.Count + " updates");
+        console.log("scan results: \n", result.Items, "\n\n");
 
         let scenarioUpdates : Scenario.ScenarioUpdate[] = result.Items.map((value: AWS.DynamoDB.AttributeMap) => {
             let scenarioUpdate : Scenario.ScenarioUpdate = new Scenario.ScenarioUpdate;
             scenarioUpdate.fromDB(value);
             return scenarioUpdate;
         });
-
-        console.log(scenarioUpdates);
 
         // the same scenario may be updated more than once, so make a mapping
         // containing an array of updates. This minimizes the number of requests
@@ -137,14 +129,14 @@ exports.handler = (event, context, callback) => {
             }
         });
 
-        console.log(updatesMap);
+        console.log("successfully generated a map of updates:\n", updatesMap, " \n\n ")
 
         let scenariosMap = new Map<string, Scenario.Scenario>();
 
         // grab the scenarios associated with all of the scenarioUpdates
         let task = Promise.resolve();
-        updatesMap.forEach((value: Scenario.ScenarioUpdate[], key: string) =>{
-            task = task.then(() =>{
+        updatesMap.forEach((value: Scenario.ScenarioUpdate[], key: string) => {
+            task = task.then(() => {
 
                 let request: AWS.DynamoDB.GetItemInput = {
                     TableName: "scenarioMaster",
@@ -156,6 +148,14 @@ exports.handler = (event, context, callback) => {
                 return dynamo.getItem(request).promise()
                     .then((item: AWS.DynamoDB.GetItemOutput) => {
 
+                        if(!item.Item)
+                        {
+                            // scenario does not exist
+                            // -> probably because it was made manually in the AWS Console
+                            return sleep(THROTTLE_RATE);
+                        }
+
+                        console.log("successfully retrieved scenario: \n", item.Item, "\n\n")
                         let scenario = new Scenario.Scenario();
                         scenario.fromDB(item.Item);
                         scenariosMap.set(scenario.scenarioID, scenario);
@@ -163,7 +163,7 @@ exports.handler = (event, context, callback) => {
                         return sleep(THROTTLE_RATE);
                     })
                     .catch((error) => {
-                        console.log("get of scenarioID failed, there is a good chance the scenario does not exist")
+                        console.log("failed to get scenario: ", key, " there is a good chance the scenario does not exist")
                         console.log("error " + error);
                     });
             })
@@ -171,6 +171,10 @@ exports.handler = (event, context, callback) => {
 
         return task
             .then(() => {
+                console.log("successfully retrieved ", scenariosMap.size, " scenarios");
+                console.log("successfully generated a map of scenarios: \n", scenariosMap, " \n\n ");
+
+                console.log("successfully obtained all updates and scenarios");
                 return Promise.resolve({scen: scenariosMap, updates: updatesMap});
             });
     })
@@ -182,13 +186,13 @@ exports.handler = (event, context, callback) => {
         // merge all updates with scenarios
         // iterate over scenarios instead of updates incase a scenario did not exist for a set of updates
         scenariosMap.forEach((scenario: Scenario.Scenario, key: string) => {
-            console.log("hello")
-            console.log(updatesMap);
             updatesMap.get(key).forEach((update: Scenario.ScenarioUpdate, index: number) => {
                 merge(scenario, update);
             });
         });
 
+        console.log("successfully merged all scenarios and updates");
+        console.log("merge results: ", scenariosMap, " \n\n ");
         let puts = Promise.resolve();
         let deletes = Promise.resolve();
 
@@ -200,7 +204,9 @@ exports.handler = (event, context, callback) => {
                 {
                     TableName: "scenarioMaster",
                     Item: scenario.toDB()
-                }      
+                }    
+
+                console.log("item to put \n", request.Item, " \n\n ");  
 
                 return dynamo.putItem(request).promise()
                     .then(() =>{
@@ -213,7 +219,7 @@ exports.handler = (event, context, callback) => {
         {
             updates.forEach((update: Scenario.ScenarioUpdate, index: number) => 
             {
-                deletes = deletes.then(() => 
+                /*deletes = deletes.then(() => 
                 {
                     let request: AWS.DynamoDB.DeleteItemInput = 
                     {
@@ -225,13 +231,12 @@ exports.handler = (event, context, callback) => {
                     }      
 
                     return dynamo.deleteItem(request).promise()
-                        .then(() =>{
+                        .then(() => 
+                        {
                             return sleep(THROTTLE_RATE);
                         });
-                });
+                });*/
             });
-
-
         });
 
 
@@ -245,9 +250,11 @@ exports.handler = (event, context, callback) => {
 
     })
     .then(() => {
-        callback(null, "Success");
+        console.log("Successfully performed all tasks");
+        callback(null, "Successfully performed all tasks");
     })
     .catch((error) => {
+        console.log("failure: " + error);
         callback(new Error("failure: " + error));
     })
 
