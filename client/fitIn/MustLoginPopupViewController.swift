@@ -1,17 +1,31 @@
 //
-//  UploadCustomScenarioViewController.swift
+//  MustLoginPopupViewController.swift
 //  fitIn
 //
-//  Created by Vlad Polin on 11/14/17.
+//  Created by Kevin C on 2017-11-15.
 //  Copyright © 2017 AJ productions. All rights reserved.
 //
 
 import UIKit
 
-class UploadCustomScenarioViewController: UIViewController {
+class MustLoginPopupViewController: UIViewController {
 
+    //add labels for texts and buttons
+    @IBOutlet weak var popUpView: UIView!
+    @IBOutlet weak var mainText: UITextView!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBAction func closePopup(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
+        //round buttons and view and text
         super.viewDidLoad()
+        popUpView.layer.cornerRadius = 10;
+        popUpView.layer.masksToBounds = true;
+        mainText.layer.cornerRadius = 3;
+        closeButton.layer.cornerRadius=20;
 
         // Do any additional setup after loading the view.
     }

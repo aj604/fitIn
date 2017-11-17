@@ -11,8 +11,9 @@ import UIKit
 class PlaceholderSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    //@IBOutlet weak var tableView: UITableView!
     var strings = ["Running", "Thinking", "Walking", "Throwing", "Looking", "Finding"]
+    var images = ["man-running-stroller-emoji.jpg", "thinking.jpg", "walking.jpg", "throwing.jpg", "looking.jpg", "finding.jpg"]
+    //instantiation of label strings, asset's strings and the table view itself
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,23 +35,23 @@ class PlaceholderSelectionViewController: UIViewController, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PlaceholderTableViewCell
         cell.layer.borderWidth = 10
         cell.labelText.text = strings[indexPath.row]
-        cell.cellImage.image = UIImage(named: "man-running-stroller-emoji.jpg")
+        cell.cellImage.image = UIImage(named: images[indexPath.row])
+        //made every cell an object of PlaceholderTableViewCell, which is a custom class for a specific cell
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+        //sets the cell size to 200 for UI
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = storyboard.instantiateViewController(withIdentifier: "UploadCustomScenarioViewController") as! UploadCustomScenarioViewController
+        destinationViewController.placeholderImage = UIImage(named: images[indexPath.row])!
+        destinationViewController.hackyLabel = strings[indexPath.row]
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+        //passing data into the next view controller as soon as a user clicks on a picture
+        //once a user clicks on a picture they are re-directed back to previous view controller
     }
-    */
-
 }
