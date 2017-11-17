@@ -1,7 +1,0 @@
-#!/bin/sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # load nvm
-[ -s "$NVM_DIR/bash-completion" ] && \. "$NVM_DIR/bash_completion" # load nvm
-
-nvm "$@"
