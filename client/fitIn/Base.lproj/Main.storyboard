@@ -365,21 +365,21 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="twG-b0-Gcw">
-                                        <rect key="frame" x="157.5" y="323.5" width="60" height="323.5"/>
+                                        <rect key="frame" x="73.5" y="323.5" width="228" height="323.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="WMS-oi-R34">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="162"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="228" height="162"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waj-C2-eqd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="162"/>
-                                                        <state key="normal" title="A"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waj-C2-eqd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="162"/>
+                                                        <state key="normal" image="multiA"/>
                                                         <connections>
                                                             <action selector="choiceA:" destination="cKz-YV-HIe" eventType="touchUpInside" id="Qab-xk-k7j"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1j-yt-diI">
-                                                        <rect key="frame" x="30" y="0.0" width="30" height="162"/>
-                                                        <state key="normal" title="B"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1j-yt-diI">
+                                                        <rect key="frame" x="114" y="0.0" width="114" height="162"/>
+                                                        <state key="normal" image="multiB"/>
                                                         <connections>
                                                             <action selector="choiceB:" destination="cKz-YV-HIe" eventType="touchUpInside" id="eI4-vd-uXs"/>
                                                         </connections>
@@ -387,18 +387,18 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="7mc-db-das">
-                                                <rect key="frame" x="0.0" y="162" width="60" height="161.5"/>
+                                                <rect key="frame" x="0.0" y="162" width="228" height="161.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxl-L3-UIW">
-                                                        <rect key="frame" x="0.0" y="0.5" width="30" height="161.5"/>
-                                                        <state key="normal" title="C"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxl-L3-UIW">
+                                                        <rect key="frame" x="0.0" y="0.5" width="114" height="161.5"/>
+                                                        <state key="normal" image="multiC"/>
                                                         <connections>
                                                             <action selector="choiceC:" destination="cKz-YV-HIe" eventType="touchUpInside" id="dA2-L4-tRF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2W-j1-nWA">
-                                                        <rect key="frame" x="30" y="0.5" width="30" height="161.5"/>
-                                                        <state key="normal" title="D"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2W-j1-nWA">
+                                                        <rect key="frame" x="114" y="0.5" width="114" height="161.5"/>
+                                                        <state key="normal" image="multiD"/>
                                                         <connections>
                                                             <action selector="choiceD:" destination="cKz-YV-HIe" eventType="touchUpInside" id="1Xz-7S-Gex"/>
                                                         </connections>
@@ -994,7 +994,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logofinal" translatesAutoresizingMaskIntoConstraints="NO" id="OXp-NE-xXL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logofinal" translatesAutoresizingMaskIntoConstraints="NO" id="OXp-NE-xXL">
                                 <rect key="frame" x="115" y="56" width="179" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1235,6 +1235,10 @@
         <image name="edit" width="159" height="65"/>
         <image name="loginbutton_resized" width="211" height="88"/>
         <image name="logofinal" width="300" height="300"/>
+        <image name="multiA" width="114" height="106"/>
+        <image name="multiB" width="114" height="106"/>
+        <image name="multiC" width="114" height="106"/>
+        <image name="multiD" width="114" height="106"/>
         <image name="personPickingUpPoop.jpg" width="1080" height="717"/>
         <image name="profilepicdefault" width="210" height="210"/>
         <image name="scenarioview_button" width="131" height="39"/>
@@ -1242,7 +1246,7 @@
         <image name="submit_button" width="143" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qlg-hF-YsV"/>
+        <segue reference="Rjw-c3-Bar"/>
         <segue reference="Rw9-F8-rqr"/>
         <segue reference="OLQ-vJ-0i4"/>
     </inferredMetricsTieBreakers>
