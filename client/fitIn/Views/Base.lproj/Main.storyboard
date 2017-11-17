@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VyU-pA-L9t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="4112" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1215,6 +1215,19 @@
                                     <action selector="uploadScenario:" destination="i2c-Lk-8UZ" eventType="touchUpInside" id="Skk-Ei-3rf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9o-ps-GiZ">
+                                <rect key="frame" x="125" y="498.5" width="125" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="ori-KK-bat"/>
+                                </constraints>
+                                <state key="normal" title="View Profile">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewProfile:" destination="i2c-Lk-8UZ" eventType="touchUpInside" id="vYC-JB-p1H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1226,6 +1239,8 @@
                             <constraint firstItem="BiS-3h-im7" firstAttribute="centerX" secondItem="FYo-Wb-afX" secondAttribute="centerX" id="Kh0-cg-0KP"/>
                             <constraint firstItem="Kj2-cm-JHe" firstAttribute="centerX" secondItem="FYo-Wb-afX" secondAttribute="centerX" id="NFy-1J-6qY"/>
                             <constraint firstItem="S9c-Uv-3Yo" firstAttribute="leading" secondItem="yIS-uW-t84" secondAttribute="leading" id="Zji-f8-crf"/>
+                            <constraint firstItem="f9o-ps-GiZ" firstAttribute="centerX" secondItem="FYo-Wb-afX" secondAttribute="centerX" id="be9-Px-Qp1"/>
+                            <constraint firstItem="f9o-ps-GiZ" firstAttribute="top" secondItem="BiS-3h-im7" secondAttribute="bottom" constant="30" id="eZs-Ig-EN7"/>
                             <constraint firstItem="Sau-tv-2eC" firstAttribute="centerX" secondItem="FYo-Wb-afX" secondAttribute="centerX" id="j66-VV-jIz"/>
                             <constraint firstItem="Kj2-cm-JHe" firstAttribute="top" secondItem="kC0-hA-Fgx" secondAttribute="bottom" constant="30" id="ozW-lO-GR8"/>
                             <constraint firstItem="S9c-Uv-3Yo" firstAttribute="top" secondItem="yIS-uW-t84" secondAttribute="top" id="sxx-LR-WXj"/>
@@ -1238,8 +1253,10 @@
                         <outlet property="toLogin" destination="Kj2-cm-JHe" id="spk-YH-ZhJ"/>
                         <outlet property="toScenario" destination="kC0-hA-Fgx" id="9wB-w9-TX5"/>
                         <outlet property="toUpload" destination="BiS-3h-im7" id="Pyo-KL-xdK"/>
+                        <outlet property="toViewProfile" destination="f9o-ps-GiZ" id="CGP-l1-ZHZ"/>
                         <segue destination="eHQ-M4-Ga5" kind="show" identifier="MainMenuToUploadScenarioSegue" id="1e9-3p-Wxd"/>
                         <segue destination="GH9-jG-tqz" kind="presentation" identifier="MainMenuMustLoginPopupSegue" id="did-8C-UJt"/>
+                        <segue destination="u4m-3r-nrW" kind="show" identifier="MainMenuToViewProfileSegue" id="6wf-EQ-9jN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xo7-Rv-3h2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1429,6 +1446,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1e9-3p-Wxd"/>
+        <segue reference="6wf-EQ-9jN"/>
         <segue reference="iqG-yd-UeJ"/>
         <segue reference="UDg-Ja-PYf"/>
         <segue reference="0vN-Dl-Rbe"/>

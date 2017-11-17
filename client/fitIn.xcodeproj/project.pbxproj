@@ -96,7 +96,7 @@
 		CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderSelectionViewController.swift; sourceTree = "<group>"; };
 		D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableViewCell.swift; sourceTree = "<group>"; };
-		D35A4D741FBE6656003BE704 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "aws-resources.swift"; path = "../../../../Desktop/aws-resources.swift"; sourceTree = "<group>"; };
+		D35A4D741FBE6656003BE704 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "aws-resources.swift"; path = "../aws-resources.swift/aws-resources.swift"; sourceTree = SOURCE_ROOT; };
 		D35A4D761FBE66D2003BE704 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		D35A4D781FBE6724003BE704 /* MustLoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustLoginPopupViewController.swift; sourceTree = "<group>"; };
 		D3B58BAF1FAD3EAF00436A80 /* fitInTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fitInTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
