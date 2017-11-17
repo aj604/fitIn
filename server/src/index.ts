@@ -51,6 +51,13 @@ function sleep(amount: Number): Promise<void> {
     })
 }
 
+function noNan(number: number) {
+    if(Number.isNaN(number))
+    {
+        number = 0.0;
+    }
+}
+
 function merge(scenario: Scenario.Scenario, update: Scenario.ScenarioUpdate): void {
 
     // for standard deviation later
@@ -72,10 +79,16 @@ function merge(scenario: Scenario.Scenario, update: Scenario.ScenarioUpdate): vo
 
     scenario.currentMean = scenario.currentMean + (update.userAnswer - oldMean) * (update.userAnswer - scenario.mean)
 
-    scenario.variance = scenario.currentMean / (scenario.numberOfAnswers + 1);
+    scenario.standardDeviation = Math.sqrt(scenario.currentMean / (scenario.numberOfAnswers + 1));
 
     // last
     scenario.numberOfAnswers++;
+
+    noNan(scenario.averageAnswer);
+    noNan(scenario.averageTimeToAnswer);
+    noNan(scenario.mean);
+    noNan(scenario.currentMean);
+    noNan(scenario.standardDeviation);
 
 }
 
@@ -112,7 +125,7 @@ exports.handler = (event, context, callback) => {
         // the same scenario may be updated more than once, so make a mapping
         // containing an array of updates. This minimizes the number of requests
         // to the database. the order of the updates does not matter.
-        let updatesMap = new Map<string, Scenario.ScenarioUpdate[]>();
+        let updatesMap = new Map<string, Array<Scenario.ScenarioUpdate>>();
 
         scenarioUpdates.forEach((value: Scenario.ScenarioUpdate) => {
             let updates = updatesMap.get(value.scenarioID);
@@ -123,6 +136,7 @@ exports.handler = (event, context, callback) => {
                 updatesMap.set(value.scenarioID, [value]);
             }
         });
+
         console.log(updatesMap);
 
         let scenariosMap = new Map<string, Scenario.Scenario>();
@@ -157,15 +171,77 @@ exports.handler = (event, context, callback) => {
 
         return task
             .then(() => {
-                return Promise.resolve([scenariosMap, scenarioUpdates]);
+                return Promise.resolve({scen: scenariosMap, updates: updatesMap});
             });
     })
-    .then((scenarios: [any]) => {
-        let scenariosMap : Map<string, Scenario.Scenario> = scenarios[0];
-        let scenarioUpdates : Map<string, Scenario.ScenarioUpdate[]> = scenarios[1];
+    .then((scenarios: any) => {
+        let scenariosMap : Map<string, Scenario.Scenario> = scenarios.scen;
+        let updatesMap : Map<string, Scenario.ScenarioUpdate[]> = scenarios.updates;
 
 
         // merge all updates with scenarios
+        // iterate over scenarios instead of updates incase a scenario did not exist for a set of updates
+        scenariosMap.forEach((scenario: Scenario.Scenario, key: string) => {
+            console.log("hello")
+            console.log(updatesMap);
+            updatesMap.get(key).forEach((update: Scenario.ScenarioUpdate, index: number) => {
+                merge(scenario, update);
+            });
+        });
+
+        let puts = Promise.resolve();
+        let deletes = Promise.resolve();
+
+        scenariosMap.forEach((scenario: Scenario.Scenario, key: string) => 
+        {
+            puts = puts.then(() => 
+            {
+                let request: AWS.DynamoDB.PutItemInput = 
+                {
+                    TableName: "scenarioMaster",
+                    Item: scenario.toDB()
+                }      
+
+                return dynamo.putItem(request).promise()
+                    .then(() =>{
+                        return sleep(THROTTLE_RATE);
+                    })
+            });
+        });
+
+        updatesMap.forEach((updates: Scenario.ScenarioUpdate[], key: String) =>
+        {
+            updates.forEach((update: Scenario.ScenarioUpdate, index: number) => 
+            {
+                deletes = deletes.then(() => 
+                {
+                    let request: AWS.DynamoDB.DeleteItemInput = 
+                    {
+                        TableName: "scenarioUpdate",
+                        Key: { 
+                            "scenarioID": { S: key as string },
+                            "updateID": { S: update.updateID as string }
+                        }
+                    }      
+
+                    return dynamo.deleteItem(request).promise()
+                        .then(() =>{
+                            return sleep(THROTTLE_RATE);
+                        });
+                });
+            });
+
+
+        });
+
+
+        return Promise.all
+        (
+            [
+                puts,
+                deletes
+            ]
+        )
 
     })
     .then(() => {

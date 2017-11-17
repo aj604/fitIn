@@ -27,8 +27,7 @@ export class Scenario
     averageTimeToAnswer : number;
     numberOfAnswers     : number;
 
-    // standardDeviation = sqrt(variance)
-    variance            : number;
+    standardDeviation   : number;
     mean                : number;
     currentMean         : number; // see merge() function for comments on standard deviation
 
@@ -45,28 +44,34 @@ export class Scenario
         this.type = parseInt(item["type"].N, 10);
         this.initialAnswer = parseInt(item["initialAnswer"].N, 10);
         // this.averageAnswer = parseFloat(item["averageAnswer"].N);
-        // this.standardDeviation = parseFloat(item["standardDeviation"].N);
         // this.averageTimeToAnswer = parseFloat(item["averageTimeToAnswer"].N);
         this.numberOfAnswers = parseInt(item["numberOfAnswers"].N, 10);
+
+        // this.standardDeviation = parseFloat(item["standardDeviation"].N);
+        // this.mean = parseFloat(item["mean"].N);
+        // this.currentMean = parseFloat(item["currentMean"].N);
     }
 
     toDB() : AWS.DynamoDB.AttributeMap {
         let item : AWS.DynamoDB.AttributeMap = {};
 
-        item["scenarioID"].S = this.scenarioID.toString();
-        item["createdBy"].S = this.createdBy.toString();
-        item["tags"].SS = stringArrayToDBAttribArray(this.tags)
+        item["scenarioID"] = { S: this.scenarioID };
+        item["createdBy"] = { S: this.createdBy };
+        item["tags"] = { SS: this.tags };
 
-        item["questionText"].S = this.questionText.toString();
-        item["answerReasoning"].S = this.answerReasoning.toString();
-        item["imageLoc"].S = this.imageLoc.toString();
+        item["questionText"] = { S: this.questionText };
+        item["answerReasoning"] = { S: this.answerReasoning };
+        item["imageLoc"] = { S: this.imageLoc };
 
-        item["type"].N = this.imageLoc.toString();
-        item["initialAnswer"].N = this.initialAnswer.toString();
-        item["averageAnswer"].N = this.averageAnswer.toString();
-        item["standardDeviation"].N = this.standardDeviation.toString();
-        item["averageTimeToAnswer"].N = this.averageTimeToAnswer.toString();
-        item["numberOfAnswers"].N = this.numberOfAnswers.toString();
+        item["type"] = { N: this.type.toString() };
+        item["initialAnswer"] = { N: this.initialAnswer.toString() };
+        item["averageAnswer"] = { N: this.averageAnswer.toString() };
+        item["averageTimeToAnswer"] = { N: this.averageTimeToAnswer.toString() };
+        item["numberOfAnswers"] = { N: this.numberOfAnswers.toString() };
+
+        item["standardDeviation"] = { N: this.standardDeviation.toString() };
+        item["mean"] = { N: this.mean.toString() };
+        item["currentMean"] = { N: this.currentMean.toString() };
 
         return item;
     }
