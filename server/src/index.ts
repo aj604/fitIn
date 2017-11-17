@@ -201,25 +201,25 @@ exports.handler = (event, context, callback) => {
                 }         
 
                 return dynamo.getItem(request).promise()
-                .then((item: AWS.DynamoDB.GetItemOutput) => {
+                    .then((item: AWS.DynamoDB.GetItemOutput) => {
 
-                    let scenario = new Scenario();
-                    scenario.fromDB(item.Item);
-                    scenariosMap.set(scenario.scenarioID, scenario);
+                        let scenario = new Scenario();
+                        scenario.fromDB(item.Item);
+                        scenariosMap.set(scenario.scenarioID, scenario);
 
-                    return sleep(THROTTLE_RATE);
-                })
-                .catch((error) => {
-                    console.log("get of scenarioID failed, there is a good chance the scenario does not exist")
-                    console.log("error " + error);
-                });
+                        return sleep(THROTTLE_RATE);
+                    })
+                    .catch((error) => {
+                        console.log("get of scenarioID failed, there is a good chance the scenario does not exist")
+                        console.log("error " + error);
+                    });
             })
         })
 
         return task
-        .then(() => {
-            return Promise.resolve([scenariosMap, scenarioUpdates]);
-        });
+            .then(() => {
+                return Promise.resolve([scenariosMap, scenarioUpdates]);
+            });
     })
     .then((scenarios: [any]) => {
         let scenariosMap : Map<string, Scenario> = scenarios[0];
