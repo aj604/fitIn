@@ -2,6 +2,10 @@
 import * as AWS from "aws-sdk";
 import * as Scenario from "./scenario";
 
+// debug bool so that updates arent deleted after the merge is finished
+// should be set to true for normal operation.
+let DELETE = true;
+
 AWS.config.update({region: "us-west-2"});
 let dynamo = new AWS.DynamoDB();
 
@@ -42,10 +46,8 @@ function sleep(amount: Number): Promise<void> {
 }
 
 function noNan(number: number): number {
-    console.log("nan", number);
     if(Number.isNaN(number) || number != number)
     {
-        console.log("lenan")
         number = 0.0;
     }
     return number;
@@ -219,23 +221,26 @@ exports.handler = (event, context, callback) => {
         {
             updates.forEach((update: Scenario.ScenarioUpdate, index: number) => 
             {
-                /*deletes = deletes.then(() => 
+                if(DELETE)
                 {
-                    let request: AWS.DynamoDB.DeleteItemInput = 
+                    deletes = deletes.then(() => 
                     {
-                        TableName: "scenarioUpdate",
-                        Key: { 
-                            "scenarioID": { S: key as string },
-                            "updateID": { S: update.updateID as string }
-                        }
-                    }      
-
-                    return dynamo.deleteItem(request).promise()
-                        .then(() => 
+                        let request: AWS.DynamoDB.DeleteItemInput = 
                         {
-                            return sleep(THROTTLE_RATE);
-                        });
-                });*/
+                            TableName: "scenarioUpdate",
+                            Key: { 
+                                "scenarioID": { S: key as string },
+                                "updateID": { S: update.updateID as string }
+                            }
+                        }      
+
+                        return dynamo.deleteItem(request).promise()
+                            .then(() => 
+                            {
+                                return sleep(THROTTLE_RATE);
+                            });
+                    });
+                }
             });
         });
 
