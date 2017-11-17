@@ -1,5 +1,6 @@
 // This is the "main" file used by lambda, lambda will import it and attempt to call the handler function
 import * as AWS from "aws-sdk";
+import * as Scenario from "./scenario";
 
 AWS.config.update({region: "us-west-2"});
 let dynamo = new AWS.DynamoDB();
@@ -31,17 +32,6 @@ switch(process.platform) {
 // local debugging only happens in windows or osx machines
 const THROTTLE_RATE = (platform === Platform.WINDOWS.valueOf() || platform === Platform.MAC.valueOf()) ?  1 : 1000;
 
-
-// Turns out strings are not Strings.
-function stringArrayToDBAttribArray(strings: String[]) : AWS.DynamoDB.StringAttributeValue[] {
-
-    let items : AWS.DynamoDB.StringSetAttributeValue = [];
-    return strings.map((value: String, index: Number) : AWS.DynamoDB.StringAttributeValue => 
-    {
-        return value.toString();
-    });
-}
-
 // might not be needed
 /*function DBAttribArrayToStringArray(strings: AWS.DynamoDB.StringAttributeValue[]) : String[] {
 
@@ -61,80 +51,32 @@ function sleep(amount: Number): Promise<void> {
     })
 }
 
-class Scenario
-{
-    scenarioID          : string; // cannot be changed
-    createdBy           : string;
-    tags                : string[];
+function merge(scenario: Scenario.Scenario, update: Scenario.ScenarioUpdate): void {
 
-    questionText        : string;
-    answerReasoning     : string;
-    imageLoc            : string;
+    // for standard deviation later
+    let oldAverage: number = scenario.averageAnswer;
 
-    type                : Number;
-    initialAnswer       : Number;
-    averageAnswer       : Number;
-    standardDeviation   : Number;
-    averageTimeToAnswer : Number;
-    numberOfAnswers     : Number;
+    // rolling average answer
+    scenario.averageAnswer = (scenario.averageAnswer * scenario.numberOfAnswers + update.userAnswer * 1) / (scenario.numberOfAnswers + 1);
 
-    fromDB(item: AWS.DynamoDB.AttributeMap) : void {
-        this.scenarioID = item["scenarioID"].S;
-        this.createdBy = item["createdBy"].S;
-        // this.tags = item["tags"].SS;
+    // rolling time to answer
+    scenario.averageTimeToAnswer = (scenario.averageTimeToAnswer * scenario.numberOfAnswers + update.timeToAnswer * 1) / (scenario.numberOfAnswers + 1);
 
-        this.questionText = item["questionText"].S;
-        this.answerReasoning = item["answerReasoning"].S;
-        this.imageLoc = item["imageLoc"].S;
+    // standard deviation algorithm from:
+    // https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Online_algorithm
+    // under the "online algorithm" section, second set of equations
 
-        this.type = parseInt(item["type"].N, 10);
-        this.initialAnswer = parseInt(item["initialAnswer"].N, 10);
-        // this.averageAnswer = parseFloat(item["averageAnswer"].N);
-        // this.standardDeviation = parseFloat(item["standardDeviation"].N);
-        // this.averageTimeToAnswer = parseFloat(item["averageTimeToAnswer"].N);
-        this.numberOfAnswers = parseInt(item["numberOfAnswers"].N, 10);
-    }
+    //rolling standard deviation
+    let oldMean = scenario.mean;
+    scenario.mean = scenario.mean + (update.userAnswer - scenario.mean) / (scenario.numberOfAnswers + 1)
 
-    toDB() : AWS.DynamoDB.AttributeMap {
-        let item : AWS.DynamoDB.AttributeMap = {};
+    scenario.currentMean = scenario.currentMean + (update.userAnswer - oldMean) * (update.userAnswer - scenario.mean)
 
-        item["scenarioID"].S = this.scenarioID.toString();
-        item["createdBy"].S = this.createdBy.toString();
-        item["tags"].SS = stringArrayToDBAttribArray(this.tags)
+    scenario.variance = scenario.currentMean / (scenario.numberOfAnswers + 1);
 
-        item["questionText"].S = this.questionText.toString();
-        item["answerReasoning"].S = this.answerReasoning.toString();
-        item["imageLoc"].S = this.imageLoc.toString();
+    // last
+    scenario.numberOfAnswers++;
 
-        item["type"].N = this.imageLoc.toString();
-        item["initialAnswer"].N = this.initialAnswer.toString();
-        item["averageAnswer"].N = this.averageAnswer.toString();
-        item["standardDeviation"].N = this.standardDeviation.toString();
-        item["averageTimeToAnswer"].N = this.averageTimeToAnswer.toString();
-        item["numberOfAnswers"].N = this.numberOfAnswers.toString();
-
-        return item;
-    }
-
-}
-
-class ScenarioUpdate 
-{
-    scenarioID  : string; // cannot be changed
-    updateID    : string; // cannot be changed
-    answeredBy  : string;
-    userAnswer  : Number;
-    timeToAnswer: Number;
-
-    fromDB(item: AWS.DynamoDB.AttributeMap) {
-        this.scenarioID = item["scenarioID"].S;
-        this.updateID = item["updateID"].S;
-        // this.answeredBy = item["answeredBy"].S;
-        // this.userAnswer = parseInt(item["userAnswer"].N, 10);
-        // this.timeToAnswer = parseInt(item["timeToAnswer"].N, 10);
-    }
-
-    // NOTE: no need to do toDB()
 }
 
 exports.handler = (event, context, callback) => {
@@ -159,8 +101,8 @@ exports.handler = (event, context, callback) => {
         console.log(result);
         console.log("done");
 
-        let scenarioUpdates : ScenarioUpdate[] = result.Items.map((value: AWS.DynamoDB.AttributeMap) => {
-            let scenarioUpdate : ScenarioUpdate = new ScenarioUpdate;
+        let scenarioUpdates : Scenario.ScenarioUpdate[] = result.Items.map((value: AWS.DynamoDB.AttributeMap) => {
+            let scenarioUpdate : Scenario.ScenarioUpdate = new Scenario.ScenarioUpdate;
             scenarioUpdate.fromDB(value);
             return scenarioUpdate;
         });
@@ -170,9 +112,9 @@ exports.handler = (event, context, callback) => {
         // the same scenario may be updated more than once, so make a mapping
         // containing an array of updates. This minimizes the number of requests
         // to the database. the order of the updates does not matter.
-        let updatesMap = new Map<string, ScenarioUpdate[]>();
+        let updatesMap = new Map<string, Scenario.ScenarioUpdate[]>();
 
-        scenarioUpdates.forEach((value: ScenarioUpdate) => {
+        scenarioUpdates.forEach((value: Scenario.ScenarioUpdate) => {
             let updates = updatesMap.get(value.scenarioID);
             if(updates) {
                 updates.push(value);
@@ -183,15 +125,12 @@ exports.handler = (event, context, callback) => {
         });
         console.log(updatesMap);
 
-        let scenariosMap = new Map<string, Scenario>();
+        let scenariosMap = new Map<string, Scenario.Scenario>();
 
+        // grab the scenarios associated with all of the scenarioUpdates
         let task = Promise.resolve();
-        updatesMap.forEach((value: ScenarioUpdate[], key: string) =>{
+        updatesMap.forEach((value: Scenario.ScenarioUpdate[], key: string) =>{
             task = task.then(() =>{
-
-                let theKey : AWS.DynamoDB.Key = {
-                    
-                } 
 
                 let request: AWS.DynamoDB.GetItemInput = {
                     TableName: "scenarioMaster",
@@ -203,7 +142,7 @@ exports.handler = (event, context, callback) => {
                 return dynamo.getItem(request).promise()
                     .then((item: AWS.DynamoDB.GetItemOutput) => {
 
-                        let scenario = new Scenario();
+                        let scenario = new Scenario.Scenario();
                         scenario.fromDB(item.Item);
                         scenariosMap.set(scenario.scenarioID, scenario);
 
@@ -222,8 +161,8 @@ exports.handler = (event, context, callback) => {
             });
     })
     .then((scenarios: [any]) => {
-        let scenariosMap : Map<string, Scenario> = scenarios[0];
-        let scenarioUpdates : Map<string, ScenarioUpdate[]> = scenarios[1];
+        let scenariosMap : Map<string, Scenario.Scenario> = scenarios[0];
+        let scenarioUpdates : Map<string, Scenario.ScenarioUpdate[]> = scenarios[1];
 
 
         // merge all updates with scenarios
