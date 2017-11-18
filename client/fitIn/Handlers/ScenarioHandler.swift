@@ -76,7 +76,10 @@ class ScenarioHandler {
             //Failed Vote
         }
         
-        let scenarioUpdate = ScenarioUpdate(userAnswer: voteChoice!);
+        let scenarioUpdate = ScenarioUpdate(
+            scenarioID: scenarios[currentScenario].scenarioID,
+            userAnswer: voteChoice!
+        );
         
         _ = dynamoHandler.putScenarioUpdate(scenarioUpdate);
         
