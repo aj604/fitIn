@@ -19,8 +19,6 @@ class ScenarioHandler {
     
     private var user = UserProfile() //User Data, Info stored here
     
-    var getNextScenarioTask = dynamoHandler.getRandomScenario()
-    
     var currentScenario: Int = 0;
     static let NUM_SCENARIOS = 5;
     var scenarios = [Scenario]();
@@ -124,11 +122,12 @@ class ScenarioHandler {
             }
         }
         
+        // wait if we must
         if !found {
             for (index, task) in tasks.enumerated() {
                 if !task.isCompleted && scenarios[index].seen == true {
                     task.waitUntilFinished();
-                    if (task.isFaulted) {
+                    if (task.result!.seen) {
                         continue;
                     }
                     currentScenario = index;
