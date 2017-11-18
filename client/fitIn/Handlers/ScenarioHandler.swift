@@ -58,7 +58,6 @@ class ScenarioHandler {
                             print("failed put request to user. Error: \(error)")
                             return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
                         }
-                        print("successful get request to scenario, in init")
                         
                         self.scenarios[index] = task.result!;
                         
