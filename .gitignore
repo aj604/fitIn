@@ -27,3 +27,5 @@ built
 node_modules
 *.zip
 **/logs.txt
+**/creds.json
+

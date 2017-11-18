@@ -108,7 +108,7 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
                 uploadCheck = false
         }
         if (hackyBoolean == true && uploadCheck == true && placeholderText.text.count > 0 && placeholderText.text != textFieldPlaceholderText) {
-            dynamoHandler.putScenario(placeholderScenario)
+            _ = dynamoHandler.putScenario(placeholderScenario)
             hackyBoolean = false
             let alertController = UIAlertController(title: "Upload Complete", message: "Your scenario has been uploaded successfully!", preferredStyle: .alert)
             // Add Options to Alert

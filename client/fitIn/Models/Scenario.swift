@@ -41,20 +41,24 @@ class Scenario {
     var createdBy: String = "Anonymous"
     var tags = [String]() // List of metadata / Scenario Tags
     
-    var questionText: String = "a"
+    var questionText: String = "broken"
     var answerReasoning: String = "a"
     var imageLoc : URL
-    
-    var response: Int = 0 // temporary, replace with UpdateScenario struct
     
     var type : ScenarioType = ScenarioType.yesOrNo
     var initialAnswer: Int = 0 // answer set by creator
     var averageAnswer: Double = 0.0
-    var standardDeviation : Double = 0.0
     var averageTimeToAnswer: Double = 0.0
     var numberOfAnswers: Int = 0
     
+    var standardDeviation : Double = 0.0
+    var mean : Double = 0.0
+    var currentMean : Double = 0.0
+    
     var imageData = Data()
+    
+    // has the scenario been seen by the viewer?
+    var seen = false;
 
  //MARK: METHODS
     
@@ -73,6 +77,13 @@ class Scenario {
         answerReasoning = String(arc4random())
     }
     
+    init(seen: Bool) {
+        self.seen = seen;
+        imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
+        answerReasoning = String(arc4random())
+        initialAnswer = Int(arc4random()) % Scenario.MAX_ANSWER_VALUE
+    }
+    
     // Creates and returns a DynamoDB compatible dictionary representing this class.
     func toDBDictionary() -> [String : AWSDynamoDBAttributeValue] {
         
@@ -87,10 +98,13 @@ class Scenario {
             
             "type": makeAttrib(self.type.rawValue),
             "initialAnswer": makeAttrib(self.initialAnswer),
-            // "averageAnswer": makeAttrib(averageAnswer), // todo double
-            // "standardDeviation": makeAttrib(self.averageTimeToAnswer)
-            // "averageTimeToAnswer": makeAttrib(self.averageTimeToAnswer)
-            "numberOfAnswers": makeAttrib(self.numberOfAnswers)
+            "averageAnswer": makeAttrib(averageAnswer),
+            "averageTimeToAnswer": makeAttrib(self.averageTimeToAnswer),
+            "numberOfAnswers": makeAttrib(self.numberOfAnswers),
+            
+            "standardDeviation": makeAttrib(self.standardDeviation),
+            "mean": makeAttrib(self.mean),
+            "currentMean": makeAttrib(self.currentMean)
         ]
     }
     
@@ -108,34 +122,21 @@ class Scenario {
         self.type = ScenarioType(rawValue: Int(dict["type"]!.n!)!)!
         self.initialAnswer = Int(dict["initialAnswer"]!.n!)!
         // self.averageAnswer = Double(dict["initialAnswer"]!.n!)!
-        // self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
         // self.averageTimeToAnswer = Double(dict["averageTimeToAnswer"]!.n!)!
         self.numberOfAnswers = Int(dict["numberOfAnswers"]!.n!)!
+        
+        // self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
+        // self.mean = Double(dict["mean"]!.n!)!
+        // self.currentMean = Double(dict["currentMean"]!.n!)!
     
     }
-    
-    func setscenarioID(value: String) {
-        self.scenarioID = value
-    }
-    
-    func setScenarioID(value: String) {
-        self.scenarioID = value
-    }
-    
-    func _setscenarioID(value: String) {
-        self.scenarioID = value
-    }
-    
-    func accessInstanceVariablesDirectly() -> ObjCBool {
-        return true
-    }
-    
+        
     // general answer checking method
     // Pre: Scenario is loaded and inputAnswer != nil
     // Post: Bool? determining if they got the right answer or if inputAnswer wasnt initialized
-    func isRightAnswer() -> Bool {
+    func isRightAnswer(userAnswer: Int) -> Bool {
         
-        if response == initialAnswer {
+        if userAnswer == initialAnswer {
             return true
         }
         return false
