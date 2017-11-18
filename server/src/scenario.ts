@@ -34,13 +34,13 @@ export class Scenario
 
         this.type = parseInt(item["type"].N, 10);
         this.initialAnswer = parseInt(item["initialAnswer"].N, 10);
-        // this.averageAnswer = parseFloat(item["averageAnswer"].N);
-        // this.averageTimeToAnswer = parseFloat(item["averageTimeToAnswer"].N);
+        this.averageAnswer = parseFloat(item["averageAnswer"].N);
+        this.averageTimeToAnswer = parseFloat(item["averageTimeToAnswer"].N);
         this.numberOfAnswers = parseInt(item["numberOfAnswers"].N, 10);
 
-        // this.standardDeviation = parseFloat(item["standardDeviation"].N);
-        // this.mean = parseFloat(item["mean"].N);
-        // this.currentMean = parseFloat(item["currentMean"].N);
+        this.standardDeviation = parseFloat(item["standardDeviation"].N);
+        this.mean = parseFloat(item["mean"].N);
+        this.currentMean = parseFloat(item["currentMean"].N);
     }
 
     toDB() : AWS.DynamoDB.AttributeMap {
@@ -80,9 +80,9 @@ export class ScenarioUpdate
     fromDB(item: AWS.DynamoDB.AttributeMap) {
         this.scenarioID = item["scenarioID"].S;
         this.updateID = item["updateID"].S;
-        // this.answeredBy = item["answeredBy"].S;
-        // this.userAnswer = parseInt(item["userAnswer"].N, 10);
-        // this.timeToAnswer = parseInt(item["timeToAnswer"].N, 10);
+        this.answeredBy = item["answeredBy"].S;
+        this.userAnswer = parseInt(item["userAnswer"].N, 10);
+        this.timeToAnswer = parseInt(item["timeToAnswer"].N, 10);
     }
 
     // NOTE: no need to do toDB()

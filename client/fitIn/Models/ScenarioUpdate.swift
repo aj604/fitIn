@@ -48,6 +48,7 @@ class ScenarioUpdate {
         return [
             SCENARIO_MASTER_TABLE_PRIMARY_KEY: makeAttrib(self.scenarioID),
             "updateID": makeAttrib(self.updateID),
+            "answeredBy": makeAttrib(self.answeredBy),
             
             "userAnswer": makeAttrib(self.userAnswer),
             "timeToAnswer": makeAttrib(self.timeToAnswer)
