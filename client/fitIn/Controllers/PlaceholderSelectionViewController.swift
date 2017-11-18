@@ -14,6 +14,10 @@ class PlaceholderSelectionViewController: UIViewController, UITableViewDataSourc
     var strings = ["Running", "Thinking", "Walking", "Throwing", "Looking", "Finding"]
     var images = ["man-running-stroller-emoji.jpg", "thinking.jpg", "walking.jpg", "throwing.jpg", "looking.jpg", "finding.jpg"]
     //instantiation of label strings, asset's strings and the table view itself
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //All images used are referenced using the following URLs and are used for educational purposes only
+    //All images are used to demonstrated a proof of concept and may not be included in later prototypes
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     
     override func viewDidLoad() {
         super.viewDidLoad()
