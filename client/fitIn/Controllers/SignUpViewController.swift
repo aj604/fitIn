@@ -6,7 +6,7 @@
 //  Copyright © 2017 group of 5. All rights reserved.
 //  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
 //  Known bugs:
-//  
+//
 
 import UIKit
 import AWSDynamoDB
@@ -149,11 +149,13 @@ class SignUpViewController: UIViewController {
                         //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                         //self.present(alertController, animated: true, completion: nil)
                         //AlertMessages("user exists, try again")
-                        //dispatch_async(dispatch_get_main_queue(), {
-                        
-                        
-                        //});
-                        print("user exists, try again")
+                        DispatchQueue.main.async {
+                            //print("Main")
+                            let alertController = UIAlertController(title: "SignUp", message: "user exists, try again", preferredStyle: UIAlertControllerStyle.alert)
+                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        //print("user exists, try again")
                         return AWSTask(error: NSError(domain: "", code: ErrorTypes.Exists.rawValue))
                     }
             })
@@ -164,33 +166,45 @@ class SignUpViewController: UIViewController {
                         //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                         //self.present(alertController, animated: true, completion: nil)
                         //AlertMessages("success, new user")
-                        
-                        print("success, new user")
+                        DispatchQueue.main.async {
+                            //print("Main")
+                            let alertController = UIAlertController(title: "SignUp", message: "success, new user", preferredStyle: UIAlertControllerStyle.alert)
+                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        //print("success, new user")
                     } else {
                         //let alertController = UIAlertController(title: "FitIn", message: "failed to put", preferredStyle: UIAlertControllerStyle.alert)
                         //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                         //self.present(alertController, animated: true, completion: nil)
                         // AlertMessages("failed to put")
-                        print("failed to put")
+                        DispatchQueue.main.async {
+                            //print("Main")
+                            let alertController = UIAlertController(title: "SignUp", message: "failed to SignUp ", preferredStyle: UIAlertControllerStyle.alert)
+                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        //print("failed to put")
                     }
             })
         
-        func AlertMessages (_ stringParameter: String)
-        {
-            let alertController = UIAlertController(title: "FitIn", message: stringParameter, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
+        //func AlertMessages (_ stringParameter: String)
+        //{
+        //    let alertController = UIAlertController(title: "FitIn", message: stringParameter, preferredStyle: UIAlertControllerStyle.alert)
+        //    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        //    self.present(alertController, animated: true, completion: nil)
+        //}
         
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
+

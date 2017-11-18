@@ -19,11 +19,11 @@
 		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
 		0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */; };
 		0EE618D21FAD655900315A89 /* ScenarioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE618D11FAD655900315A89 /* ScenarioTest.swift */; };
+		CF1B422F1FC0C1E50088752F /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1B422E1FC0C1E50088752F /* aws-resources.swift */; };
 		CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */; };
 		CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */; };
 		D316E9D01FBBF16800404BAB /* PlaceholderSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */; };
 		D316E9D21FBBF3C700404BAB /* PlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */; };
-		D35A4D751FBE6656003BE704 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A4D741FBE6656003BE704 /* aws-resources.swift */; };
 		D35A4D771FBE66D2003BE704 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A4D761FBE66D2003BE704 /* MainMenuViewController.swift */; };
 		D35A4D791FBE6724003BE704 /* MustLoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A4D781FBE6724003BE704 /* MustLoginPopupViewController.swift */; };
 		D3B58BB21FAD3EAF00436A80 /* fitInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B58BB11FAD3EAF00436A80 /* fitInTests.swift */; };
@@ -92,11 +92,11 @@
 		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
 		0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		0EE618D11FAD655900315A89 /* ScenarioTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioTest.swift; sourceTree = "<group>"; };
+		CF1B422E1FC0C1E50088752F /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "aws-resources.swift"; path = "../../fitIn/aws-resources.swift"; sourceTree = "<group>"; };
 		CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderSelectionViewController.swift; sourceTree = "<group>"; };
 		D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableViewCell.swift; sourceTree = "<group>"; };
-		D35A4D741FBE6656003BE704 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "aws-resources.swift"; path = "../aws-resources.swift/aws-resources.swift"; sourceTree = SOURCE_ROOT; };
 		D35A4D761FBE66D2003BE704 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		D35A4D781FBE6724003BE704 /* MustLoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustLoginPopupViewController.swift; sourceTree = "<group>"; };
 		D3B58BAF1FAD3EAF00436A80 /* fitInTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fitInTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,7 +216,7 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				D35A4D741FBE6656003BE704 /* aws-resources.swift */,
+				CF1B422E1FC0C1E50088752F /* aws-resources.swift */,
 				FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */,
 				FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */,
 				FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */,
@@ -376,8 +376,8 @@
 				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
 				FB80D1B01FAD00C2005CED02 /* ScenarioViewController.swift in Sources */,
-				D35A4D751FBE6656003BE704 /* aws-resources.swift in Sources */,
 				0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */,
+				CF1B422F1FC0C1E50088752F /* aws-resources.swift in Sources */,
 				04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
