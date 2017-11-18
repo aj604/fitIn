@@ -41,7 +41,7 @@ class Scenario {
     var createdBy: String = "Anonymous"
     var tags = [String]() // List of metadata / Scenario Tags
     
-    var questionText: String = "a"
+    var questionText: String = "broken"
     var answerReasoning: String = "a"
     var imageLoc : URL
     

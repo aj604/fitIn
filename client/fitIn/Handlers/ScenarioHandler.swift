@@ -94,11 +94,11 @@ class ScenarioHandler {
     // handles some transition to next state
     // Other transitions calculated in observing properties
     func loadNextScenario() {
-        
+        scenarios[currentScenario].seen = true;
         // kick off new tasks
         for (index, scenario) in scenarios.enumerated() {
             // add a new task if the corresponding scenario has been seen by the viewer
-            if(scenario.seen) {
+            if(scenario.seen || tasks[index].isFaulted) {
                 tasks[index] = dynamoHandler
                     .getRandomScenario()
                     .continueOnSuccessWith(block:
@@ -132,6 +132,9 @@ class ScenarioHandler {
             for (index, task) in tasks.enumerated() {
                 if !task.isCompleted && scenarios[index].seen == true {
                     task.waitUntilFinished();
+                    if (task.isFaulted) {
+                        continue;
+                    }
                     currentScenario = index;
                     break;
                 }
