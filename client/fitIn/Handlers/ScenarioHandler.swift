@@ -76,8 +76,11 @@ class ScenarioHandler {
             //Failed Vote
         }
         
-        scenarios[currentScenario].response = voteChoice!
-        if scenarios[currentScenario].isRightAnswer() {
+        let scenarioUpdate = ScenarioUpdate(userAnswer: voteChoice!);
+        
+        _ = dynamoHandler.putScenarioUpdate(scenarioUpdate);
+        
+        if scenarios[currentScenario].isRightAnswer(userAnswer: voteChoice!) {
             user.gotCorrect() // Log vote in the user struct
             return true
         }

@@ -26,12 +26,12 @@ class ScenarioViewController: UIViewController {
     
     //User input
     @IBAction func proSocialPic(_ sender: UIButton) {
-        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo.rawValue
+        scenarioController.voteChoice = Scenario.ANSWER_YES
         scenarioController.loadNextScenario()
         updateUI()
     }
     @IBAction func antiSocialPic(_ sender: UIButton) {
-        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo.rawValue
+        scenarioController.voteChoice = Scenario.ANSWER_NO
         scenarioController.loadNextScenario()
         updateUI()
     }
@@ -43,8 +43,6 @@ class ScenarioViewController: UIViewController {
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
             questionDescription.text! = scenarioController.scenarios[scenarioController.currentScenario].questionText
-        } else {
-            print("fuck");
         }
     }
     

@@ -38,6 +38,14 @@ func makeAttrib(_ value: String) -> AWSDynamoDBAttributeValue {
     return attrib!
 }
 
+// Helper function to make and return an AWSDynamoDBAttributeValue (double overload)
+// without this, the code ends up looking quite discontinuous and hard to read
+func makeAttrib(_ value: Double) -> AWSDynamoDBAttributeValue {
+    let attrib = AWSDynamoDBAttributeValue();
+    attrib!.n = String(value)
+    return attrib!
+}
+
 // This object wraps direct AWSDynamoDB function calls,
 // and specializes them for our use case for ease of use.
 class DynamoHandler {
@@ -245,6 +253,31 @@ class DynamoHandler {
                 return AWSTask(result: result)
                 
             } as! AWSTask<UserProfile>
+    }
+    
+    // Asyncronously PUTs to AWS DynamoDB, after converting the ScenarioUpdate to a dictionary
+    // This function returns an AWSTask, which contains the result of the PUT once the
+    // PUT completes.
+    func putScenarioUpdate(_ update: ScenarioUpdate) -> AWSTask<ScenarioUpdate>{
+        let put = AWSDynamoDBPutItemInput()
+        
+        put!.tableName = SCENARIO_UPDATE_TABLE
+        put!.item = update.toDBDictionary()
+        
+        return dynamo
+            .putItem(put!)
+            .continueWith {
+                (task:AWSTask<AWSDynamoDBPutItemOutput>) -> AWSTask<ScenarioUpdate> in
+                if let error = task.error {
+                    print("failed put request to user profile. Error: \(error)")
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
+                }
+                print("successful put request to scenarioupdate")
+                // Do something with task.result
+                
+                // todo return return of put
+                return AWSTask(result: ScenarioUpdate())
+            } as! AWSTask<ScenarioUpdate>
     }
 
     

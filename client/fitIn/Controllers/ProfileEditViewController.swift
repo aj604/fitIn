@@ -133,7 +133,7 @@ class ProfileEditViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
             // Show Alert View
             self.present(alertController, animated: true, completion: nil)
-            dynamoHandler.putUserProfile(UserProfile.current()!)
+            _ = dynamoHandler.putUserProfile(UserProfile.current()!)
         }
     }
     /*
