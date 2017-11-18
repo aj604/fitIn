@@ -270,7 +270,7 @@ class DynamoHandler {
     func putScenarioUpdate(_ update: ScenarioUpdate) -> AWSTask<ScenarioUpdate>{
         let put = AWSDynamoDBPutItemInput()
         
-        put!.tableName = SCENARIO_MASTER_TABLE
+        put!.tableName = SCENARIO_UPDATE_TABLE
         put!.item = update.toDBDictionary()
         
         return dynamo
