@@ -5,7 +5,7 @@ import * as fs from "fs";
 
 // debug bool so that updates arent deleted after the merge is finished
 // should be set to true for normal operation.
-let DELETE = false;
+let DELETE = true;
 
 if(fs.existsSync("./creds.json")) {
 	console.log("found creds");

@@ -166,8 +166,11 @@ class DynamoHandler {
             "#index": "initialAnswer",
             "#primaryKey": "scenarioID"
         ]
+        
+        let rand = arc4random() % 11;
+        print("rand is ", rand);
         query!.expressionAttributeValues = [
-            ":indexValue": makeAttrib(Int(arc4random() % 10)),
+            ":indexValue": makeAttrib(Int(rand)),
             ":primaryKeyValue": makeAttrib(String(arc4random()))
         ]
         
@@ -209,8 +212,14 @@ class DynamoHandler {
                 
                 let result = Scenario();
                 let items = task.result!.items!
-                result.fromDBDictionary(items[0])
-                result.getImageData()
+                if(Int(truncating: task.result!.count!) > 0)
+                {
+                    result.fromDBDictionary(items[0])
+                    result.getImageData()
+                    result.seen = false;
+                } else {
+                    result.seen = true;
+                }
                 return AWSTask(result: result)
         } as! AWSTask<Scenario>
     }
