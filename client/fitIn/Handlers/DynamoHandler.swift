@@ -168,7 +168,7 @@ class DynamoHandler {
         ]
         
         let rand = arc4random() % 11;
-        print("rand is ", rand);
+        // print("rand is ", rand);
         query!.expressionAttributeValues = [
             ":indexValue": makeAttrib(Int(rand)),
             ":primaryKeyValue": makeAttrib(String(arc4random()))
