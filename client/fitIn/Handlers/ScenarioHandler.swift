@@ -12,7 +12,6 @@ import Foundation
 import AWSDynamoDB
 
 //This is the ScenarioHandler class, it instantiates the other classes and interprets events
-
 //Controls flow of app
 class ScenarioHandler {
     
@@ -97,7 +96,6 @@ class ScenarioHandler {
         // kick off new tasks
         for (index, scenario) in scenarios.enumerated() {
             // add a new task if the corresponding scenario has been seen by the viewer
-            print("seen ", scenario.seen)
             if(scenario.seen || tasks[index].isFaulted) {
                 tasks[index] = dynamoHandler
                     .getRandomScenario()
@@ -108,7 +106,6 @@ class ScenarioHandler {
                                 print("failed put request to user. Error: \(error)")
                                 return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
                             }
-                            print("successful get request to scenario, in getnext");
                             
                             self.scenarios[index] = task.result!;
                             

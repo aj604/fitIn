@@ -180,7 +180,7 @@ class DynamoHandler {
                         .dynamo
                         .query(query!)
                         .continueWith { (task:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
-                            print("successful get request to scenario")
+                            // print("successful get request to scenario")
                             
                             let result = Scenario();
                             let items = task.result!.items!
@@ -197,7 +197,7 @@ class DynamoHandler {
                         } as! AWSTask<Scenario>;
                 }
                 
-                print("successful get request to scenario")
+                // print("successful get request to scenario")
                 
                 let result = Scenario();
                 let items = task.result!.items!
