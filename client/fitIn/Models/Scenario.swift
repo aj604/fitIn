@@ -55,6 +55,9 @@ class Scenario {
     var numberOfAnswers: Int = 0
     
     var imageData = Data()
+    
+    // has the scenario been seen by the viewer?
+    var seen = false;
 
  //MARK: METHODS
     
@@ -71,6 +74,13 @@ class Scenario {
         self.scenarioID = scenarioID
         imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
         answerReasoning = String(arc4random())
+    }
+    
+    init(seen: Bool) {
+        self.seen = seen;
+        imageLoc = URL(string: "https:i.imgur.com/I8wCreu.jpg")!
+        answerReasoning = String(arc4random())
+        initialAnswer = Int(arc4random()) % Scenario.MAX_ANSWER_VALUE
     }
     
     // Creates and returns a DynamoDB compatible dictionary representing this class.
