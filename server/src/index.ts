@@ -53,8 +53,9 @@ function sleep(amount: Number): Promise<void> {
 }
 
 function noNan(number: number): number {
-    if(Number.isNaN(number) || number != number)
+    if(Number.isNaN(number))
     {
+    	console.log("warning, nan found");
         number = 0.0;
     }
     return number;
