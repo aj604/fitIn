@@ -188,8 +188,11 @@ class DynamoHandler {
                             if(Int(truncating: task.result!.count!) > 0)
                             {
                                 result.fromDBDictionary(items[0])
+                                result.getImageData()
+                                result.seen = false;
+                            } else {
+                                result.seen = true;
                             }
-                            result.getImageData()
                             return AWSTask(result: result)
                         } as! AWSTask<Scenario>;
                 }

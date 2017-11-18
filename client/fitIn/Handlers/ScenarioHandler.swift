@@ -63,7 +63,6 @@ class ScenarioHandler {
                         }
                         print("successful get request to scenario, in init")
                         
-                        task.result!.seen = false;
                         self.scenarios[index] = task.result!;
                         
                         return AWSTask(result: task.result!);
@@ -98,6 +97,7 @@ class ScenarioHandler {
         // kick off new tasks
         for (index, scenario) in scenarios.enumerated() {
             // add a new task if the corresponding scenario has been seen by the viewer
+            print("seen ", scenario.seen)
             if(scenario.seen || tasks[index].isFaulted) {
                 tasks[index] = dynamoHandler
                     .getRandomScenario()
@@ -110,7 +110,6 @@ class ScenarioHandler {
                             }
                             print("successful get request to scenario, in getnext");
                             
-                            task.result!.seen = false;
                             self.scenarios[index] = task.result!;
                             
                             return AWSTask(result: task.result!);
