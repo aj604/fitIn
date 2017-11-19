@@ -52,7 +52,7 @@ class ScenarioHandler {
     // Variable to store the type of the next Scenario. This will be used to tell the view controller
     // what type of view to load for the incoming expected response
     private var nextScenarioType : Scenario.ScenarioType?
-    var currentScenarioNumber: Int = 0;
+    var currentScenario: Int = 0;
     static let NUM_SCENARIOS = 5;
     var scenarios = [Scenario]();
     var tasks = [AWSTask<Scenario>]();
@@ -112,13 +112,13 @@ class ScenarioHandler {
         }
         
         let scenarioUpdate = ScenarioUpdate(
-            scenarioID: scenarios[currentScenarioNumber].scenarioID,
+            scenarioID: scenarios[currentScenario].scenarioID,
             userAnswer: voteChoice!
         );
         
         _ = dynamoHandler.putScenarioUpdate(scenarioUpdate);
         
-        if scenarios[currentScenarioNumber].isRightAnswer(userAnswer: voteChoice!) {
+        if scenarios[currentScenario].isRightAnswer(userAnswer: voteChoice!) {
             user.gotCorrect() // Log vote in the user struct
             return true
         }
@@ -130,7 +130,7 @@ class ScenarioHandler {
     // handles some transition to next state
     // Other transitions calculated in observing properties
     func loadNextScenario() {
-        scenarios[currentScenarioNumber].seen = true;
+        scenarios[currentScenario].seen = true;
         // kick off new tasks
         for (index, scenario) in scenarios.enumerated() {
             // add a new task if the corresponding scenario has been seen by the viewer
@@ -156,7 +156,7 @@ class ScenarioHandler {
         var found = false;
         for (index, scenario) in scenarios.enumerated() {
             if !scenario.seen {
-                currentScenarioNumber = index;
+                currentScenario = index;
                 found = true;
                 break;
             }
@@ -170,7 +170,7 @@ class ScenarioHandler {
                     if (task.result!.seen) {
                         continue;
                     }
-                    currentScenarioNumber = index;
+                    currentScenario = index;
                     break;
                 }
             }
@@ -183,12 +183,12 @@ class ScenarioHandler {
     func loadScenarioImageData() -> Data {
         //Currently Returns image data, to keep the var private
         //maybe change?
-        return scenarios[currentScenarioNumber].imageData
+        return scenarios[currentScenario].imageData
     }
     
     //return scenario answer reasoning
     func returnReasoning() -> String {
-        return scenarios[currentScenarioNumber].answerReasoning
+        return scenarios[currentScenario].answerReasoning
     }
     
 }

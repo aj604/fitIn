@@ -42,7 +42,7 @@ class ScenarioViewController: UIViewController {
         if let image = UIImage(data: scenarioController.loadScenarioImageData()){
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
-            questionDescription.text! = scenarioController.scenarios[scenarioController.currentScenarioNumber].questionText
+            questionDescription.text! = scenarioController.scenarios[scenarioController.currentScenario].questionText
         }
     }
     
