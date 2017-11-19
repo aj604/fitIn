@@ -17,7 +17,6 @@
 		04C06A3E1FC1547800BF653B /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C06A3D1FC1547800BF653B /* StatisticsViewController.swift */; };
 		04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */; };
 		04DA17F21FAD142A00A822AD /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17F11FAD142A00A822AD /* SliderViewController.swift */; };
-		04E220071FC14A6400593D5F /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E220061FC14A6400593D5F /* aws-resources.swift */; };
 		04E2200D1FC1521D00593D5F /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */; };
 		04E2200F1FC1528200593D5F /* ScenarioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2200E1FC1528200593D5F /* ScenarioTableViewCell.swift */; };
 		04E220111FC152C400593D5F /* ScenarioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E220101FC152C400593D5F /* ScenarioTableViewController.swift */; };
@@ -95,7 +94,6 @@
 		04C06A3D1FC1547800BF653B /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
 		04DA17F11FAD142A00A822AD /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
-		04E220061FC14A6400593D5F /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
 		04E2200E1FC1528200593D5F /* ScenarioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScenarioTableViewCell.swift; path = "/Users/averyjones/Documents/School Stuff/Comp Sci/cmpt275/fitIn/client/fitIn/Views/ScenarioTableViewCell.swift"; sourceTree = "<absolute>"; };
 		04E220101FC152C400593D5F /* ScenarioTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScenarioTableViewController.swift; path = "/Users/averyjones/Documents/School Stuff/Comp Sci/cmpt275/fitIn/client/fitIn/Controllers/ScenarioTableViewController.swift"; sourceTree = "<absolute>"; };
@@ -212,7 +210,6 @@
 		0464E0F01F885D0000002403 = {
 			isa = PBXGroup;
 			children = (
-				04E220061FC14A6400593D5F /* aws-resources.swift */,
 				0464E0FB1F885D0000002403 /* fitIn */,
 				D3B58BB01FAD3EAF00436A80 /* fitInTests */,
 				0464E0FA1F885D0000002403 /* Products */,
@@ -396,7 +393,6 @@
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
 				04E2200D1FC1521D00593D5F /* ScenarioViewController.swift in Sources */,
 				0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */,
-				04E220071FC14A6400593D5F /* aws-resources.swift in Sources */,
 				04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				04E2200F1FC1528200593D5F /* ScenarioTableViewCell.swift in Sources */,
