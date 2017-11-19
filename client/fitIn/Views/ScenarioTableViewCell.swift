@@ -12,6 +12,7 @@ class ScenarioTableViewCell: UITableViewCell {
     @IBOutlet weak var imageCell: UIImageView!
     @IBOutlet weak var scenarioName: UILabel!
     @IBOutlet weak var createdBy: UILabel!
+    var cellScenario = Scenario()
     
     override func awakeFromNib() {
         super.awakeFromNib()

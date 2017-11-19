@@ -16,6 +16,7 @@ class ScenarioTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+        print("History Count == \(scenarioController.scenarioHistory.count)")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,7 +34,7 @@ class ScenarioTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,6 +49,8 @@ class ScenarioTableViewController: UITableViewController {
             cell?.imageCell.image = UIImage(data:history.imageData)
             cell?.scenarioName.text = history.questionText
             cell?.createdBy.text = history.createdBy
+            cell?.cellScenario = history
+            print("question text for cell is \(history.questionText)")
         return cell!
     }
     
@@ -61,9 +64,11 @@ class ScenarioTableViewController: UITableViewController {
         if segue.identifier == "statisticsDetailSegue" {
         let destination = segue.destination as! StatisticsViewController
         if let rowIndex = tableView.indexPathForSelectedRow {
+            let currentCell = tableView.cellForRow(at: rowIndex) as? ScenarioTableViewCell
                 destination.scenarioController = self.scenarioController
                 destination.user = self.user
-                destination.currentScenario = scenarioController.scenarioHistory[rowIndex.row]
+            destination.currentScenario = (currentCell?.cellScenario)!
+            print("Segueing with value \((currentCell?.cellScenario)!.questionText)")
             }
         }
     }

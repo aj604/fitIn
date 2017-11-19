@@ -14,14 +14,7 @@ class StatisticsViewController: UIViewController {
     var user = UserProfile()
     var currentScenario = Scenario()
     
-    /* NEED TO DISPLAY
-         generic scenario view of image
-         createdBy
-         average answer
-         number of answers
-         response time
-         standardDev?
- */
+
     @IBOutlet weak var scenarioImage: UIImageView!
     @IBOutlet weak var questionText: UILabel!
     @IBOutlet weak var createdBy: UILabel!
@@ -47,6 +40,8 @@ class StatisticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("question text is")
+        print(currentScenario.questionText)
         updateUI()
 
         // Do any additional setup after loading the view.

@@ -26,9 +26,11 @@ struct ScenarioHandler {
     var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
         // This willSet preloads image data for a smooth transition to next Scenario
         willSet{
-            /*if let buffer = nextScenario?.getImageData() {
-                nextScenario!.imageData = buffer
-            }*/
+            // When changing to a new scenario this will send the current one to the history
+            if currentScenario.scenarioID != "insertSituationID" {
+                scenarioHistory.append(currentScenario)
+                print("adding a scenario to history!")
+            }
         }
         
         // This didSet assumes that we have segued to our next Scenario and we are initializing our handler
