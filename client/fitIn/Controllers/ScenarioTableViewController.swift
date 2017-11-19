@@ -15,7 +15,6 @@ class ScenarioTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
         print("History Count == \(scenarioController.scenarioHistory.count)")
 
         // Uncomment the following line to preserve selection between presentations
@@ -49,7 +48,6 @@ class ScenarioTableViewController: UITableViewController {
             cell?.imageCell.image = UIImage(data:history.imageData)
             cell?.scenarioName.text = history.questionText
             cell?.createdBy.text = history.createdBy
-            cell?.cellScenario = history
             print("question text for cell is \(history.questionText)")
         return cell!
     }
@@ -62,14 +60,19 @@ class ScenarioTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "statisticsDetailSegue" {
-        let destination = segue.destination as! StatisticsViewController
-        if let rowIndex = tableView.indexPathForSelectedRow {
-            let currentCell = tableView.cellForRow(at: rowIndex) as? ScenarioTableViewCell
-                destination.scenarioController = self.scenarioController
-                destination.user = self.user
-            destination.currentScenario = (currentCell?.cellScenario)!
-            print("Segueing with value \((currentCell?.cellScenario)!.questionText)")
+            print("USING THE RIGHT SEGUE!!!!!!!!!!!!!")
+            let destination = segue.destination as! StatisticsViewController
+            if let rowIndex = tableView.indexPathForSelectedRow {
+                destination.scenarioHistoryIndex = rowIndex.row
+                print("scenario controller history currently has \(scenarioController.scenarioHistory.count) values")
+                destination.scenarioController = scenarioController
+                destination.user = user
             }
+        }
+        if segue.identifier == "mainMenuFromHistorySegue" {
+            let destination = segue.destination as! MainMenuViewController
+            destination.scenarioController = scenarioController
+            destination.currentUser = user
         }
     }
     

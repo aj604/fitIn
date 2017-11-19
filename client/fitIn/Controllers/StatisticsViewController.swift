@@ -12,7 +12,7 @@ class StatisticsViewController: UIViewController {
     
     var scenarioController = ScenarioHandler()
     var user = UserProfile()
-    var currentScenario = Scenario()
+    var scenarioHistoryIndex = 0
     
 
     @IBOutlet weak var scenarioImage: UIImageView!
@@ -24,26 +24,27 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var numberOfAnswers: UILabel!
     @IBOutlet weak var responseTime: UILabel!
     @IBOutlet weak var standardDeviation: UILabel!
-    
+
     
     func updateUI() {
-        scenarioImage.image = UIImage(data:currentScenario.imageData)
-        questionText.text = currentScenario.questionText
-        createdBy.text = currentScenario.createdBy
-        answerReasoning.text = currentScenario.answerReasoning
-        initialAnswer.text = String(currentScenario.initialAnswer)
-        averageAnswer.text = String(currentScenario.averageAnswer)
-        numberOfAnswers.text = String(currentScenario.numberOfAnswers)
-        responseTime.text = String(currentScenario.averageTimeToAnswer)
-        standardDeviation.text = String(currentScenario.standardDeviation)
+        let tempScenario = scenarioController.scenarioHistory[scenarioHistoryIndex]
+        scenarioImage.image = UIImage(data:tempScenario.imageData)
+        questionText.text = tempScenario.questionText
+        print("question text is \(tempScenario.questionText)")
+        createdBy.text = tempScenario.createdBy
+        answerReasoning.text = tempScenario.answerReasoning
+        initialAnswer.text = String(tempScenario.initialAnswer)
+        averageAnswer.text = String(tempScenario.averageAnswer)
+        numberOfAnswers.text = String(tempScenario.numberOfAnswers)
+        responseTime.text = String(tempScenario.averageTimeToAnswer)
+        standardDeviation.text = String(tempScenario.standardDeviation)
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        print("question text is")
-        print(currentScenario.questionText)
+   
+        print("scenario controller history currently has \(scenarioController.scenarioHistory.count) values")
         updateUI()
-
+super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
