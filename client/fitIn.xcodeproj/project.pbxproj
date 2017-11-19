@@ -17,6 +17,9 @@
 		04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */; };
 		04DA17F21FAD142A00A822AD /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17F11FAD142A00A822AD /* SliderViewController.swift */; };
 		04E220071FC14A6400593D5F /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E220061FC14A6400593D5F /* aws-resources.swift */; };
+		04E2200D1FC1521D00593D5F /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */; };
+		04E2200F1FC1528200593D5F /* ScenarioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2200E1FC1528200593D5F /* ScenarioTableViewCell.swift */; };
+		04E220111FC152C400593D5F /* ScenarioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E220101FC152C400593D5F /* ScenarioTableViewController.swift */; };
 		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
 		0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */; };
 		0EE618D21FAD655900315A89 /* ScenarioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE618D11FAD655900315A89 /* ScenarioTest.swift */; };
@@ -43,7 +46,6 @@
 		FB0F0A1A1FA2CB0E00A9E879 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */; };
 		FB80D1AE1FAD00A7005CED02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */; };
-		FB80D1B01FAD00C2005CED02 /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1AF1FAD00C2005CED02 /* ScenarioViewController.swift */; };
 		FB80D1B21FAD0234005CED02 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */; };
 		FB80D1C51FAD819E005CED02 /* TestDynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */; };
 		FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AE91FA7CC2C00D42695 /* Scenario.swift */; };
@@ -90,6 +92,9 @@
 		04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
 		04DA17F11FAD142A00A822AD /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		04E220061FC14A6400593D5F /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
+		04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
+		04E2200E1FC1528200593D5F /* ScenarioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScenarioTableViewCell.swift; path = "/Users/averyjones/Documents/School Stuff/Comp Sci/cmpt275/fitIn/client/fitIn/Views/ScenarioTableViewCell.swift"; sourceTree = "<absolute>"; };
+		04E220101FC152C400593D5F /* ScenarioTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScenarioTableViewController.swift; path = "/Users/averyjones/Documents/School Stuff/Comp Sci/cmpt275/fitIn/client/fitIn/Controllers/ScenarioTableViewController.swift"; sourceTree = "<absolute>"; };
 		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
 		0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		0EE618D11FAD655900315A89 /* ScenarioTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioTest.swift; sourceTree = "<group>"; };
@@ -114,7 +119,6 @@
 		FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseViewController.swift; sourceTree = "<group>"; };
 		FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		FB80D1AF1FAD00C2005CED02 /* ScenarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
 		FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDynamoHandler.swift; sourceTree = "<group>"; };
 		FBC51AE91FA7CC2C00D42695 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
@@ -150,12 +154,13 @@
 		042CBD281FBE2C7B00ACE7B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04E220101FC152C400593D5F /* ScenarioTableViewController.swift */,
 				D35A4D781FBE6724003BE704 /* MustLoginPopupViewController.swift */,
 				D35A4D761FBE66D2003BE704 /* MainMenuViewController.swift */,
 				D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */,
 				FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */,
-				FB80D1AF1FAD00C2005CED02 /* ScenarioViewController.swift */,
 				D3B5B6B81FBBD1BA003914F3 /* UploadCustomScenarioViewController.swift */,
+				04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */,
 				FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */,
 				FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */,
 				0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */,
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */,
+				04E2200E1FC1528200593D5F /* ScenarioTableViewCell.swift */,
 				0464E1001F885D0000002403 /* Main.storyboard */,
 			);
 			path = Views;
@@ -374,12 +380,14 @@
 				D316E9D21FBBF3C700404BAB /* PlaceholderTableViewCell.swift in Sources */,
 				D35A4D791FBE6724003BE704 /* MustLoginPopupViewController.swift in Sources */,
 				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,
+				04E220111FC152C400593D5F /* ScenarioTableViewController.swift in Sources */,
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
-				FB80D1B01FAD00C2005CED02 /* ScenarioViewController.swift in Sources */,
+				04E2200D1FC1521D00593D5F /* ScenarioViewController.swift in Sources */,
 				0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */,
 				04E220071FC14A6400593D5F /* aws-resources.swift in Sources */,
 				04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
+				04E2200F1FC1528200593D5F /* ScenarioTableViewCell.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
 				D35A4D771FBE66D2003BE704 /* MainMenuViewController.swift in Sources */,
 				FB80D1B21FAD0234005CED02 /* ProfileEditViewController.swift in Sources */,
