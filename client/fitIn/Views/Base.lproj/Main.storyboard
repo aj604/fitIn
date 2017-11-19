@@ -1033,7 +1033,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eFV-qm-BFD">
+                                        <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eFV-qm-BFD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gyf-3Y-3sy">
@@ -1043,12 +1043,23 @@
                                                         <constraint firstAttribute="width" secondItem="gyf-3Y-3sy" secondAttribute="height" multiplier="1:1" id="Vi0-Ay-8OO"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ScenarioName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01H-Qf-RgC">
-                                                    <rect key="frame" x="80.5" y="30" width="294.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bxg-7B-SZG">
+                                                    <rect key="frame" x="85.5" y="20" width="289.5" height="41"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ScenarioName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01H-Qf-RgC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="289.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="createdBy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN2-c3-iCK">
+                                                            <rect key="frame" x="0.0" y="20.5" width="289.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -1060,6 +1071,11 @@
                                         <constraint firstItem="eFV-qm-BFD" firstAttribute="top" secondItem="7sE-dY-F8v" secondAttribute="top" id="sWq-Mu-kyk"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="createdBy" destination="MN2-c3-iCK" id="dD0-Iv-0Te"/>
+                                    <outlet property="imageCell" destination="gyf-3Y-3sy" id="lC7-f0-qUU"/>
+                                    <outlet property="scenarioName" destination="01H-Qf-RgC" id="3mb-Jq-dKZ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

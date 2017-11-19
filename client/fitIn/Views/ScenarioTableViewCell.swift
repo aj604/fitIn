@@ -9,6 +9,10 @@ import UIKit
 
 class ScenarioTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var imageCell: UIImageView!
+    @IBOutlet weak var scenarioName: UILabel!
+    @IBOutlet weak var createdBy: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

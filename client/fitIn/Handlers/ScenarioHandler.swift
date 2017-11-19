@@ -69,6 +69,8 @@ struct ScenarioHandler {
         }
     }
     
+    var scenarioHistory = [Scenario]()
+    
     //MARK: METHODS
     
     // lodge a vote.

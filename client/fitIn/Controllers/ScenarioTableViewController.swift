@@ -8,9 +8,13 @@
 import UIKit
 
 class ScenarioTableViewController: UITableViewController {
+    
+    var scenarioController = ScenarioHandler()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,18 +37,19 @@ class ScenarioTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return scenarioController.scenarioHistory.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "scenarioCell", for: indexPath) as? ScenarioTableViewCell
+            let history = scenarioController.scenarioHistory[indexPath.row]
+            cell?.imageCell.image = UIImage(data:history.imageData)
+            cell?.scenarioName.text = history.questionText
+            cell?.createdBy.text = history.createdBy
+        return cell!
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
