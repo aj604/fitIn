@@ -14,6 +14,7 @@
 		0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF381F896F3400ECB59B /* ScenarioHandler.swift */; };
 		0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499CF3C1F8973D900ECB59B /* userProfile.swift */; };
 		0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */; };
+		04C06A3E1FC1547800BF653B /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C06A3D1FC1547800BF653B /* StatisticsViewController.swift */; };
 		04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */; };
 		04DA17F21FAD142A00A822AD /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17F11FAD142A00A822AD /* SliderViewController.swift */; };
 		04E220071FC14A6400593D5F /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E220061FC14A6400593D5F /* aws-resources.swift */; };
@@ -89,6 +90,7 @@
 		0499CF381F896F3400ECB59B /* ScenarioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioHandler.swift; sourceTree = "<group>"; };
 		0499CF3C1F8973D900ECB59B /* userProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfile.swift; sourceTree = "<group>"; };
 		0499CF3E1F89795C00ECB59B /* personPickingUpPoop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = personPickingUpPoop.jpg; sourceTree = "<group>"; };
+		04C06A3D1FC1547800BF653B /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		04DA17EF1FAD142200A822AD /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
 		04DA17F11FAD142A00A822AD /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		04E220061FC14A6400593D5F /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		042CBD281FBE2C7B00ACE7B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04C06A3D1FC1547800BF653B /* StatisticsViewController.swift */,
 				04E220101FC152C400593D5F /* ScenarioTableViewController.swift */,
 				D35A4D781FBE6724003BE704 /* MustLoginPopupViewController.swift */,
 				D35A4D761FBE66D2003BE704 /* MainMenuViewController.swift */,
@@ -372,6 +375,7 @@
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */,
 				CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */,
+				04C06A3E1FC1547800BF653B /* StatisticsViewController.swift in Sources */,
 				FB80D1AE1FAD00A7005CED02 /* ProfileViewController.swift in Sources */,
 				D316E9D01FBBF16800404BAB /* PlaceholderSelectionViewController.swift in Sources */,
 				04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */,
