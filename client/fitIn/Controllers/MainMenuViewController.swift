@@ -18,8 +18,18 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var toScenario: UIButton!
     @IBOutlet weak var toLogin: UIButton!
     @IBOutlet weak var toUpload: UIButton!
+    @IBOutlet weak var toViewProfile: UIButton!
     
-    
+
+    //add segue for viewing profile
+    @IBAction func viewProfile(_ sender: Any) {
+        if (currentUser!.isUserLoggedIn) {
+            self.performSegue(withIdentifier: "MainMenuToViewProfileSegue", sender:self);
+        }
+        else{
+            self.performSegue(withIdentifier:"MainMenuMustLoginPopupSegue", sender:self);
+        }
+    }
     //add segue for uploading scenarios
     @IBAction func toHistory(_ sender: Any) {
     }
@@ -39,6 +49,7 @@ class MainMenuViewController: UIViewController {
         toScenario.layer.cornerRadius = 3;
         toLogin.layer.cornerRadius = 3;
         toUpload.layer.cornerRadius = 3;
+        toViewProfile.layer.cornerRadius = 3;
         // Do any additional setup after loading the view.
     }
     
