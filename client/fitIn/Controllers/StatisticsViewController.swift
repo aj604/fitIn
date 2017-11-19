@@ -9,6 +9,17 @@
 import UIKit
 
 class StatisticsViewController: UIViewController {
+    /* NEED TO DISPLAY
+         generic scenario view of image
+         createdBy
+         average answer
+         number of answers
+         response time
+         standardDev?
+ */
+    var scenarioController = ScenarioHandler()
+    var user = UserProfile()
+    var currentScenario = Scenario()
 
     override func viewDidLoad() {
         super.viewDidLoad()
