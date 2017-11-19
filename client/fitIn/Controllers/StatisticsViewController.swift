@@ -37,6 +37,7 @@ class StatisticsViewController: UIViewController {
         scenarioImage.image = UIImage(data:currentScenario.imageData)
         questionText.text = currentScenario.questionText
         createdBy.text = currentScenario.createdBy
+        answerReasoning.text = currentScenario.answerReasoning
         initialAnswer.text = String(currentScenario.initialAnswer)
         averageAnswer.text = String(currentScenario.averageAnswer)
         numberOfAnswers.text = String(currentScenario.numberOfAnswers)
