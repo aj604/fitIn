@@ -9,6 +9,11 @@
 import UIKit
 
 class StatisticsViewController: UIViewController {
+    
+    var scenarioController = ScenarioHandler()
+    var user = UserProfile()
+    var currentScenario = Scenario()
+    
     /* NEED TO DISPLAY
          generic scenario view of image
          createdBy
@@ -17,12 +22,31 @@ class StatisticsViewController: UIViewController {
          response time
          standardDev?
  */
-    var scenarioController = ScenarioHandler()
-    var user = UserProfile()
-    var currentScenario = Scenario()
+    @IBOutlet weak var scenarioImage: UIImageView!
+    @IBOutlet weak var questionText: UILabel!
+    @IBOutlet weak var createdBy: UILabel!
+    @IBOutlet weak var answerReasoning: UILabel!
+    @IBOutlet weak var initialAnswer: UILabel!
+    @IBOutlet weak var averageAnswer: UILabel!
+    @IBOutlet weak var numberOfAnswers: UILabel!
+    @IBOutlet weak var responseTime: UILabel!
+    @IBOutlet weak var standardDeviation: UILabel!
+    
+    
+    func updateUI() {
+        scenarioImage.image = UIImage(data:currentScenario.imageData)
+        questionText.text = currentScenario.questionText
+        createdBy.text = currentScenario.createdBy
+        initialAnswer.text = String(currentScenario.initialAnswer)
+        averageAnswer.text = String(currentScenario.averageAnswer)
+        numberOfAnswers.text = String(currentScenario.numberOfAnswers)
+        responseTime.text = String(currentScenario.averageTimeToAnswer)
+        standardDeviation.text = String(currentScenario.standardDeviation)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
 
         // Do any additional setup after loading the view.
     }
