@@ -1,16 +1,11 @@
 // This is the "main" file used by lambda, lambda will import it and attempt to call the handler function
 import * as AWS from "aws-sdk";
 import * as Scenario from "./scenario";
-import * as fs from "fs";
 
 // debug bool so that updates arent deleted after the merge is finished
 // should be set to true for normal operation.
 let DELETE = true;
 
-if(fs.existsSync("./creds.json")) {
-	console.log("found creds");
-	AWS.config.loadFromPath('./creds.json');
-}
 AWS.config.update({region: "us-west-2"});
 let dynamo = new AWS.DynamoDB();
 
@@ -41,8 +36,6 @@ switch(process.platform) {
 // local debugging only happens in windows or osx machines
 const THROTTLE_RATE = (platform === Platform.WINDOWS.valueOf() || platform === Platform.MAC.valueOf()) ?  1 : 1000;
 
-const SCAN_LIMIT = 10;
-
 function sleep(amount: Number): Promise<void> {
 
     return new Promise<void>((resolve, reject) => {
@@ -53,9 +46,8 @@ function sleep(amount: Number): Promise<void> {
 }
 
 function noNan(number: number): number {
-    if(Number.isNaN(number))
+    if(Number.isNaN(number) || number != number)
     {
-    	console.log("warning, nan found");
         number = 0.0;
     }
     return number;
@@ -108,8 +100,8 @@ exports.handler = (event, context, callback) => {
 
     let scanArgs: AWS.DynamoDB.ScanInput = {
         TableName: "scenarioUpdate",
-        ConsistentRead: false,
-        Limit: SCAN_LIMIT
+        ReturnConsumedCapacity: "TOTAL",
+        ConsistentRead: false
     }
 
     dynamo.scan(scanArgs).promise()
@@ -147,7 +139,7 @@ exports.handler = (event, context, callback) => {
         let task = Promise.resolve();
         updatesMap.forEach((value: Scenario.ScenarioUpdate[], key: string) => {
             task = task.then(() => {
-				console.log("key is: " + key);
+
                 let request: AWS.DynamoDB.GetItemInput = {
                     TableName: "scenarioMaster",
                     Key: { 
@@ -157,7 +149,7 @@ exports.handler = (event, context, callback) => {
 
                 return dynamo.getItem(request).promise()
                     .then((item: AWS.DynamoDB.GetItemOutput) => {
-						console.log("successfully retrieved scenario: \n", item.Item, "\n\n")
+
                         if(!item.Item)
                         {
                             // scenario does not exist
@@ -165,7 +157,7 @@ exports.handler = (event, context, callback) => {
                             return sleep(THROTTLE_RATE);
                         }
 
-                        
+                        console.log("successfully retrieved scenario: \n", item.Item, "\n\n")
                         let scenario = new Scenario.Scenario();
                         scenario.fromDB(item.Item);
                         scenariosMap.set(scenario.scenarioID, scenario);

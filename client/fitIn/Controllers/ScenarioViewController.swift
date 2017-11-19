@@ -26,12 +26,12 @@ class ScenarioViewController: UIViewController {
     
     //User input
     @IBAction func proSocialPic(_ sender: UIButton) {
-        scenarioController.voteChoice = Scenario.ANSWER_YES
+        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo.rawValue
         scenarioController.loadNextScenario()
         updateUI()
     }
     @IBAction func antiSocialPic(_ sender: UIButton) {
-        scenarioController.voteChoice = Scenario.ANSWER_NO
+        scenarioController.voteChoice = Scenario.ScenarioType.yesOrNo.rawValue
         scenarioController.loadNextScenario()
         updateUI()
     }
@@ -42,7 +42,7 @@ class ScenarioViewController: UIViewController {
         if let image = UIImage(data: scenarioController.loadScenarioImageData()){
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
-            questionDescription.text! = scenarioController.scenarios[scenarioController.currentScenario].questionText
+            questionDescription.text! = scenarioController.currentScenario.questionText
         }
     }
     

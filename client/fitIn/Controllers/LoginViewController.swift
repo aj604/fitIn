@@ -6,7 +6,7 @@
 //  Copyright © 2017 group of 5. All rights reserved.
 //  contributors: Scott Checko, Aarish Kapila, Vlad Polin
 //  Known bugs:
-//              -
+//              - 
 
 import UIKit
 
@@ -52,25 +52,13 @@ class LoginViewController: UIViewController {
                     if(task.result == nil)
                     {
                         currentUser.isUserLoggedIn = false
-                        DispatchQueue.main.async {
-                            //print("Main")
-                            let alertController = UIAlertController(title: "Login", message: "user does not exist in database", preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                        //print("user does not exist in database")
+                        print("user does not exist in database")
                         return
                     }
                     else if (task.result != nil && task.result!.passwordToken == password)
                     {
                         currentUser.isUserLoggedIn = true
-                        DispatchQueue.main.async {
-                            //print("Main")
-                            let alertController = UIAlertController(title: "Login", message: "user has successfully logged in", preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                        //print("user has successfully logged in")
+                        print("user has successfully logged in")
                         currentUser.emailAddress = task.result!.emailAddress
                         currentUser.userName = task.result!.userName
                         currentUser.userAge = task.result!.userAge
@@ -83,12 +71,6 @@ class LoginViewController: UIViewController {
                     else
                     {
                         currentUser.isUserLoggedIn = false
-                        DispatchQueue.main.async {
-                            //print("Main")
-                            let alertController = UIAlertController(title: "Login", message: "user has failed to login", preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alertController, animated: true, completion: nil)
-                        }
                         print("user has failed to login")
                         return
                     }
@@ -99,22 +81,21 @@ class LoginViewController: UIViewController {
         //currently logging in and signing up works, but we have no UI to show this
         //
         /*if (didFinish == true && currentUser.isUserLoggedIn == false) {
-         self.EmailTextField.textColor = UIColor.red
-         self.PasswordFromLoginScreen.textColor = UIColor.red
-         }*/
+            self.EmailTextField.textColor = UIColor.red
+            self.PasswordFromLoginScreen.textColor = UIColor.red
+        }*/
     }
     
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
 
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
