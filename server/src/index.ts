@@ -1,3 +1,13 @@
+//
+//  Scenario.swift
+//  fitIn
+//
+//  Created by Scott Checko on 2017-10-07.
+//  Copyright © 2017 group of 5. All rights reserved.
+//  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
+//  Known bugs:
+//    
+
 // This is the "main" file used by lambda, lambda will import it and attempt to call the handler function
 import * as AWS from "aws-sdk";
 import * as Scenario from "./scenario";

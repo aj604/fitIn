@@ -1,7 +1,16 @@
+//
+//  Scenario.swift
+//  fitIn
+//
+//  Created by Scott Checko on 2017-10-07.
+//  Copyright © 2017 group of 5. All rights reserved.
+//  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
+//  Known bugs:
+//    
 
 import * as AWS from "aws-sdk";
 
-
+// this is a mirror class of the client Scenerio Class, it represents a Scenario.
 export class Scenario
 {
     scenarioID          : string; // cannot be changed
@@ -22,7 +31,8 @@ export class Scenario
     mean                : number;
     currentMean         : number; // see merge() function for comments on standard deviation
 
-
+    // This function converts an AWS DynamoDB dictionary to a usable format
+    // ie, it initializes a Scenario instance.
     fromDB(item: AWS.DynamoDB.AttributeMap) : void {
         this.scenarioID = item["scenarioID"].S;
         this.createdBy = item["createdBy"].S;
@@ -43,6 +53,7 @@ export class Scenario
         this.currentMean = parseFloat(item["currentMean"].N);
     }
 
+    // This function creates an AWSDynamoDB dictionary from a Scenario Instance
     toDB() : AWS.DynamoDB.AttributeMap {
         let item : AWS.DynamoDB.AttributeMap = {};
 
@@ -69,6 +80,9 @@ export class Scenario
 
 }
 
+// This class represents an update to a scenario
+// as such, it is a very trimmed down scenario containing
+// enough information to update a real scenario with its contents.
 export class ScenarioUpdate 
 {
     scenarioID  : string; // cannot be changed
@@ -77,6 +91,8 @@ export class ScenarioUpdate
     userAnswer  : number;
     timeToAnswer: number;
 
+    // This function converts an AWS DynamoDB dictionary to a usable format
+    // ie, it initializes a ScenarioUpdate instance.
     fromDB(item: AWS.DynamoDB.AttributeMap) {
         this.scenarioID = item["scenarioID"].S;
         this.updateID = item["updateID"].S;
@@ -86,4 +102,7 @@ export class ScenarioUpdate
     }
 
     // NOTE: no need to do toDB()
+    // A ScenarioUpdate is only ever created by the client,
+    // and because of this the server will only ever delete 
+    // the ScenarioUpdate after it is used.
 }
