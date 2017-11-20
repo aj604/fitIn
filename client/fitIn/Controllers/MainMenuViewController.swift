@@ -12,8 +12,6 @@ class MainMenuViewController: UIViewController {
     var currentUser = UserProfile.current()
     var scenarioController = ScenarioHandler()
     
-    
-    
     //add outlets for buttons
     @IBOutlet weak var toScenario: UIButton!
     @IBOutlet weak var toLogin: UIButton!
