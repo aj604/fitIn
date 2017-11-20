@@ -161,7 +161,7 @@ exports.handler = (event, context, callback) => {
     // This code is designed to run once, and only once per invocation.
     // This is due to the AWS Lambda architecture. AWS handles the timing of invocation
     // as configured by us. Therefore, this server is NOT designed as a background process
-    // that runs indefinately (It could be converted to run indefinately though, assuming something
+    // that runs indefinitely (It could be converted to run indefinitely though, assuming something
     // else other than lambda is hosting it).
 
 
