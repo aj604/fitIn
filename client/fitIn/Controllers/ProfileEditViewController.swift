@@ -41,6 +41,8 @@ class ProfileEditViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    var scenarioController = ScenarioHandler()
 	
     @IBOutlet weak var userEditUsernameIcon: UIImageView!
     @IBOutlet weak var userEditAgeIcon: UIImageView!
@@ -136,14 +138,18 @@ class ProfileEditViewController: UIViewController {
             _ = dynamoHandler.putUserProfile(UserProfile.current()!)
         }
     }
-    /*
+    
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "profileEditToMenuSegue" {
+            let destination = segue.destination as? MainMenuViewController
+            destination?.scenarioController = scenarioController
+        }
 
      // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

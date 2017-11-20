@@ -70,8 +70,22 @@ class MainMenuViewController: UIViewController {
             destination?.scenarioController = self.scenarioController
             destination?.user = currentUser!
         }
-        
-        
+        if segue.identifier == "scenarioFromMenuSegue" {
+            /* INSERT IF STATEMENT HERE TO DECIDE WHICH SCENARIO TO SEGUE TO */
+            let destination = segue.destination as? ScenarioViewController
+            destination?.scenarioController = self.scenarioController
+        }
+        if segue.identifier == "MainMenuToViewProfileSegue" {
+            let destination = segue.destination as? ProfileViewController
+            destination?.scenarioController = scenarioController
+        }
+        if segue.identifier == "MainMenuToUploadScenarioSegue" {
+            let destination = segue.destination as? UploadCustomScenarioViewController
+            destination?.scenarioController = scenarioController
+        }
+        if segue.identifier == "mainMenuToLoginSegue" {
+            let destination = segue.destination as? LoginViewController
+            destination?.scenarioController = scenarioController
+        }
      }
-    
 }

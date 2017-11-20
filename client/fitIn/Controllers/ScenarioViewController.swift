@@ -49,7 +49,7 @@ class ScenarioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        updateUI()
         //Try loading image data from first Scenario
         if let image = UIImage(data: scenarioController.loadScenarioImageData()){
             print("image loaded")

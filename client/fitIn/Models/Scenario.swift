@@ -6,7 +6,7 @@
 //  Copyright © 2017 group of 5. All rights reserved.
 //  contributors: Vlad Polin, Scott Checko, Avery Jones, Aarish Kapila, Yanisa Chinitsarayos, Kevin Cheng
 //  Known bugs:
-//              - 
+//              -
 
 import Foundation
 import AWSDynamoDB
@@ -15,7 +15,7 @@ import AWSDynamoDB
 // This class represents a Scenario that the user would see in their typical
 // interaction with our app.
 class Scenario {
-
+    
     // Enum for the type of response that the Scenario requires
     // MAY potentially use associated values for storing of answer type
     enum ScenarioType : Int {
@@ -59,8 +59,8 @@ class Scenario {
     
     // has the scenario been seen by the viewer?
     var seen = false;
-
- //MARK: METHODS
+    
+    //MARK: METHODS
     
     // default init
     required init() {
@@ -68,7 +68,7 @@ class Scenario {
         answerReasoning = String(arc4random())
         initialAnswer = Int(arc4random()) % Scenario.MAX_ANSWER_VALUE
     }
-
+    
     // Need to make this a load function from our DB based upon Scenario ID
     // Will init the imageURL either locally or from URL from db
     init(scenarioID: String, type : ScenarioType) {
@@ -128,9 +128,9 @@ class Scenario {
         // self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
         // self.mean = Double(dict["mean"]!.n!)!
         // self.currentMean = Double(dict["currentMean"]!.n!)!
-    
-    }
         
+    }
+    
     // general answer checking method
     // Pre: Scenario is loaded and inputAnswer != nil
     // Post: Bool? determining if they got the right answer or if inputAnswer wasnt initialized
@@ -147,20 +147,20 @@ class Scenario {
         //really bad practice for force unwrap on a UI Item
         imageLoc = URL(string: url)!
     }
-        
+    
     // Returns image data for the Scenario, Used in situationHandler
     func getImageData() -> Void { // Get Image Data from URL / Local
         var imageOut = Data()//Data type, to prep image for UIImageView
         do{
             try? imageOut = Data(contentsOf: imageLoc) //Primary image location
-        /*} catch {
-            do{
-                // backup local failedToLoad resource. Should not fail... needs work
-                print("Uhoh shouldnt get here")
-                try? imageOut = Data(contentsOf: Bundle.main.url(forResource: "failedToLoad", withExtension: ".png")!)
-            } catch {
-                print("UHOH Cant find our local failed to load image!")
-            }*/
+            /*} catch {
+             do{
+             // backup local failedToLoad resource. Should not fail... needs work
+             print("Uhoh shouldnt get here")
+             try? imageOut = Data(contentsOf: Bundle.main.url(forResource: "failedToLoad", withExtension: ".png")!)
+             } catch {
+             print("UHOH Cant find our local failed to load image!")
+             }*/
         }
         self.imageData = imageOut
     }

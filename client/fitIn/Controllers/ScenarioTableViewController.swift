@@ -16,6 +16,7 @@ class ScenarioTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         print("History Count == \(scenarioController.scenarioHistory.count)")
+        print("current user == \(user.emailAddress)")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -70,6 +71,7 @@ class ScenarioTableViewController: UITableViewController {
             }
         }
         if segue.identifier == "mainMenuFromHistorySegue" {
+            print("RETURNING TO MENU SEGUE")
             let destination = segue.destination as! MainMenuViewController
             destination.scenarioController = scenarioController
             destination.currentUser = user
