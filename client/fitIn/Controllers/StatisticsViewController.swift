@@ -10,7 +10,6 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
     
-    var scenarioController = ScenarioHandler()
     var user = UserProfile()
     var scenarioHistoryIndex = 0
     

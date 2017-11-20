@@ -11,6 +11,7 @@
 import Foundation
 import AWSDynamoDB
 
+let scenarioController = ScenarioHandler()
 //This is the ScenarioHandler class, it instantiates the other classes and interprets events
 //Controls flow of app
 class ScenarioHandler {

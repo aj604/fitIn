@@ -66,7 +66,7 @@ class DynamoHandler {
     }
     
     // Asyncronously PUTs to AWS DynamoDB, after converting the scenario to a dictionary
-    // This function returns an AWSTask, which contains the result of the PUT once the 
+    // This function returns an AWSTask, which contains the result of the PUT once the
     // PUT completes.
     func putScenario(_ scenario: Scenario) -> AWSTask<Scenario>{
         let put = AWSDynamoDBPutItemInput()
@@ -87,11 +87,11 @@ class DynamoHandler {
                 
                 // todo actual return value
                 return AWSTask(result: Scenario())
-        } as! AWSTask<Scenario>
+            } as! AWSTask<Scenario>
     }
     
     // Asyncronously PUTs to AWS DynamoDB, after converting the UserProfile to a dictionary
-    // This function returns an AWSTask, which contains the result of the PUT once the 
+    // This function returns an AWSTask, which contains the result of the PUT once the
     // PUT completes.
     func putUserProfile(_ userProfile: UserProfile) -> AWSTask<UserProfile>{
         let put = AWSDynamoDBPutItemInput()
@@ -112,11 +112,11 @@ class DynamoHandler {
                 
                 // todo return return of put
                 return AWSTask(result: UserProfile())
-        } as! AWSTask<UserProfile>
+            } as! AWSTask<UserProfile>
     }
     
     // Asyncronously GETs to AWS DynamoDB, requesting a Scenario uniquely identified by a scenarioID
-    // This function returns an AWSTask, which contains the result of the GET once the 
+    // This function returns an AWSTask, which contains the result of the GET once the
     // GET completes.
     func getScenario(_ id: String) -> AWSTask<Scenario> {
         
@@ -147,12 +147,12 @@ class DynamoHandler {
                 result.fromDBDictionary(item)
                 
                 return AWSTask(result: result)
-            
+                
             } as! AWSTask<Scenario>
     }
-
+    
     // Asyncronously GETs to AWS DynamoDB, requesting a UserProfile uniquely identified by a emailAddress
-    // This function returns an AWSTask, which contains the result of the GET once the 
+    // This function returns an AWSTask, which contains the result of the GET once the
     // GET completes.
     
     func getRandomScenario() -> AWSTask<Scenario> {
@@ -221,10 +221,10 @@ class DynamoHandler {
                     result.seen = true;
                 }
                 return AWSTask(result: result)
-        } as! AWSTask<Scenario>
+            } as! AWSTask<Scenario>
     }
     
-  func getUserProfile(_ id: String) -> AWSTask<UserProfile> {
+    func getUserProfile(_ id: String) -> AWSTask<UserProfile> {
         
         let get = AWSDynamoDBGetItemInput()
         
@@ -258,7 +258,7 @@ class DynamoHandler {
                 let item = task.result!.item!
                 
                 result.fromDBDictionary(item)
-
+                
                 return AWSTask(result: result)
                 
             } as! AWSTask<UserProfile>
@@ -288,6 +288,6 @@ class DynamoHandler {
                 return AWSTask(result: ScenarioUpdate())
             } as! AWSTask<ScenarioUpdate>
     }
-
+    
     
 }
