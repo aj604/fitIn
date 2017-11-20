@@ -160,7 +160,7 @@ class ScenarioHandler {
         // find a new currentScenario
         var found = false;
         for (index, scenario) in scenarios.enumerated() {
-            if !scenario.seen {
+            if !scenario.seen && scenario.questionText != "broken" {
                 currentScenario = index;
                 found = true;
                 break;
@@ -170,7 +170,7 @@ class ScenarioHandler {
         // wait if we must
         if !found {
             for (index, task) in tasks.enumerated() {
-                if !task.isCompleted && scenarios[index].seen == true {
+                if !task.isCompleted && !task.isFaulted && scenarios[index].seen == true {
                     task.waitUntilFinished();
                     if (task.result!.seen) {
                         continue;
