@@ -4,7 +4,7 @@
 //
 //  Created by schecko on 10/30/17.
 //  Copyright © 2017 group of 5. All rights reserved.
-//  contributors: Scott Checko
+//  contributors: Scott Checko, Avery Jones
 //  Known bugs:
 //              - PUT requests return the default constructor objects of Scenario and UserProfile
 //                instead of the put response.
@@ -167,6 +167,7 @@ class DynamoHandler {
             "#primaryKey": "scenarioID"
         ]
         
+        //Is it possible to change this so we always pick a valid id
         let rand = arc4random() % 11;
         // print("rand is ", rand);
         query!.expressionAttributeValues = [
@@ -182,46 +183,56 @@ class DynamoHandler {
                     return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
                 }
                 
-                if(task.result!.items == nil || Int(truncating: task.result!.count!) <= 0) {
-                    // no object found.
+                //PROBLEM BEGINS HERE
+                if task.result != nil {
+                    if(task.result!.items == nil || Int(truncating: task.result!.count!) <= 0) {
+                        // no object found.
+                        
+                        query!.keyConditionExpression = "#index = :indexValue AND #primaryKey < :primaryKeyValue"
+                        print("plsbb")
+                        return self
+                            .dynamo
+                            .query(query!)
+                            .continueWith { (task:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
+                                // print("successful get request to scenario")
+                                
+                                let result = Scenario();
+                                if let hello = task.result{
+                                    if let hi = hello.items{
+                                        let items = hi
+                                        if(hello.count != nil && Int(truncating: hello.count!) > 0)
+                                        //if(Int(truncating: task.result!.count!) > 0)
+                                            {
+                                                result.fromDBDictionary(items[0])
+                                                result.getImageData()
+                                                result.seen = false;
                     
-                    query!.keyConditionExpression = "#index = :indexValue AND #primaryKey < :primaryKeyValue"
-                    print("plsbb")
-                    return self
-                        .dynamo
-                        .query(query!)
-                        .continueWith { (task:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
-                            // print("successful get request to scenario")
-                            
-                            let result = Scenario();
-                            let items = task.result!.items!
-                            
-                            if(Int(truncating: task.result!.count!) > 0)
-                            {
-                                result.fromDBDictionary(items[0])
-                                result.getImageData()
-                                result.seen = false;
-                            } else {
-                                result.seen = true;
-                                print("false result")
-                                //return AWSTask(error: result as! Error)
-                            }
-                            return AWSTask(result: result)
-                        } as! AWSTask<Scenario>;
+                                        } else {
+                                            result.seen = true;
+                                            print("false result")
+                                            //return AWSTask(error: result as! Error)
+                                        }
+                                    }
+                                }
+                                return AWSTask(result: result)
+                            } as! AWSTask<Scenario>;
+                    }
                 }
                 
                 // print("successful get request to scenario")
                 
                 let result = Scenario();
                 if task.result != nil {
-                    let items = task.result!.items!
-                    if(Int(truncating: task.result!.count!) > 0) {
-                        result.fromDBDictionary(items[0])
-                        result.getImageData()
-                        result.seen = false;
-                } else {
-                    result.seen = true;
-                }
+                    if task.result!.items != nil {
+                        let items = task.result!.items!
+                        if(Int(truncating: task.result!.count!) > 0) {
+                            result.fromDBDictionary(items[0])
+                            result.getImageData()
+                            result.seen = false;
+                        } else {
+                            result.seen = true;
+                        }
+                    }
                 }
                 return AWSTask(result: result)
             } as! AWSTask<Scenario>
