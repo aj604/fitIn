@@ -15,7 +15,10 @@ import * as fs from "fs";
 
 // debug bool so that updates arent deleted after the merge is finished
 // should be set to true for normal operation.
-const DELETE = true;
+const DELETE = false;
+
+// debug bool to output extra logging information,
+// should be false for normal operation.
 const VERBOSE_LOGS = false;
 
 
@@ -155,6 +158,12 @@ exports.handler = (event, context, callback) => {
     // 5: put the scenario back into master
     // 6: delete the updates that were consumed from the updates table
 
+    // This code is designed to run once, and only once per invocation.
+    // This is due to the AWS Lambda architecture. AWS handles the timing of invocation
+    // as configured by us. Therefore, this server is NOT designed as a background process
+    // that runs indefinately (It could be converted to run indefinately though, assuming something
+    // else other than lambda is hosting it).
+
 
     let scanArgs: AWS.DynamoDB.ScanInput = {
         TableName: "scenarioUpdate",
@@ -162,12 +171,15 @@ exports.handler = (event, context, callback) => {
         Limit: SCAN_LIMIT
     }
 
+    // perform a scan on the updates table
     dynamo.scan(scanArgs).promise()
     .then((result: AWS.DynamoDB.ScanOutput) => {
+        // scan complete, deal with the ressults of the scan.
 
         log(false, "successfully scanned " + result.Count + " updates");
         log(true, "scan results: \n", result.Items, "\n\n");
 
+        // create an array of ScenarioUpdates from the database objects
         let scenarioUpdates : Scenario.ScenarioUpdate[] = result.Items.map((value: AWS.DynamoDB.AttributeMap) => {
             let scenarioUpdate : Scenario.ScenarioUpdate = new Scenario.ScenarioUpdate;
             scenarioUpdate.fromDB(value);
@@ -197,8 +209,11 @@ exports.handler = (event, context, callback) => {
         // grab the scenarios associated with all of the scenarioUpdates
         let task = Promise.resolve();
         updatesMap.forEach((value: Scenario.ScenarioUpdate[], key: string) => {
+            // "task = task.then" is a way of generating a very long chain of
+            // tasks that all complete one after another, not in parallel.
+            // this allows me to apply throttling on the requests to avoid spikes of
+            // usage.
             task = task.then(() => {
-				console.log("key is: " + key);
                 let request: AWS.DynamoDB.GetItemInput = {
                     TableName: "scenarioMaster",
                     Key: { 
@@ -208,16 +223,15 @@ exports.handler = (event, context, callback) => {
 
                 return dynamo.getItem(request).promise()
                     .then((item: AWS.DynamoDB.GetItemOutput) => {
-                        log(false, "successfully retrieved scenario: \n", item.Item.scenarioID, "\n\n")
+                        log(false, "successfully retrieved scenario: ", item.Item.scenarioID.S)
 						log(true, "successfully retrieved scenario: \n", item.Item, "\n\n")
                         if(!item.Item)
                         {
                             // scenario does not exist
-                            // -> probably because it was made manually in the AWS Console
+                            // -> probably becausethe update was made manually in the AWS Console
                             return sleep(THROTTLE_RATE);
                         }
 
-                        
                         let scenario = new Scenario.Scenario();
                         scenario.fromDB(item.Item);
                         scenariosMap.set(scenario.scenarioID, scenario);
@@ -228,11 +242,13 @@ exports.handler = (event, context, callback) => {
                         log(false, "failed to get scenario: ", key, " there is a good chance the scenario does not exist")
                         log(false, "error " + error);
                     });
-            })
-        })
+            });
+        });
 
+        
         return task
             .then(() => {
+                // at this point, all get requests to the scenario table are completed.
                 log(false, "successfully retrieved ", scenariosMap.size, " scenarios");
                 log(true, "successfully generated a map of scenarios: \n", scenariosMap, " \n\n ");
 
@@ -255,9 +271,14 @@ exports.handler = (event, context, callback) => {
 
         log(false, "successfully merged all scenarios and updates");
         log(true, "merge results: ", scenariosMap, " \n\n ");
+
+        // all of the merges are complete, now do two things:
+        // 1. delete all of the updates
+        // 2. put the newly updates scenarios
         let puts = Promise.resolve();
         let deletes = Promise.resolve();
 
+        // perform the puts, with throttling.
         scenariosMap.forEach((scenario: Scenario.Scenario, key: string) => 
         {
             puts = puts.then(() => 
@@ -278,6 +299,7 @@ exports.handler = (event, context, callback) => {
             });
         });
 
+        // perform the deletes, with throttling.
         updatesMap.forEach((updates: Scenario.ScenarioUpdate[], key: String) =>
         {
             updates.forEach((update: Scenario.ScenarioUpdate, index: number) => 
@@ -316,10 +338,12 @@ exports.handler = (event, context, callback) => {
 
     })
     .then(() => {
+        // all tasks are finished
         log(false, "Successfully performed all tasks");
         callback(null, "Successfully performed all tasks");
     })
     .catch((error) => {
+        // server errored somewhere.
         log(false, "exiting with failure: " + error);
         callback(new Error("failure: " + error));
     })

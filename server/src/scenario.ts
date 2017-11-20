@@ -35,22 +35,22 @@ export class Scenario
     // ie, it initializes a Scenario instance.
     fromDB(item: AWS.DynamoDB.AttributeMap) : void {
         this.scenarioID = item["scenarioID"].S;
-        this.createdBy = item["createdBy"].S;
+        try { this.createdBy = item["createdBy"].S;                                 } catch(e){this.createdBy = "a"}
         // this.tags = item["tags"].SS;
 
-        this.questionText = item["questionText"].S;
-        this.answerReasoning = item["answerReasoning"].S;
-        this.imageLoc = item["imageLoc"].S;
+        try { this.questionText = item["questionText"].S;                           } catch(e){this.questionText = "a"}
+        try { this.answerReasoning = item["answerReasoning"].S;                     } catch(e){this.answerReasoning = "a"}
+        try { this.imageLoc = item["imageLoc"].S;                                   } catch(e){this.imageLoc = "a"}
 
-        this.type = parseInt(item["type"].N, 10);
-        this.initialAnswer = parseInt(item["initialAnswer"].N, 10);
-        this.averageAnswer = parseFloat(item["averageAnswer"].N);
-        this.averageTimeToAnswer = parseFloat(item["averageTimeToAnswer"].N);
-        this.numberOfAnswers = parseInt(item["numberOfAnswers"].N, 10);
+        try { this.type = parseInt(item["type"].N, 10);                             } catch(e){this.type = 0}
+        try { this.initialAnswer = parseInt(item["initialAnswer"].N, 10);           } catch(e){this.initialAnswer = 0}
+        try { this.averageAnswer = parseFloat(item["averageAnswer"].N);             } catch(e){this.averageAnswer = 0}
+        try { this.averageTimeToAnswer = parseFloat(item["averageTimeToAnswer"].N); } catch(e){this.averageTimeToAnswer = 0}
+        try { this.numberOfAnswers = parseInt(item["numberOfAnswers"].N, 10);       } catch(e){this.numberOfAnswers = 0}
 
-        this.standardDeviation = parseFloat(item["standardDeviation"].N);
-        this.mean = parseFloat(item["mean"].N);
-        this.currentMean = parseFloat(item["currentMean"].N);
+        try { this.standardDeviation = parseFloat(item["standardDeviation"].N);     } catch(e){this.standardDeviation = 0}
+        try { this.mean = parseFloat(item["mean"].N);                               } catch(e){this.mean = 0}
+        try { this.currentMean = parseFloat(item["currentMean"].N);                 } catch(e){this.currentMean = 0}
     }
 
     // This function creates an AWSDynamoDB dictionary from a Scenario Instance
@@ -58,22 +58,22 @@ export class Scenario
         let item : AWS.DynamoDB.AttributeMap = {};
 
         item["scenarioID"] = { S: this.scenarioID };
-        item["createdBy"] = { S: this.createdBy };
+        try { item["createdBy"] = { S: this.createdBy };                                } catch(e){}
         // item["tags"] = { SS: this.tags };
 
-        item["questionText"] = { S: this.questionText };
-        item["answerReasoning"] = { S: this.answerReasoning };
-        item["imageLoc"] = { S: this.imageLoc };
+        try { item["questionText"] = { S: this.questionText };                          } catch(e){}
+        try { item["answerReasoning"] = { S: this.answerReasoning };                    } catch(e){}
+        try { item["imageLoc"] = { S: this.imageLoc };                                  } catch(e){}
 
-        item["type"] = { N: this.type.toString() };
-        item["initialAnswer"] = { N: this.initialAnswer.toString() };
-        item["averageAnswer"] = { N: this.averageAnswer.toString() };
-        item["averageTimeToAnswer"] = { N: this.averageTimeToAnswer.toString() };
-        item["numberOfAnswers"] = { N: this.numberOfAnswers.toString() };
+        try { item["type"] = { N: this.type.toString() };                               } catch(e){}
+        try { item["initialAnswer"] = { N: this.initialAnswer.toString() };             } catch(e){}
+        try { item["averageAnswer"] = { N: this.averageAnswer.toString() };             } catch(e){}
+        try { item["averageTimeToAnswer"] = { N: this.averageTimeToAnswer.toString() }; } catch(e){}
+        try { item["numberOfAnswers"] = { N: this.numberOfAnswers.toString() };         } catch(e){}
 
-        item["standardDeviation"] = { N: this.standardDeviation.toString() };
-        item["mean"] = { N: this.mean.toString() };
-        item["currentMean"] = { N: this.currentMean.toString() };
+        try { item["standardDeviation"] = { N: this.standardDeviation.toString() };     } catch(e){}
+        try { item["mean"] = { N: this.mean.toString() };                               } catch(e){}
+        try { item["currentMean"] = { N: this.currentMean.toString() };                 } catch(e){}
 
         return item;
     }
@@ -96,9 +96,9 @@ export class ScenarioUpdate
     fromDB(item: AWS.DynamoDB.AttributeMap) {
         this.scenarioID = item["scenarioID"].S;
         this.updateID = item["updateID"].S;
-        this.answeredBy = item["answeredBy"].S;
-        this.userAnswer = parseInt(item["userAnswer"].N, 10);
-        this.timeToAnswer = parseInt(item["timeToAnswer"].N, 10);
+        try { this.answeredBy = item["answeredBy"].S;                   } catch(e){}
+        try { this.userAnswer = parseInt(item["userAnswer"].N, 10);     } catch(e){}
+        try { this.timeToAnswer = parseInt(item["timeToAnswer"].N, 10); } catch(e){}
     }
 
     // NOTE: no need to do toDB()
