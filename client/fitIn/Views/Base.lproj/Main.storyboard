@@ -1493,7 +1493,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kj2-cm-JHe">
-                                                <rect key="frame" x="0.0" y="94.5" width="113" height="30"/>
+                                                <rect key="frame" x="0.0" y="71" width="113" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1502,8 +1502,18 @@
                                                     <segue destination="WDG-G0-sDx" kind="show" id="iqG-yd-UeJ"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPj-Cu-C3G">
+                                                <rect key="frame" x="0.0" y="142" width="113" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Profile">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="viewProfile:" destination="i2c-Lk-8UZ" eventType="touchUpInside" id="Sh0-vl-wB1"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiS-3h-im7">
-                                                <rect key="frame" x="0.0" y="189" width="113" height="30"/>
+                                                <rect key="frame" x="0.0" y="212.5" width="113" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Upload Scenario">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1546,6 +1556,7 @@
                         <outlet property="toLogin" destination="Kj2-cm-JHe" id="spk-YH-ZhJ"/>
                         <outlet property="toScenario" destination="kC0-hA-Fgx" id="9wB-w9-TX5"/>
                         <outlet property="toUpload" destination="BiS-3h-im7" id="Pyo-KL-xdK"/>
+                        <outlet property="toViewProfile" destination="aPj-Cu-C3G" id="Epl-g8-tAJ"/>
                         <segue destination="sMu-2y-4TK" kind="show" identifier="MainMenuToUploadScenarioSegue" id="1e9-3p-Wxd"/>
                         <segue destination="GH9-jG-tqz" kind="presentation" identifier="MainMenuMustLoginPopupSegue" id="did-8C-UJt"/>
                     </connections>
