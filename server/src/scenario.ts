@@ -31,6 +31,26 @@ export class Scenario
     mean                : number;
     currentMean         : number; // see merge() function for comments on standard deviation
 
+    constructor() {
+        this.scenarioID = "a";
+        this.createdBy = "a";
+        // this.tags = item["tags"].SS;
+
+        this.questionText = "a";
+        this.answerReasoning = "a";
+        this.imageLoc = "a";
+
+        this.type = 0;
+        this.initialAnswer = 0;
+        this.averageAnswer  = 0;
+        this.averageTimeToAnswer = 0;
+        this.numberOfAnswers  = 0;
+    
+        this.standardDeviation = 0;
+        this.mean = 0;
+        this.currentMean = 0;
+    }
+
     // This function converts an AWS DynamoDB dictionary to a usable format
     // ie, it initializes a Scenario instance.
     fromDB(item: AWS.DynamoDB.AttributeMap) : void {

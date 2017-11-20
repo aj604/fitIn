@@ -91,8 +91,8 @@ function sleep(amount: Number): Promise<void> {
 
 // This function converts any NaNs to zeros
 // This prevents DynamoDB errors, since it does not support NaN
-function noNan(number: number): number {
-    if(Number.isNaN(number))
+export function noNan(number: number): number {
+    if(Number.isNaN(number) || !number || !Number.isFinite(number))
     {
     	log(true, "warning, nan found");
         number = 0.0;
@@ -104,7 +104,7 @@ function noNan(number: number): number {
 // a scenario update by calculating rolling averages and rolling standard deviations 
 // along with handling the number of answers increments.
 // After this function completes, the ScenarioUpdate can be deleted from the database
-function merge(scenario: Scenario.Scenario, update: Scenario.ScenarioUpdate): void {
+export function merge(scenario: Scenario.Scenario, update: Scenario.ScenarioUpdate): void {
 
     // rolling average answer
     scenario.averageAnswer = (scenario.averageAnswer * scenario.numberOfAnswers + update.userAnswer * 1) / (scenario.numberOfAnswers + 1);
