@@ -25,40 +25,6 @@ class ScenarioHandler {
     var scenarios = [Scenario]();
     var tasks = [AWSTask<Scenario>]();
     
-    /*
-    // instantiation of Scenario, only one Scenario is loaded at a time
-    var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
-        // This willSet preloads image data for a smooth transition to next Scenario
-        willSet{
-            // When changing to a new scenario this will send the current one to the history
-            if currentScenario.scenarioID != "insertSituationID" {
-                scenarioHistory.append(currentScenario)
-                print("adding a scenario to history!")
-            }
-        }
-        
-        // This didSet assumes that we have segued to our next Scenario and we are initializing our handler
-        didSet {
-            // Clear previous input answer and upcoming Scenario
-            voteChoice = nil
-            nextScenario = nil
-        }
-    }
-
-    // preload next Scenario
-    private var nextScenario : Scenario? {
-        didSet {
-            if let buffer = nextScenario?.type {
-                nextScenarioType = buffer
-            }
-        }
-    }
-    
-    // Variable to store the type of the next Scenario. This will be used to tell the view controller
-    // what type of view to load for the incoming expected response
-    private var nextScenarioType : Scenario.ScenarioType?
-    
-    */
      
      //Image Data to use for UIImageView
     private var imageData = Data()
@@ -113,13 +79,21 @@ class ScenarioHandler {
             return false
             //Failed Vote
         }
-        
-        scenarioHistory.append(scenarios[currentScenario])
-
+        var duplicate = false
+        for item in scenarioHistory {
+            if item.scenarioID == scenarios[currentScenario].scenarioID {
+                duplicate = true
+            }
+        }
+        if duplicate == false {
+            scenarioHistory.append(scenarios[currentScenario])
+        }
         let scenarioUpdate = ScenarioUpdate(
             scenarioID: scenarios[currentScenario].scenarioID,
             userAnswer: voteChoice!
         );
+        
+        
         
         _ = dynamoHandler.putScenarioUpdate(scenarioUpdate);
         
@@ -168,7 +142,7 @@ class ScenarioHandler {
         }
         
         // wait if we must
-        if !found {
+        /*if !found {
             for (index, task) in tasks.enumerated() {
                 if !task.isCompleted && !task.isFaulted && scenarios[index].seen == true {
                     task.waitUntilFinished();
@@ -179,9 +153,7 @@ class ScenarioHandler {
                     break;
                 }
             }
-        }
-        
-        
+        }*/
     }
     
     // Import Scenario image data

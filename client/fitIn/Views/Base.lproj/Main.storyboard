@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i2c-Lk-8UZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i2c-Lk-8UZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="4112" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -235,6 +235,9 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="antiSocialPic:" destination="bFN-gp-WLg" eventType="touchUpInside" id="aTm-3i-fAo"/>
+                                                            <segue destination="fB4-9g-ERa" kind="popoverPresentation" popoverAnchorView="MrY-XA-axw" id="clG-zl-a91">
+                                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                            </segue>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1es-Cx-Qur">
@@ -244,6 +247,9 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="proSocialPic:" destination="bFN-gp-WLg" eventType="touchUpInside" id="0hO-hw-ZcQ"/>
+                                                            <segue destination="fB4-9g-ERa" kind="popoverPresentation" popoverAnchorView="1es-Cx-Qur" id="U9N-Ej-uXG">
+                                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                            </segue>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -754,10 +760,10 @@
                                                 <rect key="frame" x="113" y="28" width="149" height="100.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LOGO_RESIZED" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-Pt-Ehh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="77"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="69"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-gs-DIh">
-                                                        <rect key="frame" x="24.5" y="77" width="100" height="23.5"/>
+                                                        <rect key="frame" x="24.5" y="69" width="100" height="31.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1028,72 +1034,89 @@
                                     <segue destination="IME-uK-T7n" kind="show" id="n7w-zD-1f9"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hb3-9T-WOQ">
-                                <rect key="frame" x="29" y="108" width="318" height="253"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lKo-MZ-BlA">
+                                <rect key="frame" x="29" y="108" width="318" height="487"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZnV-Fo-8JS">
-                                <rect key="frame" x="28" y="369" width="318" height="173"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="eHQ-M4-Ga5" id="iq0-Ta-t0K"/>
-                                </connections>
-                            </textView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hb3-9T-WOQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="318" height="253"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xHc-yc-gTk">
+                                        <rect key="frame" x="0.0" y="253" width="318" height="234"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZnV-Fo-8JS">
+                                                <rect key="frame" x="0.0" y="0.0" width="318" height="173"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eHQ-M4-Ga5" id="iq0-Ta-t0K"/>
+                                                </connections>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2Az-Yy-iPp">
+                                                <rect key="frame" x="0.0" y="173" width="318" height="61"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ga2-N8-osy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="266.5" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Is this the correct response?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BZ-MW-DTr">
+                                                                <rect key="frame" x="0.0" y="0.0" width="217.5" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vpy-PT-FlI">
+                                                                <rect key="frame" x="217.5" y="0.0" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="switchClicked:" destination="eHQ-M4-Ga5" eventType="valueChanged" id="egy-hY-HZp"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="06l-a1-0gR">
+                                                        <rect key="frame" x="0.0" y="31" width="307" height="30"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KA-mv-RTN">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                                                                <state key="normal" title="Upload"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6P-qe-hF4">
+                                                                <rect key="frame" x="82" y="0.0" width="54" height="30"/>
+                                                                <state key="normal" title="Camera"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-Du-7H7">
+                                                                <rect key="frame" x="168" y="0.0" width="52" height="30"/>
+                                                                <state key="normal" title="Speech"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EzP-jS-ktx">
+                                                                <rect key="frame" x="252" y="0.0" width="55" height="30"/>
+                                                                <state key="normal" title="Confirm"/>
+                                                                <connections>
+                                                                    <action selector="uploadScenarioButton:" destination="eHQ-M4-Ga5" eventType="touchUpInside" id="SFZ-6l-8kT"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logofinal" translatesAutoresizingMaskIntoConstraints="NO" id="lMa-22-Lx7">
                                 <rect key="frame" x="93" y="-37" width="188" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vpy-PT-FlI">
-                                <rect key="frame" x="292" y="565" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="switchClicked:" destination="eHQ-M4-Ga5" eventType="valueChanged" id="egy-hY-HZp"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Is this the correct response?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BZ-MW-DTr">
-                                <rect key="frame" x="34" y="570.5" width="217.5" height="20.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOB-gs-1XW">
                                 <rect key="frame" x="292" y="25" width="55" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="crossresized"/>
                                 <connections>
                                     <action selector="closeAction:" destination="eHQ-M4-Ga5" eventType="touchUpInside" id="4ci-Uo-s8A"/>
+                                    <segue destination="i2c-Lk-8UZ" kind="show" id="YOO-Mj-Pyd"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="06l-a1-0gR">
-                                <rect key="frame" x="34" y="609" width="307" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KA-mv-RTN">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
-                                        <state key="normal" title="Upload"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6P-qe-hF4">
-                                        <rect key="frame" x="82" y="0.0" width="54" height="30"/>
-                                        <state key="normal" title="Camera"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-Du-7H7">
-                                        <rect key="frame" x="168" y="0.0" width="52" height="30"/>
-                                        <state key="normal" title="Speech"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EzP-jS-ktx">
-                                        <rect key="frame" x="252" y="0.0" width="55" height="30"/>
-                                        <state key="normal" title="Confirm"/>
-                                        <connections>
-                                            <action selector="uploadScenarioButton:" destination="eHQ-M4-Ga5" eventType="touchUpInside" id="SFZ-6l-8kT"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.16406673192977905" green="0.27253279089927673" blue="0.38059216737747192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1105,7 +1128,11 @@
                         <viewLayoutGuide key="safeArea" id="uFI-S2-Sva"/>
                     </view>
                     <navigationItem key="navigationItem" id="blg-yX-shh">
-                        <barButtonItem key="leftBarButtonItem" title="Main Menu" id="EZ2-dg-wX8"/>
+                        <barButtonItem key="leftBarButtonItem" title="Main Menu" id="EZ2-dg-wX8">
+                            <connections>
+                                <segue destination="i2c-Lk-8UZ" kind="show" id="NPX-ve-MSW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="placeholderCloseButton" destination="zOB-gs-1XW" id="Tb0-Gn-WRN"/>
@@ -1416,7 +1443,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVi-Bd-SFf">
-                                                    <rect key="frame" x="202" y="89" width="130" height="21"/>
+                                                    <rect key="frame" x="209" y="89" width="130" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="130" id="NpC-G3-DDe"/>
                                                     </constraints>
@@ -1425,7 +1452,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i0D-I5-5Rb">
-                                                    <rect key="frame" x="15" y="11" width="183" height="178"/>
+                                                    <rect key="frame" x="8" y="8" width="197" height="184"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.21161791682243347" green="0.3205375075340271" blue="0.3914361298084259" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1824,8 +1851,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XbT-84-A7e"/>
-        <segue reference="vwl-db-IRg"/>
+        <segue reference="ioM-BK-idi"/>
         <segue reference="LFb-rP-pUD"/>
+        <segue reference="clG-zl-a91"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
