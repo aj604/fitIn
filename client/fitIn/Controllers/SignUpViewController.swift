@@ -28,11 +28,12 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
+        //self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
         CreateNewUserVariable.backgroundColor = UIColor.white
         CreateNewUserVariable.setTitleColor(UIColor.black, for: UIControlState.normal)
         CreateNewUserVariable.layer.borderWidth = 2
         CreateNewUserVariable.layer.borderColor = UIColor.black.cgColor
+        CreateNewUserVariable.layer.cornerRadius = 20
         
         // Do any additional setup after loading the view.
     }
