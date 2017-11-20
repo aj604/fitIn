@@ -174,7 +174,7 @@ exports.handler = (event, context, callback) => {
     // perform a scan on the updates table
     dynamo.scan(scanArgs).promise()
     .then((result: AWS.DynamoDB.ScanOutput) => {
-        // scan complete, deal with the ressults of the scan.
+        // scan complete, deal with the results of the scan.
 
         log(false, "successfully scanned " + result.Count + " updates");
         log(true, "scan results: \n", result.Items, "\n\n");
