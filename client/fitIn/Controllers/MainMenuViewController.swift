@@ -19,6 +19,7 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var toLogin: UIButton!
     @IBOutlet weak var toUpload: UIButton!
     @IBOutlet weak var toViewProfile: UIButton!
+    @IBOutlet weak var toScenarioHistory: UIButton!
     
     //add segue for viewing profile
     @IBAction func viewProfile(_ sender: Any) {
@@ -45,10 +46,11 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //round buttons
-        toScenario.layer.cornerRadius = 3;
-        toLogin.layer.cornerRadius = 3;
-        toUpload.layer.cornerRadius = 3;
-        toViewProfile.layer.cornerRadius = 3;
+        toScenario.layer.cornerRadius = 3
+        toLogin.layer.cornerRadius = 3
+        toUpload.layer.cornerRadius = 3
+        toViewProfile.layer.cornerRadius = 3
+        toScenarioHistory.layer.cornerRadius = 3
         // Do any additional setup after loading the view.
     }
     
