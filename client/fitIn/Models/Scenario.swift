@@ -110,7 +110,14 @@ class Scenario {
     
     // Creates a Scenario from a DynamoDB dictionary
     func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
-        
+        if !dict.contains(where: { (key:String, value: AWSDynamoDBAttributeValue) -> Bool in
+            if dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY] == nil {
+                return false
+            }
+            return true
+        }) {
+            return
+        }
         self.scenarioID = dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!.s!
         self.createdBy = dict["createdBy"]!.s!
         //self.tags = dict["tags"]!.ss!

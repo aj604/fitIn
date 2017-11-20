@@ -213,23 +213,21 @@
                                             <constraint firstAttribute="trailing" secondItem="7ZO-vk-3FZ" secondAttribute="trailing" id="pOd-pb-KKI"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QuS-Yy-gu4">
+                                    <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QuS-Yy-gu4">
                                         <rect key="frame" x="0.0" y="323.5" width="375" height="323.5"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="Cathy picks up after her dog using a doggy bag" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SI8-oV-m4m">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="375" id="pBt-Qx-WcR"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="131.5"/>
+                                                <viewLayoutGuide key="safeArea" id="eoK-zi-sRo"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="TLr-S8-Nfj">
-                                                <rect key="frame" x="0.0" y="20.5" width="375" height="303"/>
+                                                <rect key="frame" x="0.0" y="131.5" width="375" height="192"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-XA-axw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="303"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="192"/>
                                                         <state key="normal" title="Anti-Social">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -238,7 +236,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1es-Cx-Qur">
-                                                        <rect key="frame" x="188" y="0.0" width="187" height="303"/>
+                                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="192"/>
                                                         <state key="normal" title="Pro-Social">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -754,10 +752,10 @@
                                                 <rect key="frame" x="113" y="28" width="149" height="100.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LOGO_RESIZED" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-Pt-Ehh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="77"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="69"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-gs-DIh">
-                                                        <rect key="frame" x="24.5" y="77" width="100" height="23.5"/>
+                                                        <rect key="frame" x="24.5" y="69" width="100" height="31.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1824,7 +1822,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XbT-84-A7e"/>
-        <segue reference="vwl-db-IRg"/>
+        <segue reference="ioM-BK-idi"/>
         <segue reference="LFb-rP-pUD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

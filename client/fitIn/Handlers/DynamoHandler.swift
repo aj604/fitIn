@@ -186,7 +186,7 @@ class DynamoHandler {
                     // no object found.
                     
                     query!.keyConditionExpression = "#index = :indexValue AND #primaryKey < :primaryKeyValue"
-                    
+                    print("plsbb")
                     return self
                         .dynamo
                         .query(query!)
@@ -203,6 +203,8 @@ class DynamoHandler {
                                 result.seen = false;
                             } else {
                                 result.seen = true;
+                                print("false result")
+                                //return AWSTask(error: result as! Error)
                             }
                             return AWSTask(result: result)
                         } as! AWSTask<Scenario>;
