@@ -180,22 +180,21 @@ class DynamoHandler {
             .continueWith { (task:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
                 if let error = task.error {
                     print("failed get request to scenario. Error: \(error)")
+                    // Does this effect the nil outputs?
                     return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
                 }
                 
-                //PROBLEM BEGINS HERE
-                if task.result != nil {
-                    if(task.result!.items == nil || Int(truncating: task.result!.count!) <= 0) {
+                //PROBLEM BEGINS HERE Does this catch all invalid scenarios?
+                    if(task.result == nil || Int(truncating: task.result!.count!) <= 0) {
                         // no object found.
                         
                         query!.keyConditionExpression = "#index = :indexValue AND #primaryKey < :primaryKeyValue"
-                        print("plsbb")
                         return self
                             .dynamo
                             .query(query!)
                             .continueWith { (task:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
                                 // print("successful get request to scenario")
-                                
+                                //What happens if theres a double error?
                                 let result = Scenario();
                                 if let hello = task.result{
                                     if let hi = hello.items{
@@ -210,20 +209,22 @@ class DynamoHandler {
                                         } else {
                                             result.seen = true;
                                             print("false result")
-                                            //return AWSTask(error: result as! Error)
+                                            return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue))
+                                            
                                         }
                                     }
                                 }
                                 return AWSTask(result: result)
                             } as! AWSTask<Scenario>;
                     }
-                }
+                
                 
                 // print("successful get request to scenario")
                 
                 let result = Scenario();
                 if task.result != nil {
                     if task.result!.items != nil {
+                        print("plsbb")
                         let items = task.result!.items!
                         if(Int(truncating: task.result!.count!) > 0) {
                             result.fromDBDictionary(items[0])
