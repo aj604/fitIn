@@ -69,12 +69,12 @@ class ScenarioTableViewController: UITableViewController {
                 //destination.user = user
             }
         }
-        if segue.identifier == "mainMenuFromHistorySegue" {
+        /*if segue.identifier == "mainMenuFromHistorySegue" {
             print("RETURNING TO MENU SEGUE")
             let destination = segue.destination as! MainMenuViewController
             //destination.scenarioController = scenarioController
             //destination.currentUser = user
-        }
+        }*/
     }
     
 

@@ -67,7 +67,7 @@ class MultipleChoiceViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "yesOrNoSegue" {
             let destination = segue.destination as? ScenarioViewController
             //destination?.scenarioController = scenarioController
@@ -76,5 +76,5 @@ class MultipleChoiceViewController: UIViewController {
             let destination = segue.destination as? SliderViewController
             //destination?.scenarioController = scenarioController
         }
-    }
+    }*/
 }

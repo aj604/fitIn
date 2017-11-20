@@ -122,7 +122,7 @@ class SignUpViewController: UIViewController {
         if (inputValidationConditions[0] == true && inputValidationConditions[1] == true && inputValidationConditions[2] == true && inputValidationConditions[3] == true && inputValidationConditions[4] == true && inputValidationConditions[5] == true) {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
             CreateNewUserVariable.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
-            dynamoHandler.putUserProfile(currentUser!)
+            _ = dynamoHandler.putUserProfile(currentUser!)
             currentUser?.isUserLoggedIn = true
             
         }
