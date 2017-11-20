@@ -196,9 +196,8 @@ class DynamoHandler {
                             let result = Scenario();
                             let items = task.result!.items!
                             
-                            if(Int(truncating: task.result!.count!) > 0)
+                            if(Int(truncating: task.result!.count!) > 0 && result.fromDBDictionary(items[0]))
                             {
-                                result.fromDBDictionary(items[0])
                                 result.getImageData()
                                 result.seen = false;
                             } else {

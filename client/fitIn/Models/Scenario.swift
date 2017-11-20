@@ -109,8 +109,12 @@ class Scenario {
     }
     
     // Creates a Scenario from a DynamoDB dictionary
-    func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
+    func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Bool {
         
+        if(!dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) {
+            return false;
+        }
+
         self.scenarioID = dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!.s!
         self.createdBy = dict["createdBy"]!.s!
         //self.tags = dict["tags"]!.ss!
@@ -128,6 +132,8 @@ class Scenario {
         // self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
         // self.mean = Double(dict["mean"]!.n!)!
         // self.currentMean = Double(dict["currentMean"]!.n!)!
+
+        return true;
     
     }
         
