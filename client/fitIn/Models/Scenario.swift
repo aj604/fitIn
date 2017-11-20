@@ -112,6 +112,9 @@ class Scenario {
     func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Void {
         if !dict.contains(where: { (key:String, value: AWSDynamoDBAttributeValue) -> Bool in
             if dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY] == nil {
+                if dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]!.s == nil {
+                    return false
+                }
                 return false
             }
             return true

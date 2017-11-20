@@ -213,14 +213,15 @@ class DynamoHandler {
                 // print("successful get request to scenario")
                 
                 let result = Scenario();
-                let items = task.result!.items!
-                if(Int(truncating: task.result!.count!) > 0)
-                {
-                    result.fromDBDictionary(items[0])
-                    result.getImageData()
-                    result.seen = false;
+                if task.result != nil {
+                    let items = task.result!.items!
+                    if(Int(truncating: task.result!.count!) > 0) {
+                        result.fromDBDictionary(items[0])
+                        result.getImageData()
+                        result.seen = false;
                 } else {
                     result.seen = true;
+                }
                 }
                 return AWSTask(result: result)
             } as! AWSTask<Scenario>
