@@ -24,7 +24,42 @@ class ScenarioHandler {
     var scenarios = [Scenario]();
     var tasks = [AWSTask<Scenario>]();
     
-    //Image Data to use for UIImageView
+    /*
+    // instantiation of Scenario, only one Scenario is loaded at a time
+    var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
+        // This willSet preloads image data for a smooth transition to next Scenario
+        willSet{
+            // When changing to a new scenario this will send the current one to the history
+            if currentScenario.scenarioID != "insertSituationID" {
+                scenarioHistory.append(currentScenario)
+                print("adding a scenario to history!")
+            }
+        }
+        
+        // This didSet assumes that we have segued to our next Scenario and we are initializing our handler
+        didSet {
+            // Clear previous input answer and upcoming Scenario
+            voteChoice = nil
+            nextScenario = nil
+        }
+    }
+
+    // preload next Scenario
+    private var nextScenario : Scenario? {
+        didSet {
+            if let buffer = nextScenario?.type {
+                nextScenarioType = buffer
+            }
+        }
+    }
+    
+    // Variable to store the type of the next Scenario. This will be used to tell the view controller
+    // what type of view to load for the incoming expected response
+    private var nextScenarioType : Scenario.ScenarioType?
+    
+    */
+     
+     //Image Data to use for UIImageView
     private var imageData = Data()
     
     // General container for all response types
@@ -40,6 +75,8 @@ class ScenarioHandler {
             }
         }
     }
+    
+    var scenarioHistory = [Scenario]()
     
     //MARK: METHODS
     
@@ -76,6 +113,8 @@ class ScenarioHandler {
             //Failed Vote
         }
         
+        scenarioHistory.append(scenarios[currentScenario])
+
         let scenarioUpdate = ScenarioUpdate(
             scenarioID: scenarios[currentScenario].scenarioID,
             userAnswer: voteChoice!

@@ -10,15 +10,14 @@ import UIKit
 class MainMenuViewController: UIViewController {
     
     var currentUser = UserProfile.current()
-    
-    
-    
+    var scenarioController = ScenarioHandler()
     
     //add outlets for buttons
     @IBOutlet weak var toScenario: UIButton!
     @IBOutlet weak var toLogin: UIButton!
     @IBOutlet weak var toUpload: UIButton!
     @IBOutlet weak var toViewProfile: UIButton!
+    @IBOutlet weak var toScenarioHistory: UIButton!
     
     //add segue for viewing profile
     @IBAction func viewProfile(_ sender: Any) {
@@ -30,6 +29,8 @@ class MainMenuViewController: UIViewController {
         }
     }
     //add segue for uploading scenarios
+    @IBAction func toHistory(_ sender: Any) {
+    }
     @IBAction func uploadScenario(_ sender: Any) {
         //add conditional to disable upload if user isnt logged in
         if (currentUser!.isUserLoggedIn) {
@@ -43,10 +44,11 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //round buttons
-        toScenario.layer.cornerRadius = 3;
-        toLogin.layer.cornerRadius = 3;
-        toUpload.layer.cornerRadius = 3;
-        toViewProfile.layer.cornerRadius = 3;
+        toScenario.layer.cornerRadius = 3
+        toLogin.layer.cornerRadius = 3
+        toUpload.layer.cornerRadius = 3
+        toViewProfile.layer.cornerRadius = 3
+        toScenarioHistory.layer.cornerRadius = 3
         // Do any additional setup after loading the view.
     }
     
@@ -56,13 +58,20 @@ class MainMenuViewController: UIViewController {
     }
     
     
-    /*
+    
      // MARK: - Navigation
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "historySegue"{
+            let navigationDestination = segue.destination as! UINavigationController
+            let destination = navigationDestination.topViewController as? ScenarioTableViewController
+            destination?.scenarioController = self.scenarioController
+            destination?.user = currentUser!
+        }
+        
+        
      }
-     */
     
 }

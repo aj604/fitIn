@@ -78,6 +78,10 @@ class ScenarioViewController: UIViewController {
             let destination = segue.destination as? MultipleChoiceViewController
             destination?.scenarioController = scenarioController
         }
+        if segue.identifier == "mainMenuSegue" {
+            let destination = segue.destination as? MainMenuViewController
+            destination?.scenarioController = scenarioController
+        }
     }
 }
 
