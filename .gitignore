@@ -3,6 +3,7 @@ aws-resources.swift
 # Xcode
 .DS_Store
 build/
+*.orig
 *.pbxuser
 !default.pbxuser
 *.mode1v3
