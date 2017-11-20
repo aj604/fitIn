@@ -111,7 +111,7 @@ class Scenario {
     // Creates a Scenario from a DynamoDB dictionary
     func fromDBDictionary(_ dict: [String : AWSDynamoDBAttributeValue]) -> Bool {
         
-        if(!dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY]) {
+        if(dict == nil || dict[SCENARIO_MASTER_TABLE_PRIMARY_KEY] == nil) {
             return false;
         }
 
