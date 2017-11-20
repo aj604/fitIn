@@ -18,7 +18,7 @@ class ScenarioViewController: UIViewController {
     @IBOutlet weak var questionDescription: UILabel!
     
     //Control Current Scenario
-    var scenarioController = ScenarioHandler()
+    //var scenarioController = ScenarioHandler()
     
     // Eventually this will be access point for subView
     //fileprivate var responseController : responseViewController
@@ -64,7 +64,7 @@ class ScenarioViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "prosocial" || segue.identifier == "antisocial" {
                 let popView = segue.destination as! popUpViewController
@@ -82,6 +82,6 @@ class ScenarioViewController: UIViewController {
             let destination = segue.destination as? MainMenuViewController
             destination?.scenarioController = scenarioController
         }
-    }
+    }*/
 }
 

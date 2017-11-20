@@ -42,7 +42,6 @@ class ProfileEditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var scenarioController = ScenarioHandler()
 	
     @IBOutlet weak var userEditUsernameIcon: UIImageView!
     @IBOutlet weak var userEditAgeIcon: UIImageView!
@@ -144,7 +143,7 @@ class ProfileEditViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileEditToMenuSegue" {
             let destination = segue.destination as? MainMenuViewController
-            destination?.scenarioController = scenarioController
+            //destination?.scenarioController = scenarioController
         }
 
      // Get the new view controller using segue.destinationViewController.

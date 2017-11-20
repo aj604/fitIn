@@ -12,8 +12,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    var scenarioController = ScenarioHandler()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
@@ -102,7 +100,7 @@ class ProfileViewController: UIViewController {
      // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "forceLoginSegue" {
@@ -114,7 +112,7 @@ class ProfileViewController: UIViewController {
             let destination = navigationDestination?.topViewController as? ProfileEditViewController
             destination?.scenarioController = scenarioController
         }
-    }
+    }*/
     
 
 }

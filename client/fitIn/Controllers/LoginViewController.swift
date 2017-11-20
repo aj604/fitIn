@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     var currentuser = UserProfile.current()
     //var password: String = ""
     
-    var scenarioController = ScenarioHandler()
+    //var scenarioController = ScenarioHandler()
     
     //Outlets
     @IBOutlet weak var EmailTextField: UITextField!

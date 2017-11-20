@@ -13,7 +13,7 @@ import AWSDynamoDB
 
 class SignUpViewController: UIViewController {
     
-    var scenarioController = ScenarioHandler()
+    //var scenarioController = ScenarioHandler()
     var currentUser = UserProfile.current()
     
     @IBOutlet weak var UserNameTextField: UITextField!

@@ -17,7 +17,6 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var placeholderCloseButton: UIButton!
     @IBOutlet weak var placeholderSwitchOutput: UISwitch!
     
-    var scenarioController = ScenarioHandler()
     var placeholderImage = UIImage()
     var hackyLabel = String()
     var hackyBoolean = Bool()

@@ -9,7 +9,6 @@ import UIKit
 
 class ScenarioTableViewController: UITableViewController {
     
-    var scenarioController = ScenarioHandler()
     var user = UserProfile()
 
     override func viewDidLoad() {
@@ -66,15 +65,15 @@ class ScenarioTableViewController: UITableViewController {
             if let rowIndex = tableView.indexPathForSelectedRow {
                 destination.scenarioHistoryIndex = rowIndex.row
                 print("scenario controller history currently has \(scenarioController.scenarioHistory.count) values")
-                destination.scenarioController = scenarioController
-                destination.user = user
+                //destination.scenarioController = scenarioController
+                //destination.user = user
             }
         }
         if segue.identifier == "mainMenuFromHistorySegue" {
             print("RETURNING TO MENU SEGUE")
             let destination = segue.destination as! MainMenuViewController
-            destination.scenarioController = scenarioController
-            destination.currentUser = user
+            //destination.scenarioController = scenarioController
+            //destination.currentUser = user
         }
     }
     
