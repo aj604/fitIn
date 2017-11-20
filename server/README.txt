@@ -2,23 +2,38 @@
 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 ******************************************************************************************************
 TA's:
-To test the server, please double click on "install-build-test.sh" in the same directory as this file.
+To test the server, please open up Terminal and cd to the directory this readme is located in.
+i.e., if the repository is located under “~/Documents/”, then please perform this command:
+
+cd ~/Documents/fitIn/server/
+
+If our repo is somewhere else, please make the necessary changes.
+i.e. if our repo is located under "~/Documents/Group12/", then you would want to call
+
+cd ~/Documents/Group12/server/
+
+Once in the server directory, type in:
+
+bash install-build.sh
+
+This command will install and build the server, finally:
+
+bash run-tests.sh
+
+will run some unit tests, and then run a single iteration of the server.
+run-tests.sh can be run as many times as you wish, but the other scripts should only be run once.
 ******************************************************************************************************
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-Just in case double clicking fails, you may also open up a terminal, cd to this directory and type in:
-
-bash install-build-test.sh
-
-Which should run the script. The install-build-test.sh script will:
+The install-build.sh script will:
  1. download and install nvm
  2. download and install node and npm
  3. download all necessary dependancies
  4. compile the typescript source to javascript
- 5. run a single iteration of the server, to show it is working.
-    - you may notice a lot of zeros, that simply indicates that the database is empty, indicating the real database is doing its job.
-
+ 
+The run-tests.sh script will:
+ 1. run some unit tests using mocha and chai
+ 2. run a single iteration of the server, displaying some output on success/failure.
 
 If you have some experience with node, npm, or nvm, and wish to poke around our server some more,
 you need to prefix all commands with "bash ", as a workaround for the permissions on the CSIL macs.
