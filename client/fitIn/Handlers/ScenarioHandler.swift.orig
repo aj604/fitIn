@@ -19,12 +19,9 @@ class ScenarioHandler {
     
     private var user = UserProfile() //User Data, Info stored here
     
-    var currentScenario: Int = 0;
-    static let NUM_SCENARIOS = 5;
-    var scenarios = [Scenario]();
-    var tasks = [AWSTask<Scenario>]();
+<<<<<<< HEAD
+    var getNextScenarioTask = dynamoHandler.getRandomScenario()
     
-    /*
     // instantiation of Scenario, only one Scenario is loaded at a time
     var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
         // This willSet preloads image data for a smooth transition to next Scenario
@@ -56,10 +53,14 @@ class ScenarioHandler {
     // Variable to store the type of the next Scenario. This will be used to tell the view controller
     // what type of view to load for the incoming expected response
     private var nextScenarioType : Scenario.ScenarioType?
+=======
+    var currentScenario: Int = 0;
+    static let NUM_SCENARIOS = 5;
+    var scenarios = [Scenario]();
+    var tasks = [AWSTask<Scenario>]();
+>>>>>>> master
     
-    */
-     
-     //Image Data to use for UIImageView
+    //Image Data to use for UIImageView
     private var imageData = Data()
     
     // General container for all response types
@@ -113,8 +114,6 @@ class ScenarioHandler {
             //Failed Vote
         }
         
-        scenarioHistory.append(scenarios[currentScenario])
-
         let scenarioUpdate = ScenarioUpdate(
             scenarioID: scenarios[currentScenario].scenarioID,
             userAnswer: voteChoice!

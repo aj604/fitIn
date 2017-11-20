@@ -51,6 +51,7 @@
 		FB80D1C51FAD819E005CED02 /* TestDynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */; };
 		FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AE91FA7CC2C00D42695 /* Scenario.swift */; };
 		FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */; };
+		FBF8B4851FBFE29C00D25F71 /* ScenarioUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8B4841FBFE29C00D25F71 /* ScenarioUpdate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDynamoHandler.swift; sourceTree = "<group>"; };
 		FBC51AE91FA7CC2C00D42695 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoHandler.swift; sourceTree = "<group>"; };
+		FBF8B4841FBFE29C00D25F71 /* ScenarioUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioUpdate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			children = (
 				FBC51AE91FA7CC2C00D42695 /* Scenario.swift */,
 				0499CF3C1F8973D900ECB59B /* userProfile.swift */,
+				FBF8B4841FBFE29C00D25F71 /* ScenarioUpdate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */,
 				D3B5B6B91FBBD1BA003914F3 /* UploadCustomScenarioViewController.swift in Sources */,
 				04DA17F21FAD142A00A822AD /* SliderViewController.swift in Sources */,
+				FBF8B4851FBFE29C00D25F71 /* ScenarioUpdate.swift in Sources */,
 				D316E9D21FBBF3C700404BAB /* PlaceholderTableViewCell.swift in Sources */,
 				D35A4D791FBE6724003BE704 /* MustLoginPopupViewController.swift in Sources */,
 				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,

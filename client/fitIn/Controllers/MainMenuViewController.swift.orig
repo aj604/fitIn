@@ -20,6 +20,9 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var toUpload: UIButton!
     @IBOutlet weak var toViewProfile: UIButton!
     
+<<<<<<< HEAD
+    
+=======
     //add segue for viewing profile
     @IBAction func viewProfile(_ sender: Any) {
         if (currentUser!.isUserLoggedIn) {
@@ -29,6 +32,7 @@ class MainMenuViewController: UIViewController {
             self.performSegue(withIdentifier:"MainMenuMustLoginPopupSegue", sender:self);
         }
     }
+>>>>>>> master
     //add segue for uploading scenarios
     @IBAction func toHistory(_ sender: Any) {
     }
