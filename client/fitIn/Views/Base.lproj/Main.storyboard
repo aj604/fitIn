@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -226,35 +227,52 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="TLr-S8-Nfj">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="elg-Xq-4Qu">
                                                 <rect key="frame" x="0.0" y="20.5" width="375" height="303"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-XA-axw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="303"/>
-                                                        <state key="normal" image="crossresized">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="antiSocialPic:" destination="bFN-gp-WLg" eventType="touchUpInside" id="aTm-3i-fAo"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1es-Cx-Qur">
-                                                        <rect key="frame" x="188" y="0.0" width="187" height="303"/>
-                                                        <state key="normal" image="right_edited">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="proSocialPic:" destination="bFN-gp-WLg" eventType="touchUpInside" id="0hO-hw-ZcQ"/>
-                                                        </connections>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="TLr-S8-Nfj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-XA-axw">
+                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="212"/>
+                                                                <state key="normal" image="crossresized">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="antiSocialPic:" destination="bFN-gp-WLg" eventType="touchUpInside" id="aTm-3i-fAo"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1es-Cx-Qur">
+                                                                <rect key="frame" x="188" y="0.0" width="187" height="212"/>
+                                                                <state key="normal" image="right_edited">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="proSocialPic:" destination="bFN-gp-WLg" eventType="touchUpInside" id="0hO-hw-ZcQ"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PmC-r1-Fu4">
+                                                        <rect key="frame" x="0.0" y="212" width="375" height="91"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                        <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Voice"/>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="PmC-r1-Fu4" firstAttribute="centerX" secondItem="elg-Xq-4Qu" secondAttribute="centerX" id="Jcq-z4-SLO"/>
+                                                    <constraint firstItem="PmC-r1-Fu4" firstAttribute="height" secondItem="elg-Xq-4Qu" secondAttribute="height" multiplier="0.3" id="Qe6-PO-BnL"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="SI8-oV-m4m" firstAttribute="top" secondItem="QuS-Yy-gu4" secondAttribute="top" id="5Rj-Uh-btM"/>
                                             <constraint firstAttribute="trailing" secondItem="SI8-oV-m4m" secondAttribute="trailing" id="ICT-wN-3Ye"/>
-                                            <constraint firstItem="TLr-S8-Nfj" firstAttribute="leading" secondItem="QuS-Yy-gu4" secondAttribute="leading" id="Nbq-zv-OiV"/>
-                                            <constraint firstAttribute="trailing" secondItem="TLr-S8-Nfj" secondAttribute="trailing" id="piJ-ED-fag"/>
+                                            <constraint firstItem="elg-Xq-4Qu" firstAttribute="centerX" secondItem="QuS-Yy-gu4" secondAttribute="centerX" id="MxR-8S-SbI"/>
+                                            <constraint firstItem="elg-Xq-4Qu" firstAttribute="leading" secondItem="QuS-Yy-gu4" secondAttribute="leading" id="NeR-zg-6iN"/>
+                                            <constraint firstAttribute="trailing" secondItem="elg-Xq-4Qu" secondAttribute="trailing" id="w9Z-Ky-OKx"/>
                                             <constraint firstItem="SI8-oV-m4m" firstAttribute="leading" secondItem="QuS-Yy-gu4" secondAttribute="leading" id="y1l-Rl-Mrc"/>
                                         </constraints>
                                     </stackView>
@@ -759,10 +777,10 @@
                                                 <rect key="frame" x="113" y="28" width="149" height="100.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LOGO_RESIZED" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-Pt-Ehh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="77"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="69"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-gs-DIh">
-                                                        <rect key="frame" x="24.5" y="77" width="100" height="23.5"/>
+                                                        <rect key="frame" x="24.5" y="69" width="100" height="31.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1830,7 +1848,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iqG-yd-UeJ"/>
-        <segue reference="TGh-mq-wh6"/>
+        <segue reference="ioM-BK-idi"/>
         <segue reference="rNY-Ql-lO0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
