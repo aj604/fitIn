@@ -191,10 +191,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7ZO-vk-3FZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="13"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="76" height="13"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxD-kU-t22">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="13"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="76" height="13"/>
                                                         <state key="normal" title="Main Menu">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -206,13 +206,15 @@
                                             </stackView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personPickingUpPoop.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ayo-9c-HvN">
                                                 <rect key="frame" x="0.0" y="23" width="375" height="300.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="375" id="cCC-3O-dbT"/>
+                                                    <constraint firstAttribute="height" constant="300.5" id="esG-9k-Ndo"/>
+                                                </constraints>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="7ZO-vk-3FZ" firstAttribute="leading" secondItem="dYv-Yq-Wfn" secondAttribute="leading" constant="10" id="4Ht-Fq-Sos"/>
                                             <constraint firstAttribute="trailing" secondItem="Ayo-9c-HvN" secondAttribute="trailing" id="RW2-IL-d5Y"/>
                                             <constraint firstItem="Ayo-9c-HvN" firstAttribute="leading" secondItem="dYv-Yq-Wfn" secondAttribute="leading" id="Uz5-Ht-YgI"/>
-                                            <constraint firstAttribute="trailing" secondItem="7ZO-vk-3FZ" secondAttribute="trailing" id="pOd-pb-KKI"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QuS-Yy-gu4">
@@ -259,10 +261,16 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                         <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Voice"/>
+                                                        <connections>
+                                                            <action selector="startRecord:" destination="bFN-gp-WLg" eventType="touchDown" id="gPT-FV-pWB"/>
+                                                            <action selector="stopRecord:" destination="bFN-gp-WLg" eventType="touchUpInside" id="KfM-lj-66N"/>
+                                                            <action selector="stopRecord:" destination="bFN-gp-WLg" eventType="touchUpOutside" id="XGL-Vh-Ab4"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="PmC-r1-Fu4" firstAttribute="centerX" secondItem="elg-Xq-4Qu" secondAttribute="centerX" id="Jcq-z4-SLO"/>
+                                                    <constraint firstItem="PmC-r1-Fu4" firstAttribute="width" secondItem="elg-Xq-4Qu" secondAttribute="width" id="Jsq-fT-XiX"/>
                                                     <constraint firstItem="PmC-r1-Fu4" firstAttribute="height" secondItem="elg-Xq-4Qu" secondAttribute="height" multiplier="0.3" id="Qe6-PO-BnL"/>
                                                 </constraints>
                                             </stackView>
@@ -299,6 +307,7 @@
                     <connections>
                         <outlet property="imageView" destination="Ayo-9c-HvN" id="zDO-ZT-YnV"/>
                         <outlet property="questionDescription" destination="SI8-oV-m4m" id="4G7-DC-nqf"/>
+                        <outlet property="voiceButton" destination="PmC-r1-Fu4" id="7rR-Zl-r52"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VjK-PV-GLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1848,7 +1857,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iqG-yd-UeJ"/>
-        <segue reference="ioM-BK-idi"/>
+        <segue reference="vwl-db-IRg"/>
         <segue reference="rNY-Ql-lO0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

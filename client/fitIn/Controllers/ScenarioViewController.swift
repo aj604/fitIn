@@ -9,6 +9,7 @@
 //  
 
 import UIKit
+import Speech
 
 class ScenarioViewController: UIViewController {
     
@@ -16,6 +17,13 @@ class ScenarioViewController: UIViewController {
     //Image View, Put Image HERE!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var questionDescription: UILabel!
+    @IBOutlet weak var voiceButton: UIButton!
+    
+    //setup variables for speech recog
+    /*let audioEngine = AVAudioEngine()
+    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    let request = SFSpeechAudioBufferRecognitionRequest()
+    var recognitionTask: SFSpeechRecognitionTask?*/
     
     //Control Current Scenario
     //var scenarioController = ScenarioHandler()
@@ -35,6 +43,13 @@ class ScenarioViewController: UIViewController {
         scenarioController.loadNextScenario()
         updateUI()
     }
+    @IBAction func startRecord(_ sender: UIButton) {
+        voiceButton.backgroundColor = UIColor.green;
+    }
+    @IBAction func stopRecord(_ sender: UIButton) {
+        voiceButton.backgroundColor = UIColor.white;
+    }
+    
     
     // Update the UI to represent the change in Scenario
     // Once different response views are set they can be set here
