@@ -43,6 +43,8 @@
 		FB0F0A181FA2CB0E00A9E879 /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB0F0A1A1FA2CB0E00A9E879 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */; };
+		FB75B4611FC7ABD100047C76 /* S3Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB75B4601FC7ABD100047C76 /* S3Handler.swift */; };
+		FB75B4631FC7C8DA00047C76 /* TestS3Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB75B4621FC7C8DA00047C76 /* TestS3Handler.swift */; };
 		FB80D1AE1FAD00A7005CED02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */; };
 		FB80D1B21FAD0234005CED02 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */; };
 		FB80D1C51FAD819E005CED02 /* TestDynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */; };
@@ -118,6 +120,8 @@
 		FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseViewController.swift; sourceTree = "<group>"; };
+		FB75B4601FC7ABD100047C76 /* S3Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Handler.swift; sourceTree = "<group>"; };
+		FB75B4621FC7C8DA00047C76 /* TestS3Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestS3Handler.swift; sourceTree = "<group>"; };
 		FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDynamoHandler.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			children = (
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
 				FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */,
+				FB75B4601FC7ABD100047C76 /* S3Handler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				0EE618D11FAD655900315A89 /* ScenarioTest.swift */,
 				D3B58BB31FAD3EAF00436A80 /* Info.plist */,
 				FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */,
+				FB75B4621FC7C8DA00047C76 /* TestS3Handler.swift */,
 			);
 			path = fitInTests;
 			sourceTree = "<group>";
@@ -317,7 +323,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "AJ productions";
+				ORGANIZATIONNAME = "group of 5";
 				TargetAttributes = {
 					0464E0F81F885D0000002403 = {
 						CreatedOnToolsVersion = 9.0;
@@ -379,6 +385,7 @@
 				CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */,
 				CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */,
 				04C06A3E1FC1547800BF653B /* StatisticsViewController.swift in Sources */,
+				FB75B4611FC7ABD100047C76 /* S3Handler.swift in Sources */,
 				FB80D1AE1FAD00A7005CED02 /* ProfileViewController.swift in Sources */,
 				D316E9D01FBBF16800404BAB /* PlaceholderSelectionViewController.swift in Sources */,
 				04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */,
@@ -409,6 +416,7 @@
 			files = (
 				D3B58BC21FAD3ECD00436A80 /* UserProfileTest.swift in Sources */,
 				D3B58BB21FAD3EAF00436A80 /* fitInTests.swift in Sources */,
+				FB75B4631FC7C8DA00047C76 /* TestS3Handler.swift in Sources */,
 				FB80D1C51FAD819E005CED02 /* TestDynamoHandler.swift in Sources */,
 				0EE618D21FAD655900315A89 /* ScenarioTest.swift in Sources */,
 			);

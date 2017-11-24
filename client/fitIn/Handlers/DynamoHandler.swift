@@ -11,6 +11,21 @@
 
 import Foundation
 import AWSDynamoDB
+import AWSS3
+
+var startUp = true;
+func hackyStartUp() {
+    if(startUp) {
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
+                                                                identityPoolId: AWS_IDENTITY_POOL)
+        
+        let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        startUp = false;
+    }
+}
 
 // This is the global DynamoHandler object, which is intended to be a singleton
 let dynamoHandler = DynamoHandler();
@@ -49,18 +64,12 @@ func makeAttrib(_ value: Double) -> AWSDynamoDBAttributeValue {
 // This object wraps direct AWSDynamoDB function calls,
 // and specializes them for our use case for ease of use.
 class DynamoHandler {
-    var paginatedOutput: AWSDynamoDBPaginatedOutput?
     var dynamo: AWSDynamoDB
     
     // Default and only constructor, sets up some global (hidden by AWS) AWS resources
     // and initializes the dynamo member variable.
     init() {
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
-                                                                identityPoolId: AWS_IDENTITY_POOL)
-        
-        let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider: credentialsProvider)
-        
-        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        hackyStartUp();
         
         dynamo = AWSDynamoDB.default();
     }
