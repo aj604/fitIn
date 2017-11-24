@@ -12,9 +12,14 @@ import AWSS3
 let AMAZON_BASE: String = "https://s3-us-west-2.amazonaws.com/"
 let s3Handler = S3Handler();
 
-struct StupidStringObject {
+class StupidStringObject {
     var valid: Bool;
     let string: String;
+    
+    init(string: String) {
+        self.string = string;
+        self.valid = false;
+    }
 }
 
 class S3Handler {
@@ -34,21 +39,20 @@ class S3Handler {
         request.contentLength = NSNumber(value: scenario.imageData.count)
         
         return s3.putObject(request)
-            .continueWith {
-                (task: AWSTask<AWSS3PutObjectOutput>) in
+            .continueWith(block: {
+                (task: AWSTask<AWSS3PutObjectOutput>) -> AWSTask<StupidStringObject> in
                 if let error = task.error {
                     print("failed put request to bucket. Error: \(error)")
-                    //return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue)) as! AWSTask<StupidStringObject>;
-                    return nil
+                    return AWSTask(error: NSError(domain: "", code: ErrorTypes.RequestFailed.rawValue));
                 }
                 
-                var obj = StupidStringObject(valid: false, string: AMAZON_BASE + FITIN_IMAGES_BUCKET + "/" + scenario.scenarioID);
+                let obj = StupidStringObject(string: AMAZON_BASE + FITIN_IMAGES_BUCKET + "/" + scenario.scenarioID);
                 if let _ = task.result {
                     obj.valid = true;
                 }
                 
-                return AWSTask(result: obj as AnyObject)
+                return AWSTask(result: obj)
 
-            } as! AWSTask<StupidStringObject>;
+            }) as! AWSTask<StupidStringObject>;
     }
 }
