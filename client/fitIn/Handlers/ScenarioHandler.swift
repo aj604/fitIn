@@ -136,10 +136,6 @@ class ScenarioHandler {
     // Other transitions calculated in observing properties
     func loadNextScenario() {
         
-        let _ = s3Handler.uploadImage(scenario: scenarios[currentScenario]);
-        
-        
-        
         scenarios[currentScenario].seen = true;
         // kick off new tasks
         for (index, scenario) in scenarios.enumerated() {
