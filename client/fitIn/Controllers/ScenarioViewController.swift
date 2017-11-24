@@ -16,21 +16,25 @@ class ScenarioViewController: UIViewController {
     //Image View, Put Image HERE!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var questionDescription: UILabel!
-    
-    //Control Current Scenario
-    //var scenarioController = ScenarioHandler()
-    
-    // Eventually this will be access point for subView
-    //fileprivate var responseController : responseViewController
-    
-    
+    let DISABLE_TIME = 0.8; //seconds
     //User input
     @IBAction func proSocialPic(_ sender: UIButton) {
+        sender.isEnabled = false;
+        Timer.scheduledTimer(withTimeInterval: DISABLE_TIME, repeats: false, block: {
+            (timer: Timer) -> Void in
+            sender.isEnabled = true;
+        })
+        
         scenarioController.voteChoice = Scenario.ANSWER_YES
         scenarioController.loadNextScenario()
         updateUI()
     }
     @IBAction func antiSocialPic(_ sender: UIButton) {
+        sender.isEnabled = false;
+        Timer.scheduledTimer(withTimeInterval: DISABLE_TIME, repeats: false, block: {
+            (timer: Timer) -> Void in
+            sender.isEnabled = true;
+        })
         scenarioController.voteChoice = Scenario.ANSWER_NO
         scenarioController.loadNextScenario()
         updateUI()
