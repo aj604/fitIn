@@ -24,8 +24,8 @@ class TestS3Handler: XCTestCase {
     }
     
     func testUploadImage() {
-        var data = Data(capacity: 1);
-        data[0] = 0xA1;
+        var data = Data(capacity: 0);
+        data.append(0xA1)
         let scenario = Scenario();
         scenario.scenarioID = "test";
         scenario.imageData = data;
@@ -34,17 +34,17 @@ class TestS3Handler: XCTestCase {
             .uploadImage(scenario: scenario)
             .continueWith(block:
                 {
-                    (task: AWSTask<StupidStringObject>) -> AWSTask<Void> in
+                    (task: AWSTask<StupidStringObject>) -> Void in
                     
-                    XCTAssertTrue(task.result?.valid);
+                    XCTAssertTrue((task.result?.valid)!);
                     XCTAssertTrue(task.result?.string == AMAZON_BASE + FITIN_IMAGES_BUCKET + "/" + scenario.scenarioID )
                     
-                    scenario.imageLoc = URL(string: task.result?.string);
+                    scenario.imageLoc = URL(string: (task.result?.string)!)!;
                     scenario.getImageData();
                     XCTAssertTrue(scenario.imageData == data);
-                    
                 }
             )
+            .waitUntilFinished();
     }
     
 }
