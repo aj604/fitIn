@@ -19,7 +19,6 @@
 		04DA17F21FAD142A00A822AD /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17F11FAD142A00A822AD /* SliderViewController.swift */; };
 		04E2200D1FC1521D00593D5F /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */; };
 		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
-		0E69E3411FCA2DCF00C31B78 /* root.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E69E3401FCA2DCF00C31B78 /* root.plist */; };
 		0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */; };
 		0EE618D21FAD655900315A89 /* ScenarioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE618D11FAD655900315A89 /* ScenarioTest.swift */; };
 		CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */; };
@@ -97,7 +96,6 @@
 		04DA17F11FAD142A00A822AD /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
 		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
-		0E69E3401FCA2DCF00C31B78 /* root.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = root.plist; sourceTree = "<group>"; };
 		0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		0EE618D11FAD655900315A89 /* ScenarioTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioTest.swift; sourceTree = "<group>"; };
 		CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -240,7 +238,6 @@
 				042CBD281FBE2C7B00ACE7B1 /* Controllers */,
 				043160381FBE56C90062C347 /* Handlers */,
 				0464E1111F885D1B00002403 /* SupplementaryFiles */,
-				0E69E3401FCA2DCF00C31B78 /* root.plist */,
 			);
 			path = fitIn;
 			sourceTree = "<group>";
@@ -357,7 +354,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E69E3411FCA2DCF00C31B78 /* root.plist in Resources */,
 				0464E10A1F885D0000002403 /* LaunchScreen.storyboard in Resources */,
 				0499CF3F1F89795C00ECB59B /* personPickingUpPoop.jpg in Resources */,
 				0464E1071F885D0000002403 /* Assets.xcassets in Resources */,

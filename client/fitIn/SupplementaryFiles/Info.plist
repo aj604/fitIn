@@ -48,5 +48,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Records voice when holding record button</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Recognizes speech from recorded voice</string>
 </dict>
 </plist>
