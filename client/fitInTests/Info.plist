@@ -18,9 +18,9 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Hold record in scenario view to start recording speech</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Speak to navigate scenarios and more</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Records voice and performs speech recognition</string>
 </dict>
 </plist>

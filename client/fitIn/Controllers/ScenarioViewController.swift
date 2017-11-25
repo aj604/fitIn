@@ -86,6 +86,12 @@ class ScenarioViewController: UIViewController {
             result, error in if let result = result {
                 let bestString = result.bestTranscription.formattedString
                 print(bestString)
+                var lastString: String = ""
+                for segment in result.bestTranscription.segments{
+                    let indexTo = bestString.index(bestString.startIndex, offsetBy: segment.substringRange.location)
+                    lastString = String(bestString[..<indexTo])
+                    //do stuff with words ( last word)
+                }
             } else if let error = error{
                 print(error)
             }
