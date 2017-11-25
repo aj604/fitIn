@@ -124,7 +124,7 @@
 		FBC51AE91FA7CC2C00D42695 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoHandler.swift; sourceTree = "<group>"; };
 		FBD0CDB21FC357BC006B6AC2 /* ScenarioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioTableViewController.swift; sourceTree = "<group>"; };
-		FBD0CDB41FC357EE006B6AC2 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
+		FBD0CDB41FC357EE006B6AC2 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "aws-resources.swift"; path = "../aws-resources.swift/aws-resources.swift"; sourceTree = "<group>"; };
 		FBD0CDB61FC3580C006B6AC2 /* ScenarioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioTableViewCell.swift; sourceTree = "<group>"; };
 		FBF8B4841FBFE29C00D25F71 /* ScenarioUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioUpdate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */

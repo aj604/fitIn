@@ -17,13 +17,16 @@ class ScenarioViewController: UIViewController {
     //Image View, Put Image HERE!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var questionDescription: UILabel!
+    
+    //voice recognition stuff
     @IBOutlet weak var voiceButton: UIButton!
     
     //setup variables for speech recog
-    /*let audioEngine = AVAudioEngine()
+    let audioEngine = AVAudioEngine()
     let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
     let request = SFSpeechAudioBufferRecognitionRequest()
-    var recognitionTask: SFSpeechRecognitionTask?*/
+    var recognitionTask: SFSpeechRecognitionTask?
+    
     
     //Control Current Scenario
     //var scenarioController = ScenarioHandler()
@@ -44,12 +47,51 @@ class ScenarioViewController: UIViewController {
         updateUI()
     }
     @IBAction func startRecord(_ sender: UIButton) {
-        voiceButton.backgroundColor = UIColor.green;
+        voiceButton.backgroundColor = UIColor.green
+        recordAndRecognizeSpeech()
     }
     @IBAction func stopRecord(_ sender: UIButton) {
         voiceButton.backgroundColor = UIColor.white;
+        if audioEngine.isRunning{
+            audioEngine.stop()
+            request.endAudio()
+        }
     }
     
+    //function to handle specch recognition
+    func recordAndRecognizeSpeech() {
+        let node = audioEngine.inputNode
+        let recordingFormat = node.outputFormat(forBus:0)
+        node.installTap(onBus: 0 , bufferSize: 1024, format: recordingFormat) {
+            buffer, _ in self.request.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            return print(error)
+        }
+        
+        guard let myRecognizer = SFSpeechRecognizer() else {
+            //recognizer not suppported for currnet local
+            return
+        }
+        if !myRecognizer.isAvailable {
+            //recognizer not available right now
+            return
+        }
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: {
+            result, error in if let result = result {
+                let bestString = result.bestTranscription.formattedString
+                print(bestString)
+            } else if let error = error{
+                print(error)
+            }
+        })
+        
+    }
     
     // Update the UI to represent the change in Scenario
     // Once different response views are set they can be set here
