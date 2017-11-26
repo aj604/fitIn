@@ -54,6 +54,7 @@ class ScenarioViewController: UIViewController {
         voiceButton.backgroundColor = UIColor.white;
         if audioEngine.isRunning{
             audioEngine.stop()
+            audioEngine.inputNode.removeTap(onBus: 0)
             request.endAudio()
         }
     }
@@ -85,7 +86,8 @@ class ScenarioViewController: UIViewController {
         recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: {
             result, error in if let result = result {
                 let bestString = result.bestTranscription.formattedString
-                print(bestString)
+                self.voiceButton.setTitle( bestString, for: .normal)
+                //voiceButton.setTitle("blaasf", for : .normal)
                 var lastString: String = ""
                 for segment in result.bestTranscription.segments{
                     let indexTo = bestString.index(bestString.startIndex, offsetBy: segment.substringRange.location)
