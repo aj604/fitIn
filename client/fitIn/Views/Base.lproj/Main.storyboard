@@ -1088,6 +1088,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6P-qe-hF4">
                                         <rect key="frame" x="82" y="0.0" width="54" height="30"/>
                                         <state key="normal" title="Camera"/>
+                                        <connections>
+                                            <action selector="cameraPickerController:" destination="eHQ-M4-Ga5" eventType="touchUpInside" id="cfN-we-FQf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-Du-7H7">
                                         <rect key="frame" x="168" y="0.0" width="52" height="30"/>
@@ -1620,7 +1623,7 @@
                                                 <rect key="frame" x="92" y="248" width="191" height="73"/>
                                                 <state key="normal" image="save_changes_default"/>
                                                 <connections>
-                                                    <segue destination="u4m-3r-nrW" kind="show" id="LFb-rP-pUD"/>
+                                                    <action selector="userEditProfileSaveChanges:" destination="o8p-5p-T0j" eventType="touchUpInside" id="YX7-9z-tWP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1646,8 +1649,10 @@
                         <outlet property="editYourProfileLabel" destination="uN2-tR-IxR" id="qdk-ml-EdJ"/>
                         <outlet property="userEditAgeField" destination="Gcv-iD-YCN" id="oGB-yb-45l"/>
                         <outlet property="userEditAgeIcon" destination="AqJ-1q-aO7" id="csK-2m-cYG"/>
+                        <outlet property="userEditProfileSaveChangesButton" destination="0fK-w8-aIW" id="l97-9I-fg2"/>
                         <outlet property="userEditUsernameField" destination="iGb-Ys-B9K" id="OjP-CC-Fgf"/>
                         <outlet property="userEditUsernameIcon" destination="jXJ-TT-GGH" id="a4R-bO-k6Q"/>
+                        <segue destination="u4m-3r-nrW" kind="show" identifier="editProfileToProfile" id="dT9-l6-GxZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LZ-2r-rqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1702,7 +1707,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="viewProfile:" destination="i2c-Lk-8UZ" eventType="touchUpInside" id="Sh0-vl-wB1"/>
-                                                    <segue destination="u4m-3r-nrW" kind="show" identifier="mainMenuToProfileSegue" id="rNY-Ql-lO0"/>
+                                                    <segue destination="u4m-3r-nrW" kind="show" identifier="MainMenuToViewProfileSegue" id="rNY-Ql-lO0"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiS-3h-im7">
@@ -1834,8 +1839,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iqG-yd-UeJ"/>
-        <segue reference="vwl-db-IRg"/>
-        <segue reference="rNY-Ql-lO0"/>
+        <segue reference="TGh-mq-wh6"/>
+        <segue reference="dT9-l6-GxZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

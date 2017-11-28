@@ -39,6 +39,11 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        //once user taps outside of field keyboard should be closed
+    }
+    
     //Action Outlets
     
     @IBAction func Login(_ sender: UIButton) {
