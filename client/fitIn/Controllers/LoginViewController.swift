@@ -68,8 +68,10 @@ class LoginViewController: UIViewController {
                         currentUser.isUserLoggedIn = true
                         DispatchQueue.main.async {
                             //print("Main")
-                            let alertController = UIAlertController(title: "Login", message: "user has successfully logged in", preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                            let alertController = UIAlertController(title: "Login", message: "User has successfully logged in.", preferredStyle: UIAlertControllerStyle.alert)
+                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
+                                self.segueToMain()
+                            }))
                             self.present(alertController, animated: true, completion: nil)
                         }
                         //print("user has successfully logged in")
@@ -87,7 +89,7 @@ class LoginViewController: UIViewController {
                         currentUser.isUserLoggedIn = false
                         DispatchQueue.main.async {
                             //print("Main")
-                            let alertController = UIAlertController(title: "Login", message: "user has failed to login", preferredStyle: UIAlertControllerStyle.alert)
+                            let alertController = UIAlertController(title: "Login", message: "User has failed to login.", preferredStyle: UIAlertControllerStyle.alert)
                             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                             self.present(alertController, animated: true, completion: nil)
                         }
@@ -106,7 +108,10 @@ class LoginViewController: UIViewController {
          }*/
     }
     
-    
+    func segueToMain() -> Void{
+        performSegue(withIdentifier: "loginToMainMenu", sender: self)
+        //temporary "solution" to segue into login screen when user is not logged in
+    }
     
     /*
      // MARK: - Navigation

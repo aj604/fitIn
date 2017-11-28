@@ -25,6 +25,7 @@
 		CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */; };
 		D316E9D01FBBF16800404BAB /* PlaceholderSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */; };
 		D316E9D21FBBF3C700404BAB /* PlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */; };
+		D33B1B9E1FCCEB7600F68612 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1B9D1FCCEB7600F68612 /* aws-resources.swift */; };
 		D35A4D771FBE66D2003BE704 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A4D761FBE66D2003BE704 /* MainMenuViewController.swift */; };
 		D35A4D791FBE6724003BE704 /* MustLoginPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35A4D781FBE6724003BE704 /* MustLoginPopupViewController.swift */; };
 		D3B58BB21FAD3EAF00436A80 /* fitInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B58BB11FAD3EAF00436A80 /* fitInTests.swift */; };
@@ -51,7 +52,6 @@
 		FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AE91FA7CC2C00D42695 /* Scenario.swift */; };
 		FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */; };
 		FBD0CDB31FC357BC006B6AC2 /* ScenarioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0CDB21FC357BC006B6AC2 /* ScenarioTableViewController.swift */; };
-		FBD0CDB51FC357EE006B6AC2 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0CDB41FC357EE006B6AC2 /* aws-resources.swift */; };
 		FBD0CDB71FC3580C006B6AC2 /* ScenarioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0CDB61FC3580C006B6AC2 /* ScenarioTableViewCell.swift */; };
 		FBF8B4851FBFE29C00D25F71 /* ScenarioUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF8B4841FBFE29C00D25F71 /* ScenarioUpdate.swift */; };
 /* End PBXBuildFile section */
@@ -104,6 +104,7 @@
 		CFC5F3111FA3090B0093EDC6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D316E9CF1FBBF16800404BAB /* PlaceholderSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderSelectionViewController.swift; sourceTree = "<group>"; };
 		D316E9D11FBBF3C700404BAB /* PlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableViewCell.swift; sourceTree = "<group>"; };
+		D33B1B9D1FCCEB7600F68612 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "aws-resources.swift"; path = "../../../../Desktop/aws-resources.swift"; sourceTree = "<group>"; };
 		D35A4D761FBE66D2003BE704 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		D35A4D781FBE6724003BE704 /* MustLoginPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustLoginPopupViewController.swift; sourceTree = "<group>"; };
 		D3B58BAF1FAD3EAF00436A80 /* fitInTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fitInTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +129,6 @@
 		FBC51AE91FA7CC2C00D42695 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
 		FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamoHandler.swift; sourceTree = "<group>"; };
 		FBD0CDB21FC357BC006B6AC2 /* ScenarioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioTableViewController.swift; sourceTree = "<group>"; };
-		FBD0CDB41FC357EE006B6AC2 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		FBD0CDB61FC3580C006B6AC2 /* ScenarioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioTableViewCell.swift; sourceTree = "<group>"; };
 		FBF8B4841FBFE29C00D25F71 /* ScenarioUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioUpdate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,7 +233,7 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				FBD0CDB41FC357EE006B6AC2 /* aws-resources.swift */,
+				D33B1B9D1FCCEB7600F68612 /* aws-resources.swift */,
 				FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */,
 				FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */,
 				FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */,
@@ -394,6 +394,7 @@
 				FBF8B4851FBFE29C00D25F71 /* ScenarioUpdate.swift in Sources */,
 				D316E9D21FBBF3C700404BAB /* PlaceholderTableViewCell.swift in Sources */,
 				D35A4D791FBE6724003BE704 /* MustLoginPopupViewController.swift in Sources */,
+				D33B1B9E1FCCEB7600F68612 /* aws-resources.swift in Sources */,
 				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,
 				FBD0CDB71FC3580C006B6AC2 /* ScenarioTableViewCell.swift in Sources */,
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
@@ -402,7 +403,6 @@
 				04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
-				FBD0CDB51FC357EE006B6AC2 /* aws-resources.swift in Sources */,
 				D35A4D771FBE66D2003BE704 /* MainMenuViewController.swift in Sources */,
 				FB80D1B21FAD0234005CED02 /* ProfileEditViewController.swift in Sources */,
 				FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */,

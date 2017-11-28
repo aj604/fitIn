@@ -405,7 +405,7 @@
                         <barButtonItem key="backBarButtonItem" title="Main Menu" id="Nqk-fQ-Obk"/>
                         <barButtonItem key="leftBarButtonItem" title="Main Menu" id="ozC-ca-8Gf">
                             <connections>
-                                <segue destination="i2c-Lk-8UZ" kind="showDetail" id="vwl-db-IRg"/>
+                                <segue destination="i2c-Lk-8UZ" kind="showDetail" identifier="loginToMainMenu" id="vwl-db-IRg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -759,10 +759,10 @@
                                                 <rect key="frame" x="113" y="28" width="149" height="100.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LOGO_RESIZED" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-Pt-Ehh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="77"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="69"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-gs-DIh">
-                                                        <rect key="frame" x="24.5" y="77" width="100" height="23.5"/>
+                                                        <rect key="frame" x="24.5" y="69" width="100" height="31.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1081,6 +1081,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KA-mv-RTN">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                         <state key="normal" title="Upload"/>
+                                        <connections>
+                                            <action selector="importImageButton:" destination="eHQ-M4-Ga5" eventType="touchUpInside" id="KoD-G2-IqW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6P-qe-hF4">
                                         <rect key="frame" x="82" y="0.0" width="54" height="30"/>
@@ -1118,6 +1121,7 @@
                         <outlet property="placeholderScenarioImage" destination="Hb3-9T-WOQ" id="3X6-HB-90m"/>
                         <outlet property="placeholderSwitchOutput" destination="vpy-PT-FlI" id="L30-Nf-AIl"/>
                         <outlet property="placeholderText" destination="ZnV-Fo-8JS" id="O9T-7V-hxf"/>
+                        <segue destination="i2c-Lk-8UZ" kind="show" identifier="uploadScenarioToMain" id="ueP-j9-REj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYS-xt-TWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1830,7 +1834,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iqG-yd-UeJ"/>
-        <segue reference="TGh-mq-wh6"/>
+        <segue reference="vwl-db-IRg"/>
         <segue reference="rNY-Ql-lO0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
