@@ -18,7 +18,7 @@ class ScenarioUpdate {
     var timeToAnswer: Int // in milliseconds
     
     
-    required init(scenarioID: String, userAnswer: Int) {
+    required init(scenarioID: String, userAnswer: Int, timeToAnswer: Int) {
         self.scenarioID = scenarioID;
         updateID = String(arc4random());
         if let email = UserProfile.current()?.emailAddress {
@@ -27,7 +27,7 @@ class ScenarioUpdate {
             answeredBy = "Anonymous";
         }
         self.userAnswer = userAnswer;
-        timeToAnswer = 0;
+        self.timeToAnswer = timeToAnswer;
     }
     
     required init() {

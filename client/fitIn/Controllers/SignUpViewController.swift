@@ -43,7 +43,10 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        //once user taps outside of field keyboard should be closed
+    }
     
     @IBAction func CreateNewUserFunction(_ sender: Any) {
         

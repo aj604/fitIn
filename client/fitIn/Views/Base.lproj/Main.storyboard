@@ -412,7 +412,7 @@
                         <barButtonItem key="backBarButtonItem" title="Main Menu" id="Nqk-fQ-Obk"/>
                         <barButtonItem key="leftBarButtonItem" title="Main Menu" id="ozC-ca-8Gf">
                             <connections>
-                                <segue destination="i2c-Lk-8UZ" kind="showDetail" id="vwl-db-IRg"/>
+                                <segue destination="i2c-Lk-8UZ" kind="showDetail" identifier="loginToMainMenu" id="vwl-db-IRg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -778,8 +778,10 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LOGO_RESIZED" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-Pt-Ehh">
                                                         <rect key="frame" x="0.0" y="0.0" width="149" height="69"/>
                                                     </imageView>
+
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="P R O F I L E" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-gs-DIh">
                                                         <rect key="frame" x="7.5" y="69" width="134" height="31.5"/>
+                                                  
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1100,10 +1102,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KA-mv-RTN">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
                                         <state key="normal" image="uploadresized2-1"/>
+                                        <connections>
+                                            <action selector="importImageButton:" destination="eHQ-M4-Ga5" eventType="touchUpInside" id="KoD-G2-IqW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6P-qe-hF4">
                                         <rect key="frame" x="82" y="0.0" width="73" height="35"/>
                                         <state key="normal" image="camera-1"/>
+                                        <connections>
+                                            <action selector="cameraPickerController:" destination="eHQ-M4-Ga5" eventType="touchUpInside" id="cfN-we-FQf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-Du-7H7">
                                         <rect key="frame" x="187" y="0.0" width="73" height="35"/>
@@ -1140,6 +1148,7 @@
                         <outlet property="placeholderScenarioImage" destination="Hb3-9T-WOQ" id="3X6-HB-90m"/>
                         <outlet property="placeholderSwitchOutput" destination="vpy-PT-FlI" id="L30-Nf-AIl"/>
                         <outlet property="placeholderText" destination="ZnV-Fo-8JS" id="O9T-7V-hxf"/>
+                        <segue destination="i2c-Lk-8UZ" kind="show" identifier="uploadScenarioToMain" id="ueP-j9-REj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYS-xt-TWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1648,7 +1657,7 @@
                                                 <rect key="frame" x="92" y="248" width="191" height="73"/>
                                                 <state key="normal" image="save_changes_default"/>
                                                 <connections>
-                                                    <segue destination="u4m-3r-nrW" kind="show" id="LFb-rP-pUD"/>
+                                                    <action selector="userEditProfileSaveChanges:" destination="o8p-5p-T0j" eventType="touchUpInside" id="YX7-9z-tWP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1678,8 +1687,10 @@
                         <outlet property="editYourProfileLabel" destination="uN2-tR-IxR" id="qdk-ml-EdJ"/>
                         <outlet property="userEditAgeField" destination="Gcv-iD-YCN" id="oGB-yb-45l"/>
                         <outlet property="userEditAgeIcon" destination="AqJ-1q-aO7" id="csK-2m-cYG"/>
+                        <outlet property="userEditProfileSaveChangesButton" destination="0fK-w8-aIW" id="l97-9I-fg2"/>
                         <outlet property="userEditUsernameField" destination="iGb-Ys-B9K" id="OjP-CC-Fgf"/>
                         <outlet property="userEditUsernameIcon" destination="jXJ-TT-GGH" id="a4R-bO-k6Q"/>
+                        <segue destination="u4m-3r-nrW" kind="show" identifier="editProfileToProfile" id="dT9-l6-GxZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2LZ-2r-rqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1734,7 +1745,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="viewProfile:" destination="i2c-Lk-8UZ" eventType="touchUpInside" id="Sh0-vl-wB1"/>
-                                                    <segue destination="u4m-3r-nrW" kind="show" identifier="mainMenuToProfileSegue" id="rNY-Ql-lO0"/>
+                                                    <segue destination="u4m-3r-nrW" kind="show" identifier="MainMenuToViewProfileSegue" id="rNY-Ql-lO0"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiS-3h-im7">
@@ -1869,9 +1880,9 @@
         <image name="uploadresized2-1" width="73" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XbT-84-A7e"/>
-        <segue reference="HEa-R7-rDU"/>
-        <segue reference="LFb-rP-pUD"/>
+        <segue reference="iqG-yd-UeJ"/>
+        <segue reference="TGh-mq-wh6"/>
+        <segue reference="dT9-l6-GxZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
