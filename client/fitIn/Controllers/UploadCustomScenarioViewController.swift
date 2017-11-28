@@ -26,6 +26,7 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.placeholderText.becomeFirstResponder()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
         placeholderScenarioImage.image = placeholderImage
@@ -66,6 +67,11 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        //once user taps outside of field keyboard should be closed
     }
 
     @IBAction func uploadScenarioButton(_ sender: Any) {
@@ -185,6 +191,45 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
         }
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    @IBAction func cameraPickerController(_ sender: Any) {
+        hackyLabel = "PHOTO IMPORT"
+        let image = UIImagePickerController()
+        image.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            image.sourceType = .camera
+            //safety clause for simulation since camera is not enabled unless on a device
+        }
+        else {
+            image.sourceType = .photoLibrary
+            //safety clause for simulation since camera is not enabled unless on a device
+        }
+        image.allowsEditing = false
+        self.present(image, animated: true) {
+            //after image is complete
+        }
+    }
+    
+    /*func textFieldDidBeginEditing(textField: UITextField) {
+        self.placeholderText.becomeFirstResponder()
+        moveTextField(textField: placeholderText!, moveDistance: -250, up: true)
+    }
+    
+    private func textFieldDidEndEditing(textField: UITextField) {
+        self.placeholderText.resignFirstResponder()
+        moveTextField(textField: placeholderText!, moveDistance: -250, up: false)
+    }
+    
+    func moveTextField(textField: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }*/
     
     /*
     // MARK: - Navigation
