@@ -23,7 +23,7 @@ class ProfileEditViewController: UIViewController {
         userEditProfileSaveChangesButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         userEditProfileSaveChangesButton.layer.borderWidth = 2
         userEditProfileSaveChangesButton.layer.borderColor = UIColor.black.cgColor*/
-        userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "save_changes_default.png")!)
+        //userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "save_changes_default.png")!)
         guard let currentUser = UserProfile.current() else { return }
         if (currentUser.isUserLoggedIn == true) {
             userEditUsernameField.placeholder = currentUser.userName
@@ -42,6 +42,10 @@ class ProfileEditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        //once user taps outside of field keyboard should be closed
+    }
 	
     @IBOutlet weak var userEditUsernameIcon: UIImageView!
     @IBOutlet weak var userEditAgeIcon: UIImageView!
@@ -72,7 +76,9 @@ class ProfileEditViewController: UIViewController {
                 // Initialize Alert View
                 let alertController = UIAlertController(title: "Validation Error", message: "Please enter a username longer than 5 characters and without profanity.", preferredStyle: .alert)
                 // Add Options to Alert
-                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
+                    self.segueToProfile()
+                }))
                 // Show Alert View
                 self.present(alertController, animated: true, completion: nil)
                 inputValidationConditions[0] = false
@@ -116,7 +122,9 @@ class ProfileEditViewController: UIViewController {
                 // Initialize Alert View
                 let alertController = UIAlertController(title: "Validation Error", message: "Please enter an age between 1 and 200.", preferredStyle: .alert)
                 // Add Options to Alert
-                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
+                    self.segueToProfile()
+                }))
                 // Show Alert View
                 self.present(alertController, animated: true, completion: nil)
                 inputValidationConditions[2] = false
@@ -131,11 +139,17 @@ class ProfileEditViewController: UIViewController {
             // Initialize Alert View
             let alertController = UIAlertController(title: "Modification Success", message: "Your changes have been saved correctly.", preferredStyle: .alert)
             // Add Options to Alert
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
+                self.segueToProfile()
+            }))
             // Show Alert View
             self.present(alertController, animated: true, completion: nil)
             _ = dynamoHandler.putUserProfile(UserProfile.current()!)
         }
+    }
+    
+    func segueToProfile() {
+        performSegue(withIdentifier: "editProfileToProfile", sender: self)
     }
     
     // MARK: - Navigation
