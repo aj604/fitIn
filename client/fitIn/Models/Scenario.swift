@@ -135,11 +135,65 @@ class Scenario {
     // Pre: Scenario is loaded and inputAnswer != nil
     // Post: Bool? determining if they got the right answer or if inputAnswer wasnt initialized
     func isRightAnswer(userAnswer: Int) -> Bool {
-        
-        if userAnswer == initialAnswer {
-            return true
+        let MIN_ANSWERS = 10;
+
+        if(self.numberOfAnswers > MIN_ANSWERS)
+        {
+            // print("answer is ",self.averageAnswer)
+            switch(self.type) {
+            case .slider:
+                if(userAnswer <= Int(self.averageAnswer + self.mean) && userAnswer >= Int(self.averageAnswer - self.mean)) {
+                    // user answer is within the correct answer range
+                    return true;
+                } else {
+                    // user is not correct
+                    return false;
+                }
+            case .yesOrNo:
+                // round the average value to either 0 or MAX_ANSWER_VALUE with integer math.
+                let roundedAverageAnswer = ((Int(self.averageAnswer) + Scenario.MAX_ANSWER_VALUE / 2) / Scenario.MAX_ANSWER_VALUE) * Scenario.MAX_ANSWER_VALUE;
+                // print("rounded", roundedAverageAnswer);
+                // print("user", userAnswer);
+                if (userAnswer == roundedAverageAnswer) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case .multipleChoice:
+                print("multi choice unsupported")
+            }
+
+        } else
+        {
+            // print("answer is ", self.initialAnswer)
+            // basic comparison for a small number of answers
+            // this lets the standard deviation ramp up a little
+            // before depending on it.
+            switch(self.type) {
+            case .slider:
+                let SLIDER_GRACE = Scenario.MAX_ANSWER_VALUE / 4;
+                if(userAnswer <= Int(self.initialAnswer + SLIDER_GRACE) && userAnswer >= Int(self.initialAnswer - SLIDER_GRACE)) {
+                    // user answer is within the correct answer range
+                    return true;
+                } else {
+                    // user is not correct
+                    return false;
+                }
+            case .yesOrNo:
+                // round the average value to either 0 or MAX_ANSWER_VALUE with integer math.
+                let roundedAverageAnswer = ((Int(self.initialAnswer) + Scenario.MAX_ANSWER_VALUE / 2) / Scenario.MAX_ANSWER_VALUE) * Scenario.MAX_ANSWER_VALUE;
+                // print("rounded", roundedAverageAnswer);
+                // print("user", userAnswer);
+                if (userAnswer == roundedAverageAnswer) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case .multipleChoice:
+                print("multi choice unsupported")
+            }
         }
-        return false
+        return false;
     }
     
     // Helper func to set image URL before database urls can be tested
