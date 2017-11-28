@@ -24,6 +24,7 @@ class ScenarioHandler {
     static let NUM_SCENARIOS = 5;
     var scenarios = [Scenario]();
     var tasks = [AWSTask<Scenario>]();
+    var userStartedViewingTime = NSDate().timeIntervalSince1970
     
      //Image Data to use for UIImageView
     private var imageData = Data()
@@ -79,12 +80,22 @@ class ScenarioHandler {
             //Failed Vote
         }
         
+        // add to the scenario history
         scenarioHistory.append(scenarios[currentScenario])
 
+        // create a ScenarioUpdate object
         let scenarioUpdate = ScenarioUpdate(
             scenarioID: scenarios[currentScenario].scenarioID,
-            userAnswer: voteChoice!
+            userAnswer: voteChoice!,
+            // unfortunately timeIntervalSince1970 returns seconds.
+            timeToAnswer: Int(NSDate().timeIntervalSince1970 - self.userStartedViewingTime) * 1000
         );
+        
+        // get a new date starting point for the next scenario
+        self.userStartedViewingTime = NSDate().timeIntervalSince1970;
+        
+        // update user with new average time to answer
+        user.updateAverageResponseTime(intParameter: scenarioUpdate.timeToAnswer)
         
         _ = dynamoHandler.putScenarioUpdate(scenarioUpdate);
         
@@ -108,6 +119,7 @@ class ScenarioHandler {
     func loadNextScenario() {
         
         scenarios[currentScenario].seen = true;
+        
         // kick off new tasks
         for (index, scenario) in scenarios.enumerated() {
             // add a new task if the corresponding scenario has been seen by the viewer
