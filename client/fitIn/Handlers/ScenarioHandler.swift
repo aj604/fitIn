@@ -14,6 +14,9 @@ import AWSDynamoDB
 let scenarioController = ScenarioHandler()
 //This is the ScenarioHandler class, it instantiates the other classes and interprets events
 //Controls flow of app
+
+var userIsCorrect = false;
+
 class ScenarioHandler {
     
     // MARK: VARIABLES
@@ -125,9 +128,11 @@ class ScenarioHandler {
         
         if scenarios[currentScenario].isRightAnswer(userAnswer: voteChoice!) {
             user.gotCorrect() // Log vote in the user struct
+            userIsCorrect = true;
             return true
         }
         user.gotIncorrect() // Log vote in the user struct
+        userIsCorrect = false;
         return true // Vote was logged maybe add a return to the user vote
     }
     

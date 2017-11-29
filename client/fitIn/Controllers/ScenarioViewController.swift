@@ -125,16 +125,17 @@ class ScenarioViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
+    /*override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "prosocial" || segue.identifier == "antisocial" {
+     
                 let popView = segue.destination as! popUpViewController
                 popView.passedReasoning = scenarioController.returnReasoning()
-        }
+        }/*
         if segue.identifier == "sliderSegue" {
             let destination = segue.destination as? SliderViewController
             destination?.scenarioController = scenarioController
@@ -146,7 +147,7 @@ class ScenarioViewController: UIViewController {
         if segue.identifier == "mainMenuSegue" {
             let destination = segue.destination as? MainMenuViewController
             destination?.scenarioController = scenarioController
-        }
+        }*/
     }*/
 }
 
