@@ -11,7 +11,7 @@
 import UIKit
 import Speech
 
-class ScenarioViewController: UIViewController {
+class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
     //Image View, Put Image HERE!
@@ -20,12 +20,14 @@ class ScenarioViewController: UIViewController {
     
     //voice recognition stuff
     @IBOutlet weak var voiceButton: UIButton!
+    @IBOutlet weak var testbox: UITextView!
+    
     
     //setup variables for speech recog
-    let audioEngine = AVAudioEngine()
-    let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
-    let request = SFSpeechAudioBufferRecognitionRequest()
-    var recognitionTask: SFSpeechRecognitionTask?
+private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private let audioEngine = AVAudioEngine()
     
     
     //Control Current Scenario
@@ -48,59 +50,92 @@ class ScenarioViewController: UIViewController {
     }
     @IBAction func startRecord(_ sender: UIButton) {
         voiceButton.backgroundColor = UIColor.green
-        recordAndRecognizeSpeech()
+        startRecording()
     }
     @IBAction func stopRecord(_ sender: UIButton) {
         voiceButton.backgroundColor = UIColor.white;
         if audioEngine.isRunning{
             audioEngine.stop()
             audioEngine.inputNode.removeTap(onBus: 0)
-            request.endAudio()
+            recognitionRequest?.endAudio()
         }
     }
     
     //function to handle specch recognition
-    func recordAndRecognizeSpeech() {
-        let node = audioEngine.inputNode
-        let recordingFormat = node.outputFormat(forBus:0)
-        node.installTap(onBus: 0 , bufferSize: 1024, format: recordingFormat) {
-            buffer, _ in self.request.append(buffer)
+    func startRecording() {
+        
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
         }
         
-        audioEngine.prepare()
+        let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioEngine.start()
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
-            return print(error)
+            print("audioSession properties weren't set because of an error.")
         }
         
-        guard let myRecognizer = SFSpeechRecognizer() else {
-            //recognizer not suppported for currnet local
-            return
-        }
-        if !myRecognizer.isAvailable {
-            //recognizer not available right now
-            return
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        let inputNode = audioEngine.inputNode
+        
+        guard let recognitionRequest = recognitionRequest else {
+            fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         }
         
-        recognitionTask = speechRecognizer?.recognitionTask(with: request, resultHandler: {
-            result, error in if let result = result {
-                let bestString = result.bestTranscription.formattedString
-                self.voiceButton.setTitle( bestString, for: .normal)
-                //voiceButton.setTitle("blaasf", for : .normal)
+        recognitionRequest.shouldReportPartialResults = true
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+            
+            var isFinal = false
+            
+            if result != nil {
+                let bestString = result?.bestTranscription.formattedString
+                
                 var lastString: String = ""
-                for segment in result.bestTranscription.segments{
-                    let indexTo = bestString.index(bestString.startIndex, offsetBy: segment.substringRange.location)
-                    lastString = String(bestString[..<indexTo])
-                    //do stuff with words ( last word)
+                for segment in (result?.bestTranscription.segments)! {
+                    let indexTo = bestString?.index((bestString?.startIndex)!, offsetBy: segment.substringRange.location)
+                    lastString = (bestString?.substring(from: indexTo!))!
+                    self.testbox.text = lastString
+                 //do stuff with words ( last word)
                 }
-            } else if let error = error{
-                print(error)
+                 //= result?.bestTranscription.formattedString
+                isFinal = (result?.isFinal)!
+            }
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                
             }
         })
         
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        do {
+            try audioEngine.start()
+        } catch {
+            print("audioEngine couldn't start because of an error.")
+        }
+        
+        voiceButton.setTitle("Listening", for : .normal)
+        
     }
-    
+
+ 
+
+
     // Update the UI to represent the change in Scenario
     // Once different response views are set they can be set here
     func updateUI() {
@@ -123,6 +158,36 @@ class ScenarioViewController: UIViewController {
         } else {
             print("hmm something went wrong buffering the initial image")
         }
+        
+        
+        speechRecognizer?.delegate = self  //3
+        
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in  //4
+            
+            var isButtonEnabled = false
+            
+            switch authStatus {  //5
+            case .authorized:
+                isButtonEnabled = true
+                
+            case .denied:
+                isButtonEnabled = false
+                print("User denied access to speech recognition")
+                
+            case .restricted:
+                isButtonEnabled = false
+                print("Speech recognition restricted on this device")
+                
+            case .notDetermined:
+                isButtonEnabled = false
+                print("Speech recognition not yet authorized")
+            }
+            
+            /*OperationQueue.main.addOperation() {
+                self.microphoneButton.isEnabled = isButtonEnabled
+            }*/
+        }
+        
     }
     
     /*override func didReceiveMemoryWarning() {

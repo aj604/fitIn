@@ -235,8 +235,15 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="TLr-S8-Nfj">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                                         <subviews>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-Dh-VOK">
+                                                                <rect key="frame" x="0.0" y="0.0" width="124.5" height="212"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            </textView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-XA-axw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="212"/>
+                                                                <rect key="frame" x="125.5" y="0.0" width="124" height="212"/>
                                                                 <state key="normal" image="crossresized">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
@@ -245,7 +252,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1es-Cx-Qur">
-                                                                <rect key="frame" x="188" y="0.0" width="187" height="212"/>
+                                                                <rect key="frame" x="250.5" y="0.0" width="124.5" height="212"/>
                                                                 <state key="normal" image="right_edited">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
@@ -307,6 +314,7 @@
                     <connections>
                         <outlet property="imageView" destination="Ayo-9c-HvN" id="zDO-ZT-YnV"/>
                         <outlet property="questionDescription" destination="SI8-oV-m4m" id="4G7-DC-nqf"/>
+                        <outlet property="testbox" destination="6i9-Dh-VOK" id="Qbc-mJ-o11"/>
                         <outlet property="voiceButton" destination="PmC-r1-Fu4" id="7rR-Zl-r52"/>
                     </connections>
                 </viewController>
@@ -792,10 +800,10 @@
                                                 <rect key="frame" x="113" y="28" width="149" height="100.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LOGO_RESIZED" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-Pt-Ehh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="69"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="77"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-gs-DIh">
-                                                        <rect key="frame" x="24.5" y="69" width="100" height="31.5"/>
+                                                        <rect key="frame" x="24.5" y="77" width="100" height="23.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1887,8 +1895,8 @@
         <image name="submit_button" width="143" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iqG-yd-UeJ"/>
-        <segue reference="vwl-db-IRg"/>
+        <segue reference="XbT-84-A7e"/>
+        <segue reference="ioM-BK-idi"/>
         <segue reference="rNY-Ql-lO0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
