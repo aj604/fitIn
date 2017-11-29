@@ -35,7 +35,6 @@
 		D3B58BC11FAD3ECD00436A80 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B58BBC1FAD3ECD00436A80 /* AWSDynamoDB.framework */; };
 		D3B58BC21FAD3ECD00436A80 /* UserProfileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B58BBD1FAD3ECD00436A80 /* UserProfileTest.swift */; };
 		D3B5B6B91FBBD1BA003914F3 /* UploadCustomScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5B6B81FBBD1BA003914F3 /* UploadCustomScenarioViewController.swift */; };
-		FB0BD4851FCD191300DB0D43 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0BD4841FCD191300DB0D43 /* aws-resources.swift */; };
 		FB0F0A101FA2C88E00A9E879 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; };
 		FB0F0A131FA2CB0E00A9E879 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */; };
 		FB0F0A141FA2CB0E00A9E879 /* AWSCognito.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -117,7 +116,6 @@
 		D3B58BBC1FAD3ECD00436A80 /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
 		D3B58BBD1FAD3ECD00436A80 /* UserProfileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTest.swift; sourceTree = "<group>"; };
 		D3B5B6B81FBBD1BA003914F3 /* UploadCustomScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCustomScenarioViewController.swift; sourceTree = "<group>"; };
-		FB0BD4841FCD191300DB0D43 /* aws-resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDynamoDB.framework; sourceTree = "<group>"; };
 		FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
@@ -220,6 +218,7 @@
 				0464E0FB1F885D0000002403 /* fitIn */,
 				D3B58BB01FAD3EAF00436A80 /* fitInTests */,
 				0464E0FA1F885D0000002403 /* Products */,
+				D35FCF7E1FCE37CC004997A6 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -235,7 +234,6 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				FB0BD4841FCD191300DB0D43 /* aws-resources.swift */,
 				FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */,
 				FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */,
 				FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */,
@@ -259,6 +257,14 @@
 				0464E10B1F885D0000002403 /* Info.plist */,
 			);
 			path = SupplementaryFiles;
+			sourceTree = "<group>";
+		};
+		D35FCF7E1FCE37CC004997A6 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				09A869E71FCA83290051D7C3 /* aws-resources.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		D3B58BB01FAD3EAF00436A80 /* fitInTests */ = {
@@ -385,7 +391,6 @@
 			files = (
 				0499CF3D1F8973D900ECB59B /* userProfile.swift in Sources */,
 				CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */,
-				FB0BD4851FCD191300DB0D43 /* aws-resources.swift in Sources */,
 				CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */,
 				04C06A3E1FC1547800BF653B /* StatisticsViewController.swift in Sources */,
 				FB75B4611FC7ABD100047C76 /* S3Handler.swift in Sources */,

@@ -63,6 +63,9 @@ class SignUpViewController: UIViewController {
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 
                 inputValidationConditions[0] = false
+                /*let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)*/
             }
         }
         
@@ -81,6 +84,9 @@ class SignUpViewController: UIViewController {
                 AgeTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[1] = false
+                /*let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)*/
             }
         }
         
@@ -100,6 +106,9 @@ class SignUpViewController: UIViewController {
                 EmailTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[2] = false
+                let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         
@@ -119,6 +128,9 @@ class SignUpViewController: UIViewController {
                 ConfirmPasswordTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[3] = false
+                /*let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)*/
             }
             
         }
@@ -126,7 +138,59 @@ class SignUpViewController: UIViewController {
         if (inputValidationConditions[0] == true && inputValidationConditions[1] == true && inputValidationConditions[2] == true && inputValidationConditions[3] == true && inputValidationConditions[4] == true && inputValidationConditions[5] == true) {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
             CreateNewUserVariable.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
-            _ = dynamoHandler.putUserProfile(currentUser!)
+            //_ = dynamoHandler.putUserProfile(currentUser!)
+            dynamoHandler
+                .getUserProfile(currentUser!.emailAddress)
+                .continueWith(block:
+                    { (task) -> AWSTask<UserProfile> in
+                        if(task.result == nil)
+                        {
+                            // user does not exist
+                            return dynamoHandler.putUserProfile(UserProfile.current()!)
+                        } else
+                        {
+                            //let alertController = UIAlertController(title: "FitIn", message: "user exists, try again", preferredStyle: UIAlertControllerStyle.alert)
+                            //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                            //self.present(alertController, animated: true, completion: nil)
+                            //AlertMessages("user exists, try again")
+                            DispatchQueue.main.async {
+                                //print("Main")
+                                let alertController = UIAlertController(title: "Sign-Up", message: "User exists, please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                                self.present(alertController, animated: true, completion: nil)
+                            }
+                            //print("user exists, try again")
+                            return AWSTask(error: NSError(domain: "", code: ErrorTypes.Exists.rawValue))
+                        }
+                })
+                .continueWith(block:
+                    { (task) -> Void in
+                        if(task.error == nil) {
+                            //let alertController = UIAlertController(title: "FitIn", message: "success, new user", preferredStyle: UIAlertControllerStyle.alert)
+                            //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                            //self.present(alertController, animated: true, completion: nil)
+                            //AlertMessages("success, new user")
+                            DispatchQueue.main.async {
+                                //print("Main")
+                                let alertController = UIAlertController(title: "Sign-Up", message: "Success, new user.", preferredStyle: UIAlertControllerStyle.alert)
+                                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                                self.present(alertController, animated: true, completion: nil)
+                            }
+                            //print("success, new user")
+                        } else {
+                            //let alertController = UIAlertController(title: "FitIn", message: "failed to put", preferredStyle: UIAlertControllerStyle.alert)
+                            //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                            //self.present(alertController, animated: true, completion: nil)
+                            // AlertMessages("failed to put")
+                            DispatchQueue.main.async {
+                                //print("Main")
+                                let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                                self.present(alertController, animated: true, completion: nil)
+                            }
+                            //print("failed to put")
+                        }
+                })
             currentUser?.isUserLoggedIn = true
             
         }
@@ -139,59 +203,7 @@ class SignUpViewController: UIViewController {
         
         currentUser?.emailAddress = email
         // currentUser?.passwordToken = password
-        
-        dynamoHandler
-            .getUserProfile(email)
-            .continueWith(block:
-                { (task) -> AWSTask<UserProfile> in
-                    if(task.result == nil)
-                    {
-                        // user does not exist
-                        return dynamoHandler.putUserProfile(UserProfile.current()!)
-                    } else
-                    {
-                        //let alertController = UIAlertController(title: "FitIn", message: "user exists, try again", preferredStyle: UIAlertControllerStyle.alert)
-                        //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                        //self.present(alertController, animated: true, completion: nil)
-                        //AlertMessages("user exists, try again")
-                        DispatchQueue.main.async {
-                            //print("Main")
-                            let alertController = UIAlertController(title: "SignUp", message: "user exists, try again", preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                        //print("user exists, try again")
-                        return AWSTask(error: NSError(domain: "", code: ErrorTypes.Exists.rawValue))
-                    }
-            })
-            .continueWith(block:
-                { (task) -> Void in
-                    if(task.error == nil) {
-                        //let alertController = UIAlertController(title: "FitIn", message: "success, new user", preferredStyle: UIAlertControllerStyle.alert)
-                        //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                        //self.present(alertController, animated: true, completion: nil)
-                        //AlertMessages("success, new user")
-                        DispatchQueue.main.async {
-                            //print("Main")
-                            let alertController = UIAlertController(title: "SignUp", message: "success, new user", preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                        //print("success, new user")
-                    } else {
-                        //let alertController = UIAlertController(title: "FitIn", message: "failed to put", preferredStyle: UIAlertControllerStyle.alert)
-                        //alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                        //self.present(alertController, animated: true, completion: nil)
-                        // AlertMessages("failed to put")
-                        DispatchQueue.main.async {
-                            //print("Main")
-                            let alertController = UIAlertController(title: "SignUp", message: "failed to SignUp ", preferredStyle: UIAlertControllerStyle.alert)
-                            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                        //print("failed to put")
-                    }
-            })
+    
         
         func AlertMessages (_ stringParameter: String)
         {
