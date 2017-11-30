@@ -26,8 +26,8 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.placeholderText.becomeFirstResponder()
         // Do any additional setup after loading the view.
+        // Mostly UI elements are loaded here
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
         placeholderScenarioImage.image = placeholderImage
         placeholderScenarioImage.layer.borderWidth = 5
@@ -42,8 +42,6 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
         hackyBoolean = true
         placeholderScenario.initialAnswer = 10
         navigationController?.setNavigationBarHidden(true, animated: true)
-        /*placeholderCloseButton.layer.borderWidth = 3
-        placeholderCloseButton.layer.borderColor = UIColor.red.cgColor*/
         if (hackyLabel == "Running" || hackyLabel == "Thinking" || hackyLabel == "Walking" || hackyLabel == "Throwing" || hackyLabel == "Looking" || hackyLabel == "Finding")
         {
             placeholderScenarioButton.setTitle("", for: UIControlState.normal)
@@ -59,6 +57,7 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        //make sure that text being edited does not show the placeholder
         if placeholderText.isFirstResponder == true {
             placeholderText.text = nil
         }
@@ -171,6 +170,7 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
     
     
     @IBAction func importImageButton(_ sender: Any) {
+        //function to import the image from the device
         hackyLabel = "PHOTO IMPORT"
         let image = UIImagePickerController()
         image.delegate = self
@@ -210,35 +210,5 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
             //after image is complete
         }
     }
-    
-    /*func textFieldDidBeginEditing(textField: UITextField) {
-        self.placeholderText.becomeFirstResponder()
-        moveTextField(textField: placeholderText!, moveDistance: -250, up: true)
-    }
-    
-    private func textFieldDidEndEditing(textField: UITextField) {
-        self.placeholderText.resignFirstResponder()
-        moveTextField(textField: placeholderText!, moveDistance: -250, up: false)
-    }
-    
-    func moveTextField(textField: UITextView, moveDistance: Int, up: Bool) {
-        let moveDuration = 0.3
-        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
-        UIView.beginAnimations("animateTextField", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(moveDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
-    }*/
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -42,7 +42,10 @@ class UserProfile {
         isUserLoggedIn = false
         passwordToken = "password"
         imageLoc = URL(string: "https://www.members.eyp.org/system/files/default_images/default-avatar_7.png")!
-        //POC, URL is where we got the image data from, and is the default picture associated with a user
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //All images used are referenced using the following URLs and are used for educational purposes only
+        //All images are used to demonstrated a proof of concept and may not be included in later prototypes
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
     }
     
     // Creates and returns a DynamoDB compatible dictionary representing this class.
@@ -143,6 +146,7 @@ class UserProfile {
         return false
     }
     
+    //checks if the string contains a swear word of some sort
     func containsSwearWord(text: String, swearWords: [String]) -> Bool {
         return swearWords
             .reduce(false) { $0 || text.contains($1.lowercased()) }
@@ -152,7 +156,7 @@ class UserProfile {
     //feel free to add any that I may have missed @ groupmates :)
     
     func getImageData() -> Void { // Get Image Data from URL / Local
-        var imageOut = Data()//Data type, to prep image for UIImageView
+        var imageOut = Data() //Data type, to prep image for UIImageView
         do{
             try? imageOut = Data(contentsOf: imageLoc) //Primary image location
         }

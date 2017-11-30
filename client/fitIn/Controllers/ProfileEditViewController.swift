@@ -157,17 +157,4 @@ class ProfileEditViewController: UIViewController {
         performSegue(withIdentifier: "editProfileToProfile", sender: self)
     }
     
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "profileEditToMenuSegue" {
-            let destination = segue.destination as? MainMenuViewController
-            //destination?.scenarioController = scenarioController
-        }
-
-     // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }*/
-    
-
 }

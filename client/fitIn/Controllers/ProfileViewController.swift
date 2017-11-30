@@ -14,11 +14,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor(red: 80/255, green: 78/255, blue: 153/255, alpha: 1.0)
-        /*userEditProfileButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-        userEditProfileButton.layer.cornerRadius = 5
-        userEditProfileButton.layer.borderWidth = 1
-        userEditProfileButton.layer.borderColor = UIColor.white.cgColor*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +52,7 @@ class ProfileViewController: UIViewController {
                 print("sucessfully finished user get with: ", currentUser.emailAddress)
                 if(currentUser.emailAddress == task.result?.emailAddress)
                 {
+                    //gets the current user with the email address as a key, and populates appropriate entries of the userProfile object
                     print("user matches")
                     currentUser.emailAddress = task.result!.emailAddress
                     currentUser.userName = task.result!.userName
@@ -68,6 +64,7 @@ class ProfileViewController: UIViewController {
                 }
             })
         }
+        //and then assigns the entries to the appropriate labels that are displayed to the user
         userNameLabel.text = currentUser.userName
         userEmailAddressLabel.text = currentUser.emailAddress
         userAgeLabel.text = String(currentUser.userAge)
@@ -76,9 +73,19 @@ class ProfileViewController: UIViewController {
         userNumScenariosAnsweredLabel.text = String(currentUser.numScenariosAnswered)
         userAverageResponseTimeLabel.text = String(currentUser.averageResponseTime)
         userProfilesLabel.textColor = UIColor.white
+        
+        //this gets the image data from the userProfile's imageLoc parameter, and then tries to upload it to the profilepicture
         currentUser.getImageData()
-        ProfilePic.contentMode = .scaleAspectFit
-        ProfilePic.image = UIImage(data: currentUser.imageData)
+        if let image = UIImage(data: currentUser.imageData) {
+            //image has successfully been grabbed
+            print("image loaded")
+            ProfilePic.contentMode = .scaleAspectFit
+            ProfilePic.image = image
+        }
+        else {
+            //something went wrong (perhaps a faulty URL)
+            print("hmm something went wrong buffering the initial image")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,22 +104,4 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userAverageResponseTimeLabel: UILabel!
     @IBOutlet weak var ProfilePic: UIImageView!
     
-     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "forceLoginSegue" {
-            let destination = segue.destination as? LoginViewController
-            destination?.scenarioController = scenarioController
-        }
-        if segue.identifier == "profileEditSegue" {
-            let navigationDestination = segue.destination as? UINavigationController
-            let destination = navigationDestination?.topViewController as? ProfileEditViewController
-            destination?.scenarioController = scenarioController
-        }
-    }*/
-    
-
 }
