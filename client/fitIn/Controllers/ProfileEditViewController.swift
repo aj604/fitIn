@@ -53,6 +53,7 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet var userEditAgeField: UITextField!
     @IBOutlet var userEditProfileSaveChangesButton: UIButton!
     @IBOutlet var editYourProfileLabel: UILabel!
+    @IBOutlet weak var uploadProfilePic: UIImageView!
     
     var inputValidationConditions: [Bool] = [true, true, true, true]
     //this is the array which validates that all inputs across the board have been validated

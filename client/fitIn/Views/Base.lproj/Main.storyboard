@@ -490,14 +490,14 @@
                                                 <rect key="frame" x="0.0" y="162" width="228" height="161.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxl-L3-UIW">
-                                                        <rect key="frame" x="0.0" y="0.5" width="114" height="161.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="161.5"/>
                                                         <state key="normal" image="multiC"/>
                                                         <connections>
                                                             <action selector="choiceC:" destination="cKz-YV-HIe" eventType="touchUpInside" id="dA2-L4-tRF"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2W-j1-nWA">
-                                                        <rect key="frame" x="114" y="0.5" width="114" height="161.5"/>
+                                                        <rect key="frame" x="114" y="0.0" width="114" height="161.5"/>
                                                         <state key="normal" image="multiD"/>
                                                         <connections>
                                                             <action selector="choiceD:" destination="cKz-YV-HIe" eventType="touchUpInside" id="1Xz-7S-Gex"/>
@@ -1030,6 +1030,7 @@
                         <viewLayoutGuide key="safeArea" id="hHl-Qp-0a0"/>
                     </view>
                     <connections>
+                        <outlet property="ProfilePic" destination="OK4-mW-txJ" id="ORx-yB-9B7"/>
                         <outlet property="userAgeLabel" destination="gWX-VJ-05q" id="cTW-hc-uAY"/>
                         <outlet property="userAverageResponseTimeLabel" destination="7Wp-O3-PkR" id="qoI-2S-Gwb"/>
                         <outlet property="userEditProfileButton" destination="fdn-55-t6Q" id="sj1-br-oJ2"/>
@@ -1630,6 +1631,7 @@
                     </view>
                     <connections>
                         <outlet property="editYourProfileLabel" destination="uN2-tR-IxR" id="qdk-ml-EdJ"/>
+                        <outlet property="uploadProfilePic" destination="1km-Lc-znq" id="ubC-dZ-a3I"/>
                         <outlet property="userEditAgeField" destination="Gcv-iD-YCN" id="oGB-yb-45l"/>
                         <outlet property="userEditAgeIcon" destination="AqJ-1q-aO7" id="csK-2m-cYG"/>
                         <outlet property="userEditProfileSaveChangesButton" destination="0fK-w8-aIW" id="l97-9I-fg2"/>
@@ -1825,8 +1827,9 @@
         <image name="uploadresized2-1" width="73" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="NdV-QA-UJ4"/>
         <segue reference="XbT-84-A7e"/>
-        <segue reference="rMs-EW-zug"/>
+        <segue reference="TGh-mq-wh6"/>
         <segue reference="dT9-l6-GxZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

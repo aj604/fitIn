@@ -76,6 +76,9 @@ class ProfileViewController: UIViewController {
         userNumScenariosAnsweredLabel.text = String(currentUser.numScenariosAnswered)
         userAverageResponseTimeLabel.text = String(currentUser.averageResponseTime)
         userProfilesLabel.textColor = UIColor.white
+        currentUser.getImageData()
+        ProfilePic.contentMode = .scaleAspectFit
+        ProfilePic.image = UIImage(data: currentUser.imageData)
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,7 +95,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userNumScenariosCorrectLabel: UILabel!
     @IBOutlet weak var userNumScenariosAnsweredLabel: UILabel!
     @IBOutlet weak var userAverageResponseTimeLabel: UILabel!
-    
+    @IBOutlet weak var ProfilePic: UIImageView!
     
      // MARK: - Navigation
 
