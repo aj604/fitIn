@@ -23,7 +23,7 @@ class ProfileEditViewController: UIViewController {
         userEditProfileSaveChangesButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         userEditProfileSaveChangesButton.layer.borderWidth = 2
         userEditProfileSaveChangesButton.layer.borderColor = UIColor.black.cgColor*/
-        //userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "save_changes_default.png")!)
+        userEditProfileSaveChangesButton.backgroundColor = UIColor(patternImage: UIImage(named: "save_changes_default.png")!)
         guard let currentUser = UserProfile.current() else { return }
         if (currentUser.isUserLoggedIn == true) {
             userEditUsernameField.placeholder = currentUser.userName
@@ -53,10 +53,15 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet var userEditAgeField: UITextField!
     @IBOutlet var userEditProfileSaveChangesButton: UIButton!
     @IBOutlet var editYourProfileLabel: UILabel!
+    @IBOutlet weak var uploadProfilePic: UIImageView!
     
     var inputValidationConditions: [Bool] = [true, true, true, true]
     //this is the array which validates that all inputs across the board have been validated
     //element 0 is for username, element 1 is for email address, element 2 is for age, element 3 will be for password
+    
+    @IBAction func segueToMainButton(_ sender: Any) {
+        performSegue(withIdentifier: "editProfileToMainSegue", sender: self)
+    }
     
     @IBAction func userEditProfileSaveChanges(_ sender: Any) {
         if (userEditUsernameField.text!.count > 0 && UserProfile.current()?.isUserLoggedIn == true) {
@@ -152,17 +157,4 @@ class ProfileEditViewController: UIViewController {
         performSegue(withIdentifier: "editProfileToProfile", sender: self)
     }
     
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "profileEditToMenuSegue" {
-            let destination = segue.destination as? MainMenuViewController
-            //destination?.scenarioController = scenarioController
-        }
-
-     // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }*/
-    
-
 }
