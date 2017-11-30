@@ -42,8 +42,8 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
         hackyBoolean = true
         placeholderScenario.initialAnswer = 10
         navigationController?.setNavigationBarHidden(true, animated: true)
-        placeholderCloseButton.layer.borderWidth = 3
-        placeholderCloseButton.layer.borderColor = UIColor.red.cgColor
+        /*placeholderCloseButton.layer.borderWidth = 3
+        placeholderCloseButton.layer.borderColor = UIColor.red.cgColor*/
         if (hackyLabel == "Running" || hackyLabel == "Thinking" || hackyLabel == "Walking" || hackyLabel == "Throwing" || hackyLabel == "Looking" || hackyLabel == "Finding")
         {
             placeholderScenarioButton.setTitle("", for: UIControlState.normal)
