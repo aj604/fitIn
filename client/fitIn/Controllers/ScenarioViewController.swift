@@ -40,6 +40,15 @@ class ScenarioViewController: UIViewController {
         updateUI()
     }
     
+    @IBAction func rightSwipe(_ sender: UISwipeGestureRecognizer) {
+        self.proSocialPic(UIButton())
+    }
+    
+    @IBAction func leftSwipe(_ sender: UISwipeGestureRecognizer) {
+        self.antiSocialPic(UIButton())
+    }
+    
+    
     // Update the UI to represent the change in Scenario
     // Once different response views are set they can be set here
     func updateUI() {
@@ -63,6 +72,9 @@ class ScenarioViewController: UIViewController {
             print("hmm something went wrong buffering the initial image")
         }
     }
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
