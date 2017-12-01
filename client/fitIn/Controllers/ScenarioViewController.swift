@@ -38,16 +38,22 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     // Eventually this will be access point for subView
     //fileprivate var responseController : responseViewController
     
-    let DISABLE_TIME = 0.8; //seconds
+    let DISABLE_TIME = 0.5; //seconds
     //User input
     @IBAction func proSocialPic(_ sender: UIButton?) {
         sender?.isEnabled = false;
+
         Timer.scheduledTimer(withTimeInterval: DISABLE_TIME, repeats: false, block: {
             (timer: Timer) -> Void in
             sender?.isEnabled = true;
         })
 
         scenarioController.voteChoice = Scenario.ANSWER_YES
+        //if user is incorrect, send to reasoning pop up
+        if !userIsCorrect
+        {
+            self.performSegue(withIdentifier: "scenarioViewToReasoningPopup", sender:self);
+        }
         scenarioController.loadNextScenario()
         updateUI()
     }
@@ -60,6 +66,11 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
         })
 
         scenarioController.voteChoice = Scenario.ANSWER_NO
+        //if user is incorrect, send to reasoning pop up
+        if !userIsCorrect
+        {
+            self.performSegue(withIdentifier: "scenarioViewToReasoningPopup", sender:self);
+        }
         scenarioController.loadNextScenario()
         updateUI()
     }
@@ -249,7 +260,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if segue.identifier == "prosocial" || segue.identifier == "antisocial" {
+        if segue.identifier == "scenarioViewToReasoningPopup"  {
      
                 let popView = segue.destination as! popUpViewController
                 popView.passedReasoning = scenarioController.returnReasoning()
