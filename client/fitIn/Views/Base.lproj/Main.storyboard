@@ -404,7 +404,7 @@
                                                         <rect key="frame" x="0.0" y="60" width="212" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-Ok-Wbp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -547,14 +547,14 @@
                                                 <rect key="frame" x="0.0" y="162" width="228" height="161.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wxl-L3-UIW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="161.5"/>
+                                                        <rect key="frame" x="0.0" y="0.5" width="114" height="161.5"/>
                                                         <state key="normal" image="multiC"/>
                                                         <connections>
                                                             <action selector="choiceC:" destination="cKz-YV-HIe" eventType="touchUpInside" id="dA2-L4-tRF"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2W-j1-nWA">
-                                                        <rect key="frame" x="114" y="0.0" width="114" height="161.5"/>
+                                                        <rect key="frame" x="114" y="0.5" width="114" height="161.5"/>
                                                         <state key="normal" image="multiD"/>
                                                         <connections>
                                                             <action selector="choiceD:" destination="cKz-YV-HIe" eventType="touchUpInside" id="1Xz-7S-Gex"/>
@@ -1240,7 +1240,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zmn-dY-SXx" id="7sE-dY-F8v">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eFV-qm-BFD">
@@ -1909,10 +1909,6 @@
         <image name="uploadresized2-1" width="73" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XbT-84-A7e"/>
-        <segue reference="ioM-BK-idi"/>
-        <segue reference="rNY-Ql-lO0"/>
-        <segue reference="NdV-QA-UJ4"/>
         <segue reference="XbT-84-A7e"/>
         <segue reference="TGh-mq-wh6"/>
         <segue reference="dT9-l6-GxZ"/>

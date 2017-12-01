@@ -41,10 +41,10 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     let DISABLE_TIME = 0.8; //seconds
     //User input
     @IBAction func proSocialPic(_ sender: UIButton?) {
-        sender.isEnabled = false;
+        sender?.isEnabled = false;
         Timer.scheduledTimer(withTimeInterval: DISABLE_TIME, repeats: false, block: {
             (timer: Timer) -> Void in
-            sender.isEnabled = true;
+            sender?.isEnabled = true;
         })
 
         scenarioController.voteChoice = Scenario.ANSWER_YES
@@ -53,10 +53,10 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
 
     @IBAction func antiSocialPic(_ sender: UIButton?) {
-        sender.isEnabled = false;
+        sender?.isEnabled = false;
         Timer.scheduledTimer(withTimeInterval: DISABLE_TIME, repeats: false, block: {
             (timer: Timer) -> Void in
-            sender.isEnabled = true;
+            sender?.isEnabled = true;
         })
 
         scenarioController.voteChoice = Scenario.ANSWER_NO
@@ -262,6 +262,6 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
             let destination = segue.destination as? MainMenuViewController
             destination?.scenarioController = scenarioController
         }*/
-    }*/
+    }
 }
 
