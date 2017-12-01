@@ -11,6 +11,8 @@
 import UIKit
 import Speech
 
+var startRecordBool = false;
+
 class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     
@@ -21,7 +23,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     //voice recognition stuff
     @IBOutlet weak var voiceButton: UIButton!
     @IBOutlet weak var testbox: UITextView!
-    
+    @IBOutlet weak var detectedSpeech: UIView!
     
     //setup variables for speech recog
 private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
@@ -38,27 +40,43 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
     
     
     //User input
-    @IBAction func proSocialPic(_ sender: UIButton) {
+    @IBAction func proSocialPic(_ sender: UIButton?) {
         scenarioController.voteChoice = Scenario.ANSWER_YES
         scenarioController.loadNextScenario()
         updateUI()
     }
-    @IBAction func antiSocialPic(_ sender: UIButton) {
+    @IBAction func antiSocialPic(_ sender: UIButton?) {
         scenarioController.voteChoice = Scenario.ANSWER_NO
         scenarioController.loadNextScenario()
         updateUI()
     }
     @IBAction func startRecord(_ sender: UIButton) {
         voiceButton.backgroundColor = UIColor.green
+        startRecordBool = true;
         startRecording()
     }
-    @IBAction func stopRecord(_ sender: UIButton) {
+    @IBAction func stopRecord(_ sender: UIButton?) {
         voiceButton.backgroundColor = UIColor.white;
         if audioEngine.isRunning{
             audioEngine.stop()
             audioEngine.inputNode.removeTap(onBus: 0)
             recognitionRequest?.endAudio()
         }
+    }
+    
+    //function to check whether speech recognizied is trigger word
+    func isTrigger( word: String) -> Bool {
+        switch word.lowercased() {
+        case "prosocial", "yes":
+            proSocialPic(nil)
+            return true;
+        case "antisocial", "no":
+            antiSocialPic(nil)
+            return true;
+        default:
+            break
+        }
+        return false;
     }
     
     //function to handle specch recognition
@@ -92,15 +110,21 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
             
             var isFinal = false
             
-            if result != nil {
+            if result != nil && startRecordBool {
                 let bestString = result?.bestTranscription.formattedString
+                self.testbox.text = bestString
+                self.testbox.text = "Detected speech: " + self.testbox.text
                 
                 var lastString: String = ""
                 for segment in (result?.bestTranscription.segments)! {
                     let indexTo = bestString?.index((bestString?.startIndex)!, offsetBy: segment.substringRange.location)
                     lastString = (bestString?.substring(from: indexTo!))!
-                    self.testbox.text = lastString
-                 //do stuff with words ( last word)
+                }
+                
+                if self.isTrigger(word: lastString) {
+                    isFinal = true;
+                    self.stopRecord(nil)
+                    startRecordBool = false;
                 }
                  //= result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
@@ -159,6 +183,8 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
             print("hmm something went wrong buffering the initial image")
         }
         
+        detectedSpeech.clipsToBounds = true;
+        detectedSpeech.layer.cornerRadius = 3
         
         speechRecognizer?.delegate = self  //3
         
