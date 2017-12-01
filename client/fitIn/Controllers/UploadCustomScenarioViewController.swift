@@ -8,9 +8,16 @@
 
 import UIKit
 import AWSS3
+import Speech
 
-class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SFSpeechRecognizerDelegate {
 
+    //set up variables for speeech rocognition
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private let audioEngine = AVAudioEngine()
+    
     let placeholderScenario = Scenario()
     @IBOutlet weak var placeholderScenarioImage: UIImageView!
     @IBOutlet weak var placeholderScenarioButton: UIButton!
@@ -54,7 +61,44 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
         placeholderScenarioImage.frame = CGRect(origin: CGPoint(x: 45,y :108), size: CGSize(width: 318, height: 253))
         placeholderText.frame = CGRect(origin: CGPoint(x: 45,y :380), size: CGSize(width: 318, height: 150))
         placeholderSwitchOutput.frame = CGRect(origin: CGPoint(x: 320,y :565), size: CGSize(width: 318, height: 150))
+        
+        //set up speech recognition; ask for permission if user did not allow
+        speechRecognizer?.delegate = self  //3
+        SFSpeechRecognizer.requestAuthorization{ (authStatus) in
+            var isButtonEnabled = false
+            
+            switch authStatus {  //5
+            case .authorized:
+                isButtonEnabled = true
+                
+            case .denied:
+                isButtonEnabled = false
+                print("User denied access to speech recognition")
+                
+            case .restricted:
+                isButtonEnabled = false
+                print("Speech recognition restricted on this device")
+                
+            case .notDetermined:
+                isButtonEnabled = false
+                print("Speech recognition not yet authorized")
+            }
+        }
+        
     }
+    
+    //functions for recording and stopping recordings of speech
+    @IBAction func startRecord(_ sender: UIButton) {
+        startRecording()
+    }
+    @IBAction func stopRecord(_ sender: UIButton?) {
+        if audioEngine.isRunning{
+            audioEngine.stop()
+            audioEngine.inputNode.removeTap(onBus: 0)
+            recognitionRequest?.endAudio()
+        }
+    }
+    
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         //make sure that text being edited does not show the placeholder
@@ -144,6 +188,69 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func startRecording() {
+        
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
+        }
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        } catch {
+            print("audioSession properties weren't set because of an error.")
+        }
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        let inputNode = audioEngine.inputNode
+        
+        guard let recognitionRequest = recognitionRequest else {
+            fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
+        }
+        
+        recognitionRequest.shouldReportPartialResults = true
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+            
+            var isFinal = false
+            
+            if result != nil {
+                let bestString = result?.bestTranscription.formattedString
+                self.placeholderText.text = bestString
+                isFinal = (result?.isFinal)!
+                }
+            
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                
+            }
+        })
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        do {
+            try audioEngine.start()
+        } catch {
+            print("audioEngine couldn't start because of an error.")
+        }
+        
+        
     }
     
     func segueToMain() -> Void{

@@ -130,6 +130,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.testbox.text = "Detected speech: " + self.testbox.text
                 
                 var lastString: String = ""
+                //look through every word in detected speech, looking for keywords
                 for segment in (result?.bestTranscription.segments)! {
                     let indexTo = bestString?.index((bestString?.startIndex)!, offsetBy: segment.substringRange.location)
                     lastString = (bestString?.substring(from: indexTo!))!
