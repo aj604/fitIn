@@ -38,12 +38,12 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
     
     
     //User input
-    @IBAction func proSocialPic(_ sender: UIButton?) {
+    @IBAction func proSocialPic(_ sender: UIButton) {
         scenarioController.voteChoice = Scenario.ANSWER_YES
         scenarioController.loadNextScenario()
         updateUI()
     }
-    @IBAction func antiSocialPic(_ sender: UIButton?) {
+    @IBAction func antiSocialPic(_ sender: UIButton) {
         scenarioController.voteChoice = Scenario.ANSWER_NO
         scenarioController.loadNextScenario()
         updateUI()
@@ -58,20 +58,6 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
             audioEngine.stop()
             audioEngine.inputNode.removeTap(onBus: 0)
             recognitionRequest?.endAudio()
-        }
-    }
-    
-    //function to check whether speech recognizied is trigger word
-    func isTrigger( word: String) -> Bool {
-        switch word {
-            case "yes":
-                proSocialPic(nil)
-                return true;
-            case "no":
-                antiSocialPic(nil)
-                return true;
-            default:
-                return false;
         }
     }
     
@@ -105,7 +91,6 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
             var isFinal = false
-            self.voiceButton.setTitle("Listening", for : .normal)
             
             if result != nil {
                 let bestString = result?.bestTranscription.formattedString
@@ -115,9 +100,7 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
                     let indexTo = bestString?.index((bestString?.startIndex)!, offsetBy: segment.substringRange.location)
                     lastString = (bestString?.substring(from: indexTo!))!
                     self.testbox.text = lastString
-                    if self.isTrigger(word: lastString) {
-                        break;
-                    }
+                 //do stuff with words ( last word)
                 }
                  //= result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
@@ -146,7 +129,7 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
             print("audioEngine couldn't start because of an error.")
         }
         
-        voiceButton.setTitle("Start Listening", for : .normal)
+        voiceButton.setTitle("Listening", for : .normal)
         
     }
 

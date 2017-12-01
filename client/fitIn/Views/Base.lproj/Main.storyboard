@@ -267,7 +267,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                         <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Start Listening"/>
+                                                        <state key="normal" title="Voice Recognition"/>
                                                         <connections>
                                                             <action selector="startRecord:" destination="bFN-gp-WLg" eventType="touchDown" id="gPT-FV-pWB"/>
                                                             <action selector="stopRecord:" destination="bFN-gp-WLg" eventType="touchUpInside" id="KfM-lj-66N"/>
@@ -312,8 +312,6 @@
                         <viewLayoutGuide key="safeArea" id="WM7-bz-fWe"/>
                     </view>
                     <connections>
-                        <outlet property="bad" destination="MrY-XA-axw" id="6Bd-nu-8lQ"/>
-                        <outlet property="goodButton" destination="1es-Cx-Qur" id="VYM-Q5-iEO"/>
                         <outlet property="imageView" destination="Ayo-9c-HvN" id="zDO-ZT-YnV"/>
                         <outlet property="questionDescription" destination="SI8-oV-m4m" id="4G7-DC-nqf"/>
                         <outlet property="testbox" destination="6i9-Dh-VOK" id="Qbc-mJ-o11"/>
