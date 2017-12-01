@@ -22,7 +22,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     //voice recognition stuff
     @IBOutlet weak var voiceButton: UIButton!
-    @IBOutlet weak var testbox: UITextView!
+    @IBOutlet weak var detectedKeyword: UITextView!
     @IBOutlet weak var detectedSpeech: UIView!
     
     //setup variables for speech recog
@@ -126,10 +126,11 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             if result != nil && startRecordBool {
                 let bestString = result?.bestTranscription.formattedString
-                self.testbox.text = bestString
-                self.testbox.text = "Detected speech: " + self.testbox.text
+                self.detectedKeyword.text = bestString
+                self.detectedKeyword.text = "Detected speech: " + self.detectedKeyword.text
                 
                 var lastString: String = ""
+                //look through every word in detected speech, looking for keywords
                 for segment in (result?.bestTranscription.segments)! {
                     let indexTo = bestString?.index((bestString?.startIndex)!, offsetBy: segment.substringRange.location)
                     lastString = (bestString?.substring(from: indexTo!))!
