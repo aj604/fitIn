@@ -209,6 +209,9 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
         detectedSpeech.clipsToBounds = true;
         detectedSpeech.layer.cornerRadius = 3
         
+        
+        //set up speech recognition permission request; disable button if no permission is given
+        voiceButton.isEnabled = false
         speechRecognizer?.delegate = self  //3
         
         SFSpeechRecognizer.requestAuthorization { (authStatus) in  //4
@@ -232,9 +235,9 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
                 print("Speech recognition not yet authorized")
             }
             
-            /*OperationQueue.main.addOperation() {
-                self.microphoneButton.isEnabled = isButtonEnabled
-            }*/
+            OperationQueue.main.addOperation() {
+                self.voiceButton.isEnabled = isButtonEnabled
+            }
         }
         
     }

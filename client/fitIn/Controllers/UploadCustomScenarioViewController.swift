@@ -17,6 +17,8 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    @IBOutlet weak var speechButton: UIButton!
+    
     
     let placeholderScenario = Scenario()
     @IBOutlet weak var placeholderScenarioImage: UIImageView!
@@ -63,6 +65,7 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
         placeholderSwitchOutput.frame = CGRect(origin: CGPoint(x: 320,y :565), size: CGSize(width: 318, height: 150))
         
         //set up speech recognition; ask for permission if user did not allow
+        speechButton.isEnabled = false
         speechRecognizer?.delegate = self  //3
         SFSpeechRecognizer.requestAuthorization{ (authStatus) in
             var isButtonEnabled = false
@@ -83,6 +86,10 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, 
                 isButtonEnabled = false
                 print("Speech recognition not yet authorized")
             }
+            OperationQueue.main.addOperation() {
+                self.speechButton.isEnabled = isButtonEnabled;
+            }
+            
         }
         
     }
