@@ -26,7 +26,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var detectedSpeech: UIView!
     
     //setup variables for speech recog
-private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
@@ -38,14 +38,27 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
     // Eventually this will be access point for subView
     //fileprivate var responseController : responseViewController
     
-    
+    let DISABLE_TIME = 0.8; //seconds
     //User input
     @IBAction func proSocialPic(_ sender: UIButton?) {
+        sender.isEnabled = false;
+        Timer.scheduledTimer(withTimeInterval: DISABLE_TIME, repeats: false, block: {
+            (timer: Timer) -> Void in
+            sender.isEnabled = true;
+        })
+
         scenarioController.voteChoice = Scenario.ANSWER_YES
         scenarioController.loadNextScenario()
         updateUI()
     }
+
     @IBAction func antiSocialPic(_ sender: UIButton?) {
+        sender.isEnabled = false;
+        Timer.scheduledTimer(withTimeInterval: DISABLE_TIME, repeats: false, block: {
+            (timer: Timer) -> Void in
+            sender.isEnabled = true;
+        })
+
         scenarioController.voteChoice = Scenario.ANSWER_NO
         scenarioController.loadNextScenario()
         updateUI()
@@ -64,6 +77,7 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
         }
     }
     
+
     //function to check whether speech recognizied is trigger word
     func isTrigger( word: String) -> Bool {
         switch word.lowercased() {
@@ -159,7 +173,15 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
 
  
 
-
+    @IBAction func rightSwipe(_ sender: UISwipeGestureRecognizer) {
+        self.proSocialPic(UIButton())
+    }
+    
+    @IBAction func leftSwipe(_ sender: UISwipeGestureRecognizer) {
+        self.antiSocialPic(UIButton())
+    }
+    
+    
     // Update the UI to represent the change in Scenario
     // Once different response views are set they can be set here
     func updateUI() {
@@ -215,8 +237,9 @@ private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier
         }
         
     }
-    
-    /*override func didReceiveMemoryWarning() {
+
+    override func didReceiveMemoryWarning() {
+
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

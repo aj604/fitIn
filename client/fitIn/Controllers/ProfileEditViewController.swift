@@ -42,6 +42,10 @@ class ProfileEditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        //once user taps outside of field keyboard should be closed
+    }
 	
     @IBOutlet weak var userEditUsernameIcon: UIImageView!
     @IBOutlet weak var userEditAgeIcon: UIImageView!
@@ -49,10 +53,15 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet var userEditAgeField: UITextField!
     @IBOutlet var userEditProfileSaveChangesButton: UIButton!
     @IBOutlet var editYourProfileLabel: UILabel!
+    @IBOutlet weak var uploadProfilePic: UIImageView!
     
     var inputValidationConditions: [Bool] = [true, true, true, true]
     //this is the array which validates that all inputs across the board have been validated
     //element 0 is for username, element 1 is for email address, element 2 is for age, element 3 will be for password
+    
+    @IBAction func segueToMainButton(_ sender: Any) {
+        performSegue(withIdentifier: "editProfileToMainSegue", sender: self)
+    }
     
     @IBAction func userEditProfileSaveChanges(_ sender: Any) {
         if (userEditUsernameField.text!.count > 0 && UserProfile.current()?.isUserLoggedIn == true) {
@@ -72,7 +81,9 @@ class ProfileEditViewController: UIViewController {
                 // Initialize Alert View
                 let alertController = UIAlertController(title: "Validation Error", message: "Please enter a username longer than 5 characters and without profanity.", preferredStyle: .alert)
                 // Add Options to Alert
-                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
+                    self.segueToProfile()
+                }))
                 // Show Alert View
                 self.present(alertController, animated: true, completion: nil)
                 inputValidationConditions[0] = false
@@ -116,7 +127,9 @@ class ProfileEditViewController: UIViewController {
                 // Initialize Alert View
                 let alertController = UIAlertController(title: "Validation Error", message: "Please enter an age between 1 and 200.", preferredStyle: .alert)
                 // Add Options to Alert
-                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
+                    self.segueToProfile()
+                }))
                 // Show Alert View
                 self.present(alertController, animated: true, completion: nil)
                 inputValidationConditions[2] = false
@@ -131,24 +144,17 @@ class ProfileEditViewController: UIViewController {
             // Initialize Alert View
             let alertController = UIAlertController(title: "Modification Success", message: "Your changes have been saved correctly.", preferredStyle: .alert)
             // Add Options to Alert
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
+                self.segueToProfile()
+            }))
             // Show Alert View
             self.present(alertController, animated: true, completion: nil)
             _ = dynamoHandler.putUserProfile(UserProfile.current()!)
         }
     }
     
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "profileEditToMenuSegue" {
-            let destination = segue.destination as? MainMenuViewController
-            //destination?.scenarioController = scenarioController
-        }
-
-     // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }*/
+    func segueToProfile() {
+        performSegue(withIdentifier: "editProfileToProfile", sender: self)
+    }
     
-
 }

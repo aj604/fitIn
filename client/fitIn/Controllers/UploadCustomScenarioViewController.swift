@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AWSS3
 
-class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
+class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     let placeholderScenario = Scenario()
     @IBOutlet weak var placeholderScenarioImage: UIImageView!
@@ -26,12 +27,13 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // Mostly UI elements are loaded here
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
         placeholderScenarioImage.image = placeholderImage
         placeholderScenarioImage.layer.borderWidth = 5
         placeholderScenarioImage.layer.borderColor = UIColor.black.cgColor
         placeholderScenarioButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
-        placeholderText.delegate = self as? UITextViewDelegate
+        placeholderText.delegate = self as UITextViewDelegate
         placeholderText.text = nil
         placeholderText.text = textFieldPlaceholderText
         placeholderText.backgroundColor = UIColor(red: 226/255, green: 190/255, blue: 136/255, alpha: 1.0)
@@ -39,9 +41,7 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
         placeholderText.layer.borderColor = UIColor.brown.cgColor
         hackyBoolean = true
         placeholderScenario.initialAnswer = 10
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        placeholderCloseButton.layer.borderWidth = 3
-        placeholderCloseButton.layer.borderColor = UIColor.red.cgColor
+        navigationController?.setNavigationBarHidden(true, animated: true)
         if (hackyLabel == "Running" || hackyLabel == "Thinking" || hackyLabel == "Walking" || hackyLabel == "Throwing" || hackyLabel == "Looking" || hackyLabel == "Finding")
         {
             placeholderScenarioButton.setTitle("", for: UIControlState.normal)
@@ -57,6 +57,7 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        //make sure that text being edited does not show the placeholder
         if placeholderText.isFirstResponder == true {
             placeholderText.text = nil
         }
@@ -65,6 +66,11 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        //once user taps outside of field keyboard should be closed
     }
 
     @IBAction func uploadScenarioButton(_ sender: Any) {
@@ -100,6 +106,10 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
                 uploadCheck = true
                 placeholderScenario.imageLoc = URL(string: "http://kickofjoy.com/wp-content/uploads/2014/03/finding-talent.jpg")!
                 placeholderScenarioButton.setTitle("", for: UIControlState.normal)
+            case "PHOTO IMPORT":
+                uploadCheck = true
+                //print(placeholderScenario.imageLoc = URL(string: (s3Handler.uploadImage(scenario: placeholderScenario).result?.string)!)!)
+                placeholderScenarioButton.setTitle("", for: UIControlState.normal)
             default:
                 //user has not chosen an image yet, so present appropriate warning
                 let alertController = UIAlertController(title: "Upload Failure", message: "Please select an image above.", preferredStyle: .alert)
@@ -108,6 +118,16 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
                 uploadCheck = false
         }
         if (hackyBoolean == true && uploadCheck == true && placeholderText.text.count > 0 && placeholderText.text != textFieldPlaceholderText) {
+            s3Handler.uploadImage(scenario: placeholderScenario).continueWith(block: {
+                (task: AWSTask<StupidStringObject>) -> Void in
+                if let error = task.error {
+                    print("failed put request to bucket. Error: \(error)")
+                }
+                else if let obj = task.result {
+                    self.placeholderScenario.imageLoc = URL(string: obj.string)!
+                    print(obj.string)
+                }
+            })
             _ = dynamoHandler.putScenario(placeholderScenario)
             hackyBoolean = false
             let alertController = UIAlertController(title: "Upload Complete", message: "Your scenario has been uploaded successfully!", preferredStyle: .alert)
@@ -143,19 +163,52 @@ class UploadCustomScenarioViewController: UIViewController, UITextViewDelegate {
         }
     }
     @IBAction func closeAction(_ sender: Any) {
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.popToRootViewController(animated: true)
+        //navigationController?.setNavigationBarHidden(false, animated: true)
+        self.performSegue(withIdentifier:"uploadScenarioToMain", sender:self)
         //Currently closing the upload scenario or finishing an upload WILL redirect the user back to the main menu
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func importImageButton(_ sender: Any) {
+        //function to import the image from the device
+        hackyLabel = "PHOTO IMPORT"
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.allowsEditing = false
+        self.present(image, animated: true) {
+            //after image is complete
+        }
     }
-    */
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            placeholderScenarioImage.image = image
+        }
+        else {
+            //error message with uploading image
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func cameraPickerController(_ sender: Any) {
+        hackyLabel = "PHOTO IMPORT"
+        let image = UIImagePickerController()
+        image.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            image.sourceType = .camera
+            //safety clause for simulation since camera is not enabled unless on a device
+        }
+        else {
+            image.sourceType = .photoLibrary
+            //safety clause for simulation since camera is not enabled unless on a device
+        }
+        image.allowsEditing = false
+        self.present(image, animated: true) {
+            //after image is complete
+        }
+    }
 
 }

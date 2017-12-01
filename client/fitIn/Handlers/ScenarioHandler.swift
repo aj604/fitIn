@@ -27,42 +27,8 @@ class ScenarioHandler {
     static let NUM_SCENARIOS = 5;
     var scenarios = [Scenario]();
     var tasks = [AWSTask<Scenario>]();
+    var userStartedViewingTime = NSDate().timeIntervalSince1970
     
-    /*
-    // instantiation of Scenario, only one Scenario is loaded at a time
-    var currentScenario = Scenario(scenarioID: "insertSituationID", type: Scenario.ScenarioType.yesOrNo) {
-        // This willSet preloads image data for a smooth transition to next Scenario
-        willSet{
-            // When changing to a new scenario this will send the current one to the history
-            if currentScenario.scenarioID != "insertSituationID" {
-                scenarioHistory.append(currentScenario)
-                print("adding a scenario to history!")
-            }
-        }
-        
-        // This didSet assumes that we have segued to our next Scenario and we are initializing our handler
-        didSet {
-            // Clear previous input answer and upcoming Scenario
-            voteChoice = nil
-            nextScenario = nil
-        }
-    }
-
-    // preload next Scenario
-    private var nextScenario : Scenario? {
-        didSet {
-            if let buffer = nextScenario?.type {
-                nextScenarioType = buffer
-            }
-        }
-    }
-    
-    // Variable to store the type of the next Scenario. This will be used to tell the view controller
-    // what type of view to load for the incoming expected response
-    private var nextScenarioType : Scenario.ScenarioType?
-    
-    */
-     
      //Image Data to use for UIImageView
     private var imageData = Data()
     
@@ -117,30 +83,47 @@ class ScenarioHandler {
             //Failed Vote
         }
         
+        // add to the scenario history
         scenarioHistory.append(scenarios[currentScenario])
 
+        // create a ScenarioUpdate object
         let scenarioUpdate = ScenarioUpdate(
             scenarioID: scenarios[currentScenario].scenarioID,
-            userAnswer: voteChoice!
+            userAnswer: voteChoice!,
+            // unfortunately timeIntervalSince1970 returns seconds.
+            timeToAnswer: Int(NSDate().timeIntervalSince1970 - self.userStartedViewingTime) * 1000
         );
+        
+        // get a new date starting point for the next scenario
+        self.userStartedViewingTime = NSDate().timeIntervalSince1970;
+        
+        // update user with new average time to answer
+        user.updateAverageResponseTime(intParameter: scenarioUpdate.timeToAnswer)
         
         _ = dynamoHandler.putScenarioUpdate(scenarioUpdate);
         
+        // determine correctness of the answer
+        // update the user accordingly
         if scenarios[currentScenario].isRightAnswer(userAnswer: voteChoice!) {
             user.gotCorrect() // Log vote in the user struct
             userIsCorrect = true;
+            print("user is correct")
             return true
         }
         user.gotIncorrect() // Log vote in the user struct
         userIsCorrect = false;
+        print("user is incorrect")
         return true // Vote was logged maybe add a return to the user vote
+
     }
     
     // Func will iterate Scenario to next in line
     // handles some transition to next state
     // Other transitions calculated in observing properties
     func loadNextScenario() {
+        
         scenarios[currentScenario].seen = true;
+        
         // kick off new tasks
         for (index, scenario) in scenarios.enumerated() {
             // add a new task if the corresponding scenario has been seen by the viewer

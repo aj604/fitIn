@@ -43,6 +43,7 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //round buttons
+        navigationController?.setNavigationBarHidden(true, animated: true)
         toScenario.layer.cornerRadius = 3
         toLogin.layer.cornerRadius = 3
         toUpload.layer.cornerRadius = 3

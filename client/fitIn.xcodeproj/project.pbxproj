@@ -19,7 +19,7 @@
 		04DA17F21FAD142A00A822AD /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA17F11FAD142A00A822AD /* SliderViewController.swift */; };
 		04E2200D1FC1521D00593D5F /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */; };
 		04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */; };
-		09CBFEA01FCE411800B6AFC0 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CBFE9F1FCE411800B6AFC0 /* aws-resources.swift */; };
+		09A869E81FCA83290051D7C3 /* aws-resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A869E71FCA83290051D7C3 /* aws-resources.swift */; };
 		0EC2089D1FAD1A8200CD8CAE /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */; };
 		0EE618D21FAD655900315A89 /* ScenarioTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE618D11FAD655900315A89 /* ScenarioTest.swift */; };
 		CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */; };
@@ -44,6 +44,8 @@
 		FB0F0A181FA2CB0E00A9E879 /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB0F0A1A1FA2CB0E00A9E879 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0F0A0C1FA2C88E00A9E879 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */; };
+		FB75B4611FC7ABD100047C76 /* S3Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB75B4601FC7ABD100047C76 /* S3Handler.swift */; };
+		FB75B4631FC7C8DA00047C76 /* TestS3Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB75B4621FC7C8DA00047C76 /* TestS3Handler.swift */; };
 		FB80D1AE1FAD00A7005CED02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */; };
 		FB80D1B21FAD0234005CED02 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */; };
 		FB80D1C51FAD819E005CED02 /* TestDynamoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */; };
@@ -96,7 +98,7 @@
 		04DA17F11FAD142A00A822AD /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		04E2200C1FC1521C00593D5F /* ScenarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
 		04E985BA1FAA40A40005CD6F /* testSituationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSituationViewController.swift; sourceTree = "<group>"; };
-		09CBFE9F1FCE411800B6AFC0 /* aws-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
+		09A869E71FCA83290051D7C3 /* aws-resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aws-resources.swift"; sourceTree = "<group>"; };
 		0EC2089C1FAD1A8200CD8CAE /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		0EE618D11FAD655900315A89 /* ScenarioTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioTest.swift; sourceTree = "<group>"; };
 		CF876DC71FA7FE6E0036BAD8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,8 @@
 		FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		FB36A2141FAC0D5300F2E221 /* ResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseViewController.swift; sourceTree = "<group>"; };
+		FB75B4601FC7ABD100047C76 /* S3Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Handler.swift; sourceTree = "<group>"; };
+		FB75B4621FC7C8DA00047C76 /* TestS3Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestS3Handler.swift; sourceTree = "<group>"; };
 		FB80D1AD1FAD00A7005CED02 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FB80D1B11FAD0234005CED02 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDynamoHandler.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			children = (
 				0499CF381F896F3400ECB59B /* ScenarioHandler.swift */,
 				FBC51AEF1FA7FF5700D42695 /* DynamoHandler.swift */,
+				FB75B4601FC7ABD100047C76 /* S3Handler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				0464E0FB1F885D0000002403 /* fitIn */,
 				D3B58BB01FAD3EAF00436A80 /* fitInTests */,
 				0464E0FA1F885D0000002403 /* Products */,
+				D35FCF7E1FCE37CC004997A6 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,7 +234,6 @@
 		0464E0FB1F885D0000002403 /* fitIn */ = {
 			isa = PBXGroup;
 			children = (
-				09CBFE9F1FCE411800B6AFC0 /* aws-resources.swift */,
 				FB0F0A0D1FA2C88E00A9E879 /* AWSCognito.framework */,
 				FB0F0A0E1FA2C88E00A9E879 /* AWSCore.framework */,
 				FB0F0A0B1FA2C88D00A9E879 /* AWSDynamoDB.framework */,
@@ -254,6 +259,14 @@
 			path = SupplementaryFiles;
 			sourceTree = "<group>";
 		};
+		D35FCF7E1FCE37CC004997A6 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				09A869E71FCA83290051D7C3 /* aws-resources.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		D3B58BB01FAD3EAF00436A80 /* fitInTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +279,7 @@
 				0EE618D11FAD655900315A89 /* ScenarioTest.swift */,
 				D3B58BB31FAD3EAF00436A80 /* Info.plist */,
 				FB80D1C41FAD819E005CED02 /* TestDynamoHandler.swift */,
+				FB75B4621FC7C8DA00047C76 /* TestS3Handler.swift */,
 			);
 			path = fitInTests;
 			sourceTree = "<group>";
@@ -317,7 +331,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "AJ productions";
+				ORGANIZATIONNAME = "group of 5";
 				TargetAttributes = {
 					0464E0F81F885D0000002403 = {
 						CreatedOnToolsVersion = 9.0;
@@ -379,6 +393,7 @@
 				CFC5F3121FA3090B0093EDC6 /* LoginViewController.swift in Sources */,
 				CF876DC81FA7FE6E0036BAD8 /* SignUpViewController.swift in Sources */,
 				04C06A3E1FC1547800BF653B /* StatisticsViewController.swift in Sources */,
+				FB75B4611FC7ABD100047C76 /* S3Handler.swift in Sources */,
 				FB80D1AE1FAD00A7005CED02 /* ProfileViewController.swift in Sources */,
 				D316E9D01FBBF16800404BAB /* PlaceholderSelectionViewController.swift in Sources */,
 				04E985BB1FAA40A50005CD6F /* testSituationViewController.swift in Sources */,
@@ -387,6 +402,7 @@
 				FBF8B4851FBFE29C00D25F71 /* ScenarioUpdate.swift in Sources */,
 				D316E9D21FBBF3C700404BAB /* PlaceholderTableViewCell.swift in Sources */,
 				D35A4D791FBE6724003BE704 /* MustLoginPopupViewController.swift in Sources */,
+				09A869E81FCA83290051D7C3 /* aws-resources.swift in Sources */,
 				FBC51AF01FA7FF5700D42695 /* DynamoHandler.swift in Sources */,
 				FBD0CDB71FC3580C006B6AC2 /* ScenarioTableViewCell.swift in Sources */,
 				FBC51AEA1FA7CC2C00D42695 /* Scenario.swift in Sources */,
@@ -395,7 +411,6 @@
 				04DA17F01FAD142200A822AD /* MultipleChoiceViewController.swift in Sources */,
 				0464E0FD1F885D0000002403 /* AppDelegate.swift in Sources */,
 				0499CF391F896F3400ECB59B /* ScenarioHandler.swift in Sources */,
-				09CBFEA01FCE411800B6AFC0 /* aws-resources.swift in Sources */,
 				D35A4D771FBE66D2003BE704 /* MainMenuViewController.swift in Sources */,
 				FB80D1B21FAD0234005CED02 /* ProfileEditViewController.swift in Sources */,
 				FB36A2151FAC0D5300F2E221 /* ResponseViewController.swift in Sources */,
@@ -409,6 +424,7 @@
 			files = (
 				D3B58BC21FAD3ECD00436A80 /* UserProfileTest.swift in Sources */,
 				D3B58BB21FAD3EAF00436A80 /* fitInTests.swift in Sources */,
+				FB75B4631FC7C8DA00047C76 /* TestS3Handler.swift in Sources */,
 				FB80D1C51FAD819E005CED02 /* TestDynamoHandler.swift in Sources */,
 				0EE618D21FAD655900315A89 /* ScenarioTest.swift in Sources */,
 			);
