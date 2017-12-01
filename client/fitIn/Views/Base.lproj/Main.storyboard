@@ -856,6 +856,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="gKH-gs-DIh" firstAttribute="centerX" secondItem="mXh-dG-VAK" secondAttribute="centerX" id="Ibb-3N-kED"/>
+                                                    <constraint firstItem="gKH-gs-DIh" firstAttribute="top" secondItem="S6v-Pt-Ehh" secondAttribute="bottom" id="Wty-Sj-wz9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="gKH-gs-DIh" secondAttribute="bottom" id="Y54-1o-Cly"/>
+                                                </constraints>
                                             </stackView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilepicdefault" translatesAutoresizingMaskIntoConstraints="NO" id="OK4-mW-txJ">
                                                 <rect key="frame" x="82.5" y="128.5" width="210" height="195"/>
@@ -1917,8 +1922,9 @@
         <image name="uploadresized2-1" width="73" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="NdV-QA-UJ4"/>
         <segue reference="XbT-84-A7e"/>
-        <segue reference="rMs-EW-zug"/>
+        <segue reference="TGh-mq-wh6"/>
         <segue reference="dT9-l6-GxZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
