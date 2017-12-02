@@ -15,7 +15,7 @@ import * as fs from "fs";
 
 // debug bool so that updates arent deleted after the merge is finished
 // should be set to true for normal operation.
-const DELETE = false;
+const DELETE = true;
 
 // debug bool to output extra logging information,
 // should be false for normal operation.
