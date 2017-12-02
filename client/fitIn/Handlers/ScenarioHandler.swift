@@ -24,7 +24,7 @@ class ScenarioHandler {
     private var user = UserProfile() //User Data, Info stored here
     
     var currentScenario: Int = 0;
-    static let NUM_SCENARIOS = 3;
+    static let NUM_SCENARIOS = 5;
     var scenarios = [Scenario]();
     var tasks = [AWSTask<Scenario>]();
     var taskKickOffTime = [Date]();
