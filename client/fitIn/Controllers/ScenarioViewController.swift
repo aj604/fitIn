@@ -38,16 +38,22 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     // Eventually this will be access point for subView
     //fileprivate var responseController : responseViewController
     
-    let DISABLE_TIME = 0.8; //seconds
+    let DISABLE_TIME = 0.5; //seconds
     //User input
     @IBAction func proSocialPic(_ sender: UIButton?) {
         sender?.isEnabled = false;
+
         Timer.scheduledTimer(withTimeInterval: DISABLE_TIME, repeats: false, block: {
             (timer: Timer) -> Void in
             sender?.isEnabled = true;
         })
 
         scenarioController.voteChoice = Scenario.ANSWER_YES
+        //if user is incorrect, send to reasoning pop up
+        if !userIsCorrect
+        {
+            self.performSegue(withIdentifier: "scenarioViewToReasoningPopup", sender:self);
+        }
         scenarioController.loadNextScenario()
         updateUI()
     }
@@ -60,6 +66,11 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
         })
 
         scenarioController.voteChoice = Scenario.ANSWER_NO
+        //if user is incorrect, send to reasoning pop up
+        if !userIsCorrect
+        {
+            self.performSegue(withIdentifier: "scenarioViewToReasoningPopup", sender:self);
+        }
         scenarioController.loadNextScenario()
         updateUI()
     }
@@ -209,6 +220,9 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
         detectedSpeech.clipsToBounds = true;
         detectedSpeech.layer.cornerRadius = 3
         
+        
+        //set up speech recognition permission request; disable button if no permission is given
+        voiceButton.isEnabled = false
         speechRecognizer?.delegate = self  //3
         
         SFSpeechRecognizer.requestAuthorization { (authStatus) in  //4
@@ -232,9 +246,9 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
                 print("Speech recognition not yet authorized")
             }
             
-            /*OperationQueue.main.addOperation() {
-                self.microphoneButton.isEnabled = isButtonEnabled
-            }*/
+            OperationQueue.main.addOperation() {
+                self.voiceButton.isEnabled = isButtonEnabled
+            }
         }
         
     }
@@ -246,7 +260,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if segue.identifier == "prosocial" || segue.identifier == "antisocial" {
+        if segue.identifier == "scenarioViewToReasoningPopup"  {
      
                 let popView = segue.destination as! popUpViewController
                 popView.passedReasoning = scenarioController.returnReasoning()

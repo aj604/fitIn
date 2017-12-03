@@ -117,14 +117,14 @@
                                                 <action selector="closePopUp:" destination="fB4-9g-ERa" eventType="touchUpInside" id="NVh-NE-KPY"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-BG-U92">
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-BG-U92">
                                             <rect key="frame" x="105" y="15" width="65" height="21"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="YLb-rY-YLb"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="1" green="0.069748602085306866" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jy-Va-vzE">
@@ -336,6 +336,7 @@
                         <outlet property="questionDescription" destination="SI8-oV-m4m" id="4G7-DC-nqf"/>
                         <outlet property="testbox" destination="6i9-Dh-VOK" id="Qbc-mJ-o11"/>
                         <outlet property="voiceButton" destination="PmC-r1-Fu4" id="7rR-Zl-r52"/>
+                        <segue destination="fB4-9g-ERa" kind="presentation" identifier="scenarioViewToReasoningPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="irJ-YK-aDi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VjK-PV-GLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1232,6 +1233,7 @@
                         <outlet property="placeholderScenarioImage" destination="Hb3-9T-WOQ" id="3X6-HB-90m"/>
                         <outlet property="placeholderSwitchOutput" destination="vpy-PT-FlI" id="L30-Nf-AIl"/>
                         <outlet property="placeholderText" destination="ZnV-Fo-8JS" id="O9T-7V-hxf"/>
+                        <outlet property="speechButton" destination="Jha-Du-7H7" id="QzF-n1-nVx"/>
                         <segue destination="i2c-Lk-8UZ" kind="show" identifier="uploadScenarioToMain" id="ueP-j9-REj"/>
                     </connections>
                 </viewController>
@@ -1922,9 +1924,9 @@
         <image name="uploadresized2-1" width="73" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XbT-84-A7e"/>
-        <segue reference="TGh-mq-wh6"/>
-        <segue reference="dT9-l6-GxZ"/>
+        <segue reference="iqG-yd-UeJ"/>
+        <segue reference="ioM-BK-idi"/>
+        <segue reference="rNY-Ql-lO0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
