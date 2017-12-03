@@ -33,6 +33,8 @@
 	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please select an image to import.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please confirm camera access.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
