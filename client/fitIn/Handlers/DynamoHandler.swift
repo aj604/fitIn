@@ -210,8 +210,10 @@ class DynamoHandler {
                                 result.fromDBDictionary(items[0])
                                 result.getImageData()
                                 result.seen = false;
+                                result.valid = true;
                             } else {
                                 result.seen = true;
+                                result.valid = false;
                             }
                             return AWSTask(result: result)
                         } as! AWSTask<Scenario>;
@@ -226,8 +228,10 @@ class DynamoHandler {
                     result.fromDBDictionary(items[0])
                     result.getImageData()
                     result.seen = false;
+                    result.valid = true;
                 } else {
                     result.seen = true;
+                    result.valid = false;
                 }
                 return AWSTask(result: result)
             } as! AWSTask<Scenario>

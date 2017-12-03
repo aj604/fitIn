@@ -7,7 +7,7 @@
     "test": "node main.js",
     "unit": "mocha built/tests/**.js",
     "build": "tsc",
-    "zip": "bestzip build.zip built/*",
+    "zip": "bestzip build.zip built/src/*",
     "upload": "bash ./upload.sh",
     "invoke": "bash ./invoke.sh",
     "deploy": "npm run build && npm run zip && npm run upload",

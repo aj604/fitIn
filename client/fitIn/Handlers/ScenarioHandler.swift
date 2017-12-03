@@ -27,6 +27,8 @@ class ScenarioHandler {
     static let NUM_SCENARIOS = 5;
     var scenarios = [Scenario]();
     var tasks = [AWSTask<Scenario>]();
+    var taskKickOffTime = [Date]();
+    var taskMaximumLength = 2000.0; // milliseconds
     var userStartedViewingTime = NSDate().timeIntervalSince1970
     
      //Image Data to use for UIImageView
@@ -54,8 +56,10 @@ class ScenarioHandler {
         
         self.scenarios = Array(repeating: Scenario(seen: true), count: ScenarioHandler.NUM_SCENARIOS)
         self.tasks = Array(repeating: AWSTask(), count: ScenarioHandler.NUM_SCENARIOS);
+        self.taskKickOffTime = Array(repeating: Date(), count: ScenarioHandler.NUM_SCENARIOS);
         
         for (index, _) in tasks.enumerated() {
+            
             tasks[index] = dynamoHandler
                 .getRandomScenario()
                 .continueOnSuccessWith(block:
@@ -70,6 +74,8 @@ class ScenarioHandler {
                         
                         return AWSTask(result: task.result!);
                 }) as! AWSTask<Scenario>;
+            taskKickOffTime[index] = Date();
+            
         }
     }
     
@@ -122,12 +128,41 @@ class ScenarioHandler {
     // Other transitions calculated in observing properties
     func loadNextScenario() {
         
-        scenarios[currentScenario].seen = true;
+        self.scenarios[currentScenario].seen = true;
+        
+        var sc: String = "scenarios [ ";
+        for (index, scenario) in scenarios.enumerated() {
+            sc.append(scenario.scenarioID);
+            sc.append(" seen:");
+            sc.append(String(scenario.seen));
+            sc.append(" valid:");
+            sc.append(String(scenario.valid));
+            sc.append(", ");
+        }
+        sc.append("]");
+        print(sc);
+        // find a new currentScenario
+        for (index, scenario) in scenarios.enumerated() {
+            if scenario.valid && !scenario.seen && scenario.questionText != "broken" {
+                currentScenario = index;
+                break;
+            }
+        }
         
         // kick off new tasks
         for (index, scenario) in scenarios.enumerated() {
             // add a new task if the corresponding scenario has been seen by the viewer
-            if(scenario.seen || tasks[index].isFaulted) {
+            if (index == currentScenario)
+            {
+                continue;
+            }
+            
+            if( (scenario.seen)
+                || (!scenario.valid && Date().timeIntervalSince(taskKickOffTime[index]) > taskMaximumLength )
+                || tasks[index].isFaulted) {
+                
+                print("requesting new scenario in place of ", scenario.scenarioID);
+                scenarios[index] = Scenario();
                 tasks[index] = dynamoHandler
                     .getRandomScenario()
                     .continueOnSuccessWith(block:
@@ -142,33 +177,16 @@ class ScenarioHandler {
                             
                             return AWSTask(result: task.result!);
                     }) as! AWSTask<Scenario>;
-            }
-        }
-        
-        // find a new currentScenario
-        var found = false;
-        for (index, scenario) in scenarios.enumerated() {
-            if !scenario.seen && scenario.questionText != "broken" {
-                currentScenario = index;
-                found = true;
-                break;
-            }
-        }
-        
-        // wait if we must
-        if !found {
-            for (index, task) in tasks.enumerated() {
-                if !task.isCompleted && !task.isFaulted && scenarios[index].seen == true {
-                    task.waitUntilFinished();
-                    if (task.result!.seen) {
-                        continue;
+                
+                Timer.scheduledTimer(withTimeInterval: taskMaximumLength / 1000, repeats: false, block: {
+                    (timer: Timer) -> Void in
+                    if(!scenario.valid) {
+                        print("scenario failed to load");
                     }
-                    currentScenario = index;
-                    break;
-                }
+                })
             }
+
         }
-        
         
     }
     

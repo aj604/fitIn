@@ -59,6 +59,7 @@ class Scenario {
     
     // has the scenario been seen by the viewer?
     var seen = false;
+    var valid = false;
     
     //MARK: METHODS
     

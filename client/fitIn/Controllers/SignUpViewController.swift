@@ -63,9 +63,9 @@ class SignUpViewController: UIViewController {
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 
                 inputValidationConditions[0] = false
-                /*let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Sign-Up", message: "Please enter a valid username. ", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)*/
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         
@@ -84,9 +84,9 @@ class SignUpViewController: UIViewController {
                 AgeTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[1] = false
-                /*let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Sign-Up", message: "Please enter a vaild age. ", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)*/
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         
@@ -106,7 +106,7 @@ class SignUpViewController: UIViewController {
                 EmailTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[2] = false
-                let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Sign-Up", message: "Please a valid e-mail. ", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
             }
@@ -122,16 +122,41 @@ class SignUpViewController: UIViewController {
                 inputValidationConditions[3] = true
                 
             }
-            else
+            
+            else if (PasswordTextField.text! != ConfirmPasswordTextField.text!)
+            {
+                    PasswordTextField.textColor = UIColor.red
+                    ConfirmPasswordTextField.textColor = UIColor.red
+                    CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
+                    inputValidationConditions[3] = false
+                    
+                    let alertController = UIAlertController(title: "Sign-Up", message: "Please make sure the password is matching with confirm password.", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    
+            }
+            else if (PasswordTextField.text!.count <= 3 && ConfirmPasswordTextField.text!.count <= 3)
             {
                 PasswordTextField.textColor = UIColor.red
                 ConfirmPasswordTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[3] = false
-                /*let alertController = UIAlertController(title: "Sign-Up", message: "Failed to Sign-Up. ", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let alertController = UIAlertController(title: "Sign-Up", message: "Please make sure the password is 3 characters long", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)*/
+                self.present(alertController, animated: true, completion: nil)
+                
+                
             }
+                
+            /*else
+            {
+                PasswordTextField.textColor = UIColor.red
+                ConfirmPasswordTextField.textColor = UIColor.red
+                CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
+                inputValidationConditions[3] = false
+            }*/
             
         }
         
@@ -139,6 +164,8 @@ class SignUpViewController: UIViewController {
             //userEditProfileSaveChangesButton.setTitleColor(UIColor.green, for: UIControlState.normal)
             CreateNewUserVariable.backgroundColor = UIColor(red: 0/255, green: 155/255, blue: 77/255, alpha: 1.0)
             //_ = dynamoHandler.putUserProfile(currentUser!)
+            let email = EmailTextField.text!
+            
             dynamoHandler
                 .getUserProfile(currentUser!.emailAddress)
                 .continueWith(block:
@@ -191,26 +218,27 @@ class SignUpViewController: UIViewController {
                             //print("failed to put")
                         }
                 })
+            currentUser?.emailAddress = email
             currentUser?.isUserLoggedIn = true
             
         }
         
-        let email = EmailTextField.text!
+        //let email = EmailTextField.text!
         //var password = PasswordTextField.text!
         
         // TODO
         // add encryption to password
         
-        currentUser?.emailAddress = email
+        //currentUser?.emailAddress = email
         // currentUser?.passwordToken = password
     
         
-        func AlertMessages (_ stringParameter: String)
+        /* func AlertMessages (_ stringParameter: String)
         {
             let alertController = UIAlertController(title: "FitIn", message: stringParameter, preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
-        }
+        }*/
         
     }
     /*
