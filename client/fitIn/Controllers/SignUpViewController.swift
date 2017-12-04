@@ -107,7 +107,7 @@ class SignUpViewController: UIViewController {
                 EmailTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[2] = false
-                let alertController = UIAlertController(title: "Sign-Up", message: "Please a valid e-mail. ", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Sign-Up", message: "Please enter a valid e-mail.", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
             }
