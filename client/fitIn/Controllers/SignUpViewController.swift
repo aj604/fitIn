@@ -34,6 +34,7 @@ class SignUpViewController: UIViewController {
         CreateNewUserVariable.layer.borderWidth = 2
         CreateNewUserVariable.layer.borderColor = UIColor.black.cgColor
         CreateNewUserVariable.layer.cornerRadius = 20
+        navigationController?.setNavigationBarHidden(true, animated: true)
         
         // Do any additional setup after loading the view.
     }
@@ -222,7 +223,6 @@ class SignUpViewController: UIViewController {
             currentUser?.isUserLoggedIn = true
             
         }
-        
         //let email = EmailTextField.text!
         //var password = PasswordTextField.text!
         
@@ -241,6 +241,16 @@ class SignUpViewController: UIViewController {
         }*/
         
     }
+    
+    func segueToMain() -> Void{
+        performSegue(withIdentifier: "signupToMain", sender: self)
+        //temporary "solution" to segue into main
+    }
+    
+    @IBAction func mainMenuButton(_ sender: Any) {
+        performSegue(withIdentifier: "signUpToMain", sender: self)
+    }
+    
     /*
      // MARK: - Navigation
      

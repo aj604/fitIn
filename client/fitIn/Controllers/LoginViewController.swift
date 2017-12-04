@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         //UserLabel.text = String(describing: userProfile.current()?.userAge)
         // Do any additional setup after loading the view.
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,6 +119,9 @@ class LoginViewController: UIViewController {
         //temporary "solution" to segue into login screen when user is not logged in
     }
     
+    @IBAction func mainMenuButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "loginToMainMenu", sender: self)
+    }
     /*
      // MARK: - Navigation
      
