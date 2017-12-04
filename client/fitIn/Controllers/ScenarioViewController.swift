@@ -80,6 +80,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
         startRecording()
     }
     @IBAction func stopRecord(_ sender: UIButton?) {
+        voiceButton.setTitle("Detected Text", for : .normal)
         voiceButton.backgroundColor = UIColor.white;
         if audioEngine.isRunning{
             audioEngine.stop()
