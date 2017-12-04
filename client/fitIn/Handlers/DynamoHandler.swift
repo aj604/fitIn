@@ -212,7 +212,6 @@ class DynamoHandler {
                                 result.seen = false;
                                 result.valid = true;
                             } else {
-                                print("query is ", query)
                                 result.seen = true;
                                 result.valid = false;
                             }
@@ -231,7 +230,6 @@ class DynamoHandler {
                     result.seen = false;
                     result.valid = true;
                 } else {
-                    print("query is ", query)
                     result.seen = true;
                     result.valid = false;
                 }
