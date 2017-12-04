@@ -80,7 +80,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
         startRecording()
     }
     @IBAction func stopRecord(_ sender: UIButton?) {
-        voiceButton.setTitle("Detected Text", for : .normal)
+        voiceButton.setTitle("Voice Recognition", for : .normal)
         voiceButton.backgroundColor = UIColor.white;
         if audioEngine.isRunning{
             audioEngine.stop()
@@ -151,7 +151,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
                 if self.isTrigger(word: lastString) {
                     isFinal = true;
                     self.stopRecord(nil)
-                    startRecordBool = false;
+                    startRecordBool = false
                 }
                  //= result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
