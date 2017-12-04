@@ -37,7 +37,7 @@ class popUpViewController: UIViewController {
         answerLabel.clipsToBounds = true;
         answerReasoning.layer.cornerRadius = 3;
         answerReasoning.clipsToBounds = true;
-        answerReasoning.text = passedReasoning;
+        answerReasoning.text = "Sorry, you are incorrect.";
 
         // Do any additional setup after loading the view.
     }
