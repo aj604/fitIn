@@ -168,7 +168,7 @@ class DynamoHandler {
         
         let query = AWSDynamoDBQueryInput()
         query!.tableName = SCENARIO_MASTER_TABLE
-        query!.limit = 1
+        query!.limit = 2
         query!.indexName = "initialAnswer-scenarioID-index"
         query!.keyConditionExpression = "#index = :indexValue AND #primaryKey >= :primaryKeyValue"
         query!.expressionAttributeNames = [
@@ -176,7 +176,7 @@ class DynamoHandler {
             "#primaryKey": "scenarioID"
         ]
         
-        let rand = arc4random() % 11;
+        let rand = (arc4random() % 2) * 10;
         // print("rand is ", rand);
         query!.expressionAttributeValues = [
             ":indexValue": makeAttrib(Int(rand)),
@@ -199,11 +199,11 @@ class DynamoHandler {
                     return self
                         .dynamo
                         .query(query!)
-                        .continueWith { (task:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
+                        .continueWith { (task2:AWSTask<AWSDynamoDBQueryOutput>) -> AWSTask<Scenario> in
                             // print("successful get request to scenario")
                             
                             let result = Scenario();
-                            let items = task.result!.items!
+                            let items = task2.result!.items!
                             
                             if(Int(truncating: task.result!.count!) > 0)
                             {
@@ -212,6 +212,7 @@ class DynamoHandler {
                                 result.seen = false;
                                 result.valid = true;
                             } else {
+                                print("query is ", query)
                                 result.seen = true;
                                 result.valid = false;
                             }
@@ -230,6 +231,7 @@ class DynamoHandler {
                     result.seen = false;
                     result.valid = true;
                 } else {
+                    print("query is ", query)
                     result.seen = true;
                     result.valid = false;
                 }
