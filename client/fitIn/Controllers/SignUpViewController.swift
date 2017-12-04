@@ -49,7 +49,7 @@ class SignUpViewController: UIViewController {
         //once user taps outside of field keyboard should be closed
     }
     
-    @IBAction func CreateNewUserFunction(_ sender: Any) {
+    @IBAction func CreateNewUserFunction(_ sender: UIButton) {
         
         if (UserNameTextField.text!.count > 0)
         {
@@ -107,7 +107,7 @@ class SignUpViewController: UIViewController {
                 EmailTextField.textColor = UIColor.red
                 CreateNewUserVariable.backgroundColor = UIColor(red: 204/255, green: 17/255, blue: 0/255, alpha: 1.0)
                 inputValidationConditions[2] = false
-                let alertController = UIAlertController(title: "Sign-Up", message: "Please a valid e-mail. ", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Sign-Up", message: "Please enter a valid e-mail.", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
             }
@@ -200,7 +200,7 @@ class SignUpViewController: UIViewController {
                             //AlertMessages("success, new user")
                             DispatchQueue.main.async {
                                 //print("Main")
-                                let alertController = UIAlertController(title: "Sign-Up", message: "Success, new user.", preferredStyle: UIAlertControllerStyle.alert)
+                                let alertController = UIAlertController(title: "Sign-Up", message: "Success, new user has been logged in.", preferredStyle: UIAlertControllerStyle.alert)
                                 alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                                 self.present(alertController, animated: true, completion: nil)
                             }
@@ -221,7 +221,7 @@ class SignUpViewController: UIViewController {
                 })
             currentUser?.emailAddress = email
             currentUser?.isUserLoggedIn = true
-            
+            segueToMain()
         }
         //let email = EmailTextField.text!
         //var password = PasswordTextField.text!
@@ -243,7 +243,7 @@ class SignUpViewController: UIViewController {
     }
     
     func segueToMain() -> Void{
-        performSegue(withIdentifier: "signupToMain", sender: self)
+        performSegue(withIdentifier: "signUpToMain", sender: self)
         //temporary "solution" to segue into main
     }
     
