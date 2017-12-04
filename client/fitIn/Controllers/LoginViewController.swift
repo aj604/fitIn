@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
                         currentUser.isUserLoggedIn = false
                         DispatchQueue.main.async {
                             //print("Main")
-                            let alertController = UIAlertController(title: "Login", message: "user does not exist in database", preferredStyle: UIAlertControllerStyle.alert)
+                            let alertController = UIAlertController(title: "Login", message: "User does not exist in database.", preferredStyle: UIAlertControllerStyle.alert)
                             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                             self.present(alertController, animated: true, completion: nil)
                         }
