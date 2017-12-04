@@ -151,7 +151,7 @@ class ScenarioViewController: UIViewController, SFSpeechRecognizerDelegate {
                 if self.isTrigger(word: lastString) {
                     isFinal = true;
                     self.stopRecord(nil)
-                    startRecordBool = false;
+                    startRecordBool = false
                 }
                  //= result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!

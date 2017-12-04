@@ -122,13 +122,13 @@ class Scenario {
         
         self.type = ScenarioType(rawValue: Int(dict["type"]!.n!)!)!
         self.initialAnswer = Int(dict["initialAnswer"]!.n!)!
-        // self.averageAnswer = Double(dict["initialAnswer"]!.n!)!
-        // self.averageTimeToAnswer = Double(dict["averageTimeToAnswer"]!.n!)!
+        self.averageAnswer = Double(dict["initialAnswer"]!.n!)!
+        self.averageTimeToAnswer = Double(dict["averageTimeToAnswer"]!.n!)!
         self.numberOfAnswers = Int(dict["numberOfAnswers"]!.n!)!
         
-        // self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
-        // self.mean = Double(dict["mean"]!.n!)!
-        // self.currentMean = Double(dict["currentMean"]!.n!)!
+        self.standardDeviation = Double(dict["standardDeviation"]!.n!)!
+        self.mean = Double(dict["mean"]!.n!)!
+        self.currentMean = Double(dict["currentMean"]!.n!)!
         
     }
     
